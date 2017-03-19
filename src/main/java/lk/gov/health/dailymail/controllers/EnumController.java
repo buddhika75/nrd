@@ -9,6 +9,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
 import lk.gov.health.dailymail.enums.Place;
 import lk.gov.health.dailymail.enums.Response;
+import lk.gov.health.dailymail.enums.ResponseCategory;
 import lk.gov.health.dailymail.enums.Sex;
 
 /**
@@ -35,6 +36,10 @@ public class EnumController {
     
     public Response[] getResponses(){
         return Response.values();
+    }
+    
+    public ResponseCategory[] getResponseCategories(){
+        return ResponseCategory.values();
     }
     
 }

@@ -23,6 +23,10 @@
                         <p:submenu label="Questionnaire" >
                             <p:menuitem value="Add" action="#{mailController.toAddNew}" ajax="false" />
                             <p:menuitem value="List" action="/mail/all_responses" ajax="false" />
+                            <p:menuitem value="Suggestions" action="/mail/suggestions" ajax="false" />
+                            <p:menuitem value="Expectations" action="/mail/expectations" ajax="false" />
+                            <p:menuitem value="Responses for Single Question" action="/mail/chart_single_response" ajax="false" />
+                            <p:menuitem value="Responses for All Questions" action="/mail/chart_all_responses" ajax="false" />
                         </p:submenu>
                         <p:submenu label="#{bundle.Maintenance}">
                             <p:menuitem value="Department" outcome="/department/List.xhtml" />
