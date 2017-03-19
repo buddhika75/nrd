@@ -8,14 +8,14 @@ package lk.gov.health.dailymail.facades;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import lk.gov.health.dailymail.entity.Mail;
+import lk.gov.health.dailymail.entity.Questionnaire;
 
 /**
  *
  * @author User
  */
 @Stateless
-public class MailFacade extends AbstractFacade<Mail> {
+public class MailFacade extends AbstractFacade<Questionnaire> {
 
     @PersistenceContext(unitName = "pu")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class MailFacade extends AbstractFacade<Mail> {
     }
 
     public MailFacade() {
-        super(Mail.class);
+        super(Questionnaire.class);
     }
     
 }

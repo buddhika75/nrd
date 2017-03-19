@@ -1,6 +1,6 @@
 package lk.gov.health.dailymail.controllers;
 
-import lk.gov.health.dailymail.entity.Mail;
+import lk.gov.health.dailymail.entity.Questionnaire;
 import lk.gov.health.dailymail.controllers.util.JsfUtil;
 import lk.gov.health.dailymail.controllers.util.JsfUtil.PersistAction;
 import lk.gov.health.dailymail.facades.MailFacade;
@@ -25,17 +25,17 @@ public class MailController implements Serializable {
 
     @EJB
     private lk.gov.health.dailymail.facades.MailFacade ejbFacade;
-    private List<Mail> items = null;
-    private Mail selected;
+    private List<Questionnaire> items = null;
+    private Questionnaire selected;
 
     public MailController() {
     }
 
-    public Mail getSelected() {
+    public Questionnaire getSelected() {
         return selected;
     }
 
-    public void setSelected(Mail selected) {
+    public void setSelected(Questionnaire selected) {
         this.selected = selected;
     }
 
@@ -49,8 +49,8 @@ public class MailController implements Serializable {
         return ejbFacade;
     }
 
-    public Mail prepareCreate() {
-        selected = new Mail();
+    public Questionnaire prepareCreate() {
+        selected = new Questionnaire();
         initializeEmbeddableKey();
         return selected;
     }
@@ -74,7 +74,7 @@ public class MailController implements Serializable {
         }
     }
 
-    public List<Mail> getItems() {
+    public List<Questionnaire> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -109,15 +109,15 @@ public class MailController implements Serializable {
         }
     }
 
-    public List<Mail> getItemsAvailableSelectMany() {
+    public List<Questionnaire> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Mail> getItemsAvailableSelectOne() {
+    public List<Questionnaire> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Mail.class)
+    @FacesConverter(forClass = Questionnaire.class)
     public static class MailControllerConverter implements Converter {
 
         @Override
@@ -147,11 +147,11 @@ public class MailController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Mail) {
-                Mail o = (Mail) object;
+            if (object instanceof Questionnaire) {
+                Questionnaire o = (Questionnaire) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Mail.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Questionnaire.class.getName()});
                 return null;
             }
         }

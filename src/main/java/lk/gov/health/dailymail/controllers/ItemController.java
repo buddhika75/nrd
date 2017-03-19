@@ -1,5 +1,6 @@
 package lk.gov.health.dailymail.controllers;
 
+import lk.gov.health.dailymail.entity.Item;
 import lk.gov.health.dailymail.controllers.util.JsfUtil;
 import lk.gov.health.dailymail.controllers.util.JsfUtil.PersistAction;
 import lk.gov.health.dailymail.facades.ItemFacade;

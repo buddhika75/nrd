@@ -15,6 +15,7 @@
 
         <ui:define name="body">
                 <h:form id="MailListForm">
+                    
                     <p:panel header="#{bundle.ListMailTitle}">
                         <p:dataTable id="datalist" value="#{mailController.items}" var="item"
                             selectionMode="single" selection="#{mailController.selected}"
@@ -27,104 +28,182 @@
                             <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                             <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_receivedDate}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.receivedDate}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_letterDate}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.letterDate}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_registered}"/>
-                                </f:facet>
-                                <p:selectBooleanCheckbox value="#{item.registered}" disabled="true"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_registeredNumber}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.registeredNumber}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_sendingInstitute}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.sendingInstitute}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_sendingNumber}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.sendingNumber}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_topic}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.topic}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_executiveOfficer}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.executiveOfficer}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_departmentHead}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.departmentHead}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_subjectUser}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.subjectUser}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_subject}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.subject}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_addedUser}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.addedUser}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_addedDate}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.addedDate}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_addedTime}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.addedTime}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListMailTitle_id}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.id}"/>
-                            </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Place"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.place}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Position"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.position}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Sex"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.sex}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Age"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.age}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ServicePeriod"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.servicePeriod}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="InstitutionServicePeriod"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.institutionServicePeriod}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Increments"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.increments}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Environment"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.environment}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Clineliness"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.clineliness}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Arrangement"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.arrangement}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="GroupWork"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.groupWork}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Leadership"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.leadership}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Training"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.training}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Evaluation"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.evaluation}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Wellfare"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.wellfare}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Decpline"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.decpline}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Communication"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.communication}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Discussions"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.discussions}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Requirement_Identification"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.requirement_Identification}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Quality_service"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.quality_service}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Expectation_achievement"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.expectation_achievement}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Suggestions"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.suggestions}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ExpectingFacilities"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.expectingFacilities}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="QuestionnaireDate"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.questionnaireDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="CreatedDate"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.createdDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="AddedUser"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.addedUser}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="AddedDate"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.addedDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="AddedTime"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.addedTime}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    </h:outputText>
+                                </p:column>
                             <f:facet name="footer">
                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{mailController.prepareCreate}" update=":MailCreateForm" oncomplete="PF('MailCreateDialog').show()"/>
                                 <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MailViewForm" oncomplete="PF('MailViewDialog').show()" disabled="#{empty mailController.selected}"/>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lk.gov.health.dailymail.controllers;
+package lk.gov.health.dailymail.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -12,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lk.gov.health.dailymail.controllers.ItemCategory;
 
 /**
  *
