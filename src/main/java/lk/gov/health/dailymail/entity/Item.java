@@ -12,7 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import lk.gov.health.dailymail.controllers.ItemCategory;
+import lk.gov.health.dailymail.enums.ItemCategory;
 
 /**
  *

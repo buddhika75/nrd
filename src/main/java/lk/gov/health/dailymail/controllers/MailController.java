@@ -6,29 +6,112 @@ import lk.gov.health.dailymail.controllers.util.JsfUtil.PersistAction;
 import lk.gov.health.dailymail.facades.MailFacade;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean(name = "mailController")
+@Named
 @SessionScoped
 public class MailController implements Serializable {
 
     @EJB
     private lk.gov.health.dailymail.facades.MailFacade ejbFacade;
     private List<Questionnaire> items = null;
+    private List<Questionnaire> selectedItems = null;
     private Questionnaire selected;
 
+    @Inject
+    WebUserController webUserController;
+    @Inject
+    CommonController commonController;
+
+    Date fromDate;
+    Date toDate;
+
+    public CommonController getCommonController() {
+        return commonController;
+    }
+
+    public List<Questionnaire> getSelectedItems() {
+        return selectedItems;
+    }
+
+    public void setSelectedItems(List<Questionnaire> selectedItems) {
+        this.selectedItems = selectedItems;
+    }
+
+    public Date getFromDate() {
+        if (fromDate == null) {
+            fromDate = getCommonController().firstDayOfYear(new Date());
+        }
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        if(toDate==null){
+            toDate = getCommonController().lastDayOfYear(new Date());
+        }
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
+    public void fillItemsByPeriod() {
+        String j;
+        Map m = new HashMap();
+        j = "select q "
+                + " from Questionnaire q "
+                + " where q.questionnaireDate between :fd and :td "
+                + " order by q.id";
+        m.put("fd", fromDate);
+        m.put("td", toDate);
+        selectedItems = getFacade().findBySQL(j, m);
+    }
+
+    public WebUserController getWebUserController() {
+        return webUserController;
+    }
+
     public MailController() {
+    }
+
+    public String toAddNew() {
+        selected = new Questionnaire();
+        selected.setAddedDate(new Date());
+        selected.setAddedTime(new Date());
+        selected.setAddedUser(getWebUserController().getLoggedUser());
+        selected.setCreatedDate(new Date());
+        selected.setQuestionnaireDate(new Date());
+        return "/mail/add";
+    }
+
+    public String saveAddNew() {
+        if (selected == null) {
+            JsfUtil.addErrorMessage("Nothing to save");
+            return "";
+        }
+        getFacade().create(selected);
+        items = null;
+        return toAddNew();
     }
 
     public Questionnaire getSelected() {

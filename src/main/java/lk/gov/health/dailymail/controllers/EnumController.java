@@ -5,8 +5,8 @@
  */
 package lk.gov.health.dailymail.controllers;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
+import javax.inject.Named;
 import lk.gov.health.dailymail.enums.Place;
 import lk.gov.health.dailymail.enums.Response;
 import lk.gov.health.dailymail.enums.Sex;
@@ -15,7 +15,7 @@ import lk.gov.health.dailymail.enums.Sex;
  *
  * @author User
  */
-@ManagedBean
+@Named
 @ApplicationScoped
 public class EnumController {
 
