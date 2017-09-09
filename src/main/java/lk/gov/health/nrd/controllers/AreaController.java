@@ -1,9 +1,9 @@
 package lk.gov.health.nrd.controllers;
 
-import lk.gov.health.nrd.entity.Institute;
+import lk.gov.health.nrd.entity.Area;
 import lk.gov.health.nrd.controllers.util.JsfUtil;
 import lk.gov.health.nrd.controllers.util.JsfUtil.PersistAction;
-import lk.gov.health.nrd.facades.InstituteFacade;
+import lk.gov.health.nrd.facades.AreaFacade;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,23 +19,23 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@Named("instituteController")
+@Named("areaController")
 @SessionScoped
-public class InstituteController implements Serializable {
+public class AreaController implements Serializable {
 
     @EJB
-    private lk.gov.health.nrd.facades.InstituteFacade ejbFacade;
-    private List<Institute> items = null;
-    private Institute selected;
+    private lk.gov.health.nrd.facades.AreaFacade ejbFacade;
+    private List<Area> items = null;
+    private Area selected;
 
-    public InstituteController() {
+    public AreaController() {
     }
 
-    public Institute getSelected() {
+    public Area getSelected() {
         return selected;
     }
 
-    public void setSelected(Institute selected) {
+    public void setSelected(Area selected) {
         this.selected = selected;
     }
 
@@ -45,36 +45,36 @@ public class InstituteController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private InstituteFacade getFacade() {
+    private AreaFacade getFacade() {
         return ejbFacade;
     }
 
-    public Institute prepareCreate() {
-        selected = new Institute();
+    public Area prepareCreate() {
+        selected = new Area();
         initializeEmbeddableKey();
         return selected;
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleIns").getString("InstituteCreated"));
+        persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleArea").getString("AreaCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/BundleIns").getString("InstituteUpdated"));
+        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/BundleArea").getString("AreaUpdated"));
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleIns").getString("InstituteDeleted"));
+        persist(PersistAction.DELETE, ResourceBundle.getBundle("/BundleArea").getString("AreaDeleted"));
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
-    public List<Institute> getItems() {
+    public List<Area> getItems() {
         if (items == null) {
             items = getFacade().findAll();
         }
@@ -100,38 +100,38 @@ public class InstituteController implements Serializable {
                 if (msg.length() > 0) {
                     JsfUtil.addErrorMessage(msg);
                 } else {
-                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleIns").getString("PersistenceErrorOccured"));
+                    JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleArea").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
                 Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleIns").getString("PersistenceErrorOccured"));
+                JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/BundleArea").getString("PersistenceErrorOccured"));
             }
         }
     }
 
-    public Institute getInstitute(java.lang.Long id) {
+    public Area getArea(java.lang.Long id) {
         return getFacade().find(id);
     }
 
-    public List<Institute> getItemsAvailableSelectMany() {
+    public List<Area> getItemsAvailableSelectMany() {
         return getFacade().findAll();
     }
 
-    public List<Institute> getItemsAvailableSelectOne() {
+    public List<Area> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Institute.class)
-    public static class InstituteControllerConverter implements Converter {
+    @FacesConverter(forClass = Area.class)
+    public static class AreaControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            InstituteController controller = (InstituteController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "instituteController");
-            return controller.getInstitute(getKey(value));
+            AreaController controller = (AreaController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "areaController");
+            return controller.getArea(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -151,11 +151,11 @@ public class InstituteController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Institute) {
-                Institute o = (Institute) object;
+            if (object instanceof Area) {
+                Area o = (Area) object;
                 return getStringKey(o.getId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Institute.class.getName()});
+                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Area.class.getName()});
                 return null;
             }
         }

@@ -6,6 +6,7 @@ import lk.gov.health.nrd.controllers.util.JsfUtil.PersistAction;
 import lk.gov.health.nrd.facades.PatientFacade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,21 +19,54 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import lk.gov.health.nrd.entity.PatientDiagnosis;
 
 @Named("patientController")
 @SessionScoped
 public class PatientController implements Serializable {
+
+    @Inject
+    WebUserController webUserController;
 
     @EJB
     private lk.gov.health.nrd.facades.PatientFacade ejbFacade;
     private List<Patient> items = null;
     private Patient selected;
 
+    PatientDiagnosis patientDiagnosis;
+
+    public PatientDiagnosis getPatientDiagnosis() {
+        return patientDiagnosis;
+    }
+
+    public void setPatientDiagnosis(PatientDiagnosis patientDiagnosis) {
+        this.patientDiagnosis = patientDiagnosis;
+    }
+    
+    
+    
     public PatientController() {
     }
 
+    public WebUserController getWebUserController() {
+        return webUserController;
+    }
+
+    
+    
+    
     public String toAddNewPatient() {
         selected = new Patient();
+        selected.setDateOfBirth(new Date());
+        System.out.println("webUserController.loggedUser = " + getWebUserController().getLoggedUser());
+        if (getWebUserController().getLoggedUser() != null) {
+            System.out.println("getWebUserController().getLoggedUser().getInstitute() = " + getWebUserController().getLoggedUser().getInstitute());
+            selected.setRegisteredInstitute(getWebUserController().getLoggedUser().getInstitute());
+            selected.setRegisteredDepartment(getWebUserController().getLoggedUser().getDepartment());
+        }
+        System.out.println("selected.getRegisteredInstitute()"
+                + "= " + selected.getRegisteredInstitute());
         return "/patient/patient";
     }
 

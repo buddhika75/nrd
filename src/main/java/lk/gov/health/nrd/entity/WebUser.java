@@ -35,6 +35,29 @@ public class WebUser implements Serializable {
     @ManyToOne
     Item position;
     boolean executiveOfficer;
+    @ManyToOne
+    Institute institute;
+    @ManyToOne
+    Department department;
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+    
+
+    public Institute getInstitute() {
+        return institute;
+    }
+
+    public void setInstitute(Institute institute) {
+        this.institute = institute;
+    }
+    
+    
 
     public String getSname() {
         return sname;

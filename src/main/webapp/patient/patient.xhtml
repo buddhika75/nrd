@@ -15,78 +15,249 @@
             </ui:define>
 
             <ui:define name="body">
-                
+
                 <f:view>
 
 
                     <h:form>
-                        <h1><h:outputText value="Create/Edit"/></h1>
-                        <p:panelGrid columns="2">
-                            <p:outputLabel value="Registered Institute:" for="registeredInstitute" />
-                            <p:selectOneMenu id="registeredInstitute" value="#{patientController.selected.registeredInstitute}" >
-                                <f:selectItems value="#{instituteController.itemsAvailableSelectOne}" var="i" itemLabel="#{i.name}" itemValue="#{i}"/>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="Clinic Number:" for="clinicNumber" />
-                            <p:inputText id="clinicNumber" value="#{patientController.selected.clinicNumber}" title="ClinicNumber" />
-                            <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
-                            <p:inputText id="dateOfRegistration" value="#{patientController.selected.dateOfRegistration}" title="DateOfRegistration" >
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </p:inputText>
-                            <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
-                            <p:inputText id="nameOfPatient" value="#{patientController.selected.nameOfPatient}" title="NameOfPatient" />
-                            <p:outputLabel value="Sex:" for="sex" />
-                            <p:inputText id="sex" value="#{patientController.selected.sex}" title="Sex" />
-                            <p:outputLabel value="Date of Birth:" for="dateOfBirth" />
-                            <p:inputText id="dateOfBirth" value="#{patientController.selected.dateOfBirth}" title="DateOfBirth" >
-                                <f:convertDateTime pattern="MM/dd/yyyy" />
-                            </p:inputText>
-                            <p:outputLabel value="Age:" for="age" />
-                            <p:inputText id="age" value="#{patientController.selected.age}" title="Age" />
-                            <p:outputLabel value="AgeInDays:" for="ageInDays" />
-                            <p:inputText id="ageInDays" value="#{patientController.selected.ageInDays}" title="AgeInDays" />
-                            <p:outputLabel value="TelephoneNoMobile:" for="telephoneNoMobile" />
-                            <p:inputText id="telephoneNoMobile" value="#{patientController.selected.telephoneNoMobile}" title="TelephoneNoMobile" />
-                            <p:outputLabel value="TelephoneNoHome:" for="telephoneNoHome" />
-                            <p:inputText id="telephoneNoHome" value="#{patientController.selected.telephoneNoHome}" title="TelephoneNoHome" />
-                            <p:outputLabel value="Address:" for="address" />
-                            <p:inputTextarea rows="4" cols="30" id="address" value="#{patientController.selected.address}" title="Address" />
-                            <p:outputLabel value="City:" for="city" />
-                            <p:selectOneMenu id="city" value="#{patientController.selected.city}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="Nic:" for="nic" />
-                            <p:inputText id="nic" value="#{patientController.selected.nic}" title="Nic" />
-                            <p:outputLabel value="ReferredBy:" for="referredBy" />
-                            <p:inputText id="referredBy" value="#{patientController.selected.referredBy}" title="ReferredBy" />
-                            <p:outputLabel value="OtherReferredBY:" for="otherReferredBY" />
-                            <p:inputText id="otherReferredBY" value="#{patientController.selected.otherReferredBY}" title="OtherReferredBY" />
-                            <p:outputLabel value="Occupation:" for="occupation" />
-                            <p:inputText id="occupation" value="#{patientController.selected.occupation}" title="Occupation" />
-                            <p:outputLabel value="OtherOccupation:" for="otherOccupation" />
-                            <p:inputText id="otherOccupation" value="#{patientController.selected.otherOccupation}" title="OtherOccupation" />
-                            <p:outputLabel value="Race:" for="race" />
-                            <p:inputText id="race" value="#{patientController.selected.race}" title="Race" />
-                            <p:outputLabel value="RaceOther:" for="raceOther" />
-                            <p:inputText id="raceOther" value="#{patientController.selected.raceOther}" title="RaceOther" />
-                            <p:outputLabel value="Diagnosis:" for="diagnosis" />
-                            <p:inputText id="diagnosis" value="#{patientController.selected.diagnosis}" title="Diagnosis" />
-                            <p:outputLabel value="RheumatoidArthritisData:" for="rheumatoidArthritisData" />
-                            <p:selectOneMenu id="rheumatoidArthritisData" value="#{patientController.selected.rheumatoidArthritisData}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-                            <p:outputLabel value="SystemicLupusErythematosusData:" for="systemicLupusErythematosusData" />
-                            <p:selectOneMenu id="systemicLupusErythematosusData" value="#{patientController.selected.systemicLupusErythematosusData}" >
-                                <!-- TODO: update below reference to list of available items-->
-                                <f:selectItems value="#{fixme}"/>
-                            </p:selectOneMenu>
-                        </p:panelGrid>
+                        <p:panel  style="margin: auto" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+                            <p:panelGrid columns="4" >
+                                <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                <p:inputText id="clinicNumber" value="#{patientController.selected.clinicNumber}" title="ClinicNumber" />
+                                <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                <p:calendar id="dateOfRegistration"  pattern="dd MM yyyy"  value="#{patientController.selected.dateOfRegistration}" title="DateOfRegistration" >
+                                </p:calendar>
+                                <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                <p:inputText required="true" id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}" title="NameOfPatient" />
+                                <p:outputLabel value="Sex:" for="sex" />
+                                <p:selectOneButton id="sex" value="#{patientController.selected.sex}"  label="Sex" required="true">
+                                    <f:selectItems value="#{enumController.sexes}" ></f:selectItems>
+                                </p:selectOneButton>
+                                <p:outputLabel value="Date of Birth:" for="dateOfBirth" />
+                                <p:calendar navigator="true" id="dateOfBirth" pattern="dd MM yyyy" value="#{patientController.selected.dateOfBirth}" title="DateOfBirth" required="true" >
+                                </p:calendar>
+                                <p:outputLabel value="Age:" for="age" />
+                                <p:inputText id="age" value="#{patientController.selected.age}" title="Age" />
+                                <p:outputLabel value="Telephone No. Mobile:" for="telephoneNoMobile" />
+                                <p:inputText id="telephoneNoMobile" value="#{patientController.selected.telephoneNoMobile}" title="TelephoneNoMobile" />
+                                <p:outputLabel value="Telephone No. Home:" for="telephoneNoHome" />
+                                <p:inputText id="telephoneNoHome" value="#{patientController.selected.telephoneNoHome}" title="TelephoneNoHome" />
+                                <p:outputLabel value="Address:" for="address" />
+                                <p:inputTextarea rows="4" cols="30" id="address" value="#{patientController.selected.address}" title="Address" />
+                                <p:outputLabel value="City:" for="city" />
+                                <p:selectOneMenu id="city" value="#{patientController.selected.city}" >
+                                    <f:selectItem itemLabel="Select" ></f:selectItem>
+                                    <f:selectItems value="#{areaController.itemsAvailableSelectOne}" var="a" itemValue="#{a}" itemLabel="#{a.name}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Nic:" for="nic" />
+                                <p:inputText id="nic" value="#{patientController.selected.nic}" title="Nic" />
+
+                            </p:panelGrid>
+                            <p:panelGrid columns="2" >
+                                <p:outputLabel value="Referred By:" for="referredBy" />
+                                <h:panelGroup >
+                                    <p:selectOneButton id="referredBy" value="#{patientController.selected.referredBy}" >
+                                        <f:selectItems value="#{enumController.referredBys}" ></f:selectItems>
+                                        <f:ajax execute="@this" render="otherReferredBY" ></f:ajax>
+                                    </p:selectOneButton>
+                                    <h:panelGroup id="otherReferredBY" >
+                                        <p:inputText rendered="#{patientController.selected.referredBy eq 'Other'}" value="#{patientController.selected.otherReferredBY}" title="OtherReferredBY" />
+                                    </h:panelGroup>
+                                </h:panelGroup>
+
+
+                                <p:outputLabel value="Occupation:" for="occupation" />
+                                <h:panelGroup >
+                                    <p:selectOneButton id="occupation" value="#{patientController.selected.occupation}" >
+                                        <f:selectItems value="#{enumController.occupations}" ></f:selectItems>
+                                        <f:ajax execute="@this" render="otherOccupations" ></f:ajax>
+                                    </p:selectOneButton>
+                                    <h:panelGroup id="otherOccupations" >
+                                        <p:inputText rendered="#{patientController.selected.occupation eq 'Other'}" value="#{patientController.selected.otherOccupation}" title="OtherOccupations" />
+                                    </h:panelGroup>
+                                </h:panelGroup>
+
+
+
+
+                                <p:outputLabel value="Race:" for="race" />
+                                <h:panelGroup >
+                                    <p:selectOneButton id="race" value="#{patientController.selected.race}" >
+                                        <f:selectItems value="#{enumController.races}" ></f:selectItems>
+                                        <f:ajax execute="@this" render="otherRaces" ></f:ajax>
+                                    </p:selectOneButton>
+                                    <h:panelGroup id="otherRaces" >
+                                        <p:inputText rendered="#{patientController.selected.race eq 'Other'}" value="#{patientController.selected.raceOther}" title="OtherRaces" />
+                                    </h:panelGroup>
+                                </h:panelGroup>
+                            </p:panelGrid>
+
+
+
+
+
+                            <p:panelGrid >
+
+                                <p:row >
+                                    <p:column colspan="2" >
+                                        <p:outputLabel value="RA:" for="RA" />
+                                        <p:selectBooleanCheckbox id="RA" value="#{patientController.selected.diagnosis.RA}"  />
+                                        <p:spacer height="1" width="55" ></p:spacer>
+                                        <p:outputLabel value="OA:" for="OA" />
+                                        <p:selectBooleanCheckbox id="OA" value="#{patientController.selected.diagnosis.OA}"/>
+                                        <p:spacer height="1" width="55" ></p:spacer>
+                                        <p:outputLabel value="JIA:" for="JIA" />
+                                        <p:selectBooleanCheckbox id="JIA" value="#{patientController.selected.diagnosis.JIA}"  />
+                                        <p:spacer height="1" width="55" ></p:spacer>
+                                        <p:outputLabel value="GOUT:" for="GOUT" />
+                                        <p:selectBooleanCheckbox id="GOUT" value="#{patientController.selected.diagnosis.GOUT}" />
+                                        <p:spacer height="1" width="50" ></p:spacer>
+                                        <p:outputLabel value="Undifferentiated_IA:" for="undifferentiated_IA" />
+                                        <p:selectBooleanCheckbox id="undifferentiated_IA" 
+                                                                 value="#{patientController.selected.diagnosis.undifferentiated_IA}"  />
+                                    </p:column>
+
+                                </p:row>
+
+                                <p:row >
+                                    <p:column colspan="2" >
+                                        <p:outputLabel value="CTD:"  />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="SLE:" for="SLE" />
+                                        <p:selectBooleanCheckbox id="SLE" value="#{patientController.selected.diagnosis.SLE}"  />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="APS:" for="APS" />
+                                        <p:selectBooleanCheckbox id="APS" value="#{patientController.selected.diagnosis.APS}"  />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="MCTD:" for="MCTD" />
+                                        <p:selectBooleanCheckbox id="MCTD" value="#{patientController.selected.diagnosis.MCTD}"  />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="OVERLAP:" for="OVERLAP" />
+                                        <p:selectBooleanCheckbox id="OVERLAP" value="#{patientController.selected.diagnosis.OVERLAP}"  />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="Scleroderma:" for="scleroderma" />
+                                        <p:selectBooleanCheckbox id="scleroderma" value="#{patientController.selected.diagnosis.scleroderma}"  />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="Dermato_Polymyositis:" for="dermato_Polymyositis" />
+                                        <p:selectBooleanCheckbox id="dermato_Polymyositis" value="#{patientController.selected.diagnosis.dermato_Polymyositis}" />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="Sjogrens:" for="sjogrens" />
+                                        <p:selectBooleanCheckbox id="sjogrens" value="#{patientController.selected.diagnosis.sjogrens}" />
+                                        <p:spacer height="1" width="5" ></p:spacer>
+                                        <p:outputLabel value="Other_CTD:" for="other_CTD" />
+                                        <p:selectBooleanCheckbox id="other_CTD" value="#{patientController.selected.diagnosis.other_CTD}"  />
+                                    </p:column>
+                                </p:row>
+
+
+                                <p:outputLabel value="SpA:" for="spA" />
+                                <p:selectBooleanCheckbox id="spA" value="#{patientController.selected.diagnosis.spA}"  />
+                                <p:outputLabel value="AS:" for="AS" />
+                                <p:selectBooleanCheckbox id="AS" value="#{patientController.selected.diagnosis.AS}"  />
+                                <p:outputLabel value="Axial:" for="axial" />
+                                <p:selectBooleanCheckbox id="axial" value="#{patientController.selected.diagnosis.axial}" />
+                                <p:outputLabel value="Peripheral:" for="peripheral" />
+                                <p:selectBooleanCheckbox id="peripheral" value="#{patientController.selected.diagnosis.peripheral}" />
+                                <p:outputLabel value="Mixed_Axial_and_Peripheral:" for="mixed_Axial_and_Peripheral" />
+                                <p:selectBooleanCheckbox id="mixed_Axial_and_Peripheral" value="#{patientController.selected.diagnosis.mixed_Axial_and_Peripheral}" />
+                                <p:outputLabel value="Reactive:" for="reactive" />
+                                <p:selectBooleanCheckbox id="reactive" value="#{patientController.selected.diagnosis.reactive}" />
+                                <p:outputLabel value="Psoriatic:" for="psoriatic" />
+                                <p:selectBooleanCheckbox id="psoriatic" value="#{patientController.selected.diagnosis.psoriatic}" />
+                                <p:outputLabel value="IBD_associated:" for="IBD_associated" />
+                                <p:selectBooleanCheckbox id="IBD_associated" value="#{patientController.selected.diagnosis.IBD_associated}" />
+                                <p:outputLabel value="Reiter_s:" for="reiter_s" />
+                                <p:selectBooleanCheckbox id="reiter_s" value="#{patientController.selected.diagnosis.reiter_s}" />
+                                <p:outputLabel value="Juvenile:" for="juvenile" />
+                                <p:selectBooleanCheckbox id="juvenile" value="#{patientController.selected.diagnosis.juvenile}" />
+                                <p:outputLabel value="VASCULITIS:" for="VASCULITIS" />
+                                <p:selectBooleanCheckbox id="VASCULITIS" value="#{patientController.selected.diagnosis.VASCULITIS}" />
+                                <p:outputLabel value="TKA:" for="TKA" />
+                                <p:selectBooleanCheckbox id="TKA" value="#{patientController.selected.diagnosis.TKA}" />
+                                <p:outputLabel value="GCA:" for="GCA" />
+                                <p:selectBooleanCheckbox id="GCA" value="#{patientController.selected.diagnosis.GCA}" />
+                                <p:outputLabel value="PAN:" for="PAN" />
+                                <p:selectBooleanCheckbox id="PAN" value="#{patientController.selected.diagnosis.PAN}" />
+                                <p:outputLabel value="KD:" for="KD" />
+                                <p:selectBooleanCheckbox id="KD" value="#{patientController.selected.diagnosis.KD}" />
+                                <p:outputLabel value="AAV:" for="AAV" />
+                                <p:selectBooleanCheckbox id="AAV" value="#{patientController.selected.diagnosis.AAV}" />
+                                <p:outputLabel value="MPA:" for="MPA" />
+                                <p:selectBooleanCheckbox id="MPA" value="#{patientController.selected.diagnosis.MPA}" />
+                                <p:outputLabel value="GPA_WG:" for="GPA_WG" />
+                                <p:selectBooleanCheckbox id="GPA_WG" value="#{patientController.selected.diagnosis.GPA_WG}" />
+                                <p:outputLabel value="EGPA_CSS:" for="EGPA_CSS" />
+                                <p:selectBooleanCheckbox id="EGPA_CSS" value="#{patientController.selected.diagnosis.EGPA_CSS}" />
+                                <p:outputLabel value="Anti_GBM_GPS:" for="anti_GBM_GPS" />
+                                <p:selectBooleanCheckbox id="anti_GBM_GPS" value="#{patientController.selected.diagnosis.anti_GBM_GPS}" />
+                                <p:outputLabel value="CV:" for="CV" />
+                                <p:selectBooleanCheckbox id="CV" value="#{patientController.selected.diagnosis.CV}" />
+                                <p:outputLabel value="IgA_HSP:" for="igA_HSP" />
+                                <p:selectBooleanCheckbox id="igA_HSP" value="#{patientController.selected.diagnosis.igA_HSP}" />
+                                <p:outputLabel value="HUV:" for="HUV" />
+                                <p:selectBooleanCheckbox id="HUV" value="#{patientController.selected.diagnosis.HUV}" />
+                                <p:outputLabel value="BD:" for="BD" />
+                                <p:selectBooleanCheckbox id="BD" value="#{patientController.selected.diagnosis.BD}" />
+                                <p:outputLabel value="Other_Vasculitis:" for="other_Vasculitis" />
+                                <p:selectBooleanCheckbox id="other_Vasculitis" value="#{patientController.selected.diagnosis.other_Vasculitis}" />
+                                <p:outputLabel value="Soft_Tissue_Diseases:" for="soft_Tissue_Diseases" />
+                                <p:selectBooleanCheckbox id="soft_Tissue_Diseases" value="#{patientController.selected.diagnosis.soft_Tissue_Diseases}" />
+                                <p:outputLabel value="Fibromyalgia:" for="fibromyalgia" />
+                                <p:selectBooleanCheckbox id="fibromyalgia" value="#{patientController.selected.diagnosis.fibromyalgia}" />
+                                <p:outputLabel value="BT:" for="BT" />
+                                <p:selectBooleanCheckbox id="BT" value="#{patientController.selected.diagnosis.BT}" />
+                                <p:outputLabel value="Adhesive_Capsulitis:" for="adhesive_Capsulitis" />
+                                <p:selectBooleanCheckbox id="adhesive_Capsulitis" value="#{patientController.selected.diagnosis.adhesive_Capsulitis}" />
+                                <p:outputLabel value="Other_SJ_Ds:" for="other_SJ_Ds" />
+                                <p:selectBooleanCheckbox id="other_SJ_Ds" value="#{patientController.selected.diagnosis.other_SJ_Ds}" />
+                                <p:outputLabel value="TE:" for="TE" />
+                                <p:selectBooleanCheckbox id="TE" value="#{patientController.selected.diagnosis.TE}" />
+                                <p:outputLabel value="GE:" for="GE" />
+                                <p:selectBooleanCheckbox id="GE" value="#{patientController.selected.diagnosis.GE}" />
+                                <p:outputLabel value="DQTS:" for="DQTS" />
+                                <p:selectBooleanCheckbox id="DQTS" value="#{patientController.selected.diagnosis.DQTS}" />
+                                <p:outputLabel value="Ulna_Styloid:" for="ulna_Styloid" />
+                                <p:selectBooleanCheckbox id="ulna_Styloid" value="#{patientController.selected.diagnosis.ulna_Styloid}" />
+                                <p:outputLabel value="PF:" for="PF" />
+                                <p:selectBooleanCheckbox id="PF" value="#{patientController.selected.diagnosis.PF}" />
+                                <p:outputLabel value="Achilles_Tendinitis:" for="achilles_Tendinitis" />
+                                <p:selectBooleanCheckbox id="achilles_Tendinitis" value="#{patientController.selected.diagnosis.achilles_Tendinitis}" />
+                                <p:outputLabel value="Metatarsalgia:" for="metatarsalgia" />
+                                <p:selectBooleanCheckbox id="metatarsalgia" value="#{patientController.selected.diagnosis.metatarsalgia}" />
+                                <p:outputLabel value="Regional_Pain_Syndromes:" for="regional_Pain_Syndromes" />
+                                <p:selectBooleanCheckbox id="regional_Pain_Syndromes" value="#{patientController.selected.diagnosis.regional_Pain_Syndromes}" />
+                                <p:outputLabel value="Backache:" for="backache" />
+                                <p:selectBooleanCheckbox id="backache" value="#{patientController.selected.diagnosis.backache}" />
+                                <p:outputLabel value="Neck_Pain:" for="neck_Pain" />
+                                <p:selectBooleanCheckbox id="neck_Pain" value="#{patientController.selected.diagnosis.neck_Pain}" />
+                                <p:outputLabel value="Other_Regional_Pain_Syndromes:" for="other_Regional_Pain_Syndromes" />
+                                <p:selectBooleanCheckbox id="other_Regional_Pain_Syndromes" value="#{patientController.selected.diagnosis.other_Regional_Pain_Syndromes}" />
+                                <p:outputLabel value="OTHER:" for="OTHER" />
+                                <p:selectBooleanCheckbox id="OTHER" value="#{patientController.selected.diagnosis.OTHER}" />
+                                <p:outputLabel value="DisgnosisComments:" for="disgnosisComments" />
+                                <p:inputTextarea rows="4" cols="30" id="disgnosisComments" value="#{patientController.selected.diagnosis.disgnosisComments}" />
+                                <p:outputLabel value="OtherCtd:" for="otherCtd" />
+                                <p:selectBooleanCheckbox id="otherCtd" value="#{patientController.selected.diagnosis.otherCtd}" />
+                                <p:outputLabel value="OtherVasculitis:" for="otherVasculitis" />
+                                <p:selectBooleanCheckbox id="otherVasculitis" value="#{patientController.selected.diagnosis.otherVasculitis}" />
+                                <p:outputLabel value="OtherDiagnosis:" for="otherDiagnosis" />
+                                <p:selectBooleanCheckbox id="otherDiagnosis" value="#{patientController.selected.diagnosis.otherDiagnosis}" />
+                            </p:panelGrid>
+
+
+
+
+
+
+                        </p:panel>
                     </h:form>
                 </f:view>
 
-                
-                
+
+
             </ui:define>
 
         </ui:composition>

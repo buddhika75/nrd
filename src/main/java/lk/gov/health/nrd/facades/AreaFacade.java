@@ -8,14 +8,14 @@ package lk.gov.health.nrd.facades;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import lk.gov.health.nrd.entity.Institute;
+import lk.gov.health.nrd.entity.Area;
 
 /**
  *
  * @author server
  */
 @Stateless
-public class InstituteFacade extends AbstractFacade<Institute> {
+public class AreaFacade extends AbstractFacade<Area> {
 
     @PersistenceContext(unitName = "pu")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class InstituteFacade extends AbstractFacade<Institute> {
         return em;
     }
 
-    public InstituteFacade() {
-        super(Institute.class);
+    public AreaFacade() {
+        super(Area.class);
     }
     
 }

@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import lk.gov.health.nrd.enums.Sex;
 
@@ -32,6 +33,8 @@ public class Patient implements Serializable {
 
     @ManyToOne
     Institute registeredInstitute;
+    @ManyToOne
+    Department registeredDepartment;
     String clinicNumber;
     @Temporal(javax.persistence.TemporalType.DATE)
     Date dateOfRegistration;
@@ -59,13 +62,25 @@ public class Patient implements Serializable {
     Race race;
     String raceOther;
 
+    @OneToOne
     PatientDiagnosis diagnosis;
 
-    @ManyToOne
+    @OneToOne
     RheumatoidArthritisData rheumatoidArthritisData;
-    @ManyToOne
+    @OneToOne
     SystemicLupusErythematosusData systemicLupusErythematosusData;
 
+    public Department getRegisteredDepartment() {
+        return registeredDepartment;
+    }
+
+    public void setRegisteredDepartment(Department registeredDepartment) {
+        this.registeredDepartment = registeredDepartment;
+    }
+
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -234,9 +249,6 @@ public class Patient implements Serializable {
         this.diagnosis = diagnosis;
     }
 
-
-    
-    
     public RheumatoidArthritisData getRheumatoidArthritisData() {
         return rheumatoidArthritisData;
     }

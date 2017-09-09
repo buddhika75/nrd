@@ -24,5 +24,13 @@
             <base-name>/BundlePt</base-name>
             <var>bundlePt</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/BundleIns</base-name>
+            <var>bundleIns</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>/BundleArea</base-name>
+            <var>bundleArea</var>
+        </resource-bundle>
     </application>
 </faces-config>

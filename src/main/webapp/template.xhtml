@@ -19,13 +19,15 @@
             
             <p:growl id="growl" life="3000" autoUpdate="true" />
             
-            <p:layoutUnit position="north" header="#{bundle.AppName}" >
+            <p:layoutUnit position="north" header="Rheumatology Clinic Data Registryof Sri Lanka" >
+
+
                 <h:form id="menuForm"  rendered="#{webUserController.loggedUser ne null}" >
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                         <p:submenu label="Clinical" >
-                            <p:menuitem value="Search Patients" action="#{patientController.toAddNew}" ajax="false" />
-                            <p:menuitem value="Add New Patient" action="#{patientController.toAddNew}" ajax="false" />
+                            <p:menuitem value="Search Patients" action="#{patientController.toAddNewPatient()}" ajax="false" />
+                            <p:menuitem value="Add New Patient" action="#{patientController.toAddNewPatient()}" ajax="false" />
                             <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Reports" >
@@ -40,6 +42,7 @@
                         </p:submenu>
 
                         <p:submenu label="#{bundle.Maintenance}">
+                            <p:menuitem value="Area" outcome="/area/List.xhtml" />
                             <p:menuitem value="Department" outcome="/department/List.xhtml" />
                             <p:menuitem value="Institute" outcome="/institute/List.xhtml" />
                             <p:menuitem value="Questionnaire" outcome="/mail/List.xhtml" />
@@ -55,6 +58,8 @@
 
                     </p:menubar>
                 </h:form>
+            
+            
             </p:layoutUnit>
 
             <p:layoutUnit position="south" >
