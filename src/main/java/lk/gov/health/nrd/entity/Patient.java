@@ -9,6 +9,8 @@ import java.awt.geom.Area;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,8 +50,16 @@ public class Patient implements Serializable {
     Area city;
     String nic;
 
-
-
+    @Enumerated(EnumType.STRING)
+    ReferredBy referredBy;
+    String otherReferredBY;
+    @Enumerated(EnumType.STRING)
+    Occupation occupation;
+    String otherOccupation;
+    @Enumerated(EnumType.STRING)
+    Race race;
+    String raceOther;
+    
     
     
     public Long getId() {
