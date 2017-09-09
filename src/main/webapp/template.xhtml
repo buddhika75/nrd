@@ -24,12 +24,13 @@
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                         <p:submenu label="Clinical" >
-                            <p:menuitem value="Search Patients" action="#{mailController.toAddNew}" ajax="false" />
+                            <p:menuitem value="Search Patients" action="#{patientController.toAddNew}" ajax="false" />
+                            <p:menuitem value="Add New Patient" action="#{patientController.toAddNew}" ajax="false" />
                             <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
                         </p:submenu>
                         <p:submenu label="Reports" >
                             <p:menuitem value="Analysis" action="/mail/suggestions" ajax="false" />
-                            <p:menuitem value="Expectations" action="/mail/expectations" ajax="false" />
+                            <p:menuitem value="Patients" action="/patient/List" ajax="false" />
                             <p:menuitem value="Responses for Single Question" action="/mail/chart_single_response" ajax="false" />
                             <p:menuitem value="Responses for All Questions" action="/mail/chart_all_responses" ajax="false" />
                         </p:submenu>

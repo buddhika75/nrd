@@ -27,7 +27,7 @@
                         <p:outputLabel value="#{bundle.CreateInstituteLabel_id}" for="id" />
                         <p:inputText id="id" value="#{instituteController.selected.id}" title="#{bundle.CreateInstituteTitle_id}" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{instituteController.create}" value="#{bundle.Save}" update="display,:InstituteListForm:datalist,:growl" oncomplete="handleSubmit(args,'InstituteCreateDialog');"/>
+                    <p:commandButton ajax="false" actionListener="#{instituteController.create}" value="#{bundle.Save}" update="display,:InstituteListForm:datalist,:growl" oncomplete="handleSubmit(args,'InstituteCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="InstituteCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

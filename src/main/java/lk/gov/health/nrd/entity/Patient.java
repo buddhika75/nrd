@@ -5,14 +5,8 @@
  */
 package lk.gov.health.nrd.entity;
 
-import java.awt.geom.Area;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,7 +16,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import lk.gov.health.nrd.enums.Diagnosis;
 import lk.gov.health.nrd.enums.Sex;
 
 /**
@@ -65,17 +58,8 @@ public class Patient implements Serializable {
     @Enumerated(EnumType.STRING)
     Race race;
     String raceOther;
-    @ElementCollection(targetClass = Diagnosis.class)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "petient_diagnosis")
-    @Column(name = "disgnosis")
-    Collection<Diagnosis> disgnosis;
-    
-    @Lob
-    String disgnosisComments;
-    String otherCtd;
-    String otherVasculitis;
-    String otherDiagnosis;
+
+    PatientDiagnosis diagnosis;
 
     @ManyToOne
     RheumatoidArthritisData rheumatoidArthritisData;
@@ -242,46 +226,17 @@ public class Patient implements Serializable {
         this.raceOther = raceOther;
     }
 
-    public Collection<Diagnosis> getDisgnosis() {
-        return disgnosis;
+    public PatientDiagnosis getDiagnosis() {
+        return diagnosis;
     }
 
-    public void setDisgnosis(Collection<Diagnosis> disgnosis) {
-        this.disgnosis = disgnosis;
+    public void setDiagnosis(PatientDiagnosis diagnosis) {
+        this.diagnosis = diagnosis;
     }
 
-    public String getDisgnosisComments() {
-        return disgnosisComments;
-    }
 
-    public void setDisgnosisComments(String disgnosisComments) {
-        this.disgnosisComments = disgnosisComments;
-    }
-
-    public String getOtherCtd() {
-        return otherCtd;
-    }
-
-    public void setOtherCtd(String otherCtd) {
-        this.otherCtd = otherCtd;
-    }
-
-    public String getOtherVasculitis() {
-        return otherVasculitis;
-    }
-
-    public void setOtherVasculitis(String otherVasculitis) {
-        this.otherVasculitis = otherVasculitis;
-    }
-
-    public String getOtherDiagnosis() {
-        return otherDiagnosis;
-    }
-
-    public void setOtherDiagnosis(String otherDiagnosis) {
-        this.otherDiagnosis = otherDiagnosis;
-    }
-
+    
+    
     public RheumatoidArthritisData getRheumatoidArthritisData() {
         return rheumatoidArthritisData;
     }
@@ -298,8 +253,6 @@ public class Patient implements Serializable {
         this.systemicLupusErythematosusData = systemicLupusErythematosusData;
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;

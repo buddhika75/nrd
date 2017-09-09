@@ -60,7 +60,7 @@ public class WebUserController implements Serializable {
                 getFacade().create(loggedUser);
             }
         }
-        JsfUtil.addErrorMessage("Login failed. Wrong user credentials.");
+        JsfUtil.addErrorMessage("Logged Successfully.");
         return "";
     }
 

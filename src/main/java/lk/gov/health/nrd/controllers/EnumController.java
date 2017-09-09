@@ -11,6 +11,7 @@ import lk.gov.health.nrd.entity.Occupation;
 import lk.gov.health.nrd.entity.Race;
 import lk.gov.health.nrd.entity.ReferredBy;
 import lk.gov.health.nrd.entity.Religion;
+import lk.gov.health.nrd.enums.AreaType;
 import lk.gov.health.nrd.enums.Place;
 import lk.gov.health.nrd.enums.Response;
 import lk.gov.health.nrd.enums.ResponseCategory;
@@ -61,5 +62,12 @@ public class EnumController {
     public Religion[] getReligions() {
         return Religion.values();
     }
+
+    
+    public AreaType[] getAreaTypes() {
+        return AreaType.values();
+    }
+    
+    
 
 }

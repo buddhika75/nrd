@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+                
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Registered Institute:" for="registeredInstitute" />
+                            <p:selectOneMenu id="registeredInstitute" value="#{patientController.selected.registeredInstitute}" >
+                                <f:selectItems value="#{instituteController.itemsAvailableSelectOne}" var="i" itemLabel="#{i.name}" itemValue="#{i}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                            <p:inputText id="clinicNumber" value="#{patientController.selected.clinicNumber}" title="ClinicNumber" />
+                            <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                            <p:inputText id="dateOfRegistration" value="#{patientController.selected.dateOfRegistration}" title="DateOfRegistration" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                            <p:inputText id="nameOfPatient" value="#{patientController.selected.nameOfPatient}" title="NameOfPatient" />
+                            <p:outputLabel value="Sex:" for="sex" />
+                            <p:inputText id="sex" value="#{patientController.selected.sex}" title="Sex" />
+                            <p:outputLabel value="Date of Birth:" for="dateOfBirth" />
+                            <p:inputText id="dateOfBirth" value="#{patientController.selected.dateOfBirth}" title="DateOfBirth" >
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="Age:" for="age" />
+                            <p:inputText id="age" value="#{patientController.selected.age}" title="Age" />
+                            <p:outputLabel value="AgeInDays:" for="ageInDays" />
+                            <p:inputText id="ageInDays" value="#{patientController.selected.ageInDays}" title="AgeInDays" />
+                            <p:outputLabel value="TelephoneNoMobile:" for="telephoneNoMobile" />
+                            <p:inputText id="telephoneNoMobile" value="#{patientController.selected.telephoneNoMobile}" title="TelephoneNoMobile" />
+                            <p:outputLabel value="TelephoneNoHome:" for="telephoneNoHome" />
+                            <p:inputText id="telephoneNoHome" value="#{patientController.selected.telephoneNoHome}" title="TelephoneNoHome" />
+                            <p:outputLabel value="Address:" for="address" />
+                            <p:inputTextarea rows="4" cols="30" id="address" value="#{patientController.selected.address}" title="Address" />
+                            <p:outputLabel value="City:" for="city" />
+                            <p:selectOneMenu id="city" value="#{patientController.selected.city}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Nic:" for="nic" />
+                            <p:inputText id="nic" value="#{patientController.selected.nic}" title="Nic" />
+                            <p:outputLabel value="ReferredBy:" for="referredBy" />
+                            <p:inputText id="referredBy" value="#{patientController.selected.referredBy}" title="ReferredBy" />
+                            <p:outputLabel value="OtherReferredBY:" for="otherReferredBY" />
+                            <p:inputText id="otherReferredBY" value="#{patientController.selected.otherReferredBY}" title="OtherReferredBY" />
+                            <p:outputLabel value="Occupation:" for="occupation" />
+                            <p:inputText id="occupation" value="#{patientController.selected.occupation}" title="Occupation" />
+                            <p:outputLabel value="OtherOccupation:" for="otherOccupation" />
+                            <p:inputText id="otherOccupation" value="#{patientController.selected.otherOccupation}" title="OtherOccupation" />
+                            <p:outputLabel value="Race:" for="race" />
+                            <p:inputText id="race" value="#{patientController.selected.race}" title="Race" />
+                            <p:outputLabel value="RaceOther:" for="raceOther" />
+                            <p:inputText id="raceOther" value="#{patientController.selected.raceOther}" title="RaceOther" />
+                            <p:outputLabel value="Diagnosis:" for="diagnosis" />
+                            <p:inputText id="diagnosis" value="#{patientController.selected.diagnosis}" title="Diagnosis" />
+                            <p:outputLabel value="RheumatoidArthritisData:" for="rheumatoidArthritisData" />
+                            <p:selectOneMenu id="rheumatoidArthritisData" value="#{patientController.selected.rheumatoidArthritisData}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="SystemicLupusErythematosusData:" for="systemicLupusErythematosusData" />
+                            <p:selectOneMenu id="systemicLupusErythematosusData" value="#{patientController.selected.systemicLupusErythematosusData}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fixme}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
