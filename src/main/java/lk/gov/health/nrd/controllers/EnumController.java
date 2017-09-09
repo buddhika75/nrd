@@ -7,6 +7,10 @@ package lk.gov.health.nrd.controllers;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.inject.Named;
+import lk.gov.health.nrd.entity.Occupation;
+import lk.gov.health.nrd.entity.Race;
+import lk.gov.health.nrd.entity.ReferredBy;
+import lk.gov.health.nrd.entity.Religion;
 import lk.gov.health.nrd.enums.Place;
 import lk.gov.health.nrd.enums.Response;
 import lk.gov.health.nrd.enums.ResponseCategory;
@@ -30,16 +34,32 @@ public class EnumController {
         return Sex.values();
     }
 
-    public Place[] getPlaces(){
+    public Place[] getPlaces() {
         return Place.values();
     }
-    
-    public Response[] getResponses(){
+
+    public Response[] getResponses() {
         return Response.values();
     }
-    
-    public ResponseCategory[] getResponseCategories(){
+
+    public ResponseCategory[] getResponseCategories() {
         return ResponseCategory.values();
     }
-    
+
+    public ReferredBy[] getReferredBys() {
+        return ReferredBy.values();
+    }
+
+    public Occupation[] getOccupations() {
+        return Occupation.values();
+    }
+
+    public Race[] getRaces() {
+        return Race.values();
+    }
+
+    public Religion[] getReligions() {
+        return Religion.values();
+    }
+
 }
