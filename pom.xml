@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>lk.gov.health.thk</groupId>
-    <artifactId>icss</artifactId>
+    <artifactId>nrd</artifactId>
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>icss</name>
+    <name>nrd</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -55,7 +55,12 @@
             <version>1.6</version>
         </dependency>
 
-       
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>start</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+        
     </dependencies>
 
     <build>

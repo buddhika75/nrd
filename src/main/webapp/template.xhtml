@@ -13,90 +13,96 @@
 
     <h:body>
 
-        <p:growl id="growl" life="3000" />
+        
 
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
+        <p:layout fullPage="true" >
+            
+            <p:growl id="growl" life="3000" autoUpdate="true" />
+            
+            <p:layoutUnit position="north" header="#{bundle.AppName}" >
                 <h:form id="menuForm"  rendered="#{webUserController.loggedUser ne null}" >
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:submenu label="Questionnaire" >
-                            <p:menuitem value="Add" action="#{mailController.toAddNew}" ajax="false" />
-                            <p:menuitem value="List" action="/mail/all_responses" ajax="false" />
-                            <p:menuitem value="Suggestions" action="/mail/suggestions" ajax="false" />
+                        <p:submenu label="Clinical" >
+                            <p:menuitem value="Search Patients" action="#{mailController.toAddNew}" ajax="false" />
+                            <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
+                        </p:submenu>
+                        <p:submenu label="Reports" >
+                            <p:menuitem value="Analysis" action="/mail/suggestions" ajax="false" />
                             <p:menuitem value="Expectations" action="/mail/expectations" ajax="false" />
                             <p:menuitem value="Responses for Single Question" action="/mail/chart_single_response" ajax="false" />
                             <p:menuitem value="Responses for All Questions" action="/mail/chart_all_responses" ajax="false" />
                         </p:submenu>
+
+                        <p:submenu label="Users" >
+                            <p:menuitem value="Change Password" action="/mail/suggestions" ajax="false" />
+                        </p:submenu>
+
                         <p:submenu label="#{bundle.Maintenance}">
                             <p:menuitem value="Department" outcome="/department/List.xhtml" />
                             <p:menuitem value="Institute" outcome="/institute/List.xhtml" />
                             <p:menuitem value="Questionnaire" outcome="/mail/List.xhtml" />
-                             <p:menuitem value="Positions" outcome="/item/List.xhtml" />
+                            <p:menuitem value="Positions" outcome="/item/List.xhtml" />
                             <p:menuitem value="Subject" outcome="/subject/List.xhtml" />
                             <p:menuitem value="WebUser" outcome="/webUser/List.xhtml" />
                         </p:submenu>
+
+                        <p:submenu label="Administration">
+                            <p:menuitem value="Manage Users" outcome="/department/List.xhtml" />
+                        </p:submenu>
+
+
                     </p:menubar>
                 </h:form>
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="60">
+            <p:layoutUnit position="south" >
                 <ui:insert name="footer">
-                    <h:panelGrid columns="2" >
+                    <h:panelGrid columns="4" >
+                        <p:outputLabel value="&copy; Health Information Unit, Ministry of Health, Nutrition and Indigenous Medicine" ></p:outputLabel>
+                        <h:panelGroup >
+                            <p:spacer ></p:spacer>
+                            |
+                            <p:spacer ></p:spacer>
+                        </h:panelGroup>
                         <p:outputLabel rendered="#{webUserController.loggedUser ne null}" value="You are logged as #{webUserController.loggedUser.name}" ></p:outputLabel>
                         <h:form >
                             <p:commandLink rendered="#{webUserController.loggedUser ne null}" value="Logout" ajax="false" action="#{webUserController.logOut()}" ></p:commandLink>
                         </h:form>
                         <p:outputLabel rendered="#{webUserController.loggedUser eq null}" value="Please login to continue" ></p:outputLabel>
+                        
                     </h:panelGrid>
                 </ui:insert>
             </p:layoutUnit>
 
-            <p:layoutUnit position="center">
-                <p:panel rendered="#{webUserController.loggedUser eq null}" >
+            <p:layoutUnit position="center" >
 
-                    <h:form >
+                <div class="appbg" >
 
-                        <p:panel header="Login" >
-                            <p:panelGrid >
-                                <p:row >
-                                    <p:column >
-                                        <p:outputLabel value="User Name" ></p:outputLabel>
-                                    </p:column>
-                                    <p:column >
+
+                    <p:panel header="Login" style="position: absolute; width: 390px; margin: auto; left: 2%; top:20%; padding: 10px;" rendered="#{webUserController.loggedUser eq null}" >
+                        <h:form >
+                            <h:panelGrid columns="3" >
+                                
+                                        <p:outputLabel value="Username" ></p:outputLabel>
                                         <p:spacer width="10" height="1" ></p:spacer>
-                                    </p:column>
-                                    <p:column >
                                         <p:inputText value="#{webUserController.userName}" ></p:inputText>
-                                    </p:column>
-                                </p:row>
-                                <p:row >
-                                    <p:column >
                                         <p:outputLabel value="Password" ></p:outputLabel>
-                                    </p:column>
-                                    <p:column >
                                         <p:spacer width="10" height="1" ></p:spacer>
-                                    </p:column>
-                                    <p:column >
-                                        <p:inputText value="#{webUserController.password}" ></p:inputText>
-                                    </p:column>
-                                </p:row>
-                                <p:row  >
-                                    <p:column colspan="3" >
+                                        <p:password value="#{webUserController.password}" ></p:password>
                                         <p:commandButton ajax="false" value="Login" action="#{webUserController.login()}" ></p:commandButton>
-                                    </p:column>
-                                </p:row>
-                            </p:panelGrid>
-                        </p:panel>
+                                
+                            </h:panelGrid>
+                            
+                        </h:form>
+                    </p:panel>
 
 
+                    <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
+                        <ui:insert name="body"> </ui:insert>
+                    </h:panelGroup>
 
-                    </h:form>
-                </p:panel>
-                <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
-                    <ui:insert name="body"> </ui:insert>
-                </h:panelGroup>
-
+                </div>
             </p:layoutUnit>
 
         </p:layout>
