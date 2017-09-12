@@ -16,7 +16,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="icss"/>
         <property name="User" value="root"/>
-        <property name="Password" value="Bud7Nil"/>
+        <property name="Password" value="Bud7NilB"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/icss?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
@@ -26,7 +26,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="nrd"/>
         <property name="User" value="root"/>
-        <property name="Password" value="Bud7Nil"/>
+        <property name="Password" value="Bud7NilB"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/nrd?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
@@ -36,7 +36,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="nrd"/>
         <property name="User" value="root"/>
-        <property name="Password" value="Bud7NilB"/>
+        <property name="Password" value="Bud7Nil"/>
         <property name="URL" value="jdbc:mysql://localhost:3306/nrd?zeroDateTimeBehavior=convertToNull"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>

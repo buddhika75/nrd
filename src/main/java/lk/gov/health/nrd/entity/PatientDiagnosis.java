@@ -42,7 +42,7 @@ public class PatientDiagnosis implements Serializable {
     Boolean Sjogrens;
     Boolean Other_CTD;
     Boolean SpA;
-    Boolean AS;
+    Boolean A_S;
     Boolean Axial;
     Boolean Peripheral;
     Boolean Mixed_Axial_and_Peripheral;
@@ -227,12 +227,12 @@ public class PatientDiagnosis implements Serializable {
         this.SpA = SpA;
     }
 
-    public Boolean getAS() {
-        return AS;
+    public Boolean getA_S() {
+        return A_S;
     }
 
-    public void setAS(Boolean AS) {
-        this.AS = AS;
+    public void setA_S(Boolean A_S) {
+        this.A_S = A_S;
     }
 
     public Boolean getAxial() {

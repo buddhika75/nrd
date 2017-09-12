@@ -98,7 +98,8 @@
                                     </p:panelGrid>
                                 </h:panelGroup>
                                 <p:panelGrid columns="1" style="float: right;">
-                                    <p:commandButton value="Rheumatoid Arthritis Data" action="#" ajax="false" ></p:commandButton>
+                                    <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                                    <p:commandButton value="Rheumatoid Arthritis Data" action="/patient/patient_rad" ajax="false" ></p:commandButton>
                                     <p:commandButton value="Systemic Lupus ErythematosusData" action="#" ajax="false" ></p:commandButton>
                                 </p:panelGrid>
                             </p:panelGrid>
@@ -167,7 +168,7 @@
                                         <p:outputLabel value="SpA:"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="AS:" for="AS" />
-                                        <p:selectBooleanCheckbox id="AS" value="#{patientController.selected.diagnosis.AS}"  />
+                                        <p:selectBooleanCheckbox id="AS" value="#{patientController.selected.diagnosis.a_S}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="Axial:" for="axial" />
                                         <p:selectBooleanCheckbox id="axial" value="#{patientController.selected.diagnosis.axial}" />

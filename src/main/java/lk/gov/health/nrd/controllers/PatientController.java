@@ -7,7 +7,9 @@ import lk.gov.health.nrd.facades.PatientFacade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,8 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 import lk.gov.health.nrd.entity.PatientDiagnosis;
+import lk.gov.health.nrd.entity.RheumatoidArthritisData;
+import lk.gov.health.nrd.entity.SystemicLupusErythematosusData;
 
 @Named("patientController")
 @SessionScoped
@@ -33,9 +37,31 @@ public class PatientController implements Serializable {
     private lk.gov.health.nrd.facades.PatientFacade ejbFacade;
     private List<Patient> items = null;
     private Patient selected;
+    String searchText;
 
     PatientDiagnosis patientDiagnosis;
+    RheumatoidArthritisData rheumatoidArthritisData;
+    List<Patient> searchedPatients;
 
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
+    }
+
+    public List<Patient> getSearchedPatients() {
+        return searchedPatients;
+    }
+
+    public void setSearchedPatients(List<Patient> searchedPatients) {
+        this.searchedPatients = searchedPatients;
+    }
+
+    
+    
+    
     public PatientDiagnosis getPatientDiagnosis() {
         return patientDiagnosis;
     }
@@ -43,9 +69,15 @@ public class PatientController implements Serializable {
     public void setPatientDiagnosis(PatientDiagnosis patientDiagnosis) {
         this.patientDiagnosis = patientDiagnosis;
     }
-    
-    
-    
+
+    public RheumatoidArthritisData getRheumatoidArthritisData() {
+        return rheumatoidArthritisData;
+    }
+
+    public void setRheumatoidArthritisData(RheumatoidArthritisData rheumatoidArthritisData) {
+        this.rheumatoidArthritisData = rheumatoidArthritisData;
+    }
+
     public PatientController() {
     }
 
@@ -53,12 +85,30 @@ public class PatientController implements Serializable {
         return webUserController;
     }
 
-    
-    
+    public String toSearchPatient() {
+        return "/patient/patient_search";
+    }
+
+    public String searchPatient(){
+        String j = "select p "
+                + " from Patient p "
+                + " where lower(p.nameOfPatient) like :st or "
+                + " p.nic like :st or "
+                + " lower(p.clinicNumber) like :st "
+                + " order by p.nameOfPatient";
+        Map m = new HashMap();
+        m.put("st", "%" + searchText.toLowerCase() + "%");
+        searchedPatients = getFacade().findBySQL(j, m);
+        return "/patient/patient_search";
+    }
     
     public String toAddNewPatient() {
         selected = new Patient();
         selected.setDateOfBirth(new Date());
+        selected.setDiagnosis(new PatientDiagnosis());
+        selected.setRheumatoidArthritisData(new RheumatoidArthritisData());
+        selected.setSystemicLupusErythematosusData(new SystemicLupusErythematosusData());
+
         System.out.println("webUserController.loggedUser = " + getWebUserController().getLoggedUser());
         if (getWebUserController().getLoggedUser() != null) {
             System.out.println("getWebUserController().getLoggedUser().getInstitute() = " + getWebUserController().getLoggedUser().getInstitute());

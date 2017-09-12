@@ -7,6 +7,7 @@ package lk.gov.health.nrd.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -62,12 +63,11 @@ public class Patient implements Serializable {
     Race race;
     String raceOther;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     PatientDiagnosis diagnosis;
-
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     RheumatoidArthritisData rheumatoidArthritisData;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     SystemicLupusErythematosusData systemicLupusErythematosusData;
 
     public Department getRegisteredDepartment() {

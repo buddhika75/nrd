@@ -26,7 +26,7 @@
                     <p:menubar>
                         <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
                         <p:submenu label="Clinical" >
-                            <p:menuitem value="Search Patients" action="#{patientController.toAddNewPatient()}" ajax="false" />
+                            <p:menuitem value="Search Patients" action="#{patientController.toSearchPatient()}" ajax="false" />
                             <p:menuitem value="Add New Patient" action="#{patientController.toAddNewPatient()}" ajax="false" />
                             <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
                         </p:submenu>
