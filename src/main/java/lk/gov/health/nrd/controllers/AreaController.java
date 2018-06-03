@@ -54,6 +54,13 @@ public class AreaController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
+    
+    public List<Area> completeArea (String qry){
+    String j = "select a from Area a where lower(a.name) like :n order by a.name";    
+        String 
+    } 
+      
+    
 
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleArea").getString("AreaCreated"));

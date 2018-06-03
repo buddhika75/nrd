@@ -58,9 +58,12 @@ public class WebUserController implements Serializable {
                 loggedUser.setPassword("b");
                 loggedUser.setUserName("b");
                 getFacade().create(loggedUser);
+            } else {
+                JsfUtil.addErrorMessage("Wrong Username / Password.");
+                return "";
             }
         }
-        JsfUtil.addErrorMessage("Logged Successfully.");
+        JsfUtil.addSuccessMessage("Logged Successfully.");
         return "";
     }
 

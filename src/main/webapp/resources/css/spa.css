@@ -1,0 +1,113 @@
+/*********************
+BREAKPOINTS
+*********************/
+.colRight { background-color: #F8F8F8; }
+
+.colLeft { background-color: #F8F8F8; }
+
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteria { font-family: "Roboto"; font-weight: bold; margin: 0; }
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteriaDescription { font-family: "Roboto"; }
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteriaExample { font-family: "Roboto"; font-style: italic; margin: 0; list-style-type: d; }
+body .container-fluid .row .clinicalCriteriaColRight .complications { font-family: "Roboto"; font-weight: bold; margin: 0; }
+
+.heading { background: #F8F8F8; }
+
+body .container-fluid .heading h2 { font-family: "Roboto"; text-transform: uppercase; letter-spacing: 2px; margin: 0 auto; color: #9EA6A9; font-weight: bold; padding: 20px 0 20px 0; }
+
+@media (max-width: 768px) { body .container-fluid .heading h2 { font-size: 1em; letter-spacing: 1.4px; }
+  body .container-fluid .row .imgSize { width: 30px; height: 45px; } }
+@media (min-width: 768px) { body .container-fluid .heading h2 { font-size: 1.6em; letter-spacing: 1.6px; }
+  body .container-fluid .row .imgSize { width: 60px; height: 80px; } }
+@media (min-width: 992px) { body .container-fluid .heading h2 { font-size: 2.2em; letter-spacing: 2px; }
+  body .container-fluid .row .imgSize { width: 70px; height: 90px; } }
+@media (min-width: 1200px) { body .container-fluid .heading h2 { font-size: 2.5em; letter-spacing: 2px; }
+  body .container-fluid .row .imgSize { width: 90px; height: 110px; } }
+body .container-fluid .row #slEmblem { display: flex; align-items: center; justify-content: center; }
+
+body .container-fluid .mainSubHeading { background-color: #f0f0f0; }
+
+body .container-fluid .mainSubHeading p { letter-spacing: 2px; font-family: Arial; }
+
+body .container-fluid .form-control[type=date] { border: 0; border-bottom: 1px dashed lightgray; padding: 0; }
+
+body .container-fluid #diagnosedDateLabel { padding: 0; }
+
+@media (max-width: 768px) { body .container-fluid .form-control[type=date] { width: 25%; font-size: .7em; }
+  body .container-fluid .row .col-form-label { font-size: .7em; }
+  body .container-fluid .row .clinicalCriteria, body .container-fluid .row .complications { font-size: .7em; }
+  body .container-fluid .row .clinicalCriteriaDescription { font-size: .6em; }
+  body .container-fluid .row .clinicalCriteriaExample { font-size: .6em; }
+  body .container-fluid .row .colLeft { border-right: 0; }
+  body .container-fluid .row .form-check { width: 15%; }
+  body .container-fluid .row .longWords { font-size: .5em; } }
+@media (min-width: 768px) { body .container-fluid .form-control[type=date] { width: 20%; font-size: .8em; }
+  body .container-fluid .row .col-form-label { font-size: .8em; }
+  body .container-fluid .row .clinicalCriteria, body .container-fluid .row .complications { font-size: .8em; }
+  body .container-fluid .row .clinicalCriteriaDescription { font-size: .6em; }
+  body .container-fluid .row .clinicalCriteriaExample { font-size: .6em; }
+  body .container-fluid .row .colLeft { border-right: 3px white solid; }
+  body .container-fluid .row .form-check { width: 15%; }
+  body .container-fluid .row .longWords { font-size: .5em; } }
+@media (min-width: 992px) { body .container-fluid .form-control[type=date] { width: 20%; font-size: 1em; }
+  body .container-fluid .row .col-form-label { font-size: 1em; }
+  body .container-fluid .row .clinicalCriteria, body .container-fluid .row .complications { font-size: .9em; }
+  body .container-fluid .row .clinicalCriteriaDescription { font-size: .8em; }
+  body .container-fluid .row .clinicalCriteriaExample { font-size: .8em; }
+  body .container-fluid .row .colLeft { border-right: 3px white solid; }
+  body .container-fluid .row .form-check { width: 15%; }
+  body .container-fluid .row .longWords { font-size: .7em; } }
+@media (min-width: 1200px) { body .container-fluid .form-control[type=date] { width: 15%; font-size: 1.1em; }
+  body .container-fluid .row .col-form-label { font-size: 1.1em; }
+  body .container-fluid .row .clinicalCriteria, body .container-fluid .row .complications { font-size: 1em; }
+  body .container-fluid .row .clinicalCriteriaDescription { font-size: .9em; }
+  body .container-fluid .row .clinicalCriteriaExample { font-size: .9em; }
+  body .container-fluid .row .colLeft { border-right: 3px white solid; }
+  body .container-fluid .row .form-check { width: 10%; }
+  body .container-fluid .row .longWords { font-size: .8em; } }
+body .container-fluid .row .clinicalCriteriaColRight .tableHeading { color: #808080; margin: 1em 0; text-decoration: underline; letter-spacing: 1px; font-weight: bold; }
+
+input[type='checkbox'] { opacity: 0; width: 0; margin: 0; }
+
+label[for=inflaBackPain], label[for=altButPain], label[for=gdRspToNsaids], label[for=perhrlArthritis], label[for=enthesitis], label[for=dactylitis], label[for=psoriasis], label[for=ibd], label[for=uveitis], label[for=acPhsReactants], label[for=precdinInfection], label[for=familyHistory], label[for=sacroilitis], label[for=urethritisOther], label[for=hlaB27], label[for=xray], label[for=mri], label[for=axilSpa], label[for=perSpa], label[for=otherSpa], label[for=ankSpa], label[for=psArth], label[for=ibdSpa], label[for=reacArth], label[for=undifSpa], label[for=scorelLowComplement], label[for=inactive], label[for=modActive], label[for=highActive], label[for=veryHighActive], label[for=cva], label[for=vasculitis], label[for=urinaryCasts], label[for=hematuria], label[for=mucosalUlcers], label[for=scoreHematuria], label[for=incDnaBind], label[for=scoreLeukopenia] { display: inline-block; line-height: 120%; width: 100%; background-color: transparent; border: #DCDCDC 1px solid; cursor: pointer; border-radius: 5px; }
+
+label[for=acuteCuteneousLupus], label[for=chronicCuteneousLupus], label[for=oralUlcers], label[for=nonscarringAlopecia], label[for=synovitis], label[for=serositis], label[for=renal], label[for=neurologic], label[for=hemolyticAnaemia], label[for=leukopenia], label[for=thrombocytopenia], label[for=serositis], label[for=anaLevel], label[for=antiDsDna], label[for=antiSm], label[for=antiPhospholipid], label[for=directCoombsTest], label[for=lowComplement] { display: inline-block; line-height: 420%; width: 100%; background-color: transparent; border: #DCDCDC 1px solid; cursor: pointer; border-radius: 5px; }
+
+input:checked + label[for=inflaBackPain], input:checked + label[for=altButPain], input:checked + label[for=gdRspToNsaids], input:checked + label[for=perhrlArthritis], input:checked + label[for=enthesitis], input:checked + label[for=dactylitis], input:checked + label[for=psoriasis], input:checked + label[for=ibd], input:checked + label[for=uveitis], input:checked + label[for=acPhsReactants], input:checked + label[for=precdinInfection], input:checked + label[for=familyHistory], input:checked + label[for=sacroilitis], input:checked + label[for=urethritisOther], input:checked + label[for=hlaB27], input:checked + label[for=xray], input:checked + label[for=mri], input:checked + label[for=axilSpa], input:checked + label[for=perSpa], input:checked + label[for=otherSpa], input:checked + label[for=ankSpa], input:checked + label[for=psArth], input:checked + label[for=ibdSpa], input:checked + label[for=reacArth], input:checked + label[for=undifSpa], input:checked + label[for=other], input:checked + label[for=inactive], input:checked + label[for=modActive], input:checked + label[for=highActive], input:checked + label[for=veryHighActive], input:checked + label[for=hisOfVasThrombosis], input:checked + label[for=autoAntiProfile], input:checked + label[for=scoreSizure], input:checked + label[for=scorePsychosis], input:checked + label[for=cranNervDisorder], input:checked + label[for=lupusHeadache], input:checked + label[for=arthritis], input:checked + label[for=myositis], input:checked + label[for=proteinurea], input:checked + label[for=pyuria], input:checked + label[for=scoreNewRash], input:checked + label[for=alopecia], input:checked + label[for=pericarditis], input:checked + label[for=scorelLowComplement], input:checked + label[for=fever], input:checked + label[for=scoreThrombocytopenia], input:checked + label[for=orgBrainSyndrome], input:checked + label[for=visualDisturb], input:checked + label[for=cva], input:checked + label[for=vasculitis], input:checked + label[for=urinaryCasts], input:checked + label[for=hematuria], input:checked + label[for=mucosalUlcers], input:checked + label[for=scoreHematuria], input:checked + label[for=incDnaBind], input:checked + label[for=scoreLeukopenia] { background-color: #9EA6A9; border-radius: 5px; }
+
+.form-check:hover { border: #b3e0ff 1px solid; border-radius: 5px; outline: none; }
+
+.colRightCheckColLeft { display: flex; align-items: center; justify-content: center; }
+
+.form-check { display: flex; align-items: center; padding: 0; margin: 5px 0 5px 0; }
+
+@media (max-width: 768px) { body .container-fluid .row .asdas { line-height: 11px; }
+  body .container-fluid .row input[type=number] { height: 13px; }
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] { width: 40%; } }
+@media (min-width: 768px) { body .container-fluid .row .asdas { line-height: 13px; }
+  body .container-fluid .row input[type=number] { height: 15px; }
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] { width: 40%; } }
+@media (min-width: 992px) { body .container-fluid .row .asdas { line-height: 16px; }
+  body .container-fluid .row input[type=number] { height: 18px; }
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] { width: 40%; } }
+@media (min-width: 1200px) { body .container-fluid .row .asdas { line-height: 18px; }
+  body .container-fluid .row input[type=number] { height: 20px; }
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] { width: 100%; } }
+body .container-fluid .row input[type=number] { border: 0; border-bottom: 1px dashed lightgray; }
+
+body .container-fluid .row input[type=number]:active, body .container-fluid .row input[type=number]:focus { outline: 0 !important; box-shadow: 0 0 1px 2px #9B9B7A; }
+
+body .container-fluid .row input[type=submit] { background-color: transparent; color: #6c757d; margin-bottom: .5em; }
+
+body .container-fluid .row input[type=submit]:hover { background-color: #EDEEEF; color: cornflowerblue; border: 2px solid white; }
+
+body .container-fluid .row .spaButtons { margin: auto 0; }
+
+body .container-fluid .blockquote-footer::before { content: ""; }
+
+body .container-fluid .row .calScore { text-decoration: underline; border: 1px solid darkgray; cursor: pointer; margin: 5px auto; padding: 8px; width: 80%; }
+
+body .container-fluid .row .calScore:hover { background-color: #EDEEEF; color: cornflowerblue; border: 2px solid white; }
+
+body .container-fluid .row #asdasCrp { margin: auto 0; }
+
+body .container-fluid .row .asdasBox { display: flex; align-items: center; justify-content: center; }

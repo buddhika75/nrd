@@ -26,7 +26,7 @@ import javax.persistence.criteria.Predicate;
  */
 public abstract class AbstractFacade<T> {
 
-        private final Class<T> entityClass;
+    private final Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -41,9 +41,8 @@ public abstract class AbstractFacade<T> {
     public void refresh(T entity) {
         getEntityManager().refresh(entity);
     }
-    
-    
-     public List<T> findRange(int[] range) {
+
+    public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
@@ -162,7 +161,6 @@ public abstract class AbstractFacade<T> {
         }
     }
 
-    
     public Long findLongByJpql(String temSQL, Map<String, Object> parameters, TemporalType tt) {
         TypedQuery<Long> qry = (TypedQuery<Long>) getEntityManager().createQuery(temSQL);
         Set s = parameters.entrySet();
@@ -188,9 +186,6 @@ public abstract class AbstractFacade<T> {
         }
     }
 
-    
-    
-    
     public List<T> findBySQL(String temSQL, Map<String, Object> parameters, TemporalType tt, int maxRecords) {
         TypedQuery<T> qry = getEntityManager().createQuery(temSQL, entityClass);
         Set s = parameters.entrySet();
@@ -426,7 +421,7 @@ public abstract class AbstractFacade<T> {
             return null;
         }
     }
-    
+
     public List<String> findString(String strJQL, Map parameters, TemporalType tt) {
         TypedQuery<String> qry = getEntityManager().createQuery(strJQL, String.class);
         Set s = parameters.entrySet();
@@ -444,7 +439,7 @@ public abstract class AbstractFacade<T> {
         }
         return qry.getResultList();
     }
-    
+
     public List<String> findString(String strJQL, Map parameters) {
         return findString(strJQL, parameters, TemporalType.DATE);
     }

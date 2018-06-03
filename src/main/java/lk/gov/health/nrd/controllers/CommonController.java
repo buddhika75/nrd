@@ -19,13 +19,15 @@ import java.util.Date;
 @SessionScoped
 public class CommonController implements Serializable {
 
+  
+
     /**
      * Creates a new instance of LanguageController
      */
     public CommonController() {
     }
-    
-    public Date firstDayOfYear(Date date){
+
+    public Date firstDayOfYear(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.set(Calendar.MONTH, c.getActualMinimum(Calendar.MONTH));
@@ -35,8 +37,8 @@ public class CommonController implements Serializable {
         c.set(Calendar.MILLISECOND, c.getActualMinimum(Calendar.MILLISECOND));
         return c.getTime();
     }
-    
-    public Date lastDayOfYear(Date date){
+
+    public Date lastDayOfYear(Date date) {
         Calendar c = Calendar.getInstance();
         c.setTime(date);
         c.set(Calendar.MONTH, c.getActualMaximum(Calendar.MONTH));
@@ -46,5 +48,6 @@ public class CommonController implements Serializable {
         c.set(Calendar.MILLISECOND, c.getActualMaximum(Calendar.MILLISECOND));
         return c.getTime();
     }
+
     
 }
