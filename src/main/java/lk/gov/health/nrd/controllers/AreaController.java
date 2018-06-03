@@ -6,7 +6,9 @@ import lk.gov.health.nrd.controllers.util.JsfUtil.PersistAction;
 import lk.gov.health.nrd.facades.AreaFacade;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,13 +56,13 @@ public class AreaController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
-    
-    public List<Area> completeArea (String qry){
-    String j = "select a from Area a where lower(a.name) like :n order by a.name";    
-        String 
-    } 
-      
-    
+
+    public List<Area> completeArea(String qry) {
+        String j = "select a from Area a where lower(a.name) like :n order by a.name";
+        Map m = new HashMap();
+        m.put("n", "%" +  qry.trim().toLowerCase() + "%");
+        return getFacade().findBySQL(j, m);
+    }
 
     public void create() {
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/BundleArea").getString("AreaCreated"));
