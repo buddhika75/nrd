@@ -1,0 +1,447 @@
+/*********************
+BREAKPOINTS
+*********************/
+.colRight {
+  background-color: #F8F8F8; }
+
+.colLeft {
+  background-color: #F8F8F8; }
+
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteria {
+  font-family: "Roboto";
+  font-weight: bold;
+  margin: 0; }
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteriaDescription {
+  font-family: "Roboto"; }
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteriaExample {
+  font-family: "Roboto";
+  font-style: italic;
+  margin: 0;
+  list-style-type: d; }
+body .container-fluid .row .clinicalCriteriaColRight .complications {
+  font-family: "Roboto";
+  font-weight: bold;
+  margin: 0; }
+
+.heading {
+  background: #F8F8F8; }
+
+body .container-fluid .heading h2 {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  color: #9EA6A9;
+  font-weight: bold;
+  padding: 20px 0 20px 0; }
+
+@media (max-width: 768px) {
+  body .container-fluid .heading h2 {
+    font-size: 1em;
+    letter-spacing: 1.4px; }
+
+  body .container-fluid .row .imgSize {
+    width: 30px;
+    height: 45px; } }
+@media (min-width: 768px) {
+  body .container-fluid .heading h2 {
+    font-size: 1.6em;
+    letter-spacing: 1.6px; }
+
+  body .container-fluid .row .imgSize {
+    width: 60px;
+    height: 80px; } }
+@media (min-width: 992px) {
+  body .container-fluid .heading h2 {
+    font-size: 2.2em;
+    letter-spacing: 2px; }
+
+  body .container-fluid .row .imgSize {
+    width: 70px;
+    height: 90px; } }
+@media (min-width: 1200px) {
+  body .container-fluid .heading h2 {
+    font-size: 2.5em;
+    letter-spacing: 2px; }
+
+  body .container-fluid .row .imgSize {
+    width: 90px;
+    height: 110px; } }
+body .container-fluid .row #slEmblem {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+body .container-fluid .mainSubHeading {
+  background-color: #f0f0f0; }
+
+body .container-fluid .mainSubHeading p {
+  letter-spacing: 2px;
+  font-family: Arial; }
+
+body .container-fluid .form-control[type=date] {
+  border: 0;
+  border-bottom: 1px dashed lightgray;
+  padding: 0; }
+
+body .container-fluid #diagnosedDateLabel {
+  padding: 0; }
+
+@media (max-width: 768px) {
+  body .container-fluid .form-control[type=date] {
+    width: 25%;
+    font-size: .7em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: .7em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: .7em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .6em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .6em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 0; }
+
+  body .container-fluid .row .form-check {
+    width: 15%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .5em; } }
+@media (min-width: 768px) {
+  body .container-fluid .form-control[type=date] {
+    width: 20%;
+    font-size: .8em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: .8em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: .8em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .6em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .6em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 3px white solid; }
+
+  body .container-fluid .row .form-check {
+    width: 15%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .5em; } }
+@media (min-width: 992px) {
+  body .container-fluid .form-control[type=date] {
+    width: 20%;
+    font-size: 1em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: 1em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: .9em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .8em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .8em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 3px white solid; }
+
+  body .container-fluid .row .form-check {
+    width: 15%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .7em; } }
+@media (min-width: 1200px) {
+  body .container-fluid .form-control[type=date] {
+    width: 15%;
+    font-size: 1.1em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: 1.1em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: 1em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .9em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .9em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 3px white solid; }
+
+  body .container-fluid .row .form-check {
+    width: 10%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .8em; } }
+body .container-fluid .row .clinicalCriteriaColRight .tableHeading {
+  color: #808080;
+  margin: 1em 0;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  font-weight: bold; }
+
+body .row {
+  margin: 0; }
+
+body, html {
+  height: 100vh;
+  padding: 0;
+  margin: 0; }
+
+.container-fluid {
+  min-height: 100%;
+  padding: 0;
+  background: linear-gradient(to right, #D4D4D2 0%, #D4D4D2 50%, #E4E5DF 50%, #E4E5DF 100%); }
+
+.container-fluid form {
+  min-height: 100%;
+  padding: 0;
+  margin: 0; }
+
+body .container-fluid .mainOuterbox {
+  margin: 0;
+  background-size: cover; }
+  @media (max-width: 768px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 84vh; */
+    } }
+  @media (min-width: 768px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 85vh;*/
+    } }
+  @media (min-width: 992px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 87vh; */
+    } }
+  @media (min-width: 1200px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 100%; */
+    } }
+
+body .container-fluid .innerRow {
+  margin: 0 auto;
+  display: flex;
+  align-items: center; }
+
+body .container-fluid .mainOuterbox {
+/*  height: 550px;*/
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+/*  transform: translateY(15%);*/
+  box-shadow: 5px 8px 60px 6px #a1a1a1; }
+  @media (max-width: 768px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 250px; */
+      transform: translateY(1%);
+    } }
+  @media (min-width: 768px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 500px; */
+      transform: translateY(1%); 
+    } }
+  @media (min-width: 992px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 500px; */
+      transform: translateY(2.5%);
+    } }
+  @media (min-width: 1145px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 500px; */
+      transform: translateY(5%);
+    } }
+  @media (min-width: 1200px) {
+    body .container-fluid .mainOuterbox {
+/*      height: 500px;*/
+      transform: translateY(5%);
+    } }
+  
+  body .container-fluid .mainOuterbox .row {
+    width: 100%; }
+  body .container-fluid .mainOuterbox .leftBox {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    background-image: url("images/rawpixel-com-472352-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: inset 0 0 0 1000px rgba(80, 80, 80, 0.7); }
+    body .container-fluid .mainOuterbox .leftBox .leftBoxContentMiddle {
+      height: 5%; }
+    body .container-fluid .mainOuterbox .leftBox .leftBoxContent {
+      color: white;
+      height: 50%; }
+      body .container-fluid .mainOuterbox .leftBox .leftBoxContent #leftUpperBox p {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: larger;
+        margin-right: 10px;
+        letter-spacing: 2px; }
+    body .container-fluid .mainOuterbox .leftBox #borderBottom {
+      border-bottom: solid 1px white;
+      border-image: linear-gradient(to left, #fff 30%, rgba(0, 0, 0, 0) 70%);
+      /* to left - at 50% transparent */
+      border-image-slice: 1; }
+  body .container-fluid .mainOuterbox .rightBox {
+    background-color: #F8F8F8;
+    opacity: .6; }
+    body .container-fluid .mainOuterbox .rightBox form {
+      display: flex; }
+    body .container-fluid .mainOuterbox .rightBox .justfyToCenter {
+      justify-content: center;
+      width: 100%; }
+    body .container-fluid .mainOuterbox .rightBox img {
+      opacity: .9; }
+      @media (max-width: 768px) {
+        body .container-fluid .mainOuterbox .rightBox img {
+          height: 40px;
+          width: 40px; } }
+      @media (min-width: 768px) {
+        body .container-fluid .mainOuterbox .rightBox img {
+          height: 80px;
+          width: 80px; } }
+
+@media (min-width: 768px) {
+  body .container-fluid .row input[type=submit] {
+    padding: 10px 50px; } }
+@media (min-width: 992px) {
+  body .container-fluid .row input[type=submit] {
+    padding: 10px 50px; } }
+@media (min-width: 1200px) {
+  body .container-fluid .rightBox #rightTopBox {
+    margin-top: 10%; }
+
+  body .container-fluid .row input[type=submit] {
+    padding: 10px 50px; } }
+
+body .container-fluid .row input[type=submit] {
+  background-color: transparent;
+  color: #6c757d;
+  margin-bottom: 3em;
+  opacity: 1; }
+
+
+
+body .container-fluid .row input[type=submit]:hover {
+  background-color: #EDEEEF;
+  color: cornflowerblue;
+  border: 2px solid white;
+  opacity: 1; }
+
+body .container-fluid .row input[type=text] {
+  opacity: 1; }
+
+body .container-fluid .row .loginButtons {
+  margin: auto 0; }
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translatey(-100%); }
+  100% {
+    transform: translateX(0); } }
+body .container-fluid .rightBox #inputUserName {
+  animation: slideInFromTop 2s ease-out 0s 1; }
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translatey(100%); }
+  100% {
+    transform: translateX(0); } }
+@keyframes slideInFromBottomTwo {
+  0% {
+    transform: translatey(100%); }
+  100% {
+    transform: translateX(0);
+    opacity: 1; } }
+body .container-fluid .rightBox .inputPassword {
+  animation: slideInFromBottom 3s ease-out 0s 1; }
+
+body .container-fluid .rightBox .inputSubmit {
+  animation: slideInFromBottomTwo 5s ease 0s 1; }
+
+html body .container .row .myformBackground{
+    background-color: transparent;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0;
+  -webkit-text-fill-color: #C0C0C0;
+  -webkit-box-shadow: transparent;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+
+
+ @media (max-width: 768px) {
+    html body .container-fluid .commonFooter{ 
+
+      margin-top: 
+          .25em;
+    } }
+  @media (min-width: 768px) {
+    html body .container-fluid .commonFooter{ 
+
+      margin-top: 
+          .5em;
+    } }
+  @media (min-width: 992px) {
+  html body .container-fluid .commonFooter{
+
+      margin-top: 
+          1em;
+    } }
+  @media (min-width: 1145px) {
+   html body .container-fluid .commonFooter{ 
+
+      margin-top: 
+          1.25em;
+    } }
+  @media (min-width: 1200px) {
+   html body .container-fluid .commonFooter{ 
+
+      margin-top: 
+          1.5em;
+    } }
+  
+  
+/*  ////LOGIN ICONS//////*/
+  
+
+  html body .container-fluid .mainOuterbox .rightBox .inputPassword span img, 
+  html body .container-fluid .mainOuterbox .rightBox #inputUserName  span img{
+    width: 20px;
+    height: 20px;
+    
+}

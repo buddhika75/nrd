@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title><ui:insert name="title">Login</ui:insert></title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+       
+        <h:outputScript library="js" name="bootstrap.js"/>
+         <h:outputScript library="js" name="jquery-1.11.1.min.js"/>
+          <h:outputScript library="js" name="jsfcrud.js"/>
+          <h:outputScript library="js" name="spa.js"/>
+      
+
+    </h:head>
+
+    <h:body>
+        <f:facet name="last">
+         <h:outputStylesheet library="css" name="login.css"/>
+         </f:facet>
+        
+        
+        <h:panelGroup rendered="#{webUserController.loggedUser eq null}" >
+            <div class="container-fluid">
+                <div class="row" >
+                    <div class="col-1 heading" id="slEmblem">
+                        <h:graphicImage styleClass="imgSize" library="images" name="Emblem_of_Sri_Lanka.png"></h:graphicImage>
+                       
+                    </div>
+                    <div class="heading col-11" >
+                        <h2 align="center" >Rheumatology Clinic Data Registry of Sri Lanka</h2>
+                    </div>
+                </div>
+
+                <div class="row form-group " style="margin-bottom: 0;">
+                    <div class="col-12  mainSubHeading" >
+                        <p align="center" style="margin: 0">College of specialists in Rheumatalogy and Rehabilitation (CSRRSL), SriLanka</p>
+                    </div>
+                </div>
+
+                <div class="row mainOuterbox form-group">
+                    <div class="row innerBox">
+                        <div class="col-5 leftBox overlay">
+                            <div class="row leftBoxContent">
+                                <div class="col-12" id="leftUpperBox">
+                                    <p align="right">SCRRSL</p>
+                                </div>
+                            </div>
+                            <div class="row leftBoxContentMiddle" id="borderBottom">
+                                <div class="col-12"></div>
+                            </div>
+                            <div class="row leftBoxContent" >
+                                <div class="col-12">
+                                    <P align="right">www.csrrsl.com</P>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-7 rightBox" align="center">
+                            <h:form class="loginForm" >
+                                <div class="justfyToCenter">
+                                    <div class="row rightBoxContent mb-sm-5 mt-2 mb-4 mt-sm-5" id="rightTopBox">
+                                        <div class="col-12">
+                                            <h:graphicImage library="images" name="stethoscope.png"></h:graphicImage> 
+                                        </div>
+                                    </div>
+                                    <div class="row rightBoxContent mt-2">
+                                        <div class="row ">
+                                            <div class="col-12 col-sm-6 offset-sm-3">
+                                                <div class="input-group mb-3 mb-sm-4 inputField" id="inputUserName">
+<!--                                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" ></input>-->
+                                                    <p:inputText  styleClass="form-control myformBackground"  placeholder="Username"  value="#{webUserController.userName}"   ></p:inputText>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon1"><h:graphicImage library="images" id="userIcon" name="user.png"></h:graphicImage></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-12 col-sm-6 offset-sm-3">
+                                                <div class="input-group mb-sm-5 mb-3 inputField inputPassword">
+<!--                                                    <input type="text" class="" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1"></input>-->
+                                                    <p:password styleClass="form-control myformBackground" placeholder="Password" value="#{webUserController.password}" ></p:password>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon2"><h:graphicImage library="images" id="passWordIcon" name="key.png"></h:graphicImage></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row rightBoxContent">
+                                        <div class="col-12 mt-sm-3 inputSubmit">
+<!--                                            <input type="submit" class="btn btn-info v" value=" login "></input>-->
+                                             <h:commandButton  styleClass="btn btn-info v subButton"  value=" login" action="#{webUserController.login()}" ></h:commandButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                
+                 <ui:insert   name="footer">
+                     <h:panelGrid  styleClass="commonFooter" columns="4"  >
+                        
+                        <p:outputLabel styleClass="clinicalCriteriaExample" value="&copy; Health Information Unit, Ministry of Health, Nutrition and Indigenous Medicine" ></p:outputLabel>
+                        <h:panelGroup >
+                            <p:spacer ></p:spacer>
+                            |
+                            <p:spacer ></p:spacer>
+                        </h:panelGroup>
+                        <p:outputLabel  rendered="#{webUserController.loggedUser ne null}" value="You are logged as #{webUserController.loggedUser.name}" ></p:outputLabel>
+                        <h:form >
+                            <p:commandLink styleClass="clinicalCriteriaExample" rendered="#{webUserController.loggedUser ne null}" value="Logout" ajax="false" action="#{webUserController.logOut()}" ></p:commandLink>
+                        </h:form>
+                        <p:outputLabel styleClass="clinicalCriteriaExample" rendered="#{webUserController.loggedUser eq null}" value="Please login to continue" ></p:outputLabel>
+                      
+                    </h:panelGrid>
+                 </ui:insert>
+                
+            </div>
+            
+            
+
+        </h:panelGroup>
+
+
+
+        <h:form id="menuForm"  rendered="#{webUserController.loggedUser ne null}" >
+            <p:menubar>
+                <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                <p:submenu label="Clinical" >
+                    <p:menuitem value="Search Patients" action="#{patientController.toSearchPatient()}" ajax="false" />
+                    <p:menuitem value="Add New Patient" action="#{patientController.toAddNewPatient()}" ajax="false" />
+                    <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
+                </p:submenu>
+                <p:submenu label="Reports" >
+                    <p:menuitem value="Analysis" action="/mail/suggestions" ajax="false" />
+                    <p:menuitem value="Patients" action="/patient/List" ajax="false" />
+                    <p:menuitem value="Responses for Single Question" action="/mail/chart_single_response" ajax="false" />
+                    <p:menuitem value="Responses for All Questions" action="/mail/chart_all_responses" ajax="false" />
+                </p:submenu>
+
+                <p:submenu label="Users" >
+                    <p:menuitem value="Change Password" action="/mail/suggestions" ajax="false" />
+                </p:submenu>
+
+                <p:submenu label="#{bundle.Maintenance}">
+                    <p:menuitem value="Area" outcome="/area/List.xhtml" />
+                    <p:menuitem value="Department" outcome="/department/List.xhtml" />
+                    <p:menuitem value="Institute" outcome="/institute/List.xhtml" />
+                    <p:menuitem value="Questionnaire" outcome="/mail/List.xhtml" />
+                    <p:menuitem value="Positions" outcome="/item/List.xhtml" />
+                    <p:menuitem value="Subject" outcome="/subject/List.xhtml" />
+                    <p:menuitem value="WebUser" outcome="/webUser/List.xhtml" />
+                </p:submenu>
+
+                <p:submenu label="Administration">
+                    <p:menuitem value="Manage Users" outcome="/department/List.xhtml" />
+                </p:submenu>
+
+
+            </p:menubar>
+        </h:form>
+
+
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="appbg">
+            <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
+                <ui:insert name="body"> </ui:insert>
+            </h:panelGroup>
+        </div>
+
+
+
+    </h:body>
+
+</html>

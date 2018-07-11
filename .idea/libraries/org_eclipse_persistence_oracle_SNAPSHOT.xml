@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org.eclipse.persistence.oracle-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/unknown/binary/org.eclipse.persistence.oracle/SNAPSHOT/org.eclipse.persistence.oracle-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

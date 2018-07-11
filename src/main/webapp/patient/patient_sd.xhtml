@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                    <h:form>
+                        <p:panel  style="margin: auto" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+                            <p:panelGrid columns="2" >
+                                <h:panelGroup >
+                                    <p:panelGrid columns="7" >
+                                        <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                        <p:outputLabel id="clinicNumber" value="#{patientController.selected.clinicNumber}"  />
+                                        <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                        <p:outputLabel id="dateOfRegistration"   value="#{patientController.selected.dateOfRegistration}"  >
+                                            <f:convertDateTime  pattern="dd MM yyyy" ></f:convertDateTime>
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                        <p:outputLabel id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}"  />
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+                            
+                             <p:panelGrid >
+                                 <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                             </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="8"> <p:outputLabel value=" Arthritis or Enthesitis or Dactylitis "></p:outputLabel></p:column>
+                                </p:row>
+                               <p:row> 
+                                   <p:column colspan="4"> <p:outputLabel value=" Plus &gt;= 1 of : "></p:outputLabel></p:column>
+                                   <p:column rowspan="7" colspan="2" > <p:outputLabel value="OR"></p:outputLabel></p:column>
+                                   <p:column colspan="4"> <p:outputLabel value="Plus &gt;= 2 of the remaining:"></p:outputLabel></p:column>
+                               </p:row>
+                                <p:row>
+                                   <p:column colspan="4"> <p:outputLabel value="Psoriasis"></p:outputLabel></p:column>
+                                   
+                                    <p:column colspan="4"><p:outputLabel value="Arthritis"></p:outputLabel></p:column>
+                                 
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="4"> <p:outputLabel value="IBD"></p:outputLabel></p:column>
+                                      <p:column colspan="4"> <p:outputLabel value="Enthesitis"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                     <p:column colspan="4"> <p:outputLabel value="Preceding Infection"></p:outputLabel></p:column>
+                                      <p:column colspan="4"> <p:outputLabel value="Dactylitis"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="4"> <p:outputLabel value="HLA B27"></p:outputLabel></p:column>
+                                    <p:column colspan="4"> <p:outputLabel value="Inflammatory back pain in the past"></p:outputLabel></p:column> 
+                                </p:row>
+                               
+                                <p:row>
+                                    <p:column colspan="4"> <p:outputLabel value="Uveitis"></p:outputLabel></p:column>
+                                    <p:column colspan="4"> <p:outputLabel value="Positive family  history for SpA "></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="4"> <p:outputLabel value="Sacroiliitis on imaging"></p:outputLabel></p:column>
+                                    <p:column colspan="4"> <p:outputLabel value=" "></p:outputLabel></p:column>
+                                   
+                                </p:row>
+                                
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column><p:outputLabel value="X-Ray"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="+"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="-"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column><p:outputLabel value="HLA B27"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="+"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="-"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column><p:outputLabel value="MRI"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="+"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="-"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="5"><p:outputLabel value="Diagnosis"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="3">   <p:outputLabel value="SpA"></p:outputLabel></p:column>
+                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="3">   <p:outputLabel value="Axial SpA"></p:outputLabel></p:column>
+                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="3">   <p:outputLabel value="Peripheral SpA"></p:outputLabel></p:column>
+                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="3">   <p:outputLabel value="Other"></p:outputLabel></p:column>
+                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                            <p:outputLabel value="BASDAI"></p:outputLabel>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Fatigue"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="spinal pain"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Peripheral arthritis"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Enthesitis"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Morning stiffness intensity"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Morning stiffness duration"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.0 hr - 0   points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.5 hr - 2.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.0 hr - 5.0 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.5 hr - 7.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="2.0 hr - 10  points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                    </p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">   <p:outputLabel value="Calculated Score"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                 </p:row>
+                                <p:row>
+                                    <p:column colspan="2">   <p:outputLabel value="Not classified"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">   <p:outputLabel value="Classified"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                             
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:outputLabel value="ASDAS"></p:outputLabel>    
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Spinal pain 0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Peripheral arthritis 0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Morning stiffness duration"></p:outputLabel><br></br> 
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.0 hr - 0   points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.5 hr - 2.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.0 hr - 5.0 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.5 hr - 7.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="2.0 hr - 10  points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                    </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Patient global assessment"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="ESR"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="CRP"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value=""></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Calculated Score"></p:outputLabel>
+                                                    <p:spacer width="30" height="10" />
+                                                    <p:outputLabel value="ASDAS ESR"></p:outputLabel>
+                                    </p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Calculated Score"></p:outputLabel>
+                                                    <p:spacer width="30" height="10" />
+                                                    <p:outputLabel value="ASDAS CRP"></p:outputLabel>
+                                    </p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Inactive(&lt; 1.3)"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Moderate activity( 1.3 - 2.1 )"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="High activity( 2.1 - 3.5 )"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Very high activity ( &gt;3.5 )"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+                        </p:panel>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+</html>

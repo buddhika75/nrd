@@ -1,0 +1,260 @@
+/*********************
+BREAKPOINTS
+*********************/
+.colRight {
+  background-color: #F8F8F8; }
+
+.colLeft {
+  background-color: #F8F8F8; }
+
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteria {
+  font-family: "Roboto";
+  font-weight: bold;
+  margin: 0; }
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteriaDescription {
+  font-family: "Roboto"; }
+body .container-fluid .row .clinicalCriteriaColRight .clinicalCriteriaExample {
+  font-family: "Roboto";
+  font-style: italic;
+  margin: 0;
+  list-style-type: d; }
+body .container-fluid .row .clinicalCriteriaColRight .complications {
+  font-family: "Roboto";
+  font-weight: bold;
+  margin: 0; }
+
+.heading {
+  background: #F8F8F8; }
+
+body .container-fluid .heading h2 {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  color: #9EA6A9;
+  font-weight: bold;
+  padding: 20px 0 20px 0; }
+
+@media (max-width: 768px) {
+  body .container-fluid .heading h2 {
+    font-size: 1em;
+    letter-spacing: 1.4px; }
+
+  body .container-fluid .row .imgSize {
+    width: 30px;
+    height: 45px; } }
+@media (min-width: 768px) {
+  body .container-fluid .heading h2 {
+    font-size: 1.6em;
+    letter-spacing: 1.6px; }
+
+  body .container-fluid .row .imgSize {
+    width: 60px;
+    height: 80px; } }
+@media (min-width: 992px) {
+  body .container-fluid .heading h2 {
+    font-size: 2.2em;
+    letter-spacing: 2px; }
+
+  body .container-fluid .row .imgSize {
+    width: 70px;
+    height: 90px; } }
+@media (min-width: 1200px) {
+  body .container-fluid .heading h2 {
+    font-size: 2.5em;
+    letter-spacing: 2px; }
+
+  body .container-fluid .row .imgSize {
+    width: 90px;
+    height: 110px; } }
+body .container-fluid .row #slEmblem {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+body .container-fluid .mainSubHeading {
+  background-color: #f0f0f0; }
+
+body .container-fluid .mainSubHeading p {
+  letter-spacing: 2px;
+  font-family: Arial; }
+
+body .container-fluid .form-control[type=date] {
+  border: 0;
+  border-bottom: 1px dashed lightgray;
+  padding: 0; }
+
+body .container-fluid #diagnosedDateLabel {
+  padding: 0; }
+
+@media (max-width: 768px) {
+  body .container-fluid .form-control[type=date] {
+    width: 25%;
+    font-size: .7em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: .7em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: .7em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .6em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .6em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 0; }
+
+  body .container-fluid .row .form-check {
+    width: 15%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .5em; } }
+@media (min-width: 768px) {
+  body .container-fluid .form-control[type=date] {
+    width: 20%;
+    font-size: .8em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: .8em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: .8em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .6em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .6em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 3px white solid; }
+
+  body .container-fluid .row .form-check {
+    width: 15%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .5em; } }
+@media (min-width: 992px) {
+  body .container-fluid .form-control[type=date] {
+    width: 20%;
+    font-size: 1em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: 1em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: .9em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .8em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .8em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 3px white solid; }
+
+  body .container-fluid .row .form-check {
+    width: 15%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .7em; } }
+@media (min-width: 1200px) {
+  body .container-fluid .form-control[type=date] {
+    width: 15%;
+    font-size: 1.1em; }
+
+  body .container-fluid .row .col-form-label {
+    font-size: 1.1em; }
+
+  body .container-fluid .row .clinicalCriteria,
+  body .container-fluid .row .complications {
+    font-size: 1em; }
+
+  body .container-fluid .row .clinicalCriteriaDescription {
+    font-size: .9em; }
+
+  body .container-fluid .row .clinicalCriteriaExample {
+    font-size: .9em; }
+
+  body .container-fluid .row .colLeft {
+    border-right: 3px white solid; }
+
+  body .container-fluid .row .form-check {
+    width: 10%; }
+
+  body .container-fluid .row .longWords {
+    font-size: .8em; } }
+body .container-fluid .row .clinicalCriteriaColRight .tableHeading {
+  color: #808080;
+  margin: 1em 0;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  font-weight: bold; }
+
+@media (max-width: 768px) {
+  body .container-fluid .row .asdas {
+    line-height: 11px; }
+
+  body .container-fluid .row input[type=number] {
+    height: 13px; }
+
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] {
+    width: 40%; } }
+@media (min-width: 768px) {
+  body .container-fluid .row .asdas {
+    line-height: 13px; }
+
+  body .container-fluid .row input[type=number] {
+    height: 15px; }
+
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] {
+    width: 40%; } }
+@media (min-width: 992px) {
+  body .container-fluid .row .asdas {
+    line-height: 16px; }
+
+  body .container-fluid .row input[type=number] {
+    height: 18px; }
+
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] {
+    width: 40%; } }
+@media (min-width: 1200px) {
+  body .container-fluid .row .asdas {
+    line-height: 18px; }
+
+  body .container-fluid .row input[type=number] {
+    height: 20px; }
+
+  body .container-fluid .row input[type=text], body .container-fluid .row input[type=number], body .container-fluid .row input[type=date], body .container-fluid .row input[type=submit] {
+    width: 100%; } }
+body .container-fluid .row input[type=number] {
+  border: 0;
+  border-bottom: 1px dashed lightgray; }
+
+body .container-fluid .row input[type=number]:active, body .container-fluid .row input[type=number]:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 1px 2px #9B9B7A; }
+
+body .container-fluid .row input[type=submit], body .container-fluid .row .button {
+  background-color: transparent;
+  color: #6c757d;
+  margin: .5em;
+  border: 1px solid cornflowerblue; }
+
+body .container-fluid .row input[type=submit]:hover, body .container-fluid .row .button:hover {
+  background-color: #EDEEEF;
+  color: cornflowerblue;
+  border: 2px solid white; }
+
+body .container-fluid .row .button {
+  margin: auto 0; }
+
+body .container-fluid .blockquote-footer::before {
+  content: ""; }

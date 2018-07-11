@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundlePt.ListPatientTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="PatientListForm">
+                <p:panel header="#{bundlePt.ListPatientTitle}">
+
+
+                    <p:dataTable value="#{patientController.items}" var="item">
+
+                        <p:column filterBy="#{item.registeredInstitute.name}" 
+                                  sortBy="#{item.registeredInstitute.name}">
+                            <f:facet name="header">
+                                <h:outputText value="Institution"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registeredInstitute.name}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Unit"/>
+                            </f:facet>
+                            <h:outputText value="#{item.registeredDepartment.name}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Clinic Number"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clinicNumber}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date Of Registration"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOfRegistration}">
+                                <f:convertDateTime pattern="dd/MMMM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nameOfPatient}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Sex"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sex}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date of Birth"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOfBirth}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Age"/>
+                            </f:facet>
+                            <h:outputText value="#{item.age}"/>
+                        </p:column>
+                       
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Mobile No"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephoneNoMobile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Home No"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephoneNoHome}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Address"/>
+                            </f:facet>
+                            <h:outputText value="#{item.address}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="City"/>
+                            </f:facet>
+                            <h:outputText value="#{item.city}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nic"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nic}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Referred By"/>
+                            </f:facet>
+                            <h:outputText value="#{item.referredBy}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Occupation"/>
+                            </f:facet>
+                            <h:outputText value="#{item.occupation}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Race"/>
+                            </f:facet>
+                            <h:outputText value="#{item.race}"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+
+
+
+                </p:panel>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

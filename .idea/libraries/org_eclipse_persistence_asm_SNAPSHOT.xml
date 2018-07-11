@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="org.eclipse.persistence.asm-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/unknown/binary/org.eclipse.persistence.asm/SNAPSHOT/org.eclipse.persistence.asm-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                    <h:form>
+                        <p:panel  style="margin: auto" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+                            <p:panelGrid columns="2" >
+                                <h:panelGroup >
+                                    <p:panelGrid columns="7" >
+                                        <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                        <p:outputLabel id="clinicNumber" value="#{patientController.selected.clinicNumber}"  />
+                                        <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                        <p:outputLabel id="dateOfRegistration"   value="#{patientController.selected.dateOfRegistration}"  >
+                                            <f:convertDateTime  pattern="dd MM yyyy" ></f:convertDateTime>
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                        <p:outputLabel id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}"  />
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+                            
+                             <p:panelGrid >
+                                 <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                                  <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Clinical and immunologic criteria used in the SLICC classification system"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="CLINICAL CRITERIA"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                 
+                                <p:row>
+                                    <p:column>
+                                     <p:outputLabel value=" 1. Acute cutaneous lupus, including: "></p:outputLabel>
+                                       <ul>
+                                           <li><p:outputLabel value="Lupus malar rash (do not count if malar discoid), Bullous lupus, Toxic epidermal necrolysis variant of SLE, Maculopapular lupus rash, Photosensitive lupus rash"></p:outputLabel></li>     
+                                                <ul>
+                                                    <li> <p:outputLabel value="in the absence of dermatomyositis"></p:outputLabel> </li>
+                                                </ul>
+                                           <li>
+                                               <p:outputLabel value="OR subacute cutaneous lupus (nonindurated psoriaform and/or annular polycyclic lesions that resolve without scarring, although occasionally with postinflammatory dyspigmentation or telangiectasias)"></p:outputLabel>
+                                           </li>
+                                       </ul>
+                                        
+                                    </p:column>
+                                      <p:column>
+                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria1}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox>  
+                                      </p:column>
+                                </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 2. Chronic cutaneous lupus, including: "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Classic discoid rash,  Localized (above the neck),  Generalized (above and below the neck), Hypertrophic (verrucous) lupus, Lupus panniculitis (profundus), Mucosal lupus, Lupus erythematosus tumidus, Chillblains lupus, Discoid lupus/lichen planus overlap"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria2}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 3. Oral ulcers "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Palate, Buccal,  Tongue"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="OR nasal ulcers"></p:outputLabel> </li>
+                                                <ul>
+                                                    <li> <p:outputLabel value="	in the absence of other causes, such as vasculitis, Behçet's disease, infection (herpesvirus), inflammatory bowel disease, reactive arthritis,  and acidic foods"></p:outputLabel> </li>
+                                                </ul>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria3}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 4. Nonscarring alopecia (diffuse thinning or hair fragility with visible broken hairs)  "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="in the absence of other causes such as alopecia areata, drugs, iron deficiency, and androgenic alopecia"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria4}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 5. Synovitis involving 2 or more joints, characterized by swelling or effusion "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="OR tenderness in 2 or more joints and at least 30 minutes of morning stiffness"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria5}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 6. Serositis "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Typical pleurisy for more than 1 day,  OR pleural effusions,  OR pleural rub, "></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="Typical pericardial pain (pain with recumbency improved by sitting forward) for more than 1 day,  OR pericardial effusion,  OR pericardial rub,  OR pericarditis by electrocardiography"></p:outputLabel></li>
+                                                <ul>
+                                                    <li><p:outputLabel value="in the absence of other causes, such as infection, uremia, and Dressler's pericarditis"></p:outputLabel></li>
+                                                </ul>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria6}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 7. Renal"></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Urine protein–to-creatinine ratio (or 24-hour urine protein) representing 500 mg protein/24 hours"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="OR red blood cell casts"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria7}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 8. Neurologic "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Seizures, Psychosis, Mononeuritis multiplex,"></p:outputLabel> </li>
+                                                    <ul>
+                                                    <li> <p:outputLabel value="in the absence of other known causes such as primary vasculitis"></p:outputLabel> </li>
+                                                    </ul>
+                                                <li> <p:outputLabel value="Myelitis, Peripheral or cranial neuropathy"></p:outputLabel> </li>
+                                                    <ul>
+                                                    <li> <p:outputLabel value="in the absence of other known causes such as primary vasculitis, infection, and diabetes mellitus"></p:outputLabel> </li>
+                                                    </ul>
+                                                <li> <p:outputLabel value="Acute confusional state"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="in the absence of other causes, including toxic/metabolic, uremia, drugs"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria8}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 9. Hemolytic anemia"></p:outputLabel>    
+                                     </p:column>
+                                     <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria9}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         
+                                         <p:outputLabel value="10. Leukopenia ( &lt;4,000/mm3 at least once)"></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="in the absence of other known causes such as Felty's syndrome, drugs, and portal hypertension"></p:outputLabel> </li>
+                                                    <ul>
+                                                        <li> <p:outputLabel value="OR"></p:outputLabel> </li>
+                                                        <li> <p:outputLabel value="Lymphopenia ( &lt; 1,000/mm3 at least once)"></p:outputLabel> </li>
+                                                    </ul>
+                                             <li> <p:outputLabel value="in the absence of other known causes such as corticosteroids, drugs, and infection"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria10}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                  <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 11. Thrombocytopenia (&lt;100,000/mm3) at least once "></p:outputLabel> 
+                                                 <ul><li>
+                                                         <p:outputLabel value="in the absence of other known causes such as drugs, portal hypertension, and thrombotic thrombocytopenic purpura "></p:outputLabel>
+                                             </li></ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria11}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                             
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="IMMUNOLOGIC CRITERIA"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 1. ANA level above laboratory reference range"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria1}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                         <p:outputLabel value=" 2. Anti-dsDNA antibody level above laboratory reference range (or >2-fold the reference range if tested by ELISA) "></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria2}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>"
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 3. Anti-Sm: presence of antibody to Sm nuclear antigen"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria3}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 4. Antiphospholipid antibodypositivity as determined by any of the following: "></p:outputLabel>
+                                        <ul>
+                                            <li><p:outputLabel value="Positive test result for lupus anticoagulant"></p:outputLabel></li>
+                                            <li><p:outputLabel value="False-positive test result for rapid plasma reagin"></p:outputLabel></li>
+                                            <li><p:outputLabel value="Medium- or high-titer anticardiolipin antibody level (IgA, IgG, or IgM)"></p:outputLabel></li>
+                                            <li><p:outputLabel value="Positive test result for anti–β2-glycoprotein I (IgA, IgG, or IgM)"></p:outputLabel></li>
+                                        </ul>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria4}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 5. Low complement "></p:outputLabel>
+                                        <ul>
+                                            <li><p:outputLabel value="Low C3, Low C4, Low CH50"></p:outputLabel></li>
+                                            
+                                        </ul>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox rendered="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria5 ne null}" value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria5}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 6. Direct Coombs'test"></p:outputLabel>
+                                        <ul>
+                                            <li><p:outputLabel value="in the absence of hemolytic anemia"></p:outputLabel></li>
+                                            
+                                        </ul>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria6}">
+                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Total"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.criteriaTotal}" id="criteriaTotal"></p:inputText>
+                                      </p:column>
+                                </p:row>
+                               <p:row>
+                                   <p:column colspan="2">
+                                        
+                                       <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.diognosisConfirm}" id="diognosisConfirm"></p:inputText>
+                                     
+                                    </p:column>
+                                    
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="3">
+                                        <p:outputLabel value="Complications"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column rowspan="6">
+                                        <p:outputLabel value="Lupus Nephritis"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                        <p:outputLabel value="Class I "></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassI}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Class II "></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassII}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Class III "></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassIII}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Class IV"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassIV}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Class V"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassV}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Class VI"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassVI}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Respiratory"></p:outputLabel>
+                                    </p:column>
+                                      <p:column colspan="2">
+                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationRespiratory}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Other"></p:outputLabel>
+                                    </p:column>
+                                      <p:column colspan="2">
+                                        <p:inputTextarea value="#{patientController.selected.systemicLupusErythematosusData.complicationOther}" rows="4" cols="28"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Checklist of parameters for preconception counseling and risk stratification in women with SLE and/or APS"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="SLE activity/flares"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.checklistSLEactivityORflares}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Lupus nephritis (history or active at conception)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.checklistLupusNephritis}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Serological activity(serum C3/C4, anti-dsDNA titres)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.checklistSerologicalActivity}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Previous adverse pregnancy outcomes"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.checklistPreviousAdversePregnancyOutcomes}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="History of vascular thrombosis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.checklistHistoryOfVascularThrombosis}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Auto-antibody profile ( LA, aPL, Ro, La )"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.checklistAutoAntibodyProfile}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:outputLabel value="SLEDAI – 2K (apply for the past 30 Days)"></p:outputLabel>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Seizure"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiSeizure8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Psychosis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiPsychosis8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Organic brain syndrome"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiOrganicBrainSyndrome8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Visual disturbances"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiVisualDisturbances8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Cranial nerve disorder"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiCranialNerveDisorder8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Lupus headache"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiLupusHeadache8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="CVA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiCva8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Vasculitis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiVasculitis8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Arthritis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiArthritis4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Myositis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiMyositis4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Urinary casts"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiUrinaryCasts4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Hematuria"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiHematuria4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Proteinuria"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiProteinuria4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Pyuria"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiPyuria4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column colspan="6">
+                                       
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="New rash"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiNewRash2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Alopecia"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiAlopecia2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Mucosal ulcers"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiMucosalUlcers2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Pleurisy"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiPleurisy2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Pericarditis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiPericarditis2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Low complement"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiLowComplement2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column colspan="4">
+                                        <p:outputLabel value="Increased DNA binding"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiIncreasedDNABinding2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Fever"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="1"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiFever1}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Thrombocytopenia"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="1"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiThrombocytopenia1}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column colspan="4">
+                                        <p:outputLabel value="Leukopenia"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="1"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.sledaiLeukopenia1}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Total"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.sledaiTotal}" id="SLEDAITotal"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:outputLabel value="(Cut off score for active disease is 3 or 4)  "></p:outputLabel>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.sledaiFlare}" id="sledaiFlare"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </p:panel>
+                    </h:form>
+                </f:view>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+</html>
