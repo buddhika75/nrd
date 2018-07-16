@@ -421,10 +421,14 @@
                                             <p:selectBooleanCheckbox  style="position: absolute; left:177px;top:70px;" id="rajTj46Stc" value="#{patientController.selected.rheumatoidArthritisData.rajTj46Stc}" >
                                                 <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
                                             </p:selectBooleanCheckbox>
-
-
+                                        </td>
+                                        
+                                            <td style="position: relative;">
+                                                <p:graphicImage library="images" name="das28.PNG" style=" width:200px ; height: 400px ;" >
+                                                    <center><p:outputLabel value="Display only -Das 28-"></p:outputLabel></center></p:graphicImage>
                                         </td>
                                     </tr>
+                                    
                                 </table>
                             </h:panelGroup>
 
@@ -514,11 +518,11 @@
                                     </p:column>
                                     <p:column >
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.totalScoreTargetPopulation}" id="totalScoreTargetPopulation">
-                                        <p:ajax event="change" process="@this" update="totalDiognosis" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                        <p:ajax event="change" process="@this" update="totalDiognosis " listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
                                         
                                         </p:inputText>
                                     </p:column>
-                                    <p:column>
+                                    <p:column colspan="2">
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.totalDiognosis}" id="totalDiognosis"></p:inputText>
                                     </p:column>
                                     
@@ -545,8 +549,10 @@
                                         <p:outputLabel value="Tender joint count (0-28)"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.tenderJointCountDAS}" id="tenderJointCountDAS"></p:inputText>
-                                        
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.tenderJointCountDAS}" id="tenderJointCountDAS">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+ 
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -554,8 +560,9 @@
                                         <p:outputLabel value="Swollen joint count (0-28)"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.swollenJointCountDAS}" id="swollenJointCountDAS"></p:inputText>
-                                         
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.swollenJointCountDAS}" id="swollenJointCountDAS">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                         </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -563,8 +570,9 @@
                                         <p:outputLabel value="ESR"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.esrDAS}"></p:inputText>
-                                       
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.esrDAS}">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                         </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -572,8 +580,9 @@
                                         <p:outputLabel value="CRP"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.crpDAS}"></p:inputText>
-                                        
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.crpDAS}">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -581,8 +590,9 @@
                                         <p:outputLabel value="Patient Global Health (0 – 100)"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.patientGlobalHealthDAS}"></p:inputText>
-                                        
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.patientGlobalHealthDAS}">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                         </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -590,11 +600,15 @@
                                         <p:outputLabel value="Calculated Score"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.calculatedScoreDAS}" id="calculatedScoreDAS"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.calculatedScoreDAS}" id="calculatedScoredas"></p:inputText>
+                                    
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
 
+                            
+                            
+                            
                             <p:panelGrid>
                                 <p:row>
                                     <p:column>
@@ -778,28 +792,16 @@
                                         <p:outputLabel value="SDAI/CDAI"></p:outputLabel>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="SDAI Remission"></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.sdaiRemissionSDAICDAI}"></p:inputText>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="CDAI Remission"></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.cdaiRemissionSDAICDAI}"></p:inputText>
-                                    </p:column>
-                                </p:row>
+                               
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="Tender joint count"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.tenderJointCountSDAICDAI}"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.tenderJointCountSDAICDAI}">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                       </p:inputText>
+                                      
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -807,7 +809,9 @@
                                         <p:outputLabel value="Swellen joint count"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.swellenJointCountSDAICDAI}"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.swellenJointCountSDAICDAI}">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -815,7 +819,9 @@
                                         <p:outputLabel value="Patient global assessment"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.patientGlobalAssessmentSDAICDAI}"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.patientGlobalAssessmentSDAICDAI}">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -823,7 +829,9 @@
                                         <p:outputLabel value="Evaluator global assessment"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.evaluatorGlobalAssessmentSDAICDAI}"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.evaluatorGlobalAssessmentSDAICDAI}">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
@@ -831,14 +839,12 @@
                                         <p:outputLabel value="CRP"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.crpSDAICDAI}"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.crpSDAICDAI}" id="crpSDAICDAI">
+                                            <p:ajax event="change" process="@this unitofCRP" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column colspan="2">
-                                        <p:outputLabel value="options"></p:outputLabel>
-                                    </p:column>
-                                </p:row>
+                               
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="CRP units"></p:outputLabel>
@@ -846,12 +852,32 @@
 
                                     <p:column>
 
-                                        <p:selectOneMenu >
+                                        <p:selectOneMenu id="unitofCRP" value="#{patientController.selected.rheumatoidArthritisData.unitofCRP}" >
                                             <f:selectItems value="#{enumController.CRPunits}" var="d" itemLabel="#{d.label}" itemValue="#{d}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this crpSDAICDAI" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        
                                         </p:selectOneMenu>
 
                                     </p:column>
                                 </p:row>
+                                
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="SDAI Remission"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.sdaiRemissionSDAICDAI}" id="sdairemissioncal"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="CDAI Remission"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.cdaiRemissionSDAICDAI}" id="cdairemissioncal"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
                             </p:panelGrid>
 
                         </p:panel>

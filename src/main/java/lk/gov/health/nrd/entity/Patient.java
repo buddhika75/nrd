@@ -69,7 +69,8 @@ public class Patient implements Serializable {
     RheumatoidArthritisData rheumatoidArthritisData;
     @OneToOne(cascade = CascadeType.ALL)
     SystemicLupusErythematosusData systemicLupusErythematosusData;
-    
+    @OneToOne(cascade = CascadeType.ALL)
+    SpondyloarthristisData SpondyloarthristisData;
     
    
     
@@ -273,6 +274,20 @@ public class Patient implements Serializable {
         this.systemicLupusErythematosusData = systemicLupusErythematosusData;
     }
 
+    public SpondyloarthristisData getSpondyloarthristisData() {
+        if(SpondyloarthristisData == null){
+            SpondyloarthristisData = new SpondyloarthristisData();
+                    }
+        return SpondyloarthristisData;
+    }
+
+    public void setSpondyloarthristisData(SpondyloarthristisData SpondyloarthristisData) {
+        this.SpondyloarthristisData = SpondyloarthristisData;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

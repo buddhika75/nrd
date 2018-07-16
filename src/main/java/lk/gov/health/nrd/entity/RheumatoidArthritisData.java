@@ -162,10 +162,10 @@ public class RheumatoidArthritisData extends Encounter {
     private int totalScore;
     private int tenderJointCountDAS;
     private int swollenJointCountDAS;
-    private int esrDAS;
-    private int crpDAS;
+    private double esrDAS;
+    private double crpDAS;
     private int patientGlobalHealthDAS;
-    private int calculatedScoreDAS;
+    private double calculatedScoreDAS;
     private double esrValue;
     private double crpValue;
     private double rfValue;
@@ -196,6 +196,7 @@ public class RheumatoidArthritisData extends Encounter {
     private double crpSDAICDAI;
     private int totalScoreTargetPopulation;
     private String totalDiognosis;
+  
     
     
     
@@ -1054,24 +1055,22 @@ public class RheumatoidArthritisData extends Encounter {
         this.swollenJointCountDAS = swollenJointCountDAS;
     }
 
-    public int getEsrDAS() {
+    public double getEsrDAS() {
         return esrDAS;
     }
 
-    public void setEsrDAS(int esrDAS) {
+    public void setEsrDAS(double esrDAS) {
         this.esrDAS = esrDAS;
     }
 
-    public int getCrpDAS() {
+    public double getCrpDAS() {
         return crpDAS;
     }
 
-    public void setCrpDAS(int crpDAS) {
+    public void setCrpDAS(double crpDAS) {
         this.crpDAS = crpDAS;
     }
 
-    
-    
     public int getPatientGlobalHealthDAS() {
         return patientGlobalHealthDAS;
     }
@@ -1080,11 +1079,11 @@ public class RheumatoidArthritisData extends Encounter {
         this.patientGlobalHealthDAS = patientGlobalHealthDAS;
     }
 
-    public int getCalculatedScoreDAS() {
+    public double getCalculatedScoreDAS() {
         return calculatedScoreDAS;
     }
 
-    public void setCalculatedScoreDAS(int calculatedScoreDAS) {
+    public void setCalculatedScoreDAS(double calculatedScoreDAS) {
         this.calculatedScoreDAS = calculatedScoreDAS;
     }
 
@@ -1375,7 +1374,7 @@ public class RheumatoidArthritisData extends Encounter {
     public void setTotalDiognosis(String totalDiognosis) {
         this.totalDiognosis = totalDiognosis;
     }
-    
+
  
     
 }

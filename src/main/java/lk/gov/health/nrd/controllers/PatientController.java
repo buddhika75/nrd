@@ -22,9 +22,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 import lk.gov.health.nrd.entity.PatientDiagnosis;
 import lk.gov.health.nrd.entity.RheumatoidArthritisData;
 import lk.gov.health.nrd.entity.SystemicLupusErythematosusData;
+import lk.gov.health.nrd.entity.SpondyloarthristisData;
 
 @Named("patientController")
 @SessionScoped
@@ -42,6 +44,7 @@ public class PatientController implements Serializable {
     PatientDiagnosis patientDiagnosis;
     RheumatoidArthritisData rheumatoidArthritisData;
     List<Patient> searchedPatients;
+    private float n$;
 
     public String toAddRaDate() {
         if (selected == null) {
@@ -116,6 +119,7 @@ public class PatientController implements Serializable {
         selected.setDiagnosis(new PatientDiagnosis());
         selected.setRheumatoidArthritisData(new RheumatoidArthritisData());
         selected.setSystemicLupusErythematosusData(new SystemicLupusErythematosusData());
+        selected.setSpondyloarthristisData(new SpondyloarthristisData());
 
         System.out.println("webUserController.loggedUser = " + getWebUserController().getLoggedUser());
         if (getWebUserController().getLoggedUser() != null) {
@@ -232,6 +236,8 @@ public class PatientController implements Serializable {
     public List<Patient> getItemsAvailableSelectOne() {
         return getFacade().findAll();
     }
+
+    
 
     @FacesConverter(forClass = Patient.class)
     public static class PatientControllerConverter implements Converter {
@@ -732,7 +738,9 @@ System.out.println("swollenJointCount = " + swollenJointCount);
 
         selected.getRheumatoidArthritisData().setSwollenJointCountDAS(swollenJointCount);
         
+        selected.getRheumatoidArthritisData().setTenderJointCountSDAICDAI(tenderJointCount);
         
+        selected.getRheumatoidArthritisData().setSwellenJointCountSDAICDAI(swollenJointCount);
        
         
          switch(selected.getRheumatoidArthritisData().getSerology()){
@@ -771,10 +779,8 @@ System.out.println("swollenJointCount = " + swollenJointCount);
     public void totalOfTargtPopulationcal(){
          System.out.println("cal = ");
          int total ;
-         //double dastotal = 0;
-         int dastotal;
-        String x = "Diognosis Confirmed";
-        String y = "Diognosis Not Confirmed";
+         String x = "Diognosis Confirmed";
+         String y = "Diognosis Not Confirmed";
          
          if (selected == null) {
             return;
@@ -783,32 +789,51 @@ System.out.println("swollenJointCount = " + swollenJointCount);
          int b = selected.getRheumatoidArthritisData().getDurationOfSymptomsCal();
          int c = selected.getRheumatoidArthritisData().getSerologyCal();
          int d = selected.getRheumatoidArthritisData().getJointInvolvementCal();
-         
-         int e = selected.getRheumatoidArthritisData().getEsrDAS();
-         int f = selected.getRheumatoidArthritisData().getCrpDAS();
-         int g = selected.getRheumatoidArthritisData().getPatientGlobalHealthDAS();
-         int s = selected.getRheumatoidArthritisData().getSwollenJointCountDAS();
+         double e = selected.getRheumatoidArthritisData().getEsrDAS();
+         double f = selected.getRheumatoidArthritisData().getCrpDAS();
+         int p = selected.getRheumatoidArthritisData().getPatientGlobalHealthDAS();
          int t = selected.getRheumatoidArthritisData().getTenderJointCountDAS();
+         int s = selected.getRheumatoidArthritisData().getSwollenJointCountDAS();
+         int pga =selected.getRheumatoidArthritisData().getPatientGlobalAssessmentSDAICDAI();
+         int ega = selected.getRheumatoidArthritisData().getEvaluatorGlobalAssessmentSDAICDAI();
+      
+        
         
         total = a+b+c+d;
         selected.getRheumatoidArthritisData().setTotalScoreTargetPopulation(total);
         if(total>5){
         selected.getRheumatoidArthritisData().setTotalDiognosis(x);
+        
         }
         else{
         selected.getRheumatoidArthritisData().setTotalDiognosis(y);
         }
-      
         
+        double pts = 1.0*(p+t+s);
+        double dastotal = pts + e+f;
         
-        
-        
-        dastotal = e+f+g;
         selected.getRheumatoidArthritisData().setCalculatedScoreDAS(dastotal);
+     
         
+        double crp = selected.getRheumatoidArthritisData().getCrpSDAICDAI();
+        double temp = 0;
     
+        switch (selected.getRheumatoidArthritisData().getUnitofCRP()){
+              case mgPerL:
+                 temp = crp/10;
+                    break;
+              case mgPerDl:
+                 temp = crp;
+                    break;
+      }
+        
+         double sdai = temp + 1.0*(t+s+ega+pga) ;
+         double cdai = 1.0*(t+s+ega+pga);
+        System.out.println("sdai = " + sdai);
+         selected.getRheumatoidArthritisData().setSdaiRemissionSDAICDAI(sdai);
+        
+         selected.getRheumatoidArthritisData().setCdaiRemissionSDAICDAI(cdai);
     }
-    
     
     public void criteriaCal() {
         System.out.println("cal = ");
@@ -1037,5 +1062,89 @@ System.out.println("immunologic = " + immunologic);
         }
         
     }
+    
+    
+     public void spondyloarthristisdatBASDAI(){
+        System.out.println("basdai  ");
+        String x = "Classified";
+        String y = "Not Classified";
+        int erro=0;
+         if (selected == null) {
+            return;
+        }
+         System.out.println("14");
+         int f  = selected.getSpondyloarthristisData().getBasdaiFatigue();
+         int sp = selected.getSpondyloarthristisData().getBasdaiSpinalPain();
+         int pa = selected.getSpondyloarthristisData().getBasdaiPeripheralArthritis();
+         int e =selected.getSpondyloarthristisData().getBasdaiEnthesitis();
+         int msi =selected.getSpondyloarthristisData().getBasdaiMorningStiffnessIntensity();
+         double msd =selected.getSpondyloarthristisData().getBasdaiMorningStiffnessDuration();
+         
+        if (f>10){
+        selected.getSpondyloarthristisData().setBasdaiFatigue(f=0);
+        System.out.println("f1 = "+f);
+        }
+        
+        if (sp>10){
+        selected.getSpondyloarthristisData().setBasdaiSpinalPain(sp=0);
+        System.out.println("sp = "+sp);
+        }else{
+        selected.getSpondyloarthristisData().setAsdasSpinalPain(sp);
+        }
+        
+        if (pa>10){
+        selected.getSpondyloarthristisData().setBasdaiPeripheralArthritis(pa=0);
+        System.out.println("pa = "+pa);
+        }else{
+        selected.getSpondyloarthristisData().setAsdasPeripheralArthritis(pa);
+        }
+        
+        if (e>10){
+        selected.getSpondyloarthristisData().setBasdaiEnthesitis(e=0);
+        System.out.println("e = "+e);
+        }
+        
+        if (msi>10){
+        selected.getSpondyloarthristisData().setBasdaiMorningStiffnessIntensity(msi=0);
+        System.out.println("msi= "+msi);
+        }
+        
+        if (msd>10.0){
+        selected.getSpondyloarthristisData().setBasdaiMorningStiffnessDuration(msd=0.0);
+        System.out.println("msd= "+msd);
+        }else{
+        selected.getSpondyloarthristisData().setAsdasMorningStiffnessDuration(msd);
+        }
+        
+        double basdaiScore = 0.2*(f+sp+pa+e)+ 0.5*(msi+msd);
+        System.out.println(" f3 = "+f);
+        System.out.println("pa2 = "+pa);
+         
+        System.out.println("score = "+basdaiScore);
+        selected.getSpondyloarthristisData().setBasdaiCalculatedScore(basdaiScore);
+         
+        if(basdaiScore > 3.9){
+           selected.getSpondyloarthristisData().setBasdaiClassified(x);
+        }
+        else{
+            selected.getSpondyloarthristisData().setBasdaiClassified(y);
+        }
+         
+        
+        int pga = selected.getSpondyloarthristisData().getAsdasPatientGlobalAssessmennt();
+        double esr = selected.getSpondyloarthristisData().getAsdasEsr();
+        double crp = selected.getSpondyloarthristisData().getAsdasCrp();
+       
+        double rootesr  = Math.sqrt(esr);
+        System.out.println("rootesr = " + rootesr);
+        double esrscore = 0.079*sp + 0.058*msd + 0.113*pga + 0.086*pa + 0.293*rootesr;
+        
+        System.out.println("esrscore = "+ esrscore );
+         
+        selected.getSpondyloarthristisData().setAsdasEsrScore(esrscore);
+               
+     }
+    
+    
 
 }

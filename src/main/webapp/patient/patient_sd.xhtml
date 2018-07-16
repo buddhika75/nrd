@@ -17,8 +17,6 @@
             <ui:define name="body">
 
                 <f:view>
-
-
                     <h:form>
                         <p:panel  style="margin: auto" >
                             <f:facet name="header">
@@ -118,19 +116,27 @@
                                 
                                 <p:row>
                                     <p:column colspan="3">   <p:outputLabel value="SpA"></p:outputLabel></p:column>
-                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column colspan="2">  
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisSpA}"> </p:selectBooleanCheckbox>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column colspan="3">   <p:outputLabel value="Axial SpA"></p:outputLabel></p:column>
-                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column colspan="2">   
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisAxialSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column colspan="3">   <p:outputLabel value="Peripheral SpA"></p:outputLabel></p:column>
-                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column colspan="2">  
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisPeripheralSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column colspan="3">   <p:outputLabel value="Other"></p:outputLabel></p:column>
-                                    <p:column colspan="2">   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column colspan="2">   
+                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisOther}"></p:selectBooleanCheckbox>
+                                    </p:column>
                                 </p:row>
                             </p:panelGrid>
                             
@@ -139,27 +145,47 @@
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Fatigue"></p:outputLabel></p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiFatigue}">
+                                            <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="spinal pain"></p:outputLabel></p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column>  
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiSpinalPain}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Peripheral arthritis"></p:outputLabel></p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiPeripheralArthritis}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Enthesitis"></p:outputLabel></p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column>  
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiEnthesitis}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Morning stiffness intensity"></p:outputLabel></p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aa"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiMorningStiffnessIntensity}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Morning stiffness duration"></p:outputLabel><br></br>
@@ -176,34 +202,50 @@
                                                     <p:spacer width="30" height="10" />
                                     </p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiMorningStiffnessDuration}">
+                                         <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="2">   <p:outputLabel value="Calculated Score"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="Calculated Score"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiCalculatedScore}" id="basdaiCalculatedScore">
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiClassified}">
+                                        
+                                        </p:inputText>
+                                    </p:column>
                                  </p:row>
-                                <p:row>
-                                    <p:column colspan="2">   <p:outputLabel value="Not classified"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column colspan="2">   <p:outputLabel value="Classified"></p:outputLabel></p:column>
-                                    <p:column>   <p:outputLabel value="aaa"></p:outputLabel></p:column>
-                                </p:row>
-                             
+                               
                             </p:panelGrid>
+                            
+                            
                             
                             <p:panelGrid>
                                 <p:outputLabel value="ASDAS"></p:outputLabel>    
                                 <p:row>
                                     <p:column> <p:outputLabel value="Spinal pain 0-10"></p:outputLabel> </p:column>
                                     <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
-                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                    
+                                <p:column>   
+                                    <p:inputText value="#{patientController.selected.spondyloarthristisData.asdasSpinalPain}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                
                                 </p:row>
                                 <p:row>
                                     <p:column> <p:outputLabel value="Peripheral arthritis 0-10"></p:outputLabel> </p:column>
                                     <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
-                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                    <p:column><p:inputText value="#{patientController.selected.spondyloarthristisData.asdasPeripheralArthritis}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column> <p:outputLabel value="Morning stiffness duration"></p:outputLabel><br></br> 
@@ -220,35 +262,55 @@
                                                     <p:spacer width="30" height="10" />
                                     </p:column>
                                     <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
-                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                    <p:column> <p:inputText value="#{patientController.selected.spondyloarthristisData.asdasPeripheralArthritis}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column> <p:outputLabel value="Patient global assessment"></p:outputLabel> </p:column>
                                     <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
-                                    <p:column> <p:outputLabel value="aaa"></p:outputLabel> </p:column>
+                                    <p:column><p:inputText value="#{patientController.selected.spondyloarthristisData.asdasPatientGlobalAssessmennt}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column colspan="2"><p:outputLabel value="ESR"></p:outputLabel></p:column>
-                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column><p:inputText value="#{patientController.selected.spondyloarthristisData.asdasEsr}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
                                 </p:row>
-                                <p:row>
-                                    <p:column colspan="2"><p:outputLabel value="CRP"></p:outputLabel></p:column>
-                                    <p:column><p:outputLabel value=""></p:outputLabel></p:column>
-                                </p:row>
+                               
                                 <p:row>
                                     <p:column colspan="2"><p:outputLabel value="Calculated Score"></p:outputLabel>
                                                     <p:spacer width="30" height="10" />
                                                     <p:outputLabel value="ASDAS ESR"></p:outputLabel>
                                     </p:column>
-                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column><p:inputText value="#{patientController.selected.spondyloarthristisData.asdasEsrScore}" id="asdasEsrScore">
+                                              </p:inputText>
+                                    </p:column>
                                 </p:row>
+                                 <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="CRP"></p:outputLabel></p:column>
+                                    <p:column><p:outputLabel value=""></p:outputLabel></p:column>
+                                </p:row>
+                                
                                 <p:row>
                                     <p:column colspan="2"><p:outputLabel value="Calculated Score"></p:outputLabel>
                                                     <p:spacer width="30" height="10" />
                                                     <p:outputLabel value="ASDAS CRP"></p:outputLabel>
                                     </p:column>
-                                    <p:column><p:outputLabel value="aaa"></p:outputLabel></p:column>
+                                    <p:column><p:inputText value="#{patientController.selected.spondyloarthristisData.asdasCrpScore}" id="asdasCrpScore">
+                                              </p:inputText>
+                                </p:column>
                                 </p:row>
+                                
+                                
+                                
+                                
+                                
                                 
                                 <p:row>
                                     <p:column colspan="2"><p:outputLabel value="Inactive(&lt; 1.3)"></p:outputLabel></p:column>
