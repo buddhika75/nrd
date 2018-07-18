@@ -1068,7 +1068,11 @@ System.out.println("immunologic = " + immunologic);
         System.out.println("basdai  ");
         String x = "Classified";
         String y = "Not Classified";
-        int erro=0;
+        String a1 = " Inactive ";
+        String a2 = " Moderate Activity ";
+        String a3 = " High Activity ";
+        String a4 = " Very High Activity ";
+        double erro = 0.0;
          if (selected == null) {
             return;
         }
@@ -1079,6 +1083,7 @@ System.out.println("immunologic = " + immunologic);
          int e =selected.getSpondyloarthristisData().getBasdaiEnthesitis();
          int msi =selected.getSpondyloarthristisData().getBasdaiMorningStiffnessIntensity();
          double msd =selected.getSpondyloarthristisData().getBasdaiMorningStiffnessDuration();
+         int pga = selected.getSpondyloarthristisData().getAsdasPatientGlobalAssessmennt();
          
         if (f>10){
         selected.getSpondyloarthristisData().setBasdaiFatigue(f=0);
@@ -1116,35 +1121,102 @@ System.out.println("immunologic = " + immunologic);
         selected.getSpondyloarthristisData().setAsdasMorningStiffnessDuration(msd);
         }
         
-        double basdaiScore = 0.2*(f+sp+pa+e)+ 0.5*(msi+msd);
-        System.out.println(" f3 = "+f);
-        System.out.println("pa2 = "+pa);
-         
-        System.out.println("score = "+basdaiScore);
-        selected.getSpondyloarthristisData().setBasdaiCalculatedScore(basdaiScore);
-         
-        if(basdaiScore > 3.9){
-           selected.getSpondyloarthristisData().setBasdaiClassified(x);
-        }
-        else{
-            selected.getSpondyloarthristisData().setBasdaiClassified(y);
-        }
-         
         
-        int pga = selected.getSpondyloarthristisData().getAsdasPatientGlobalAssessmennt();
-        double esr = selected.getSpondyloarthristisData().getAsdasEsr();
-        double crp = selected.getSpondyloarthristisData().getAsdasCrp();
+        
        
-        double rootesr  = Math.sqrt(esr);
-        System.out.println("rootesr = " + rootesr);
-        double esrscore = 0.079*sp + 0.058*msd + 0.113*pga + 0.086*pa + 0.293*rootesr;
-        
-        System.out.println("esrscore = "+ esrscore );
-         
-        selected.getSpondyloarthristisData().setAsdasEsrScore(esrscore);
-               
-     }
-    
-    
-
+            
+            double basdaiScore = 0.2*(f+sp+pa+e)+ 0.5*(msi+msd);
+            System.out.println(" f3 = "+f);
+            System.out.println("pa2 = "+pa);
+            
+            System.out.println("score = "+basdaiScore);
+            selected.getSpondyloarthristisData().setBasdaiCalculatedScore(basdaiScore);
+            
+            if(basdaiScore > 3.9){
+                selected.getSpondyloarthristisData().setBasdaiClassified(x);
+            }
+            else{
+                selected.getSpondyloarthristisData().setBasdaiClassified(y);
+            }
+            
+            
+            
+            double esr = selected.getSpondyloarthristisData().getAsdasEsr();
+            
+            
+            double rootesr  = Math.sqrt(esr);
+            System.out.println("rootesr = " + rootesr);
+            
+            double esrscore = 0.079*sp + 0.069*msd + 0.113*pga + 0.086*pa + 0.293*rootesr;
+            
+            double esrscoreround = (double)Math.round(esrscore * 100d) / 100d;
+            System.out.println("esrscore = "+ esrscore );
+            System.out.println("esrscoreround = "+ esrscoreround );
+            selected.getSpondyloarthristisData().setAsdasEsrScore(esrscoreround);
+            
+            
+            if(esrscoreround < 1.3){
+                selected.getSpondyloarthristisData().setAsdasEsrScoreReference(a1);
+            }
+            if(1.3 < esrscoreround ){
+                if (esrscoreround < 2.1){
+                    selected.getSpondyloarthristisData().setAsdasEsrScoreReference(a2);
+                }
+            }
+            if(2.1 <esrscoreround ){        
+                if(esrscoreround < 3.5){
+                    selected.getSpondyloarthristisData().setAsdasEsrScoreReference(a3);
+                }
+            }
+            
+            if(esrscoreround > 3.5 ){
+                selected.getSpondyloarthristisData().setAsdasEsrScoreReference(a4);
+            }
+      
+            
+            double crp = selected.getSpondyloarthristisData().getAsdasCrp();
+            
+            double temp = 0;
+            
+            switch (selected.getSpondyloarthristisData().getUnitofCRP()){
+                case mgPerL:
+                    temp = crp/10;
+                    break;
+                case mgPerDl:
+                    temp = crp;
+                    break;
+            }
+            double logcrp = Math.log(temp+1);
+            System.out.println("logcrp = " + logcrp);
+            double crpScore = 0.121*sp + 0.058*msd + 0.11*pga + 0.073*pa + 0.579*logcrp;
+            
+            double crpScoreRound = (double)Math.round(crpScore * 100d) / 100d;
+            System.out.println("crpScore = "+ crpScore );
+            System.out.println("crpScoreRound = "+ crpScoreRound );
+            
+            
+            selected.getSpondyloarthristisData().setAsdasCrpScore(crpScoreRound);
+            
+            
+            if(crpScoreRound < 1.3){
+                selected.getSpondyloarthristisData().setAsdasCrpScoreReference(a1);
+            }
+            if(1.3 < crpScoreRound ){
+                if (crpScoreRound < 2.1){
+                    selected.getSpondyloarthristisData().setAsdasCrpScoreReference(a2);
+                }
+            }
+            if(2.1 <crpScoreRound ){
+                if(crpScoreRound < 3.5){
+                    selected.getSpondyloarthristisData().setAsdasCrpScoreReference(a3);
+                }
+            }
+            
+            if(crpScoreRound > 3.5 ){
+                selected.getSpondyloarthristisData().setAsdasCrpScoreReference(a4);
+            }
+        }
+     
+     
+     
 }

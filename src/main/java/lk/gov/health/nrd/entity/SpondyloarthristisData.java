@@ -6,8 +6,11 @@
 package lk.gov.health.nrd.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import lk.gov.health.nrd.enums.CRPunits;
 
 /**
  *
@@ -20,7 +23,12 @@ public class SpondyloarthristisData extends Encounter {
 
     
     
-    
+private boolean positiveXray;
+private boolean negativeXray;
+private boolean positiveHlaB27;
+private boolean negativeHlaB27;
+private boolean positiveMri;
+private boolean negativeMri;
 private boolean diagnosisSpA;
 private boolean diagnosisAxialSpA;
 private boolean diagnosisPeripheralSpA;
@@ -41,7 +49,60 @@ private double asdasEsr;
 private double asdasCrp;
 private double asdasEsrScore;
 private double asdasCrpScore;
+private String asdasEsrScoreReference;
+private String asdasCrpScoreReference;
+@Enumerated(EnumType.STRING)
+    private CRPunits unitofCRP;
 
+
+
+    public boolean isPositiveXray() {
+        return positiveXray;
+    }
+
+    public void setPositiveXray(boolean positiveXray) {
+        this.positiveXray = positiveXray;
+    }
+
+    public boolean isNegativeXray() {
+        return negativeXray;
+    }
+
+    public void setNegativeXray(boolean negativeXray) {
+        this.negativeXray = negativeXray;
+    }
+
+    public boolean isPositiveHlaB27() {
+        return positiveHlaB27;
+    }
+
+    public void setPositiveHlaB27(boolean positiveHlaB27) {
+        this.positiveHlaB27 = positiveHlaB27;
+    }
+
+    public boolean isNegativeHlaB27() {
+        return negativeHlaB27;
+    }
+
+    public void setNegativeHlaB27(boolean negativeHlaB27) {
+        this.negativeHlaB27 = negativeHlaB27;
+    }
+
+    public boolean isPositiveMri() {
+        return positiveMri;
+    }
+
+    public void setPositiveMri(boolean positiveMri) {
+        this.positiveMri = positiveMri;
+    }
+
+    public boolean isNegativeMri() {
+        return negativeMri;
+    }
+
+    public void setNegativeMri(boolean negativeMri) {
+        this.negativeMri = negativeMri;
+    }
 
 
     public boolean isDiagnosisSpA() {
@@ -205,6 +266,32 @@ private double asdasCrpScore;
     public void setAsdasCrpScore(double asdasCrpScore) {
         this.asdasCrpScore = asdasCrpScore;
     }
+
+    public String getAsdasEsrScoreReference() {
+        return asdasEsrScoreReference;
+    }
+
+    public void setAsdasEsrScoreReference(String asdasEsrScoreReference) {
+        this.asdasEsrScoreReference = asdasEsrScoreReference;
+    }
+
+    public CRPunits getUnitofCRP() {
+        return unitofCRP;
+    }
+
+    public void setUnitofCRP(CRPunits unitofCRP) {
+        this.unitofCRP = unitofCRP;
+    }
+
+    public String getAsdasCrpScoreReference() {
+        return asdasCrpScoreReference;
+    }
+
+    public void setAsdasCrpScoreReference(String asdasCrpScoreReference) {
+        this.asdasCrpScoreReference = asdasCrpScoreReference;
+    }
+
+   
 
     
 
