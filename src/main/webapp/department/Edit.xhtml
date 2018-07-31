@@ -22,8 +22,8 @@
                         <p:selectOneMenu id="institute" value="#{departmentController.selected.institute}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{instituteController.itemsAvailableSelectOne}"
-                                           var="instituteItem"
-                                           itemValue="#{instituteItem}"/>
+                                           var="i" itemLabel="#{i.name}"
+                                           itemValue="#{i}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{departmentController.update}" value="#{bundle.Save}" update="display,:DepartmentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DepartmentEditDialog');"/>

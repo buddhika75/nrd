@@ -22,15 +22,18 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
-import static jdk.nashorn.internal.objects.NativeMath.round;
 import lk.gov.health.nrd.entity.PatientDiagnosis;
 import lk.gov.health.nrd.entity.RheumatoidArthritisData;
 import lk.gov.health.nrd.entity.SystemicLupusErythematosusData;
 import lk.gov.health.nrd.entity.SpondyloarthristisData;
-
+/**
+ *
+ * @author rheumahealth2018
+ */
 @Named("patientController")
 @SessionScoped
 public class PatientController implements Serializable {
+    
 
     @Inject
     WebUserController webUserController;
@@ -1218,5 +1221,33 @@ System.out.println("immunologic = " + immunologic);
         }
      
      
+      
+    public void diagnosisType() {
+        System.out.println("cal = ");
+        
+        String num1 = "RA";
+        String num2 = "OA";
+
+        if (selected == null) {
+            return;
+        }
+        System.out.println("200");
+         
+         if(selected.getDiagnosis().isRa() == true){
+             
+         selected.setDiagnosisTypedisplay(num1);
+         }
+         if(selected.getDiagnosis().isOa()== true){
+             
+         selected.setDiagnosisTypedisplay(num2);
+         }
+        
+        }
+          
+          
+    }
      
-}
+     
+    
+
+  

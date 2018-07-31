@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                    <h:form>
+                        <p:panel  style="margin: auto" rendered="#{patientController.selected.rheumatoidArthritisData ne null}" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+
+                            <p:panelGrid columns="2" >
+                                <h:panelGroup >
+                                    <p:panelGrid columns="7" >
+                                        <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                        <p:outputLabel id="clinicNumber" value="#{patientController.selected.clinicNumber}"  />
+                                        <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                        <p:outputLabel id="dateOfRegistration"   value="#{patientController.selected.dateOfRegistration}"  >
+                                            <f:convertDateTime  pattern="dd MM yyyy" ></f:convertDateTime>
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                        <p:outputLabel id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}"  />
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+
+                            
+                            
+        
+        
+        
+        
+        
+        
+        
+  
+        <div>TODO write content</div>
+        </p:panel>
+                    </h:form>
+                </f:view>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -99,14 +99,12 @@
                                 </h:panelGroup>
                                 <p:panelGrid columns="1" style="float: right;">
                                     <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                                    <p:commandButton value="Diagnosis" action="/patient/patient_diagnosis" ajax="false"></p:commandButton>
+                                    <p:commandButton value="Investigation" action="/patient/patient_investigation" ajax="false"></p:commandButton>
                                     <p:commandButton value="Rheumatoid Arthritis Data" action="/patient/patient_rad" ajax="false" ></p:commandButton>
                                     <p:commandButton value="Systemic Lupus ErythematosusData" action="#" ajax="false" ></p:commandButton>
                                 </p:panelGrid>
                             </p:panelGrid>
-
-
-
-
 
 
                             <p:panelGrid >
@@ -114,16 +112,16 @@
                                 <p:row >
                                     <p:column colspan="2" >
                                         <p:outputLabel value="RA:" for="RA" />
-                                        <p:selectBooleanCheckbox id="RA" value="#{patientController.selected.diagnosis.RA}"  />
+                                        <p:selectBooleanCheckbox id="RA" value="#{patientController.selected.diagnosis.ra}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="OA:" for="OA" />
-                                        <p:selectBooleanCheckbox id="OA" value="#{patientController.selected.diagnosis.OA}"/>
+                                        <p:selectBooleanCheckbox id="OA" value="#{patientController.selected.diagnosis.oa}"/>
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="JIA:" for="JIA" />
-                                        <p:selectBooleanCheckbox id="JIA" value="#{patientController.selected.diagnosis.JIA}"  />
+                                        <p:selectBooleanCheckbox id="JIA" value="#{patientController.selected.diagnosis.jia}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="GOUT:" for="GOUT" />
-                                        <p:selectBooleanCheckbox id="GOUT" value="#{patientController.selected.diagnosis.GOUT}" />
+                                        <p:selectBooleanCheckbox id="GOUT" value="#{patientController.selected.diagnosis.gout}" />
                                         <p:spacer height="1" width="50" ></p:spacer>
                                         <p:outputLabel value="Undifferentiated_IA:" for="undifferentiated_IA" />
                                         <p:selectBooleanCheckbox id="undifferentiated_IA" 
@@ -137,16 +135,16 @@
                                         <p:outputLabel value="CTD:"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="SLE:" for="SLE" />
-                                        <p:selectBooleanCheckbox id="SLE" value="#{patientController.selected.diagnosis.SLE}"  />
+                                        <p:selectBooleanCheckbox id="SLE" value="#{patientController.selected.diagnosis.sle}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="APS:" for="APS" />
-                                        <p:selectBooleanCheckbox id="APS" value="#{patientController.selected.diagnosis.APS}"  />
+                                        <p:selectBooleanCheckbox id="APS" value="#{patientController.selected.diagnosis.APLS}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="MCTD:" for="MCTD" />
-                                        <p:selectBooleanCheckbox id="MCTD" value="#{patientController.selected.diagnosis.MCTD}"  />
+                                        <p:selectBooleanCheckbox id="MCTD" value="#{patientController.selected.diagnosis.mctd}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="OVERLAP:" for="OVERLAP" />
-                                        <p:selectBooleanCheckbox id="OVERLAP" value="#{patientController.selected.diagnosis.OVERLAP}"  />
+                                        <p:selectBooleanCheckbox id="OVERLAP" value="#{patientController.selected.diagnosis.overlap}"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="Scleroderma:" for="scleroderma" />
                                         <p:selectBooleanCheckbox id="scleroderma" value="#{patientController.selected.diagnosis.scleroderma}"  />
@@ -186,7 +184,7 @@
                                         <p:selectBooleanCheckbox id="psoriatic" value="#{patientController.selected.diagnosis.psoriatic}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="IBD_associated:" for="IBD_associated" />
-                                        <p:selectBooleanCheckbox id="IBD_associated" value="#{patientController.selected.diagnosis.IBD_associated}" />
+                                        <p:selectBooleanCheckbox id="IBD_associated" value="#{patientController.selected.diagnosis.ibd_associated}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="Reiter_s:" for="reiter_s" />
                                         <p:selectBooleanCheckbox id="reiter_s" value="#{patientController.selected.diagnosis.reiter_s}" />
@@ -202,28 +200,28 @@
                                         <p:outputLabel value="VASCULITIS"  />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="TKA:" for="TKA" />
-                                        <p:selectBooleanCheckbox id="TKA" value="#{patientController.selected.diagnosis.TKA}" />
+                                        <p:selectBooleanCheckbox id="TKA" value="#{patientController.selected.diagnosis.tka}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="GCA:" for="GCA" />
-                                        <p:selectBooleanCheckbox id="GCA" value="#{patientController.selected.diagnosis.GCA}" />
+                                        <p:selectBooleanCheckbox id="GCA" value="#{patientController.selected.diagnosis.gca}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="PAN:" for="PAN" />
-                                        <p:selectBooleanCheckbox id="PAN" value="#{patientController.selected.diagnosis.PAN}" />
+                                        <p:selectBooleanCheckbox id="PAN" value="#{patientController.selected.diagnosis.pan}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="KD:" for="KD" />
-                                        <p:selectBooleanCheckbox id="KD" value="#{patientController.selected.diagnosis.KD}" />
+                                        <p:selectBooleanCheckbox id="KD" value="#{patientController.selected.diagnosis.kd}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="AAV:" for="AAV" />
-                                        <p:selectBooleanCheckbox id="AAV" value="#{patientController.selected.diagnosis.AAV}" />
+                                        <p:selectBooleanCheckbox id="AAV" value="#{patientController.selected.diagnosis.aav}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="MPA:" for="MPA" />
-                                        <p:selectBooleanCheckbox id="MPA" value="#{patientController.selected.diagnosis.MPA}" />
+                                        <p:selectBooleanCheckbox id="MPA" value="#{patientController.selected.diagnosis.mpa}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="GPA_WG:" for="GPA_WG" />
-                                        <p:selectBooleanCheckbox id="GPA_WG" value="#{patientController.selected.diagnosis.GPA_WG}" />
+                                        <p:selectBooleanCheckbox id="GPA_WG" value="#{patientController.selected.diagnosis.gpa_WG}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="EGPA_CSS:" for="EGPA_CSS" />
-                                        <p:selectBooleanCheckbox id="EGPA_CSS" value="#{patientController.selected.diagnosis.EGPA_CSS}" />
+                                        <p:selectBooleanCheckbox id="EGPA_CSS" value="#{patientController.selected.diagnosis.egpa_CSS}" />
                                         <p:spacer height="1" width="25" ></p:spacer>
                                         <p:outputLabel value="Anti_GBM_GPS:" for="anti_GBM_GPS" />
                                         <p:selectBooleanCheckbox id="anti_GBM_GPS" value="#{patientController.selected.diagnosis.anti_GBM_GPS}" />

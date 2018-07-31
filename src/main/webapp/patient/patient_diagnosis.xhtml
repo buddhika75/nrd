@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                     <h:form>
+                        <p:panel  style="margin: auto" rendered="#{patientController.selected.rheumatoidArthritisData ne null}" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+
+                            <p:panelGrid columns="2" >
+                                <h:panelGroup >
+                                    <p:panelGrid columns="7" >
+                                        <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                        <p:outputLabel id="clinicNumber" value="#{patientController.selected.clinicNumber}"  />
+                                        <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                        <p:outputLabel id="dateOfRegistration"   value="#{patientController.selected.dateOfRegistration}"  >
+                                            <f:convertDateTime  pattern="dd MM yyyy" ></f:convertDateTime>
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                        <p:outputLabel id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}"  />
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+  
+                             
+            
+                             
+                            <p:panelGrid  columns="2">
+                                 <p:panelGrid columns="1" style="float: right">
+                                    <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                                    <p:commandButton value="Rheumatoid Arthritis Data" action="#{patientController.toAddRaDate()}" ajax="false" ></p:commandButton>
+                                    <p:commandButton value="Systemic Lupus ErythematosusData" action="/patient/patient_sled" ajax="false" ></p:commandButton>
+                                    <p:commandButton value="Spondyloarthristis Date" action="/patient/patient_sd" ajax="false" ></p:commandButton>
+                                
+                            </p:panelGrid>
+                                <h:panelGroup>
+                                    <p:panelGrid>
+                                    <p:row >
+                                        <p:column>
+                                         <p:selectBooleanCheckbox id="RA" value="#{patientController.selected.diagnosis.ra}"  />
+                                         <p:outputLabel value="&emsp;RA" for="RA" />
+                                        <p:spacer height="1" width="40" ></p:spacer>
+                                        
+                                        
+                                        <p:selectBooleanCheckbox id="OA" value="#{patientController.selected.diagnosis.oa}"  />
+                                         <p:outputLabel value="&emsp;OA" for="OA" />
+                                        <p:spacer height="1" width="35" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="JIA" value="#{patientController.selected.diagnosis.jia}"  />
+                                         <p:outputLabel value="&emsp;JIA" for="JIA" />
+                                        <p:spacer height="1" width="40" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="GOUT" value="#{patientController.selected.diagnosis.gout}"  />
+                                         <p:outputLabel value="&emsp;GOUT" for="GOUT" />
+                                        <p:spacer height="1" width="55" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="undifferentiated_IA" value="#{patientController.selected.diagnosis.undifferentiated_IA}"  />
+                                         <p:outputLabel value="&emsp;undifferentiated IA" for="undifferentiated_IA" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                    <p:column colspan="2" >
+                                            <p:selectBooleanCheckbox id="CTD" value="#{patientController.selected.diagnosis.ctd}"  />
+                                            <p:outputLabel value="&emsp;CTD" for="CTD" />
+                                            <p:spacer height="1" width="30" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="SLE" value="#{patientController.selected.diagnosis.sle}"  />
+                                            <p:outputLabel value="&emsp;SLE" for="SLE" />
+                                            <p:spacer height="1" width="30" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="APLS" value="#{patientController.selected.diagnosis.apls}"  />
+                                            <p:outputLabel value="&emsp;APLS" for="APLS" />
+                                            <p:spacer height="1" width="30" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="MCTD" value="#{patientController.selected.diagnosis.mctd}"  />
+                                            <p:outputLabel value="&emsp;MCTD" for="MCTD" />
+                                            <p:spacer height="1" width="55" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="scleroderma" value="#{patientController.selected.diagnosis.scleroderma}"  />
+                                            <p:outputLabel value="&emsp;Scleroderma" for="scleroderma" />
+                                            <p:spacer height="1" width="130" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="sjogrens" value="#{patientController.selected.diagnosis.sjogrens}"  />
+                                            <p:outputLabel value="&emsp;Sjogrens" for="sjogrens" />
+                                            <p:spacer height="1" width="30" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="dermato_Polymyositis" value="#{patientController.selected.diagnosis.dermato_Polymyositis}"  />
+                                            <p:outputLabel value="&emsp;Dermato/Polymyositis" for="dermato_Polymyositis" />
+                                            <p:spacer height="1" width="30" ></p:spacer>
+                                            
+                                            <p:selectBooleanCheckbox id="OVERLAP" value="#{patientController.selected.diagnosis.overlap}"  />
+                                            <p:outputLabel value="&emsp;OVERLAP" for="OVERLAP" />
+                                            <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                    </p:column>
+                                    </p:row>
+                                      
+                                                
+                                            
+                                        
+                                <p:row>
+                                    <p:column>
+                                        
+                                        <p:selectBooleanCheckbox id="spA" value="#{patientController.selected.diagnosis.spA}"  />
+                                        <p:outputLabel value="&emsp;spA" for="spA" />
+                                        <p:spacer height="1" width="33" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="AS" value="#{patientController.selected.diagnosis.a_s}"  />
+                                        <p:outputLabel value="&emsp;AS" for="AS" />
+                                        <p:spacer height="1" width="37" ></p:spacer>
+
+                                        <p:selectBooleanCheckbox id="axial" value="#{patientController.selected.diagnosis.axial}" />
+                                        <p:outputLabel value="&emsp;Axial" for="axial" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="peripheral" value="#{patientController.selected.diagnosis.peripheral}" />
+                                        <p:outputLabel value="&emsp;Peripheral" for="peripheral" />
+                                        <p:spacer height="1" width="27" ></p:spacer>
+                                       
+                                        <p:selectBooleanCheckbox id="mixed_Axial_and_Peripheral" value="#{patientController.selected.diagnosis.mixed_Axial_and_Peripheral}" />
+                                        <p:outputLabel value="&emsp;Mixed_Axial_and_Peripheral" for="mixed_Axial_and_Peripheral" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="reactive" value="#{patientController.selected.diagnosis.reactive}" />
+                                        <p:outputLabel value="&emsp;Reactive" for="reactive" />
+                                        <p:spacer height="1" width="35" ></p:spacer>
+                                       
+                                        <p:selectBooleanCheckbox id="psoriatic" value="#{patientController.selected.diagnosis.psoriatic}" />
+                                        <p:outputLabel value="&emsp;Psoriatic" for="psoriatic" />
+                                        <p:spacer height="1" width="110" ></p:spacer>
+
+                                        
+                                        <p:selectBooleanCheckbox id="IBD_associated" value="#{patientController.selected.diagnosis.ibd_associated}" />
+                                        <p:outputLabel value="&emsp;IBD_associated" for="IBD_associated" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        <br></br>
+                                        <p:spacer height="1" width="86" ></p:spacer>
+                                        <p:selectBooleanCheckbox id="reiter_s" value="#{patientController.selected.diagnosis.reiter_s}" />
+                                        <p:outputLabel value="&emsp;Reiter's" for="reiter_s" />
+                                        <p:spacer height="1" width="8" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="juvenile" value="#{patientController.selected.diagnosis.juvenile}" />
+                                        <p:outputLabel value="&emsp;Juvenile" for="juvenile" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row >
+                                    <p:column>
+
+                                        <p:selectBooleanCheckbox id="vasculitis" value="#{patientController.selected.diagnosis.vasculitis}" />
+                                        <p:outputLabel value="&emsp;VASCULITIS" for="vasculitis" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="TKA" value="#{patientController.selected.diagnosis.tka}" />
+                                        <p:outputLabel value="&emsp;TKA" for="TKA" />
+                                        <p:spacer height="1" width="65" ></p:spacer>
+                                       
+                                        <p:selectBooleanCheckbox id="GCA" value="#{patientController.selected.diagnosis.gca}" />
+                                        <p:outputLabel value="&emsp;GCA" for="GCA" />
+                                        <p:spacer height="1" width="60" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="PAN" value="#{patientController.selected.diagnosis.pan}" />
+                                        <p:outputLabel value="&emsp;PAN" for="PAN" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="KD" value="#{patientController.selected.diagnosis.kd}" />
+                                        <p:outputLabel value="&emsp;KD" for="KD" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        
+                                        <p:selectBooleanCheckbox id="AAV" value="#{patientController.selected.diagnosis.aav}" />
+                                        <p:outputLabel value="&emsp;AAV" for="AAV" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="MPA" value="#{patientController.selected.diagnosis.mpa}" />
+                                        <p:outputLabel value="&emsp;MPA" for="MPA" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+
+                                         <p:selectBooleanCheckbox id="GPA_WG" value="#{patientController.selected.diagnosis.gpa_WG}" />
+                                        <p:outputLabel value="&emsp;GPA(WG0" for="GPA_WG" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="EGPA_CSS" value="#{patientController.selected.diagnosis.egpa_CSS}" />
+                                        <p:outputLabel value="&emsp;EGPA(CSS)" for="EGPA_CSS" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="anti_GBM_GPS" value="#{patientController.selected.diagnosis.anti_GBM_GPS}" />
+                                        <p:outputLabel value="&emsp;Anti-GBM(GPS)" for="anti_GBM_GPS" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <br></br>
+                                        <p:spacer height="1" width="135" ></p:spacer>
+                                        <p:selectBooleanCheckbox id="CV" value="#{patientController.selected.diagnosis.cv}" />
+                                        <p:outputLabel value="&emsp;CV" for="CV" />
+                                        <p:spacer height="1" width="70" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="igA_HSP" value="#{patientController.selected.diagnosis.iga_HSP}" />
+                                        <p:outputLabel value="&emsp;IgA(HSP)" for="igA_HSP" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                       
+                                        <p:selectBooleanCheckbox id="HUV" value="#{patientController.selected.diagnosis.huv}" />
+                                        <p:outputLabel value="&emsp;HUV" for="HUV" />
+                                        <p:spacer height="1" width="32" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="BD" value="#{patientController.selected.diagnosis.bd}" />
+                                        <p:outputLabel value="&emsp;BD" for="BD" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                       
+                                        <p:selectBooleanCheckbox id="other_Vasculitis" value="#{patientController.selected.diagnosis.other_Vasculitis}" />
+                                        <p:outputLabel value="&emsp;Other Vasculitis" for="other_Vasculitis" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+
+                                    </p:column>
+                                </p:row>
+                                
+                                        <p:row>
+                                            <p:column >
+                                             
+
+                                        <p:selectBooleanCheckbox id="soft_Tissue_Diseases" value="#{patientController.selected.diagnosis.soft_Tissue_Diseases}" />
+                                        <p:outputLabel value="&emsp;Soft tissue Diseases" for="soft_Tissue_Diseases" />
+                                        <p:spacer height="1" width="60" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="fibromyalgia" value="#{patientController.selected.diagnosis.fibromyalgia}" />
+                                        <p:outputLabel value="&emsp;Fibromyalgia" for="fibromyalgia" />
+                                        <p:spacer height="1" width="22" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="bt" value="#{patientController.selected.diagnosis.bt}" />
+                                        <p:outputLabel value="&emsp;BT" for="bt" />
+                                        <p:spacer height="1" width="70" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="adhesive_Capsulitis" value="#{patientController.selected.diagnosis.adhesive_Capsulitis}" />
+                                        <p:outputLabel value="&emsp;Adhesive Capsulitis" for="adhesive_Capsulitis" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="oher_SJ_Ds" value="#{patientController.selected.diagnosis.other_SJ_Ds}" />
+                                        <p:outputLabel value="&emsp;Other_SJ_Ds" for="oher_SJ_Ds" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="te" value="#{patientController.selected.diagnosis.te}" />
+                                        <p:outputLabel value="&emsp;TE" for="te" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="ge" value="#{patientController.selected.diagnosis.ge1}" />
+                                        <p:outputLabel value="&emsp;GE" for="ge" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="dqts" value="#{patientController.selected.diagnosis.dqts}" />
+                                        <p:outputLabel value="&emsp;DQTS" for="dqts" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                         <br></br>
+                                        
+                                         <p:spacer height="1" width="218" ></p:spacer>
+                                        <p:selectBooleanCheckbox id="ulna_Styloid" value="#{patientController.selected.diagnosis.ulna_Styloid}" />
+                                        <p:outputLabel value="&emsp;Ulna Styloid" for="ulna_Styloid" />
+                                        <p:spacer height="1" width="27" ></p:spacer>
+                                       
+                                        <p:selectBooleanCheckbox id="pf" value="#{patientController.selected.diagnosis.pf}" />
+                                        <p:outputLabel value="&emsp;PF" for="pf" />
+                                        <p:spacer height="1" width="70" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="achilles_Tendinitis" value="#{patientController.selected.diagnosis.achilles_Tendinitis}" />
+                                        <p:outputLabel value="&emsp;Achilles Tendinitis" for="achilles_Tendinitis" />
+                                        <p:spacer height="1" width="43" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="metatarsalgia" value="#{patientController.selected.diagnosis.metatarsalgia}" />
+                                        <p:outputLabel value="&emsp;Metatarsalgia" for="metatarsalgia" />
+                                        <p:spacer height="1" width="26" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="other_std" value="#{patientController.selected.diagnosis.other_std}" />
+                                        <p:outputLabel value="&emsp;Other Soft Tissue Diseases" for="other_std" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        
+                                   
+                                            </p:column>
+                                        </p:row>
+                                <p:row >
+                                    <p:column >
+                                        <p:selectBooleanCheckbox id="regional_Pain_Syndromes" value="#{patientController.selected.diagnosis.regional_Pain_Syndromes}" />
+                                        <p:outputLabel value="&emsp;Regional Pain Syndromes" for="regional_Pain_Syndromes" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="backache" value="#{patientController.selected.diagnosis.backache}" />
+                                        <p:outputLabel value="&emsp;Backache" for="backache" />
+                                        <p:spacer height="1" width="40" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="neck_Pain" value="#{patientController.selected.diagnosis.neck_Pain}" />
+                                        <p:outputLabel value="&emsp;Neck Pain" for="neck_Pain" />
+                                        <p:spacer height="1" width="26" ></p:spacer>
+                                        
+                                        <p:selectBooleanCheckbox id="other_Regional_Pain_Syndromes" value="#{patientController.selected.diagnosis.other_Regional_Pain_Syndromes}" />
+                                        <p:outputLabel value="&emsp;Other Regional Pain Syndromes" for="other_Regional_Pain_Syndromes" />
+                                        <p:spacer height="1" width="30" ></p:spacer>
+                                        
+                                        
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row >
+                                    <p:column  >
+                                        <p:outputLabel value="Disgnosis Comments:" for="disgnosisComments" />
+                                        <p:inputTextarea rows="4" cols="150" id="disgnosisComments" value="#{patientController.selected.diagnosis.disgnosisComments}" />
+                                    </p:column>
+                                </p:row>
+
+                                           
+                                </p:panelGrid>
+                               </h:panelGroup> 
+                                   
+                            
+                            </p:panelGrid>
+
+                             
+                            
+                            
+                            
+
+
+
+
+                        </p:panel>
+                        
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

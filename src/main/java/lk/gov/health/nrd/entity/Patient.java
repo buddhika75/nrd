@@ -52,6 +52,7 @@ public class Patient implements Serializable {
     @ManyToOne
     Area city;
     String nic;
+    String diagnosisTypedisplay;
 
     @Enumerated(EnumType.STRING)
     ReferredBy referredBy;
@@ -71,10 +72,14 @@ public class Patient implements Serializable {
     SystemicLupusErythematosusData systemicLupusErythematosusData;
     @OneToOne(cascade = CascadeType.ALL)
     SpondyloarthristisData SpondyloarthristisData;
-    
-   
-    
-    
+    @OneToOne(cascade = CascadeType.ALL)
+    Investigation Investigation;
+    @OneToOne(cascade = CascadeType.ALL)
+    Complication Complication;
+    @OneToOne(cascade = CascadeType.ALL)
+    Threatment Threatment;
+    @OneToOne(cascade = CascadeType.ALL)
+    Visit Visit;
 
     public Department getRegisteredDepartment() {
         return registeredDepartment;
@@ -256,6 +261,9 @@ public class Patient implements Serializable {
     }
 
     public RheumatoidArthritisData getRheumatoidArthritisData() {
+        if(rheumatoidArthritisData ==null){
+            rheumatoidArthritisData = new RheumatoidArthritisData();
+        }
         return rheumatoidArthritisData;
     }
 
@@ -285,6 +293,52 @@ public class Patient implements Serializable {
         this.SpondyloarthristisData = SpondyloarthristisData;
     }
 
+    public Investigation getInvestigation() {
+        if(Investigation == null){
+            Investigation = new Investigation();
+                    }
+        return Investigation;
+    }
+
+    public void setInvestigation(Investigation Investigation) {
+        this.Investigation = Investigation;
+    }
+
+    public Complication getComplication() {
+        if(Complication == null){
+        Complication = new Complication();
+        }
+        return Complication;
+    }
+
+    public void setComplication(Complication Complication) {
+        this.Complication = Complication;
+    }
+
+    public Threatment getThreatment() {
+        if(Threatment == null){
+        Threatment = new Threatment();
+        }
+        return Threatment;
+    }
+
+    public void setThreatment(Threatment Threatment) {
+        this.Threatment = Threatment;
+    }
+
+    public Visit getVisit() {
+        if(Visit == null){
+        Visit = new Visit();
+        }
+        return Visit;
+    }
+
+    public void setVisit(Visit Visit) {
+        this.Visit = Visit;
+    }
+
+    
+    
     
     
     
@@ -302,10 +356,7 @@ public class Patient implements Serializable {
             return false;
         }
         Patient other = (Patient) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
@@ -313,5 +364,15 @@ public class Patient implements Serializable {
         return "lk.gov.health.nrd.entity.Patient[ id=" + id + " ]";
     }
 
+    public String getDiagnosisTypedisplay() {
+        return diagnosisTypedisplay;
+    }
+
+    public void setDiagnosisTypedisplay(String diagnosisTypedisplay) {
+        this.diagnosisTypedisplay = diagnosisTypedisplay;
+    }
+
+    
+    
    
 }

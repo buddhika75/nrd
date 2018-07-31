@@ -172,7 +172,7 @@
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="spinal pain"></p:outputLabel></p:column>
-                                   
+                                   <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
                                     <p:column>  
                                         <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiSpinalPain}">
                                         <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
@@ -181,7 +181,7 @@
                                 </p:row>
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Peripheral arthritis"></p:outputLabel></p:column>
-                                 
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
                                     <p:column>   
                                         <p:inputText value="#{patientController.selected.spondyloarthristisData.basdaiPeripheralArthritis}">
                                         <p:ajax event="change" process="@this" update="basdaiCalculatedScore" listener="#{patientController.spondyloarthristisdatBASDAI()}" />

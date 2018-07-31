@@ -41,6 +41,9 @@
                                 </h:panelGroup>
                             </p:panelGrid>
 
+                            
+                            
+                            
                             <h:panelGroup rendered="true">
 
                                 <table style="position: relative;">
@@ -231,7 +234,7 @@
                                             <p:selectBooleanCheckbox  style="position: absolute; left:177px;top:70px;" id="raj46Stc" value="#{patientController.selected.rheumatoidArthritisData.raj46Stc}">
                                                 <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
                                             </p:selectBooleanCheckbox>
-
+                                            
 
                                         </td>
 
@@ -428,7 +431,21 @@
                                                     <center><p:outputLabel value="Display only -Das 28-"></p:outputLabel></center></p:graphicImage>
                                         </td>
                                     </tr>
-                                    
+                                    <tr>
+                                        <td>
+                                            <p:spacer width="100" height="10" />
+                                            SWOLEN JOINTS
+                                        </td>
+                                        <td>
+                                            <p:spacer width="100" height="10" />
+                                            TENDER JOINTS
+                                        </td>
+                                        <td>
+                                            <p:spacer width="50" height="10" />
+                                            DAS 28 (Display only)
+                                        </td>
+                                        
+                                    </tr>
                                 </table>
                             </h:panelGroup>
 
@@ -457,7 +474,7 @@
                                 
                                 <p:row>
                                     <p:column>
-                                        <p:selectOneRadio disabled="true" value="#{patientController.selected.rheumatoidArthritisData.jointInvolvement}" layout="grid" columns="1" >
+                                        <p:selectOneRadio value="#{patientController.selected.rheumatoidArthritisData.jointInvolvement}" layout="grid" columns="1" >
                                             <f:selectItems  value="#{enumController.jointInvolvements}" ></f:selectItems>
                                               <p:ajax event="change" process="@this" update="totalScoreTargetPopulation" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
                                             

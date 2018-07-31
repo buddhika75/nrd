@@ -1,0 +1,885 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                    <h:form>
+                        <p:panel  style="margin: auto" rendered="#{patientController.selected.rheumatoidArthritisData ne null}" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+
+                            <p:panelGrid columns="2" >
+                                <h:panelGroup >
+                                    <p:panelGrid columns="7" >
+                                        <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                        <p:outputLabel id="clinicNumber" value="#{patientController.selected.clinicNumber}"  />
+                                        <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                        <p:outputLabel id="dateOfRegistration"   value="#{patientController.selected.dateOfRegistration}"  >
+                                            <f:convertDateTime  pattern="dd MM yyyy" ></f:convertDateTime>
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                        <p:outputLabel id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}"  />
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+
+                            
+                            
+                             <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Ix"></p:outputLabel>
+                                    </p:column>
+                                    
+                                    <p:column>
+                                        <p:calendar value="#{patientController.selected.investigation.dateOfvisit1}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                   <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit2}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit3}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit4}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit5}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit6}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit7}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit8}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit9}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                    <p:column>
+                                       <p:calendar value="#{patientController.selected.investigation.dateOfvisit10}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                  
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ESR"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.esrDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="CRP"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.crpDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                   
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="RF"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.rfDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                    
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Anti CCP"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.antiCcpDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ANA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.anaDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="DsDNA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.dsDnaDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="cANCA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.caNcaDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="pANCA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.paNcaDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                    
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Hb"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.hbDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="WBC"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.wbcDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="N"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ndateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="L"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.ldateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="M"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.mdateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.mdateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="E"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.edateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit2}"></p:inputText>
+                                    </p:column> 
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit4}"></p:inputText>
+                                    </p:column> 
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit6}"></p:inputText>
+                                    </p:column> 
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit7}"></p:inputText>
+                                    </p:column> 
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit8}"></p:inputText>
+                                    </p:column> 
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit9}"></p:inputText>
+                                    </p:column> 
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.edateOfVisit10}"></p:inputText>
+                                    </p:column> 
+
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Platelets"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.plateletsDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="sGOT/AST"></p:outputLabel>
+                                    </p:column>
+                                      <p:column>
+                                          <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="sGPT/ALT"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgotAstDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sgptAltDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="sBilirubin"></p:outputLabel>
+                                    </p:column>
+                                      <p:column>
+                                          <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.sbilirubinDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="sCreatinin"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.screatininDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="FBS"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.fbsDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                     
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="sUric Acid"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.suricAcidDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                     
+                                     
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="UFR (Alb)"></p:outputLabel>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit1}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit2}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit3}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit4}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit5}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit6}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit7}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit8}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit9}"></p:inputText>
+                                    </p:column>
+                                     <p:column>
+                                         <p:inputText value="#{patientController.selected.investigation.ufrDateOfVisit10}"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                 
+                            </p:panelGrid>
+                        
+                        </p:panel>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

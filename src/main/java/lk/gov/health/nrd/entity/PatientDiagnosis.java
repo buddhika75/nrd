@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
+
 /**
  *
  * @author User
@@ -27,62 +28,62 @@ public class PatientDiagnosis implements Serializable {
     @OneToOne(mappedBy = "diagnosis")
     Patient patient;
 
-    Boolean RA;
-    Boolean OA;
-    Boolean JIA;
-    Boolean GOUT;
-    Boolean Undifferentiated_IA;
-    Boolean CTD;
-    Boolean SLE;
-    Boolean APS;
-    Boolean MCTD;
-    Boolean OVERLAP;
-    Boolean Scleroderma;
-    Boolean Dermato_Polymyositis;
-    Boolean Sjogrens;
-    Boolean Other_CTD;
-    Boolean SpA;
-    Boolean A_S;
-    Boolean Axial;
-    Boolean Peripheral;
-    Boolean Mixed_Axial_and_Peripheral;
-    Boolean Reactive;
-    Boolean Psoriatic;
-    Boolean IBD_associated;
-    Boolean Reiter_s;
-    Boolean Juvenile;
-    Boolean VASCULITIS;
-    Boolean TKA;
-    Boolean GCA;
-    Boolean PAN;
-    Boolean KD;
-    Boolean AAV;
-    Boolean MPA;
-    Boolean GPA_WG;
-    Boolean EGPA_CSS;
-    Boolean Anti_GBM_GPS;
-    Boolean CV;
-    Boolean IgA_HSP;
-    Boolean HUV;
-    Boolean BD;
-    Boolean Other_Vasculitis;
-    Boolean Soft_Tissue_Diseases;
-    Boolean Fibromyalgia;
-    Boolean BT;
-    Boolean Adhesive_Capsulitis;
-    Boolean Other_SJ_Ds;
-    Boolean TE;
-    Boolean GE;
-    Boolean DQTS;
-    Boolean Ulna_Styloid;
-    Boolean PF;
-    Boolean Achilles_Tendinitis;
-    Boolean Metatarsalgia;
-    Boolean Regional_Pain_Syndromes;
-    Boolean Backache;
-    Boolean Neck_Pain;
-    Boolean Other_Regional_Pain_Syndromes;
-    Boolean OTHER;
+    boolean ra;
+    boolean oa;
+    boolean jia;
+    boolean gout;
+    boolean undifferentiated_IA;
+    boolean ctd;
+    boolean sle;
+    boolean apls;
+    boolean mctd;
+    boolean overlap;
+    boolean scleroderma;
+    boolean dermato_Polymyositis;
+    boolean sjogrens;
+    boolean Other_CTD;
+    boolean spA;
+    boolean a_s;
+    boolean axial;
+    boolean peripheral;
+    boolean mixed_Axial_and_Peripheral;
+    boolean reactive;
+    boolean psoriatic;
+    boolean ibd_associated;
+    boolean reiter_s;
+    boolean juvenile;
+    boolean vasculitis;
+    boolean tka;
+    boolean gca;
+    boolean pan;
+    boolean kd;
+    boolean aav;
+    boolean mpa;
+    boolean gpa_WG;
+    boolean egpa_CSS;
+    boolean anti_GBM_GPS;
+    boolean cv;
+    boolean iga_HSP;
+    boolean huv;
+    boolean bd;
+    boolean other_Vasculitis;
+    boolean soft_Tissue_Diseases;
+    boolean fibromyalgia;
+    boolean bt;
+    boolean adhesive_Capsulitis;
+    boolean other_SJ_Ds;
+    boolean te;
+    boolean ge1;
+    boolean dqts;
+    boolean ulna_Styloid;
+    boolean pf;
+    boolean achilles_Tendinitis;
+    boolean metatarsalgia;
+    boolean regional_Pain_Syndromes;
+    boolean backache;
+    boolean neck_Pain;
+    boolean other_Regional_Pain_Syndromes;
+    boolean other_std;
 
     @Lob
     String disgnosisComments;
@@ -90,7 +91,6 @@ public class PatientDiagnosis implements Serializable {
     String otherVasculitis;
     String otherDiagnosis;
 
-    
     public Long getId() {
         return id;
     }
@@ -107,452 +107,452 @@ public class PatientDiagnosis implements Serializable {
         this.patient = patient;
     }
 
-    public Boolean getRA() {
-        return RA;
+    public boolean isRa() {
+        return ra;
     }
 
-    public void setRA(Boolean RA) {
-        this.RA = RA;
+    public void setRa(boolean ra) {
+        this.ra = ra;
     }
 
-    public Boolean getOA() {
-        return OA;
+    public boolean isOa() {
+        return oa;
     }
 
-    public void setOA(Boolean OA) {
-        this.OA = OA;
+    public void setOa(boolean oa) {
+        this.oa = oa;
     }
 
-    public Boolean getJIA() {
-        return JIA;
+    public boolean isJia() {
+        return jia;
     }
 
-    public void setJIA(Boolean JIA) {
-        this.JIA = JIA;
+    public void setJia(boolean jia) {
+        this.jia = jia;
     }
 
-    public Boolean getGOUT() {
-        return GOUT;
+    public boolean isGout() {
+        return gout;
     }
 
-    public void setGOUT(Boolean GOUT) {
-        this.GOUT = GOUT;
+    public void setGout(boolean gout) {
+        this.gout = gout;
     }
 
-    public Boolean getUndifferentiated_IA() {
-        return Undifferentiated_IA;
+    public boolean isUndifferentiated_IA() {
+        return undifferentiated_IA;
     }
 
-    public void setUndifferentiated_IA(Boolean Undifferentiated_IA) {
-        this.Undifferentiated_IA = Undifferentiated_IA;
+    public void setUndifferentiated_IA(boolean undifferentiated_IA) {
+        this.undifferentiated_IA = undifferentiated_IA;
     }
 
-    public Boolean getCTD() {
-        return CTD;
+    public boolean isCtd() {
+        return ctd;
     }
 
-    public void setCTD(Boolean CTD) {
-        this.CTD = CTD;
+    public void setCtd(boolean ctd) {
+        this.ctd = ctd;
     }
 
-    public Boolean getSLE() {
-        return SLE;
+    public boolean isSle() {
+        return sle;
     }
 
-    public void setSLE(Boolean SLE) {
-        this.SLE = SLE;
+    public void setSle(boolean sle) {
+        this.sle = sle;
     }
 
-    public Boolean getAPS() {
-        return APS;
+    public boolean isApls() {
+        return apls;
     }
 
-    public void setAPS(Boolean APS) {
-        this.APS = APS;
+    public void setApls(boolean apls) {
+        this.apls = apls;
     }
 
-    public Boolean getMCTD() {
-        return MCTD;
+    public boolean isMctd() {
+        return mctd;
     }
 
-    public void setMCTD(Boolean MCTD) {
-        this.MCTD = MCTD;
+    public void setMctd(boolean mctd) {
+        this.mctd = mctd;
     }
 
-    public Boolean getOVERLAP() {
-        return OVERLAP;
+    public boolean isOverlap() {
+        return overlap;
     }
 
-    public void setOVERLAP(Boolean OVERLAP) {
-        this.OVERLAP = OVERLAP;
+    public void setOverlap(boolean overlap) {
+        this.overlap = overlap;
     }
 
-    public Boolean getScleroderma() {
-        return Scleroderma;
+    public boolean isScleroderma() {
+        return scleroderma;
     }
 
-    public void setScleroderma(Boolean Scleroderma) {
-        this.Scleroderma = Scleroderma;
+    public void setScleroderma(boolean scleroderma) {
+        this.scleroderma = scleroderma;
     }
 
-    public Boolean getDermato_Polymyositis() {
-        return Dermato_Polymyositis;
+    public boolean isDermato_Polymyositis() {
+        return dermato_Polymyositis;
     }
 
-    public void setDermato_Polymyositis(Boolean Dermato_Polymyositis) {
-        this.Dermato_Polymyositis = Dermato_Polymyositis;
+    public void setDermato_Polymyositis(boolean dermato_Polymyositis) {
+        this.dermato_Polymyositis = dermato_Polymyositis;
     }
 
-    public Boolean getSjogrens() {
-        return Sjogrens;
+    public boolean isSjogrens() {
+        return sjogrens;
     }
 
-    public void setSjogrens(Boolean Sjogrens) {
-        this.Sjogrens = Sjogrens;
+    public void setSjogrens(boolean sjogrens) {
+        this.sjogrens = sjogrens;
     }
 
-    public Boolean getOther_CTD() {
+    public boolean isOther_CTD() {
         return Other_CTD;
     }
 
-    public void setOther_CTD(Boolean Other_CTD) {
+    public void setOther_CTD(boolean Other_CTD) {
         this.Other_CTD = Other_CTD;
     }
 
-    public Boolean getSpA() {
-        return SpA;
+    public boolean isSpA() {
+        return spA;
     }
 
-    public void setSpA(Boolean SpA) {
-        this.SpA = SpA;
+    public void setSpA(boolean spA) {
+        this.spA = spA;
     }
 
-    public Boolean getA_S() {
-        return A_S;
+    public boolean isA_s() {
+        return a_s;
     }
 
-    public void setA_S(Boolean A_S) {
-        this.A_S = A_S;
+    public void setA_s(boolean a_s) {
+        this.a_s = a_s;
     }
 
-    public Boolean getAxial() {
-        return Axial;
+    public boolean isAxial() {
+        return axial;
     }
 
-    public void setAxial(Boolean Axial) {
-        this.Axial = Axial;
+    public void setAxial(boolean axial) {
+        this.axial = axial;
     }
 
-    public Boolean getPeripheral() {
-        return Peripheral;
+    public boolean isPeripheral() {
+        return peripheral;
     }
 
-    public void setPeripheral(Boolean Peripheral) {
-        this.Peripheral = Peripheral;
+    public void setPeripheral(boolean peripheral) {
+        this.peripheral = peripheral;
     }
 
-    public Boolean getMixed_Axial_and_Peripheral() {
-        return Mixed_Axial_and_Peripheral;
+    public boolean isMixed_Axial_and_Peripheral() {
+        return mixed_Axial_and_Peripheral;
     }
 
-    public void setMixed_Axial_and_Peripheral(Boolean Mixed_Axial_and_Peripheral) {
-        this.Mixed_Axial_and_Peripheral = Mixed_Axial_and_Peripheral;
+    public void setMixed_Axial_and_Peripheral(boolean mixed_Axial_and_Peripheral) {
+        this.mixed_Axial_and_Peripheral = mixed_Axial_and_Peripheral;
     }
 
-    public Boolean getReactive() {
-        return Reactive;
+    public boolean isReactive() {
+        return reactive;
     }
 
-    public void setReactive(Boolean Reactive) {
-        this.Reactive = Reactive;
+    public void setReactive(boolean reactive) {
+        this.reactive = reactive;
     }
 
-    public Boolean getPsoriatic() {
-        return Psoriatic;
+    public boolean isPsoriatic() {
+        return psoriatic;
     }
 
-    public void setPsoriatic(Boolean Psoriatic) {
-        this.Psoriatic = Psoriatic;
+    public void setPsoriatic(boolean psoriatic) {
+        this.psoriatic = psoriatic;
     }
 
-    public Boolean getIBD_associated() {
-        return IBD_associated;
+    public boolean isIbd_associated() {
+        return ibd_associated;
     }
 
-    public void setIBD_associated(Boolean IBD_associated) {
-        this.IBD_associated = IBD_associated;
+    public void setIbd_associated(boolean ibd_associated) {
+        this.ibd_associated = ibd_associated;
     }
 
-    public Boolean getReiter_s() {
-        return Reiter_s;
+    public boolean isReiter_s() {
+        return reiter_s;
     }
 
-    public void setReiter_s(Boolean Reiter_s) {
-        this.Reiter_s = Reiter_s;
+    public void setReiter_s(boolean reiter_s) {
+        this.reiter_s = reiter_s;
     }
 
-    public Boolean getJuvenile() {
-        return Juvenile;
+    public boolean isJuvenile() {
+        return juvenile;
     }
 
-    public void setJuvenile(Boolean Juvenile) {
-        this.Juvenile = Juvenile;
+    public void setJuvenile(boolean juvenile) {
+        this.juvenile = juvenile;
     }
 
-    public Boolean getVASCULITIS() {
-        return VASCULITIS;
+    public boolean isVasculitis() {
+        return vasculitis;
     }
 
-    public void setVASCULITIS(Boolean VASCULITIS) {
-        this.VASCULITIS = VASCULITIS;
+    public void setVasculitis(boolean vasculitis) {
+        this.vasculitis = vasculitis;
     }
 
-    public Boolean getTKA() {
-        return TKA;
+    public boolean isTka() {
+        return tka;
     }
 
-    public void setTKA(Boolean TKA) {
-        this.TKA = TKA;
+    public void setTka(boolean tka) {
+        this.tka = tka;
     }
 
-    public Boolean getGCA() {
-        return GCA;
+    public boolean isGca() {
+        return gca;
     }
 
-    public void setGCA(Boolean GCA) {
-        this.GCA = GCA;
+    public void setGca(boolean gca) {
+        this.gca = gca;
     }
 
-    public Boolean getPAN() {
-        return PAN;
+    public boolean isPan() {
+        return pan;
     }
 
-    public void setPAN(Boolean PAN) {
-        this.PAN = PAN;
+    public void setPan(boolean pan) {
+        this.pan = pan;
     }
 
-    public Boolean getKD() {
-        return KD;
+    public boolean isKd() {
+        return kd;
     }
 
-    public void setKD(Boolean KD) {
-        this.KD = KD;
+    public void setKd(boolean kd) {
+        this.kd = kd;
     }
 
-    public Boolean getAAV() {
-        return AAV;
+    public boolean isAav() {
+        return aav;
     }
 
-    public void setAAV(Boolean AAV) {
-        this.AAV = AAV;
+    public void setAav(boolean aav) {
+        this.aav = aav;
     }
 
-    public Boolean getMPA() {
-        return MPA;
+    public boolean isMpa() {
+        return mpa;
     }
 
-    public void setMPA(Boolean MPA) {
-        this.MPA = MPA;
+    public void setMpa(boolean mpa) {
+        this.mpa = mpa;
     }
 
-    public Boolean getGPA_WG() {
-        return GPA_WG;
+    public boolean isGpa_WG() {
+        return gpa_WG;
     }
 
-    public void setGPA_WG(Boolean GPA_WG) {
-        this.GPA_WG = GPA_WG;
+    public void setGpa_WG(boolean gpa_WG) {
+        this.gpa_WG = gpa_WG;
     }
 
-    public Boolean getEGPA_CSS() {
-        return EGPA_CSS;
+    public boolean isEgpa_CSS() {
+        return egpa_CSS;
     }
 
-    public void setEGPA_CSS(Boolean EGPA_CSS) {
-        this.EGPA_CSS = EGPA_CSS;
+    public void setEgpa_CSS(boolean egpa_CSS) {
+        this.egpa_CSS = egpa_CSS;
     }
 
-    public Boolean getAnti_GBM_GPS() {
-        return Anti_GBM_GPS;
+    public boolean isAnti_GBM_GPS() {
+        return anti_GBM_GPS;
     }
 
-    public void setAnti_GBM_GPS(Boolean Anti_GBM_GPS) {
-        this.Anti_GBM_GPS = Anti_GBM_GPS;
+    public void setAnti_GBM_GPS(boolean anti_GBM_GPS) {
+        this.anti_GBM_GPS = anti_GBM_GPS;
     }
 
-    public Boolean getCV() {
-        return CV;
+    public boolean isCv() {
+        return cv;
     }
 
-    public void setCV(Boolean CV) {
-        this.CV = CV;
+    public void setCv(boolean cv) {
+        this.cv = cv;
     }
 
-    public Boolean getIgA_HSP() {
-        return IgA_HSP;
+    public boolean isIga_HSP() {
+        return iga_HSP;
     }
 
-    public void setIgA_HSP(Boolean IgA_HSP) {
-        this.IgA_HSP = IgA_HSP;
+    public void setIga_HSP(boolean iga_HSP) {
+        this.iga_HSP = iga_HSP;
     }
 
-    public Boolean getHUV() {
-        return HUV;
+    public boolean isHuv() {
+        return huv;
     }
 
-    public void setHUV(Boolean HUV) {
-        this.HUV = HUV;
+    public void setHuv(boolean huv) {
+        this.huv = huv;
     }
 
-    public Boolean getBD() {
-        return BD;
+    public boolean isBd() {
+        return bd;
     }
 
-    public void setBD(Boolean BD) {
-        this.BD = BD;
+    public void setBd(boolean bd) {
+        this.bd = bd;
     }
 
-    public Boolean getOther_Vasculitis() {
-        return Other_Vasculitis;
+    public boolean isOther_Vasculitis() {
+        return other_Vasculitis;
     }
 
-    public void setOther_Vasculitis(Boolean Other_Vasculitis) {
-        this.Other_Vasculitis = Other_Vasculitis;
+    public void setOther_Vasculitis(boolean other_Vasculitis) {
+        this.other_Vasculitis = other_Vasculitis;
     }
 
-    public Boolean getSoft_Tissue_Diseases() {
-        return Soft_Tissue_Diseases;
+    public boolean isSoft_Tissue_Diseases() {
+        return soft_Tissue_Diseases;
     }
 
-    public void setSoft_Tissue_Diseases(Boolean Soft_Tissue_Diseases) {
-        this.Soft_Tissue_Diseases = Soft_Tissue_Diseases;
+    public void setSoft_Tissue_Diseases(boolean soft_Tissue_Diseases) {
+        this.soft_Tissue_Diseases = soft_Tissue_Diseases;
     }
 
-    public Boolean getFibromyalgia() {
-        return Fibromyalgia;
+    public boolean isFibromyalgia() {
+        return fibromyalgia;
     }
 
-    public void setFibromyalgia(Boolean Fibromyalgia) {
-        this.Fibromyalgia = Fibromyalgia;
+    public void setFibromyalgia(boolean fibromyalgia) {
+        this.fibromyalgia = fibromyalgia;
     }
 
-    public Boolean getBT() {
-        return BT;
+    public boolean isBt() {
+        return bt;
     }
 
-    public void setBT(Boolean BT) {
-        this.BT = BT;
+    public void setBt(boolean bt) {
+        this.bt = bt;
     }
 
-    public Boolean getAdhesive_Capsulitis() {
-        return Adhesive_Capsulitis;
+    public boolean isAdhesive_Capsulitis() {
+        return adhesive_Capsulitis;
     }
 
-    public void setAdhesive_Capsulitis(Boolean Adhesive_Capsulitis) {
-        this.Adhesive_Capsulitis = Adhesive_Capsulitis;
+    public void setAdhesive_Capsulitis(boolean adhesive_Capsulitis) {
+        this.adhesive_Capsulitis = adhesive_Capsulitis;
     }
 
-    public Boolean getOther_SJ_Ds() {
-        return Other_SJ_Ds;
+    public boolean isOther_SJ_Ds() {
+        return other_SJ_Ds;
     }
 
-    public void setOther_SJ_Ds(Boolean Other_SJ_Ds) {
-        this.Other_SJ_Ds = Other_SJ_Ds;
+    public void setOther_SJ_Ds(boolean other_SJ_Ds) {
+        this.other_SJ_Ds = other_SJ_Ds;
     }
 
-    public Boolean getTE() {
-        return TE;
+    public boolean isTe() {
+        return te;
     }
 
-    public void setTE(Boolean TE) {
-        this.TE = TE;
+    public void setTe(boolean te) {
+        this.te = te;
     }
 
-    public Boolean getGE() {
-        return GE;
+    public boolean isGe1() {
+        return ge1;
     }
 
-    public void setGE(Boolean GE) {
-        this.GE = GE;
+    public void setGe1(boolean ge1) {
+        this.ge1 = ge1;
     }
 
-    public Boolean getDQTS() {
-        return DQTS;
+    public boolean isDqts() {
+        return dqts;
     }
 
-    public void setDQTS(Boolean DQTS) {
-        this.DQTS = DQTS;
+    public void setDqts(boolean dqts) {
+        this.dqts = dqts;
     }
 
-    public Boolean getUlna_Styloid() {
-        return Ulna_Styloid;
+    public boolean isUlna_Styloid() {
+        return ulna_Styloid;
     }
 
-    public void setUlna_Styloid(Boolean Ulna_Styloid) {
-        this.Ulna_Styloid = Ulna_Styloid;
+    public void setUlna_Styloid(boolean ulna_Styloid) {
+        this.ulna_Styloid = ulna_Styloid;
     }
 
-    public Boolean getPF() {
-        return PF;
+    public boolean isPf() {
+        return pf;
     }
 
-    public void setPF(Boolean PF) {
-        this.PF = PF;
+    public void setPf(boolean pf) {
+        this.pf = pf;
     }
 
-    public Boolean getAchilles_Tendinitis() {
-        return Achilles_Tendinitis;
+    public boolean isAchilles_Tendinitis() {
+        return achilles_Tendinitis;
     }
 
-    public void setAchilles_Tendinitis(Boolean Achilles_Tendinitis) {
-        this.Achilles_Tendinitis = Achilles_Tendinitis;
+    public void setAchilles_Tendinitis(boolean achilles_Tendinitis) {
+        this.achilles_Tendinitis = achilles_Tendinitis;
     }
 
-    public Boolean getMetatarsalgia() {
-        return Metatarsalgia;
+    public boolean isMetatarsalgia() {
+        return metatarsalgia;
     }
 
-    public void setMetatarsalgia(Boolean Metatarsalgia) {
-        this.Metatarsalgia = Metatarsalgia;
+    public void setMetatarsalgia(boolean metatarsalgia) {
+        this.metatarsalgia = metatarsalgia;
     }
 
-    public Boolean getRegional_Pain_Syndromes() {
-        return Regional_Pain_Syndromes;
+    public boolean isRegional_Pain_Syndromes() {
+        return regional_Pain_Syndromes;
     }
 
-    public void setRegional_Pain_Syndromes(Boolean Regional_Pain_Syndromes) {
-        this.Regional_Pain_Syndromes = Regional_Pain_Syndromes;
+    public void setRegional_Pain_Syndromes(boolean regional_Pain_Syndromes) {
+        this.regional_Pain_Syndromes = regional_Pain_Syndromes;
     }
 
-    public Boolean getBackache() {
-        return Backache;
+    public boolean isBackache() {
+        return backache;
     }
 
-    public void setBackache(Boolean Backache) {
-        this.Backache = Backache;
+    public void setBackache(boolean backache) {
+        this.backache = backache;
     }
 
-    public Boolean getNeck_Pain() {
-        return Neck_Pain;
+    public boolean isNeck_Pain() {
+        return neck_Pain;
     }
 
-    public void setNeck_Pain(Boolean Neck_Pain) {
-        this.Neck_Pain = Neck_Pain;
+    public void setNeck_Pain(boolean neck_Pain) {
+        this.neck_Pain = neck_Pain;
     }
 
-    public Boolean getOther_Regional_Pain_Syndromes() {
-        return Other_Regional_Pain_Syndromes;
+    public boolean isOther_Regional_Pain_Syndromes() {
+        return other_Regional_Pain_Syndromes;
     }
 
-    public void setOther_Regional_Pain_Syndromes(Boolean Other_Regional_Pain_Syndromes) {
-        this.Other_Regional_Pain_Syndromes = Other_Regional_Pain_Syndromes;
+    public void setOther_Regional_Pain_Syndromes(boolean other_Regional_Pain_Syndromes) {
+        this.other_Regional_Pain_Syndromes = other_Regional_Pain_Syndromes;
     }
 
-    public Boolean getOTHER() {
-        return OTHER;
+    public boolean isOther_std() {
+        return other_std;
     }
 
-    public void setOTHER(Boolean OTHER) {
-        this.OTHER = OTHER;
+    public void setOther_std(boolean other_std) {
+        this.other_std = other_std;
     }
 
     public String getDisgnosisComments() {
@@ -590,6 +590,12 @@ public class PatientDiagnosis implements Serializable {
     
     
     
+    
+    
+    
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -614,5 +620,12 @@ public class PatientDiagnosis implements Serializable {
     public String toString() {
         return "lk.gov.health.nrd.entity.PatientDiagnosis[ id=" + id + " ]";
     }
-
+    
 }
+    
+
+
+
+ 
+   
+
