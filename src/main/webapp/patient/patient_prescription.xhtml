@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                    <h:form>
+                        <p:panel  style="margin: auto" rendered="#{patientController.selected.rheumatoidArthritisData ne null}" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.department.name} - #{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+
+                            <p:panelGrid columns="2" >
+                                <h:panelGroup >
+                                    <p:panelGrid columns="7" >
+                                        <p:outputLabel value="Clinic Number:" for="clinicNumber" />
+                                        <p:outputLabel id="clinicNumber" value="#{patientController.selected.clinicNumber}"  />
+                                        <p:outputLabel value="Date of Registration:" for="dateOfRegistration" />
+                                        <p:outputLabel id="dateOfRegistration"   value="#{patientController.selected.dateOfRegistration}"  >
+                                            <f:convertDateTime  pattern="dd MM yyyy" ></f:convertDateTime>
+                                        </p:outputLabel>
+                                        <p:outputLabel value="Name of Patient:" for="nameOfPatient" />
+                                        <p:outputLabel id="nameOfPatient" style="width: 300px;" value="#{patientController.selected.nameOfPatient}"  />
+
+                                    </p:panelGrid>
+                                </h:panelGroup>
+                            </p:panelGrid>
+                            
+                            <br/>
+                              <b><p:outputLabel value="Prescription"></p:outputLabel></b>
+                              <br/><br/>
+                            <p:panelGrid>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Methotrexate"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.methotrexate}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Sulphasalazine"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.sulphasalazine}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Leflunomide"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.leflunomide}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Hydroxychloroquine"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.hydroxychloroquine}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Folic Acid"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.folicacid}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Diclofenac Na"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.diclofenac_na}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Omeprazole"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.omeprazole}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Paracetamole"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.paracetamol}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Prednisolone"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.prednisolone}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row >
+                                        <p:column><p:outputLabel value="Azathioprine"></p:outputLabel></p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.azathioprine}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.nameOfdrug1}"></p:inputText>
+                                        </p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.doseOfdrug1}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.nameOfdrug2}"></p:inputText>
+                                        </p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.doseOfdruge2}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.nameOfdrug3}"></p:inputText>
+                                        </p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.doseOfdruge3}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.nameOfdrug4}"></p:inputText>
+                                        </p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.doseOfdruge4}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.nameOfdrug5}"></p:inputText>
+                                        </p:column>
+                                        <p:column>
+                                            <p:inputText value="#{patientController.selected.prescription.doseOfdruge5}"></p:inputText>
+                                            <p:selectOneMenu>
+                                            <f:selectItems value="#{enumController.treatmentUnit}" var="t" itemLabel="#{t.label}" itemValue="#{t}" ></f:selectItems>
+                                            </p:selectOneMenu>
+                                        </p:column>
+                                    </p:row>
+                                
+                           </p:panelGrid>
+                            <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                            <p:commandButton value="Excel" ajax="false" >
+                            <p:dataExporter target="" type="xls" fileName="" ></p:dataExporter>
+                            </p:commandButton>
+                            
+       
+                        </p:panel>
+                    </h:form>
+                </f:view>
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -52,7 +52,7 @@ public class Patient implements Serializable {
     @ManyToOne
     Area city;
     String nic;
-    String diagnosisTypedisplay;
+   
 
     @Enumerated(EnumType.STRING)
     ReferredBy referredBy;
@@ -75,9 +75,9 @@ public class Patient implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     Investigation Investigation;
     @OneToOne(cascade = CascadeType.ALL)
-    Complication Complication;
+    ShortSummary ShortSummary;
     @OneToOne(cascade = CascadeType.ALL)
-    Threatment Threatment;
+    Prescription Prescription;
     @OneToOne(cascade = CascadeType.ALL)
     Visit Visit;
 
@@ -304,28 +304,31 @@ public class Patient implements Serializable {
         this.Investigation = Investigation;
     }
 
-    public Complication getComplication() {
-        if(Complication == null){
-        Complication = new Complication();
+    public ShortSummary getShortSummary() {
+        if(ShortSummary == null){
+        ShortSummary =new ShortSummary();
         }
-        return Complication;
+        return ShortSummary;
     }
 
-    public void setComplication(Complication Complication) {
-        this.Complication = Complication;
+    public void setShortSummary(ShortSummary ShortSummary) {
+        this.ShortSummary = ShortSummary;
     }
 
-    public Threatment getThreatment() {
-        if(Threatment == null){
-        Threatment = new Threatment();
+    public Prescription getPrescription() {
+        if(Prescription == null){
+        Prescription = new Prescription();
         }
-        return Threatment;
+        return Prescription;
     }
 
-    public void setThreatment(Threatment Threatment) {
-        this.Threatment = Threatment;
+    public void setPrescription(Prescription Prescription) {
+        this.Prescription = Prescription;
     }
 
+    
+    
+    
     public Visit getVisit() {
         if(Visit == null){
         Visit = new Visit();
@@ -364,15 +367,5 @@ public class Patient implements Serializable {
         return "lk.gov.health.nrd.entity.Patient[ id=" + id + " ]";
     }
 
-    public String getDiagnosisTypedisplay() {
-        return diagnosisTypedisplay;
-    }
-
-    public void setDiagnosisTypedisplay(String diagnosisTypedisplay) {
-        this.diagnosisTypedisplay = diagnosisTypedisplay;
-    }
-
-    
-    
    
 }

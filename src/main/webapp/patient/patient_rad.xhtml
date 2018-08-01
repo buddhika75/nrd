@@ -428,7 +428,7 @@
                                         
                                             <td style="position: relative;">
                                                 <p:graphicImage library="images" name="das28.PNG" style=" width:200px ; height: 400px ;" >
-                                                    <center><p:outputLabel value="Display only -Das 28-"></p:outputLabel></center></p:graphicImage>
+                                                </p:graphicImage>
                                         </td>
                                     </tr>
                                     <tr>
@@ -477,7 +477,6 @@
                                         <p:selectOneRadio value="#{patientController.selected.rheumatoidArthritisData.jointInvolvement}" layout="grid" columns="1" >
                                             <f:selectItems  value="#{enumController.jointInvolvements}" ></f:selectItems>
                                               <p:ajax event="change" process="@this" update="totalScoreTargetPopulation" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
-                                            
                                         </p:selectOneRadio>
                                     </p:column>
                                     <p:column>
@@ -583,25 +582,29 @@
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="2">
-                                        <p:outputLabel value="ESR"></p:outputLabel>
+                                      <p:column colspan="2">
+                                          <p:selectOneRadio value="#{patientController.selected.rheumatoidArthritisData.esrCrp}" layout="grid" columns="1" >
+                                              <f:selectItems  value="#{enumController.esrCrp}" ></f:selectItems>
+                                             
+                                              <p:ajax event="change" process="@this" update="resultOfEsrCrp calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            </p:selectOneRadio>
                                     </p:column>
-                                    <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.esrDAS}">
-                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
-                                         </p:inputText>
-                                    </p:column>
-                                </p:row>
-                                <p:row>
-                                    <p:column colspan="2">
-                                        <p:outputLabel value="CRP"></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.crpDAS}">
-                                            <p:ajax event="change" process="@this" update="calculatedScoredas" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                     <p:column> 
+                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.resultOfEsrCrp}" id="resultOfEsrCrp">
+                                              
                                         </p:inputText>
+                                         
+                                          <p:selectOneMenu  >
+                                              <f:selectItems value="#{enumController.esrCrp}" var="e" itemLabel="#{e.label}" itemValue="#{e}" ></f:selectItems>
+                                        </p:selectOneMenu>
+                                         
+                                         
                                     </p:column>
                                 </p:row>
+                                
+                                
+                                
+                                
                                 <p:row>
                                     <p:column colspan="2">
                                         <p:outputLabel value="Patient Global Health (0 – 100)"></p:outputLabel>
@@ -638,6 +641,7 @@
                                         <p:outputLabel value="Date"></p:outputLabel>
                                     </p:column>
                                 </p:row>
+                                
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="ESR"></p:outputLabel>
@@ -894,9 +898,9 @@
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.cdaiRemissionSDAICDAI}" id="cdairemissioncal"></p:inputText>
                                     </p:column>
                                 </p:row>
-                                
+                              
                             </p:panelGrid>
-
+<p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
                         </p:panel>
                     </h:form>
                 </f:view>
@@ -906,6 +910,6 @@
             </ui:define>
 
         </ui:composition>
-
+  
     </body>
 </html>

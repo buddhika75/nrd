@@ -19,6 +19,7 @@ import lk.gov.health.nrd.enums.DoseUnitAndFrequency;
 import lk.gov.health.nrd.enums.DurationOfSymptoms;
 import lk.gov.health.nrd.enums.CRPunits;
 import lk.gov.health.nrd.enums.SSZDoseUnitAndFrequency;
+import lk.gov.health.nrd.enums.EsrCrp;
 
 /**
  *
@@ -162,8 +163,6 @@ public class RheumatoidArthritisData extends Encounter {
     private int totalScore;
     private int tenderJointCountDAS;
     private int swollenJointCountDAS;
-    private double esrDAS;
-    private double crpDAS;
     private int patientGlobalHealthDAS;
     private double calculatedScoreDAS;
     private double esrValue;
@@ -184,7 +183,6 @@ public class RheumatoidArthritisData extends Encounter {
     private int Unit;
     @Enumerated(EnumType.STRING)
     private CRPunits unitofCRP;
-    private int SSZUnit;
     @Enumerated(EnumType.STRING)
     private SSZDoseUnitAndFrequency unitofSSZ;
     private double sdaiRemissionSDAICDAI;
@@ -196,7 +194,9 @@ public class RheumatoidArthritisData extends Encounter {
     private double crpSDAICDAI;
     private int totalScoreTargetPopulation;
     private String totalDiognosis;
-  
+    @Enumerated(EnumType.STRING)
+    private EsrCrp EsrCrp;
+    private double resultOfEsrCrp;
     
     
     
@@ -976,13 +976,6 @@ public class RheumatoidArthritisData extends Encounter {
 
     
     
-    
-    
-    
-
-
-    
-    
     public JointInvolvement getJointInvolvement() {
         return jointInvolvement;
     }
@@ -1053,22 +1046,6 @@ public class RheumatoidArthritisData extends Encounter {
 
     public void setSwollenJointCountDAS(int swollenJointCountDAS) {
         this.swollenJointCountDAS = swollenJointCountDAS;
-    }
-
-    public double getEsrDAS() {
-        return esrDAS;
-    }
-
-    public void setEsrDAS(double esrDAS) {
-        this.esrDAS = esrDAS;
-    }
-
-    public double getCrpDAS() {
-        return crpDAS;
-    }
-
-    public void setCrpDAS(double crpDAS) {
-        this.crpDAS = crpDAS;
     }
 
     public int getPatientGlobalHealthDAS() {
@@ -1215,13 +1192,6 @@ public class RheumatoidArthritisData extends Encounter {
         this.unitofCRP = unitofCRP;
     }
 
-    public int getSSZUnit() {
-        return SSZUnit;
-    }
-
-    public void setSSZUnit(int SSZUnit) {
-        this.SSZUnit = SSZUnit;
-    }
 
     public SSZDoseUnitAndFrequency getUnitofSSZ() {
         return unitofSSZ;
@@ -1374,6 +1344,24 @@ public class RheumatoidArthritisData extends Encounter {
     public void setTotalDiognosis(String totalDiognosis) {
         this.totalDiognosis = totalDiognosis;
     }
+
+    public EsrCrp getEsrCrp() {
+        return EsrCrp;
+    }
+
+    public void setEsrCrp(EsrCrp EsrCrp) {
+        this.EsrCrp = EsrCrp;
+    }
+
+    public double getResultOfEsrCrp() {
+        return resultOfEsrCrp;
+    }
+
+    public void setResultOfEsrCrp(double resultOfEsrCrp) {
+        this.resultOfEsrCrp = resultOfEsrCrp;
+    }
+    
+    
 
  
     

@@ -24,6 +24,8 @@ import lk.gov.health.nrd.enums.DoseUnitAndFrequency;
 import lk.gov.health.nrd.enums.DurationOfSymptoms;
 import lk.gov.health.nrd.enums.SSZDoseUnitAndFrequency;
 import lk.gov.health.nrd.enums.SteroidsType;
+import lk.gov.health.nrd.enums.PrescriptionUnit;
+import lk.gov.health.nrd.enums.EsrCrp;
 
 /**
  *
@@ -106,5 +108,13 @@ public class EnumController {
     
     public SteroidsType[] getSteroidsType(){
     return SteroidsType.values();
+    }
+    
+    public PrescriptionUnit[] getTreatmentUnit(){
+    return PrescriptionUnit.values();
+    }
+   
+    public EsrCrp[] getEsrCrp(){
+    return EsrCrp.values();
     }
 }

@@ -101,21 +101,11 @@
                                 </h:panelGroup>
                                 <p:panelGrid columns="1" style="float: right;">
                                     <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
-                                    <p:commandButton value="Diagnosis" action="/patient/patient_diagnosis" ajax="false">
-                                        <p:inputTextarea rows="4" cols="10" value="#{patientController.selected.diagnosisTypedisplay}">
-                                            <p:ajax event="change" process="@this"  listener="#{patientController.diagnosisType()}" />
-                                           
-                                        </p:inputTextarea>
-                                        <br></br>
-                                    </p:commandButton>
-                                    
+                                    <p:commandButton value="Diagnosis" action="/patient/patient_diagnosis" ajax="false"></p:commandButton>
+                                    <p:commandButton value="Follow Up" action="/patient/patient_followup" ajax="false"></p:commandButton>
+                                    <p:commandButton value="Short Summary" action="/patient/patient_shortsummary" ajax="false"></p:commandButton>
+                                    <p:commandButton value="Prescription" action="/patient/patient_prescription" ajax="false"></p:commandButton>
                                     <p:commandButton value="Investigation" action="/patient/patient_investigation" ajax="false"></p:commandButton>
-                                    <p:commandButton value="Complication" action="/patient/patient_complication" ajax="false"></p:commandButton>
-                                    <p:commandButton value="Threatment" action="/patient/patient_threatment" ajax="false"></p:commandButton>
-                                    <p:commandButton value="Clinic Visit" action="/patient/patient_visit" ajax="false"></p:commandButton>
-                                  
-                                      
-                                    
                                 </p:panelGrid>
                                 
                             </p:panelGrid>

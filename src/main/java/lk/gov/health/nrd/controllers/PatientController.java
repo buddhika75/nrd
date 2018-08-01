@@ -26,6 +26,7 @@ import lk.gov.health.nrd.entity.PatientDiagnosis;
 import lk.gov.health.nrd.entity.RheumatoidArthritisData;
 import lk.gov.health.nrd.entity.SystemicLupusErythematosusData;
 import lk.gov.health.nrd.entity.SpondyloarthristisData;
+import lk.gov.health.nrd.enums.EsrCrp;
 /**
  *
  * @author rheumahealth2018
@@ -792,13 +793,12 @@ System.out.println("swollenJointCount = " + swollenJointCount);
          int b = selected.getRheumatoidArthritisData().getDurationOfSymptomsCal();
          int c = selected.getRheumatoidArthritisData().getSerologyCal();
          int d = selected.getRheumatoidArthritisData().getJointInvolvementCal();
-         double e = selected.getRheumatoidArthritisData().getEsrDAS();
-         double f = selected.getRheumatoidArthritisData().getCrpDAS();
          int p = selected.getRheumatoidArthritisData().getPatientGlobalHealthDAS();
          int t = selected.getRheumatoidArthritisData().getTenderJointCountDAS();
          int s = selected.getRheumatoidArthritisData().getSwollenJointCountDAS();
          int pga =selected.getRheumatoidArthritisData().getPatientGlobalAssessmentSDAICDAI();
          int ega = selected.getRheumatoidArthritisData().getEvaluatorGlobalAssessmentSDAICDAI();
+         double esrORcrp = selected.getRheumatoidArthritisData().getResultOfEsrCrp();
       
         
         
@@ -812,8 +812,21 @@ System.out.println("swollenJointCount = " + swollenJointCount);
         selected.getRheumatoidArthritisData().setTotalDiognosis(y);
         }
         
+         switch (selected.getRheumatoidArthritisData().getEsrCrp()){
+             case ESR:
+                 selected.getRheumatoidArthritisData().setResultOfEsrCrp(esrORcrp);
+                 break;
+             case CRP:
+                 selected.getRheumatoidArthritisData().setResultOfEsrCrp(esrORcrp);
+                 break;
+         }
+        
+        
+        
+        
+        
         double pts = 1.0*(p+t+s);
-        double dastotal = pts + e+f;
+        double dastotal = pts + esrORcrp;
         
         selected.getRheumatoidArthritisData().setCalculatedScoreDAS(dastotal);
      
@@ -1219,35 +1232,6 @@ System.out.println("immunologic = " + immunologic);
                 selected.getSpondyloarthristisData().setAsdasCrpScoreReference(a4);
             }
         }
-     
-     
-      
-    public void diagnosisType() {
-        System.out.println("cal = ");
-        
-        String num1 = "RA";
-        String num2 = "OA";
-
-        if (selected == null) {
-            return;
-        }
-        System.out.println("200");
          
-         if(selected.getDiagnosis().isRa() == true){
-             
-         selected.setDiagnosisTypedisplay(num1);
-         }
-         if(selected.getDiagnosis().isOa()== true){
-             
-         selected.setDiagnosisTypedisplay(num2);
-         }
-        
-        }
-          
-          
     }
-     
-     
-    
-
   

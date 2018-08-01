@@ -17,7 +17,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Complication extends Encounter {
+public class ShortSummary extends Encounter {
     
 
 
