@@ -33,6 +33,36 @@ public class WebUserController implements Serializable {
     WebUser loggedUser;
     String userName;
     String password;
+    private String currentPassword;
+    private String repeatPassword;
+
+    public String changeMyPassword() {
+        if (currentPassword == null || currentPassword.trim().equals("")) {
+            JsfUtil.addErrorMessage("Please Enter the Current Password");
+            return "";
+        }
+        if (password == null || password.trim().equals("")) {
+            JsfUtil.addErrorMessage("Please Enter the New Password");
+            return "";
+        }
+        if (repeatPassword == null || repeatPassword.trim().equals("")) {
+            JsfUtil.addErrorMessage("Please Enter the Repeat Password");
+            return "";
+        }
+        if (!password.equals(repeatPassword)) {
+            JsfUtil.addErrorMessage("Please Enter Matching Password");
+            return "";
+        }
+        if (!currentPassword.equals(loggedUser.getPassword())) {
+            JsfUtil.addErrorMessage("Please Enter the Current Password Correctly");
+            return "";
+        }
+
+        loggedUser.setPassword(password);
+        getFacade().edit(loggedUser);
+        JsfUtil.addSuccessMessage("Your password has been changed successfully! Thank you.");
+        return "/index";
+    }
 
     public String login() {
         if (userName.trim().equals("")) {
@@ -180,6 +210,30 @@ public class WebUserController implements Serializable {
 
     public List<WebUser> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+
+    public String getCurrentPassword() {
+        return currentPassword;
+    }
+
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
+    }
+
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
+    }
+
+    public lk.gov.health.nrd.facades.WebUserFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(lk.gov.health.nrd.facades.WebUserFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
     }
 
     @FacesConverter(forClass = WebUser.class)

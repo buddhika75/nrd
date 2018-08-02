@@ -79,7 +79,7 @@
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/subject/Edit.xhtml" afterPath="$PROJECT_DIR$/webapp/subject/Edit.xhtml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/subject/List.xhtml" afterPath="$PROJECT_DIR$/webapp/subject/List.xhtml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/subject/View.xhtml" afterPath="$PROJECT_DIR$/webapp/subject/View.xhtml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/template.xhtml" afterPath="$PROJECT_DIR$/webapp/template.xhtml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/template_1.xhtml" afterPath="$PROJECT_DIR$/webapp/template_1.xhtml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/webUser/Create.xhtml" afterPath="$PROJECT_DIR$/webapp/webUser/Create.xhtml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/webUser/Edit.xhtml" afterPath="$PROJECT_DIR$/webapp/webUser/Edit.xhtml" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/webUser/List.xhtml" afterPath="$PROJECT_DIR$/webapp/webUser/List.xhtml" />
@@ -205,7 +205,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/template.xhtml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/template_1.xhtml" />
         <option value="$PROJECT_DIR$/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" />
       </list>
@@ -349,7 +349,7 @@
   </component>
   <component name="RunManager" selected="GlassFish Server.nrdb-glass">
     <configuration name="Tom default" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.6" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/template.xhtml" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/template_1.xhtml" />
       <deployment>
         <artifact name="nrd:war exploded">
           <settings>
@@ -574,15 +574,15 @@
         </option>
       </method>
     </configuration>
-    <configuration name="template.xhtml" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/faces/template.xhtml" />
+    <configuration name="template_1.xhtml" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/faces/template_1.xhtml" />
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="GlassFish Server.nrdb-glass" />
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Tom default" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.template.xhtml" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.template_1.xhtml" />
     </list>
     <recent_temporary>
       <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.template.xhtml" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.template_1.xhtml" />
       </list>
     </recent_temporary>
   </component>
@@ -698,7 +698,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/template.xhtml">
+    <entry file="file://$PROJECT_DIR$/webapp/template_1.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="27" column="53" lean-forward="true" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
@@ -730,7 +730,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/template.xhtml">
+    <entry file="file://$PROJECT_DIR$/webapp/template_1.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2240">
           <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
@@ -746,7 +746,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/template.xhtml">
+    <entry file="file://$PROJECT_DIR$/webapp/template_1.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4480">
           <caret line="112" column="0" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="112" selection-end-column="0" />
@@ -800,7 +800,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/template.xhtml">
+    <entry file="file://$PROJECT_DIR$/webapp/template_1.xhtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />

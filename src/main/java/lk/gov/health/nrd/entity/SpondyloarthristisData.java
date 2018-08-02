@@ -21,6 +21,10 @@ import lk.gov.health.nrd.enums.CRPunits;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class SpondyloarthristisData extends Encounter {
 
+private boolean cbp;
+private boolean ibp;
+private boolean abp;
+private boolean grt;
 private String xray;    
 private String hla_b27;
 private String mri;
@@ -262,6 +266,38 @@ private CRPunits unitofCRP;
 
     public void setMri(String mri) {
         this.mri = mri;
+    }
+
+    public boolean isCbp() {
+        return cbp;
+    }
+
+    public void setCbp(boolean cbp) {
+        this.cbp = cbp;
+    }
+
+    public boolean isIbp() {
+        return ibp;
+    }
+
+    public void setIbp(boolean ibp) {
+        this.ibp = ibp;
+    }
+
+    public boolean isAbp() {
+        return abp;
+    }
+
+    public void setAbp(boolean abp) {
+        this.abp = abp;
+    }
+
+    public boolean isGrt() {
+        return grt;
+    }
+
+    public void setGrt(boolean grt) {
+        this.grt = grt;
     }
 
    

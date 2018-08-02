@@ -54,6 +54,16 @@
                             </p:panelGrid>
                                 <h:panelGroup>
                                     <p:panelGrid>
+                                        
+                                        <h:outputLabel for="b" value="CTD:" />
+                                            <p:selectCheckboxMenu id="b" value="#{patientController.selected.diagnosis.selectedctd}" label="ctdx"
+                                                        filter="true"  panelStyle="width:250px">
+                                                <f:selectItems value="#{patientController.selected.diagnosis.ctdx}" />
+                                            </p:selectCheckboxMenu>
+                                       <br/>
+                                         <p:commandButton value="Submit" style="margin-top:10px;" />
+ 
+                                         
                                     <p:row >
                                         <p:column>
                                          <p:selectBooleanCheckbox id="RA" value="#{patientController.selected.diagnosis.ra}"  />

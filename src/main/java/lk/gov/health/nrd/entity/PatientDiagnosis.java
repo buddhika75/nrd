@@ -6,6 +6,9 @@
 package lk.gov.health.nrd.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -84,12 +87,18 @@ public class PatientDiagnosis implements Serializable {
     boolean neck_Pain;
     boolean other_Regional_Pain_Syndromes;
     boolean other_std;
-
+    private String[] selectedctd;
+    private List<String> ctdx;
+     
+     
     @Lob
     String disgnosisComments;
     String otherCtd;
     String otherVasculitis;
     String otherDiagnosis;
+    
+    
+   
 
     public Long getId() {
         return id;
@@ -589,13 +598,6 @@ public class PatientDiagnosis implements Serializable {
 
     
     
-    
-    
-    
-    
-    
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -620,12 +622,33 @@ public class PatientDiagnosis implements Serializable {
     public String toString() {
         return "lk.gov.health.nrd.entity.PatientDiagnosis[ id=" + id + " ]";
     }
-    
+
+     @PostConstruct
+    public void ctdx() {
+        ctdx = new ArrayList<String>();
+        ctdx.add("SLE");
+        ctdx.add("APLS");
+    }
+
+    public String[] getSelectedctd() {
+        return selectedctd;
+    }
+
+    public void setSelectedctd(String[] selectedctd) {
+        this.selectedctd = selectedctd;
+    }
+
+    public List<String> getCtdx() {
+        return ctdx;
+    }
+
+    public void setCtdx(List<String> ctdx) {
+        this.ctdx = ctdx;
+    }
+
+
+
+
 }
-    
-
-
-
- 
    
 
