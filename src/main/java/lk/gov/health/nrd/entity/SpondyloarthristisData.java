@@ -21,14 +21,9 @@ import lk.gov.health.nrd.enums.CRPunits;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class SpondyloarthristisData extends Encounter {
 
-    
-    
-private boolean positiveXray;
-private boolean negativeXray;
-private boolean positiveHlaB27;
-private boolean negativeHlaB27;
-private boolean positiveMri;
-private boolean negativeMri;
+private String xray;    
+private String hla_b27;
+private String mri;
 private boolean diagnosisSpA;
 private boolean diagnosisAxialSpA;
 private boolean diagnosisPeripheralSpA;
@@ -52,57 +47,11 @@ private double asdasCrpScore;
 private String asdasEsrScoreReference;
 private String asdasCrpScoreReference;
 @Enumerated(EnumType.STRING)
-    private CRPunits unitofCRP;
+private CRPunits unitofCRP;
 
 
 
-    public boolean isPositiveXray() {
-        return positiveXray;
-    }
 
-    public void setPositiveXray(boolean positiveXray) {
-        this.positiveXray = positiveXray;
-    }
-
-    public boolean isNegativeXray() {
-        return negativeXray;
-    }
-
-    public void setNegativeXray(boolean negativeXray) {
-        this.negativeXray = negativeXray;
-    }
-
-    public boolean isPositiveHlaB27() {
-        return positiveHlaB27;
-    }
-
-    public void setPositiveHlaB27(boolean positiveHlaB27) {
-        this.positiveHlaB27 = positiveHlaB27;
-    }
-
-    public boolean isNegativeHlaB27() {
-        return negativeHlaB27;
-    }
-
-    public void setNegativeHlaB27(boolean negativeHlaB27) {
-        this.negativeHlaB27 = negativeHlaB27;
-    }
-
-    public boolean isPositiveMri() {
-        return positiveMri;
-    }
-
-    public void setPositiveMri(boolean positiveMri) {
-        this.positiveMri = positiveMri;
-    }
-
-    public boolean isNegativeMri() {
-        return negativeMri;
-    }
-
-    public void setNegativeMri(boolean negativeMri) {
-        this.negativeMri = negativeMri;
-    }
 
 
     public boolean isDiagnosisSpA() {
@@ -289,6 +238,30 @@ private String asdasCrpScoreReference;
 
     public void setAsdasCrpScoreReference(String asdasCrpScoreReference) {
         this.asdasCrpScoreReference = asdasCrpScoreReference;
+    }
+
+    public String getXray() {
+        return xray;
+    }
+
+    public void setXray(String xray) {
+        this.xray = xray;
+    }
+
+    public String getHla_b27() {
+        return hla_b27;
+    }
+
+    public void setHla_b27(String hla_b27) {
+        this.hla_b27 = hla_b27;
+    }
+
+    public String getMri() {
+        return mri;
+    }
+
+    public void setMri(String mri) {
+        this.mri = mri;
     }
 
    

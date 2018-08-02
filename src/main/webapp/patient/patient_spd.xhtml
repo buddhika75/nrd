@@ -40,7 +40,12 @@
                             
                              <p:panelGrid >
                                  <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                              <p:graphicImage library="images" name="ASAS_SpA.png" style=" width:700px ; height: 600px ;" ></p:graphicImage>
+
+                             
                              </p:panelGrid>
+                            
+                            
                             
                             <!--
                             <p:panelGrid>
@@ -86,81 +91,67 @@
                                 
                             </p:panelGrid>
                             -->
-                            <p:panelGrid>
+                           
+                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                                <p:outputLabel value="X-Ray : " for="xray"></p:outputLabel>
+                                    <p:selectOneRadio id="xray" value="#{patientController.selected.spondyloarthristisData.xray}">
+                                    <f:selectItem itemLabel="Positive &nbsp;" itemValue="xrayPositive" />
+                                    <f:selectItem itemLabel="Negative" itemValue="xrayNegative" />
+                                </p:selectOneRadio>
+                                
+                                <p:outputLabel value="HLA B27 : " for="hla_b27"></p:outputLabel>
+                                <p:selectOneRadio id="hla_b27" value="#{patientController.selected.spondyloarthristisData.hla_b27}">
+                                    <f:selectItem itemLabel="Positive &nbsp;" itemValue="hlaPositive" />
+                                    <f:selectItem itemLabel="Negative" itemValue="hlaNegative" />
+                                </p:selectOneRadio>
+                                
+                                <p:outputLabel value="MRI : " for="mri"></p:outputLabel>
+                                <p:selectOneRadio id="mri" value="#{patientController.selected.spondyloarthristisData.mri}">
+                                    <f:selectItem itemLabel="Positive &nbsp;" itemValue="mriPositive" />
+                                    <f:selectItem itemLabel="Negative" itemValue="mriNegative" />
+                                </p:selectOneRadio>
+                                
+                            </h:panelGrid>
+  
+                            
+                             <p:panelGrid>
                                 <p:row>
-                                    <p:column><p:outputLabel value="X-Ray"></p:outputLabel></p:column>
-                                    <p:column><p:outputLabel value="+"></p:outputLabel></p:column>
-                                    <p:column>
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.positiveXray}">
-                                        </p:selectBooleanCheckbox> 
-                                    </p:column>
-                                    <p:column><p:outputLabel value="-"></p:outputLabel></p:column>
-                                    <p:column>                                        
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.negativeXray}"> 
-                                        </p:selectBooleanCheckbox> 
-                                    </p:column>
+                                    <p:column colspan="2"><p:outputLabel value="Diagnosis"></p:outputLabel></p:column>
                                 </p:row>
                                 
                                 <p:row>
-                                    <p:column><p:outputLabel value="HLA B27"></p:outputLabel></p:column>
-                                    <p:column><p:outputLabel value="+"></p:outputLabel></p:column>
-                                   <p:column>                                        
-                                       <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.positiveHlaB27}"> 
-                                        </p:selectBooleanCheckbox> 
-                                    </p:column>
-                                    <p:column><p:outputLabel value="-"></p:outputLabel></p:column>
-                                   <p:column>                                        
-                                       <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.negativeHlaB27}"> 
-                                        </p:selectBooleanCheckbox> 
-                                    </p:column>
-                                </p:row>
-                                
-                                <p:row>
-                                    <p:column><p:outputLabel value="MRI"></p:outputLabel></p:column>
-                                    <p:column><p:outputLabel value="+"></p:outputLabel></p:column>
-                                    <p:column>                                        
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.positiveMri}"> 
-                                        </p:selectBooleanCheckbox> 
-                                    </p:column>
-                                    <p:column><p:outputLabel value="-"></p:outputLabel></p:column>
-                                    <p:column>                                        
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.negativeMri}"> 
-                                        </p:selectBooleanCheckbox> 
-                                    </p:column>
-                                </p:row>
-                                
-                                <p:row>
-                                    <p:column colspan="5"><p:outputLabel value="Diagnosis"></p:outputLabel></p:column>
-                                </p:row>
-                                
-                                <p:row>
-                                    <p:column colspan="3">   <p:outputLabel value="SpA"></p:outputLabel></p:column>
-                                    <p:column colspan="2">  
+                                    <p:column>   <p:outputLabel value="SpA"></p:outputLabel></p:column>
+                                    <p:column>  
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisSpA}"> </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="3">   <p:outputLabel value="Axial SpA"></p:outputLabel></p:column>
-                                    <p:column colspan="2">   
+                                    <p:column>   <p:outputLabel value="Axial SpA"></p:outputLabel></p:column>
+                                    <p:column>   
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisAxialSpA}"></p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="3">   <p:outputLabel value="Peripheral SpA"></p:outputLabel></p:column>
-                                    <p:column colspan="2">  
+                                    <p:column>   <p:outputLabel value="Peripheral SpA"></p:outputLabel></p:column>
+                                    <p:column>  
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisPeripheralSpA}"></p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column colspan="3">   <p:outputLabel value="Other"></p:outputLabel></p:column>
-                                    <p:column colspan="2">   
+                                    <p:column>   <p:outputLabel value="Other"></p:outputLabel></p:column>
+                                    <p:column>   
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisOther}"></p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>
                             
                             <p:panelGrid>
-                            <p:outputLabel value="BASDAI"></p:outputLabel>
+                                <p:row>
+                                    <p:column colspan="3">
+                                        <p:outputLabel value="BASDAI"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                            
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Fatigue"></p:outputLabel></p:column>
                                     <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
@@ -246,7 +237,11 @@
                             
                             
                             <p:panelGrid>
+                                <p:row>
+                                    <p:column> 
                                 <p:outputLabel value="ASDAS"></p:outputLabel>    
+                                    </p:column>
+                                </p:row>
                                 <p:row>
                                     <p:column> <p:outputLabel value="Spinal pain 0-10"></p:outputLabel> </p:column>
                                     <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
