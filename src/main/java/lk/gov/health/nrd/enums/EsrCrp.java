@@ -12,16 +12,16 @@ package lk.gov.health.nrd.enums;
 public enum EsrCrp {
    ESR,
    CRP;
-   
    public String getLabel() {
         switch (this) {
-            case  ESR:
+             case ESR:
                 return "mm/hr";
             case CRP:
                 return "mg/l";
             
         }
         return "Other";
-    }
+    
+   }
 }
    

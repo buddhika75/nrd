@@ -21,10 +21,23 @@ import lk.gov.health.nrd.enums.CRPunits;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class SpondyloarthristisData extends Encounter {
 
-private boolean cbp;
+private String cbp;
 private boolean ibp;
 private boolean abp;
-private boolean grt;
+private boolean grtn;
+private boolean pa;
+private boolean enthesitis;
+private boolean dactylitis;
+private boolean psoriasis;
+private boolean ibd;
+private boolean uveitis;
+private boolean eapr;
+private boolean pi;
+private boolean pfh;
+private boolean sacroiliitis;
+private boolean uorcorADO;
+private int asastotal;
+        
 private String xray;    
 private String hla_b27;
 private String mri;
@@ -268,13 +281,6 @@ private CRPunits unitofCRP;
         this.mri = mri;
     }
 
-    public boolean isCbp() {
-        return cbp;
-    }
-
-    public void setCbp(boolean cbp) {
-        this.cbp = cbp;
-    }
 
     public boolean isIbp() {
         return ibp;
@@ -292,23 +298,117 @@ private CRPunits unitofCRP;
         this.abp = abp;
     }
 
-    public boolean isGrt() {
-        return grt;
+    public boolean isGrtn() {
+        return grtn;
     }
 
-    public void setGrt(boolean grt) {
-        this.grt = grt;
+    public void setGrtn(boolean grtn) {
+        this.grtn = grtn;
     }
 
-   
+    public boolean isPa() {
+        return pa;
+    }
 
-    
+    public void setPa(boolean pa) {
+        this.pa = pa;
+    }
 
+    public boolean isEnthesitis() {
+        return enthesitis;
+    }
 
+    public void setEnthesitis(boolean enthesitis) {
+        this.enthesitis = enthesitis;
+    }
 
+    public boolean isDactylitis() {
+        return dactylitis;
+    }
 
+    public void setDactylitis(boolean dactylitis) {
+        this.dactylitis = dactylitis;
+    }
 
+    public boolean isPsoriasis() {
+        return psoriasis;
+    }
 
+    public void setPsoriasis(boolean psoriasis) {
+        this.psoriasis = psoriasis;
+    }
+
+    public boolean isIbd() {
+        return ibd;
+    }
+
+    public void setIbd(boolean ibd) {
+        this.ibd = ibd;
+    }
+
+    public boolean isUveitis() {
+        return uveitis;
+    }
+
+    public void setUveitis(boolean uveitis) {
+        this.uveitis = uveitis;
+    }
+
+    public boolean isEapr() {
+        return eapr;
+    }
+
+    public void setEapr(boolean eapr) {
+        this.eapr = eapr;
+    }
+
+    public boolean isPi() {
+        return pi;
+    }
+
+    public void setPi(boolean pi) {
+        this.pi = pi;
+    }
+
+    public boolean isPfh() {
+        return pfh;
+    }
+
+    public void setPfh(boolean pfh) {
+        this.pfh = pfh;
+    }
+
+    public boolean isSacroiliitis() {
+        return sacroiliitis;
+    }
+
+    public void setSacroiliitis(boolean sacroiliitis) {
+        this.sacroiliitis = sacroiliitis;
+    }
+
+    public boolean isUorcorADO() {
+        return uorcorADO;
+    }
+
+    public void setUorcorADO(boolean uorcorADO) {
+        this.uorcorADO = uorcorADO;
+    }
+
+    public int getAsastotal() {
+        return asastotal;
+    }
+
+    public void setAsastotal(int asastotal) {
+        this.asastotal = asastotal;
+    }
+
+    public String getCbp() {
+        return cbp;
+    }
+
+    public void setCbp(String cbp) {
+        this.cbp = cbp;
+    }
 
     
 }

@@ -197,6 +197,7 @@ public class RheumatoidArthritisData extends Encounter {
     @Enumerated(EnumType.STRING)
     private EsrCrp EsrCrp;
     private double resultOfEsrCrp;
+    private String confirmDAS;
     
     
     
@@ -1360,9 +1361,13 @@ public class RheumatoidArthritisData extends Encounter {
     public void setResultOfEsrCrp(double resultOfEsrCrp) {
         this.resultOfEsrCrp = resultOfEsrCrp;
     }
-    
-    
 
- 
-    
+    public String getConfirmDAS() {
+        return confirmDAS;
+    }
+
+    public void setConfirmDAS(String confirmDAS) {
+        this.confirmDAS = confirmDAS;
+    }
+   
 }

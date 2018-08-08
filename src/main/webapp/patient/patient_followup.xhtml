@@ -42,16 +42,15 @@
                             </p:panelGrid>
 
                             
-                            
-        
-        
-        
-        
-        
-        
-        
-  
-        <div>TODO write content</div>
+                            <br/>
+                              <center><b><p:outputLabel value="Previous Visit"></p:outputLabel></b></center>
+                              <br/>
+                              
+                            <p:panelGrid>
+                                <p:inputTextarea rows="17" cols="175" autoResize="190" />
+                             </p:panelGrid>
+                                <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                
         </p:panel>
                     </h:form>
                 </f:view>
