@@ -25,270 +25,268 @@ public class Investigation extends Encounter {
     
     
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit1;
+   private Date dateOfvisit1;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit2;
+   private Date dateOfvisit2;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit3;
+   private Date dateOfvisit3;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit4;
+   private Date dateOfvisit4;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit5;
+   private Date dateOfvisit5;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit6;
+   private Date dateOfvisit6;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit7;
+   private Date dateOfvisit7;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit8;
+   private Date dateOfvisit8;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit9;
+   private Date dateOfvisit9;
  @Temporal(javax.persistence.TemporalType.DATE)
-   Date dateOfvisit10;
+   private Date dateOfvisit10;
 
- double esrDateOfVisit1;
- double esrDateOfVisit2;
- double esrDateOfVisit3;
- double esrDateOfVisit4;
- double esrDateOfVisit5;
- double esrDateOfVisit6;
- double esrDateOfVisit7;
- double esrDateOfVisit8;
- double esrDateOfVisit9;
- double esrDateOfVisit10;
+ private double esrDateOfVisit1;
+ private double esrDateOfVisit2;
+ private double esrDateOfVisit3;
+ private double esrDateOfVisit4;
+ private double esrDateOfVisit5;
+ private double esrDateOfVisit6;
+ private double esrDateOfVisit7;
+ private double esrDateOfVisit8;
+ private double esrDateOfVisit9;
+ private double esrDateOfVisit10;
  
- double crpDateOfVisit1;
- double crpDateOfVisit2;
- double crpDateOfVisit3;
- double crpDateOfVisit4;
- double crpDateOfVisit5;
- double crpDateOfVisit6;
- double crpDateOfVisit7;
- double crpDateOfVisit8;
- double crpDateOfVisit9;
- double crpDateOfVisit10;
+ private double crpDateOfVisit1;
+ private double crpDateOfVisit2;
+ private double crpDateOfVisit3;
+ private double crpDateOfVisit4;
+ private double crpDateOfVisit5;
+ private double crpDateOfVisit6;
+ private double crpDateOfVisit7;
+ private double crpDateOfVisit8;
+ private double crpDateOfVisit9;
+ private double crpDateOfVisit10;
  
- String rfDateOfVisit1;
- String rfDateOfVisit2;
- String rfDateOfVisit3;
- String rfDateOfVisit4;
- String rfDateOfVisit5;
- String rfDateOfVisit6;
- String rfDateOfVisit7;
- String rfDateOfVisit8;
- String rfDateOfVisit9;
- String rfDateOfVisit10;
+ private String rfDateOfVisit1;
+ private String rfDateOfVisit2;
+ private String rfDateOfVisit3;
+ private String rfDateOfVisit4;
+ private String rfDateOfVisit5;
+ private String rfDateOfVisit6;
+ private String rfDateOfVisit7;
+ private String rfDateOfVisit8;
+ private String rfDateOfVisit9;
+ private String rfDateOfVisit10;
  
- double antiCcpDateOfVisit1;
- double antiCcpDateOfVisit2;
- double antiCcpDateOfVisit3;
- double antiCcpDateOfVisit4;
- double antiCcpDateOfVisit5;
- double antiCcpDateOfVisit6;
- double antiCcpDateOfVisit7;
- double antiCcpDateOfVisit8;
- double antiCcpDateOfVisit9;
- double antiCcpDateOfVisit10;
+ private double antiCcpDateOfVisit1;
+ private double antiCcpDateOfVisit2;
+ private double antiCcpDateOfVisit3;
+ private double antiCcpDateOfVisit4;
+ private double antiCcpDateOfVisit5;
+ private double antiCcpDateOfVisit6;
+ private double antiCcpDateOfVisit7;
+ private double antiCcpDateOfVisit8;
+ private double antiCcpDateOfVisit9;
+ private double antiCcpDateOfVisit10;
  
- double anaDateOfVisit1;
- double anaDateOfVisit2;
- double anaDateOfVisit3;
- double anaDateOfVisit4;
- double anaDateOfVisit5;
- double anaDateOfVisit6;
- double anaDateOfVisit7;
- double anaDateOfVisit8;
- double anaDateOfVisit9;
- double anaDateOfVisit10;
+ private double anaDateOfVisit1;
+ private double anaDateOfVisit2;
+ private double anaDateOfVisit3;
+ private double anaDateOfVisit4;
+ private double anaDateOfVisit5;
+ private double anaDateOfVisit6;
+ private double anaDateOfVisit7;
+ private double anaDateOfVisit8;
+ private double anaDateOfVisit9;
+ private double anaDateOfVisit10;
  
- double dsDnaDateOfVisit1; 
- double dsDnaDateOfVisit2;
- double dsDnaDateOfVisit3;
- double dsDnaDateOfVisit4;
- double dsDnaDateOfVisit5;
- double dsDnaDateOfVisit6;
- double dsDnaDateOfVisit7;
- double dsDnaDateOfVisit8;
- double dsDnaDateOfVisit9;
- double dsDnaDateOfVisit10;
+ private double dsDnaDateOfVisit1; 
+ private double dsDnaDateOfVisit2;
+ private double dsDnaDateOfVisit3;
+ private double dsDnaDateOfVisit4;
+ private double dsDnaDateOfVisit5;
+ private double dsDnaDateOfVisit6;
+ private double dsDnaDateOfVisit7;
+ private double dsDnaDateOfVisit8;
+ private double dsDnaDateOfVisit9;
+ private double dsDnaDateOfVisit10;
  
- double caNcaDateOfVisit1;
- double caNcaDateOfVisit2;
- double caNcaDateOfVisit3;
- double caNcaDateOfVisit4;
- double caNcaDateOfVisit5;
- double caNcaDateOfVisit6;
- double caNcaDateOfVisit7;
- double caNcaDateOfVisit8;
- double caNcaDateOfVisit9;
- double caNcaDateOfVisit10;
+ private double caNcaDateOfVisit1;
+ private double caNcaDateOfVisit2;
+ private double caNcaDateOfVisit3;
+ private double caNcaDateOfVisit4;
+ private double caNcaDateOfVisit5;
+ private double caNcaDateOfVisit6;
+ private double caNcaDateOfVisit7;
+ private double caNcaDateOfVisit8;
+ private double caNcaDateOfVisit9;
+ private double caNcaDateOfVisit10;
  
- double paNcaDateOfVisit1;
- double paNcaDateOfVisit2;
- double paNcaDateOfVisit3;
- double paNcaDateOfVisit4;
- double paNcaDateOfVisit5;
- double paNcaDateOfVisit6;
- double paNcaDateOfVisit7;
- double paNcaDateOfVisit8;
- double paNcaDateOfVisit9;
- double paNcaDateOfVisit10;
+ private double paNcaDateOfVisit1;
+ private double paNcaDateOfVisit2;
+ private double paNcaDateOfVisit3;
+ private double paNcaDateOfVisit4;
+ private double paNcaDateOfVisit5;
+ private double paNcaDateOfVisit6;
+ private double paNcaDateOfVisit7;
+ private double paNcaDateOfVisit8;
+ private double paNcaDateOfVisit9;
+ private double paNcaDateOfVisit10;
  
- double hbDateOfVisit1;
- double hbDateOfVisit2;
- double hbDateOfVisit3;
- double hbDateOfVisit4;
- double hbDateOfVisit5;
- double hbDateOfVisit6;
- double hbDateOfVisit7;
- double hbDateOfVisit8;
- double hbDateOfVisit9;
- double hbDateOfVisit10;
+ private double hbDateOfVisit1;
+ private double hbDateOfVisit2;
+ private double hbDateOfVisit3;
+ private double hbDateOfVisit4;
+ private double hbDateOfVisit5;
+ private double hbDateOfVisit6;
+ private double hbDateOfVisit7;
+ private double hbDateOfVisit8;
+ private double hbDateOfVisit9;
+ private double hbDateOfVisit10;
  
- double wbcDateOfVisit1;
- double wbcDateOfVisit2;
- double wbcDateOfVisit3;
- double wbcDateOfVisit4;
- double wbcDateOfVisit5;
- double wbcDateOfVisit6;
- double wbcDateOfVisit7;
- double wbcDateOfVisit8;
- double wbcDateOfVisit9;
- double wbcDateOfVisit10;
+ private double wbcDateOfVisit1;
+ private double wbcDateOfVisit2;
+ private double wbcDateOfVisit3;
+ private double wbcDateOfVisit4;
+ private double wbcDateOfVisit5;
+ private double wbcDateOfVisit6;
+ private double wbcDateOfVisit7;
+ private double wbcDateOfVisit8;
+ private double wbcDateOfVisit9;
+ private double wbcDateOfVisit10;
  
- double ndateOfVisit1;
- double ndateOfVisit2;
- double ndateOfVisit3;
- double ndateOfVisit4;
- double ndateOfVisit5;
- double ndateOfVisit6;
- double ndateOfVisit7;
- double ndateOfVisit8;
- double ndateOfVisit9;
- double ndateOfVisit10;
+ private double ndateOfVisit1;
+ private double ndateOfVisit2;
+ private double ndateOfVisit3;
+ private double ndateOfVisit4;
+ private double ndateOfVisit5;
+ private double ndateOfVisit6;
+ private double ndateOfVisit7;
+ private double ndateOfVisit8;
+ private double ndateOfVisit9;
+ private double ndateOfVisit10;
  
- double ldateOfVisit1;
- double ldateOfVisit2;
- double ldateOfVisit3;
- double ldateOfVisit4;
- double ldateOfVisit5;
- double ldateOfVisit6;
- double ldateOfVisit7;
- double ldateOfVisit8;
- double ldateOfVisit9;
- double ldateOfVisit10;
+ private double ldateOfVisit1;
+ private double ldateOfVisit2;
+ private double ldateOfVisit3;
+ private double ldateOfVisit4;
+ private double ldateOfVisit5;
+ private double ldateOfVisit6;
+ private double ldateOfVisit7;
+ private double ldateOfVisit8;
+ private double ldateOfVisit9;
+ private double ldateOfVisit10;
  
- double mdateOfVisit1;
- double mdateOfVisit2;
- double mdateOfVisit3;
- double mdateOfVisit4;
- double mdateOfVisit5;
- double mdateOfVisit6;
- double mdateOfVisit7;
- double mdateOfVisit8;
- double mdateOfVisit9;
- double mdateOfVisit10;
+ private double mdateOfVisit1;
+ private double mdateOfVisit2;
+ private double mdateOfVisit3;
+ private double mdateOfVisit4;
+ private double mdateOfVisit5;
+ private double mdateOfVisit6;
+ private double mdateOfVisit7;
+ private double mdateOfVisit8;
+ private double mdateOfVisit9;
+ private double mdateOfVisit10;
  
- double edateOfVisit1;
- double edateOfVisit2;
- double edateOfVisit3;
- double edateOfVisit4;
- double edateOfVisit5;
- double edateOfVisit6;
- double edateOfVisit7;
- double edateOfVisit8;
- double edateOfVisit9;
- double edateOfVisit10;
+ private double edateOfVisit1;
+ private double edateOfVisit2;
+ private double edateOfVisit3;
+ private double edateOfVisit4;
+ private double edateOfVisit5;
+ private double edateOfVisit6;
+ private double edateOfVisit7;
+ private double edateOfVisit8;
+ private double edateOfVisit9;
+ private double edateOfVisit10;
  
- double plateletsDateOfVisit1;
- double plateletsDateOfVisit2;
- double plateletsDateOfVisit3;
- double plateletsDateOfVisit4;
- double plateletsDateOfVisit5;
- double plateletsDateOfVisit6;
- double plateletsDateOfVisit7;
- double plateletsDateOfVisit8;
- double plateletsDateOfVisit9;
- double plateletsDateOfVisit10;
+ private double plateletsDateOfVisit1;
+ private double plateletsDateOfVisit2;
+ private double plateletsDateOfVisit3;
+ private double plateletsDateOfVisit4;
+ private double plateletsDateOfVisit5;
+ private double plateletsDateOfVisit6;
+ private double plateletsDateOfVisit7;
+ private double plateletsDateOfVisit8;
+ private double plateletsDateOfVisit9;
+ private double plateletsDateOfVisit10;
  
- double sgotAstDateOfVisit1;
- double sgotAstDateOfVisit2;
- double sgotAstDateOfVisit3;
- double sgotAstDateOfVisit4;
- double sgotAstDateOfVisit5;
- double sgotAstDateOfVisit6;
- double sgotAstDateOfVisit7;
- double sgotAstDateOfVisit8;
- double sgotAstDateOfVisit9;
- double sgotAstDateOfVisit10;
+ private double sgotAstDateOfVisit1;
+ private double sgotAstDateOfVisit2;
+ private double sgotAstDateOfVisit3;
+ private double sgotAstDateOfVisit4;
+ private double sgotAstDateOfVisit5;
+ private double sgotAstDateOfVisit6;
+ private double sgotAstDateOfVisit7;
+ private double sgotAstDateOfVisit8;
+ private double sgotAstDateOfVisit9;
+ private double sgotAstDateOfVisit10;
  
- double sgptAltDateOfVisit1;
- double sgptAltDateOfVisit2;
- double sgptAltDateOfVisit3;
- double sgptAltDateOfVisit4;
- double sgptAltDateOfVisit5;
- double sgptAltDateOfVisit6;
- double sgptAltDateOfVisit7;
- double sgptAltDateOfVisit8;
- double sgptAltDateOfVisit9;
- double sgptAltDateOfVisit10;
+ private double sgptAltDateOfVisit1;
+ private double sgptAltDateOfVisit2;
+ private double sgptAltDateOfVisit3;
+ private double sgptAltDateOfVisit4;
+ private double sgptAltDateOfVisit5;
+ private double sgptAltDateOfVisit6;
+ private double sgptAltDateOfVisit7;
+ private double sgptAltDateOfVisit8;
+ private double sgptAltDateOfVisit9;
+ private double sgptAltDateOfVisit10;
  
- double sbilirubinDateOfVisit1;
- double sbilirubinDateOfVisit2;
- double sbilirubinDateOfVisit3;
- double sbilirubinDateOfVisit4;
- double sbilirubinDateOfVisit5;
- double sbilirubinDateOfVisit6;
- double sbilirubinDateOfVisit7;
- double sbilirubinDateOfVisit8;
- double sbilirubinDateOfVisit9;
- double sbilirubinDateOfVisit10;
+ private double sbilirubinDateOfVisit1;
+ private double sbilirubinDateOfVisit2;
+ private double sbilirubinDateOfVisit3;
+ private double sbilirubinDateOfVisit4;
+ private double sbilirubinDateOfVisit5;
+ private double sbilirubinDateOfVisit6;
+ private double sbilirubinDateOfVisit7;
+ private double sbilirubinDateOfVisit8;
+ private double sbilirubinDateOfVisit9;
+ private double sbilirubinDateOfVisit10;
  
- double screatininDateOfVisit1;
- double screatininDateOfVisit2;
- double screatininDateOfVisit3;
- double screatininDateOfVisit4;
- double screatininDateOfVisit5;
- double screatininDateOfVisit6;
- double screatininDateOfVisit7;
- double screatininDateOfVisit8;
- double screatininDateOfVisit9;
- double screatininDateOfVisit10;
+ private double screatininDateOfVisit1;
+ private double screatininDateOfVisit2;
+ private double screatininDateOfVisit3;
+ private double screatininDateOfVisit4;
+ private double screatininDateOfVisit5;
+ private double screatininDateOfVisit6;
+ private double screatininDateOfVisit7;
+ private double screatininDateOfVisit8;
+ private double screatininDateOfVisit9;
+ private double screatininDateOfVisit10;
  
- double fbsDateOfVisit1;
- double fbsDateOfVisit2;
- double fbsDateOfVisit3;
- double fbsDateOfVisit4;
- double fbsDateOfVisit5;
- double fbsDateOfVisit6;
- double fbsDateOfVisit7;
- double fbsDateOfVisit8;
- double fbsDateOfVisit9;
- double fbsDateOfVisit10;
+ private double fbsDateOfVisit1;
+ private double fbsDateOfVisit2;
+ private double fbsDateOfVisit3;
+ private double fbsDateOfVisit4;
+ private double fbsDateOfVisit5;
+ private double fbsDateOfVisit6;
+ private double fbsDateOfVisit7;
+ private double fbsDateOfVisit8;
+ private double fbsDateOfVisit9;
+ private double fbsDateOfVisit10;
  
- double suricAcidDateOfVisit1;
- double suricAcidDateOfVisit2;
- double suricAcidDateOfVisit3;
- double suricAcidDateOfVisit4;
- double suricAcidDateOfVisit5;
- double suricAcidDateOfVisit6;
- double suricAcidDateOfVisit7;
- double suricAcidDateOfVisit8;
- double suricAcidDateOfVisit9;
- double suricAcidDateOfVisit10;
+ private double suricAcidDateOfVisit1;
+ private double suricAcidDateOfVisit2;
+ private double suricAcidDateOfVisit3;
+ private double suricAcidDateOfVisit4;
+ private double suricAcidDateOfVisit5;
+ private double suricAcidDateOfVisit6;
+ private double suricAcidDateOfVisit7;
+ private double suricAcidDateOfVisit8;
+ private double suricAcidDateOfVisit9;
+ private double suricAcidDateOfVisit10;
  
- double ufrDateOfVisit1;
- double ufrDateOfVisit2;
- double ufrDateOfVisit3;
- double ufrDateOfVisit4;
- double ufrDateOfVisit5;
- double ufrDateOfVisit6;
- double ufrDateOfVisit7;
- double ufrDateOfVisit8;
- double ufrDateOfVisit9;
- double ufrDateOfVisit10;
+ private double ufrDateOfVisit1;
+ private double ufrDateOfVisit2;
+ private double ufrDateOfVisit3;
+ private double ufrDateOfVisit4;
+ private double ufrDateOfVisit5;
+ private double ufrDateOfVisit6;
+ private double ufrDateOfVisit7;
+ private double ufrDateOfVisit8;
+ private double ufrDateOfVisit9;
+ private double ufrDateOfVisit10;
 
- 
- 
     public Date getDateOfvisit1() {
         return dateOfvisit1;
     }
@@ -2128,9 +2126,9 @@ public class Investigation extends Encounter {
     public void setUfrDateOfVisit10(double ufrDateOfVisit10) {
         this.ufrDateOfVisit10 = ufrDateOfVisit10;
     }
- 
- 
- 
- 
+
+   
+
+
     
 }

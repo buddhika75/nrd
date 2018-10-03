@@ -13,12 +13,12 @@
 
     <h:body>
 
-        
+
 
         <p:layout fullPage="true" >
-            
+
             <p:growl id="growl" life="3000" autoUpdate="true" />
-            
+
             <p:layoutUnit position="north" header="Rheumatology Clinic Data Registryof Sri Lanka" >
 
 
@@ -28,7 +28,8 @@
                         <p:submenu label="Clinical" >
                             <p:menuitem value="Search Patients" action="#{patientController.toSearchPatient()}" ajax="false" />
                             <p:menuitem value="Add New Patient" action="#{patientController.toAddNewPatient()}" ajax="false" />
-                            <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
+                            <p:menuitem value="Import Patients" action="/patient/import_patients_from_excel" ajax="false" />
+
                         </p:submenu>
                         <p:submenu label="Reports" >
                             <p:menuitem value="Analysis" action="/mail/suggestions" ajax="false" />
@@ -58,7 +59,7 @@
 
                     </p:menubar>
                 </h:form>
-            
+
             </p:layoutUnit>
             <p:layoutUnit position="south" >
                 <ui:insert name="footer">
@@ -74,7 +75,7 @@
                             <p:commandLink rendered="#{webUserController.loggedUser ne null}" value="Logout" ajax="false" action="#{webUserController.logOut()}" ></p:commandLink>
                         </h:form>
                         <p:outputLabel rendered="#{webUserController.loggedUser eq null}" value="Please login to continue" ></p:outputLabel>
-                        
+
                     </h:panelGrid>
                 </ui:insert>
             </p:layoutUnit>
@@ -87,22 +88,22 @@
                     <p:panel header="Login" style="position: absolute; width: 390px; margin: auto; left: 2%; top:20%; padding: 10px;" rendered="#{webUserController.loggedUser eq null}" >
                         <h:form >
                             <h:panelGrid columns="3" >
-                                
-                                        <p:outputLabel value="Username" ></p:outputLabel>
-                                        <p:spacer width="10" height="1" ></p:spacer>
-                                        <p:inputText value="#{webUserController.userName}" ></p:inputText>
-                                        <p:outputLabel value="Password" ></p:outputLabel>
-                                        <p:spacer width="10" height="1" ></p:spacer>
-                                        <p:password value="#{webUserController.password}" ></p:password>
-                                        <p:commandButton ajax="false" value="Login" action="#{webUserController.login()}" ></p:commandButton>
-                                
+
+                                <p:outputLabel value="Username" ></p:outputLabel>
+                                <p:spacer width="10" height="1" ></p:spacer>
+                                <p:inputText value="#{webUserController.userName}" ></p:inputText>
+                                <p:outputLabel value="Password" ></p:outputLabel>
+                                <p:spacer width="10" height="1" ></p:spacer>
+                                <p:password value="#{webUserController.password}" ></p:password>
+                                <p:commandButton ajax="false" value="Login" action="#{webUserController.login()}" ></p:commandButton>
+
                             </h:panelGrid>
-                            
+
                         </h:form>
                     </p:panel>
 
 
-                  
+
                     <h:panelGroup rendered="#{webUserController.loggedUser ne null}" >
                         <ui:insert name="body"> </ui:insert>
                     </h:panelGroup>
@@ -112,7 +113,7 @@
             </p:layoutUnit>
 
         </p:layout>
-        
+
     </h:body>
 
 </html>

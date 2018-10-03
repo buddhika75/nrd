@@ -20,6 +20,7 @@ import lk.gov.health.nrd.enums.DurationOfSymptoms;
 import lk.gov.health.nrd.enums.CRPunits;
 import lk.gov.health.nrd.enums.SSZDoseUnitAndFrequency;
 import lk.gov.health.nrd.enums.EsrCrp;
+import lk.gov.health.nrd.enums.SteroidsType;
 
 /**
  *
@@ -198,7 +199,10 @@ public class RheumatoidArthritisData extends Encounter {
     private EsrCrp EsrCrp;
     private double resultOfEsrCrp;
     private String confirmDAS;
-    
+    private String sdaireference;
+    private String cdaireference;
+    @Enumerated(EnumType.STRING)
+    private SteroidsType SteroidsType;
     
     
     
@@ -1369,5 +1373,35 @@ public class RheumatoidArthritisData extends Encounter {
     public void setConfirmDAS(String confirmDAS) {
         this.confirmDAS = confirmDAS;
     }
+
+    public String getSdaireference() {
+        return sdaireference;
+    }
+
+    public void setSdaireference(String sdaireference) {
+        this.sdaireference = sdaireference;
+    }
+
+    public String getCdaireference() {
+        return cdaireference;
+    }
+
+    public void setCdaireference(String cdaireference) {
+        this.cdaireference = cdaireference;
+    }
+
+    public void setTotalScoreTargetPopulation(String temStr) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public SteroidsType getSteroidsType() {
+        return SteroidsType;
+    }
+
+    public void setSteroidsType(SteroidsType SteroidsType) {
+        this.SteroidsType = SteroidsType;
+    }
    
+    
+    
 }

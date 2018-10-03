@@ -115,9 +115,6 @@
                                         
                                     </p:column>
                                     </p:row>
-                                      
-                                                
-                                            
                                         
                                 <p:row>
                                     <p:column>
@@ -199,7 +196,7 @@
                                         <p:spacer height="1" width="30" ></p:spacer>
 
                                          <p:selectBooleanCheckbox id="GPA_WG" value="#{patientController.selected.diagnosis.gpa_WG}" />
-                                        <p:outputLabel value="&emsp;GPA(WG0" for="GPA_WG" />
+                                        <p:outputLabel value="&emsp;GPA(WG)" for="GPA_WG" />
                                         <p:spacer height="1" width="30" ></p:spacer>
                                         
                                         <p:selectBooleanCheckbox id="EGPA_CSS" value="#{patientController.selected.diagnosis.egpa_CSS}" />
@@ -321,8 +318,8 @@
                                 
                                 <p:row >
                                     <p:column  >
-                                        <p:outputLabel value="Disgnosis Comments:" for="disgnosisComments" />
-                                        <p:inputTextarea rows="4" cols="150" id="disgnosisComments" value="#{patientController.selected.diagnosis.disgnosisComments}" />
+                                        <p:outputLabel value="Disgnosis Comments:"/>
+                                        <p:inputTextarea rows="4" cols="150" value="#{patientController.selected.diagnosis.disgnosisComments}" />
                                     </p:column>
                                 </p:row>
 
@@ -332,14 +329,6 @@
                                    
                             
                             </p:panelGrid>
-
-                             
-                            
-                            
-                            
-
-
-
 
                         </p:panel>
                         

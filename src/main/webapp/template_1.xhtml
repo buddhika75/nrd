@@ -72,8 +72,9 @@
                                         <div class="row ">
                                             <div class="col-12 col-sm-6 offset-sm-3">
                                                 <div class="input-group mb-3 mb-sm-4 inputField" id="inputUserName">
-  <!--                                               <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" ></input>-->
-                                                    <p:inputText  styleClass="form-control myformBackground"  placeholder="Username"  value="#{webUserController.userName}"   ></p:inputText>
+  <!--                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" ></input>-->
+                                                 
+                                              <p:inputText  styleClass="form-control myformBackground"  placeholder="Username"  value="#{webUserController.userName}"/>
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1"><h:graphicImage library="images" id="userIcon" name="user.png"></h:graphicImage></span>
                                                     </div>
@@ -138,7 +139,8 @@
                 <p:submenu label="Clinical" >
                     <p:menuitem value="Search Patients" action="#{patientController.toSearchPatient()}" ajax="false" />
                     <p:menuitem value="Add New Patient" action="#{patientController.toAddNewPatient()}" ajax="false" />
-                    <p:menuitem value="Search Visits" action="/mail/all_responses" ajax="false" />
+                    <p:menuitem value="Import Patients" action="/patient/import_patients_from_excel" ajax="false" />
+
                 </p:submenu>
                 <p:submenu label="Reports" >
                     <p:menuitem value="Analysis" action="/mail/suggestions" ajax="false" />

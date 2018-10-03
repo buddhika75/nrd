@@ -20,6 +20,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import lk.gov.health.nrd.enums.Sex;
 
+
 /**
  *
  * @author User
@@ -80,6 +81,9 @@ public class Patient implements Serializable {
     Prescription Prescription;
     @OneToOne(cascade = CascadeType.ALL)
     Visit Visit;
+    @OneToOne(cascade = CascadeType.ALL)
+    Followup Followup;
+    
 
     public Department getRegisteredDepartment() {
         return registeredDepartment;
@@ -253,6 +257,9 @@ public class Patient implements Serializable {
     }
 
     public PatientDiagnosis getDiagnosis() {
+        if(diagnosis == null){
+        diagnosis = new PatientDiagnosis();
+        }
         return diagnosis;
     }
 
@@ -304,6 +311,17 @@ public class Patient implements Serializable {
         this.Investigation = Investigation;
     }
 
+    public Followup getFollowup() {
+        if(Followup == null){
+        Followup = new Followup();
+            }
+        return Followup;
+    }
+
+    public void setFollowup(Followup Followup) {
+        this.Followup = Followup;
+    }
+    
     public ShortSummary getShortSummary() {
         if(ShortSummary == null){
         ShortSummary =new ShortSummary();
@@ -366,6 +384,8 @@ public class Patient implements Serializable {
     public String toString() {
         return "lk.gov.health.nrd.entity.Patient[ id=" + id + " ]";
     }
+
+   
 
    
 }

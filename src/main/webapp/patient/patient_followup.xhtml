@@ -41,17 +41,187 @@
                                 </h:panelGroup>
                             </p:panelGrid>
 
-                            
                             <br/>
                               <center><b><p:outputLabel value="Previous Visit"></p:outputLabel></b></center>
-                              <br/>
+                              <br/> <p:commandButton value="RA" action="/patient/patient_followup_rad" ajax="false" ></p:commandButton>
+                                
+                              <p:panelGrid columns="4">
+                                
+                                  <p:panelGrid >
+                                  <p:row>
+                                    <p:column><p:outputLabel value="Date Of Visit"></p:outputLabel></p:column>
+                                     <p:column>
+                                          <p:calendar value="#{patientController.selected.followup.dateOfvisit}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                  </p:row>
+                                  <p:row>
+                                       <p:column><p:outputLabel value="ESR"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.esr}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                   
+                                  <p:row>
+                                      <p:column><p:outputLabel value="CRP"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.crp}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                    
+                                  <p:row>
+                                      <p:column><p:outputLabel value="RF"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.rf}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                    
+                                  <p:row>
+                                      <p:column><p:outputLabel value="Anti CCP"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.anticcp}"></p:inputText></p:column>
+                                      
+                                  </p:row>  
+                                   </p:panelGrid>
+                                  <p:panelGrid>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="ANA"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.ana}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                  
+                                  <p:row>
+                                      <p:column><p:outputLabel value="Ds DNA"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.dsdna}"></p:inputText></p:column>
+                                     
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="cANCA"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.canca}"></p:inputText></p:column>
+                                     
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="pANCA"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.panca}"></p:inputText></p:column>
+                                     
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="Hb"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.hb}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                     
+                                  <p:row>
+                                      <p:column><p:outputLabel value="WBC"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.wbc}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                        
+                                        </p:panelGrid> 
+                                  <p:panelGrid>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="N"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.n}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                  <p:row>
+                                     <p:column><p:outputLabel value="L"></p:outputLabel></p:column>
+                                     <p:column><p:inputText value="#{patientController.selected.followup.l}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                      
+                                  <p:row>
+                                      <p:column><p:outputLabel value="M"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.m}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="E"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.e}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                      
+                                  <p:row>
+                                      <p:column><p:outputLabel value="Platelet"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.platelet}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                      
+                                  <p:row>
+                                       <p:column><p:outputLabel value="sGOT/AST"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.sgotAST}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                  </p:panelGrid> 
+                                  <p:panelGrid>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="sGPT/ALT"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.sgptALT}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="sBilirubin"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.sbilirubin}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                       
+                                  <p:row>
+                                      <p:column><p:outputLabel value="sCreatinin"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.screatinin}"></p:inputText></p:column>
+                                     
+                                  </p:row>
+                                      
+                                  <p:row>
+                                      <p:column><p:outputLabel value="FBS"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.fbs}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="sUric Acid"></p:outputLabel></p:column>
+                                      <p:column><p:inputText value="#{patientController.selected.followup.suricacid}"></p:inputText></p:column>
+                                     
+                                  </p:row>
+                                  <p:row>
+                                      <p:column><p:outputLabel value="UFR(Alb)"></p:outputLabel></p:column>
+                                       <p:column><p:inputText value="#{patientController.selected.followup.ufr}"></p:inputText></p:column>
+                                      
+                                  </p:row>
+                                    
+                                 </p:panelGrid>
+                              </p:panelGrid>
+                            
                               
-                            <p:panelGrid>
-                                <p:inputTextarea rows="17" cols="175" autoResize="190" />
-                             </p:panelGrid>
-                                <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
-                
-        </p:panel>
+                              
+                                  <p:panelGrid style="float: left">
+                                       
+                                        <table style="position: relative;">
+                                        <tr>
+                                            <td style="position: relative;">
+                                                <p:graphicImage library="images" name="nrd1.png" style=" width:302px ; height: 400px ;" ></p:graphicImage>
+                                            </td>
+
+                                        <td style="position: relative;">
+                                            <p:graphicImage library="images" name="nrd1.png" style=" width:302px ; height: 400px ;" ></p:graphicImage>
+                                        </td>
+
+                                        </tr>
+                                             <tr>
+                                        <td>
+                                            <p:spacer width="100" height="10" />
+                                            SWOLEN JOINTS
+                                        </td>
+                                        <td>
+                                            <p:spacer width="100" height="10" />
+                                            TENDER JOINTS
+                                        </td>
+                                             </tr>
+                                        </table>
+                                   
+                                        <p:inputTextarea rows="20" cols="175" autoResize="190" />
+                                    </p:panelGrid>
+                                  
+                                 
+                                
+                             
+                              
+                              <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                        </p:panel>
                     </h:form>
                 </f:view>
 

@@ -6,8 +6,11 @@
 package lk.gov.health.nrd.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import lk.gov.health.nrd.enums.LupusNephritis;
 
 /**
  *
@@ -37,15 +40,11 @@ public class SystemicLupusErythematosusData extends Encounter {
     private boolean immunologicCriteria5;
     private boolean immunologicCriteria6;
     private int criteriaTotal;
+    private int clinicalCriteriaTotal;
+    private int immunologicCriteriaTotal;
     private String diognosisConfirm;
-    private boolean complicationLumLupusNephritisClassI;
-    private boolean complicationLumLupusNephritisClassII;
-    private boolean complicationLumLupusNephritisClassIII;
-    private boolean complicationLumLupusNephritisClassIV;
-    private boolean complicationLumLupusNephritisClassV;
-    private boolean complicationLumLupusNephritisClassVI;
     private boolean complicationRespiratory;
-    private boolean complicationOther;
+    private String otherComplication;
     private boolean checklistSLEactivityORflares;
     private boolean checklistLupusNephritis;
     private boolean checklistSerologicalActivity;
@@ -78,8 +77,9 @@ public class SystemicLupusErythematosusData extends Encounter {
     private boolean sledaiLeukopenia1;
     private int sledaiTotal;
     private String sledaiFlare;
+    @Enumerated(EnumType.STRING)
+    private LupusNephritis LupusNephritis;
 
-    
     public boolean isClinicalCriteria1() {
         return clinicalCriteria1;
     }
@@ -224,60 +224,28 @@ public class SystemicLupusErythematosusData extends Encounter {
         this.criteriaTotal = criteriaTotal;
     }
 
+    public int getClinicalCriteriaTotal() {
+        return clinicalCriteriaTotal;
+    }
+
+    public void setClinicalCriteriaTotal(int clinicalCriteriaTotal) {
+        this.clinicalCriteriaTotal = clinicalCriteriaTotal;
+    }
+
+    public int getImmunologicCriteriaTotal() {
+        return immunologicCriteriaTotal;
+    }
+
+    public void setImmunologicCriteriaTotal(int immunologicCriteriaTotal) {
+        this.immunologicCriteriaTotal = immunologicCriteriaTotal;
+    }
+
     public String getDiognosisConfirm() {
         return diognosisConfirm;
     }
 
     public void setDiognosisConfirm(String diognosisConfirm) {
         this.diognosisConfirm = diognosisConfirm;
-    }
-
-    public boolean isComplicationLumLupusNephritisClassI() {
-        return complicationLumLupusNephritisClassI;
-    }
-
-    public void setComplicationLumLupusNephritisClassI(boolean complicationLumLupusNephritisClassI) {
-        this.complicationLumLupusNephritisClassI = complicationLumLupusNephritisClassI;
-    }
-
-    public boolean isComplicationLumLupusNephritisClassII() {
-        return complicationLumLupusNephritisClassII;
-    }
-
-    public void setComplicationLumLupusNephritisClassII(boolean complicationLumLupusNephritisClassII) {
-        this.complicationLumLupusNephritisClassII = complicationLumLupusNephritisClassII;
-    }
-
-    public boolean isComplicationLumLupusNephritisClassIII() {
-        return complicationLumLupusNephritisClassIII;
-    }
-
-    public void setComplicationLumLupusNephritisClassIII(boolean complicationLumLupusNephritisClassIII) {
-        this.complicationLumLupusNephritisClassIII = complicationLumLupusNephritisClassIII;
-    }
-
-    public boolean isComplicationLumLupusNephritisClassIV() {
-        return complicationLumLupusNephritisClassIV;
-    }
-
-    public void setComplicationLumLupusNephritisClassIV(boolean complicationLumLupusNephritisClassIV) {
-        this.complicationLumLupusNephritisClassIV = complicationLumLupusNephritisClassIV;
-    }
-
-    public boolean isComplicationLumLupusNephritisClassV() {
-        return complicationLumLupusNephritisClassV;
-    }
-
-    public void setComplicationLumLupusNephritisClassV(boolean complicationLumLupusNephritisClassV) {
-        this.complicationLumLupusNephritisClassV = complicationLumLupusNephritisClassV;
-    }
-
-    public boolean isComplicationLumLupusNephritisClassVI() {
-        return complicationLumLupusNephritisClassVI;
-    }
-
-    public void setComplicationLumLupusNephritisClassVI(boolean complicationLumLupusNephritisClassVI) {
-        this.complicationLumLupusNephritisClassVI = complicationLumLupusNephritisClassVI;
     }
 
     public boolean isComplicationRespiratory() {
@@ -288,14 +256,17 @@ public class SystemicLupusErythematosusData extends Encounter {
         this.complicationRespiratory = complicationRespiratory;
     }
 
-    public boolean isComplicationOther() {
-        return complicationOther;
+   
+    public String getOtherComplication() {
+        return otherComplication;
     }
 
-    public void setComplicationOther(boolean complicationOther) {
-        this.complicationOther = complicationOther;
+    public void setOtherComplication(String otherComplication) {
+        this.otherComplication = otherComplication;
     }
 
+    
+    
     public boolean isChecklistSLEactivityORflares() {
         return checklistSLEactivityORflares;
     }
@@ -551,13 +522,16 @@ public class SystemicLupusErythematosusData extends Encounter {
     public void setSledaiFlare(String sledaiFlare) {
         this.sledaiFlare = sledaiFlare;
     }
-   
 
-   
+    public LupusNephritis getLupusNephritis() {
+        return LupusNephritis;
+    }
+
+    public void setLupusNephritis(LupusNephritis LupusNephritis) {
+        this.LupusNephritis = LupusNephritis;
+    }
+
     
-    
-    
-    
-    
+
     
 }

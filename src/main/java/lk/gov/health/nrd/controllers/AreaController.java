@@ -6,7 +6,9 @@ import lk.gov.health.nrd.controllers.util.JsfUtil.PersistAction;
 import lk.gov.health.nrd.facades.AreaFacade;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +33,20 @@ public class AreaController implements Serializable {
     public AreaController() {
     }
 
+    
+    public Area getAreaByName(String name){
+        String jpql = "select a from Area a where upper(a.name) =:areaName";
+        Map m = new HashMap();
+        m.put("areaName", name.toUpperCase());
+        Area temArea = getFacade().findFirstBySQL(jpql, m);
+        if(temArea==null){
+            temArea = new Area();
+            temArea.setName(name);
+            getFacade().create(temArea);
+        }
+        return temArea;
+    }
+    
     public Area getSelected() {
         return selected;
     }

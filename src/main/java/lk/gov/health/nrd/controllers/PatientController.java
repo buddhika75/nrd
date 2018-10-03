@@ -287,6 +287,7 @@ public class PatientController implements Serializable {
     }
 
     public void calculateJointCount() {
+        
         System.out.println("joint");
         int largeJoint = 0;
         int smallJoint = 0;
@@ -782,7 +783,11 @@ public class PatientController implements Serializable {
         String das2 = "Low Activity";
         String das3 = "Moderate Activity";
         String das4 = "High Activity";
-
+        String scReference1 = "Remission";
+        String scReference2 = "Low Activity";
+        String scReference3 = "Moderate Activity";
+        String scReference4 = "High Activity";
+        
         if (selected == null) {
             return;
         }
@@ -797,6 +802,7 @@ public class PatientController implements Serializable {
         int ega = selected.getRheumatoidArthritisData().getEvaluatorGlobalAssessmentSDAICDAI();
         double esrORcrp = selected.getRheumatoidArthritisData().getResultOfEsrCrp();
         
+        
         double dastotal = 0;
         
         total = a + b + c + d;
@@ -808,11 +814,6 @@ public class PatientController implements Serializable {
             selected.getRheumatoidArthritisData().setTotalDiognosis(y);
         }
 
-        
-        
-        
-        
-        
         double eC= 0;
         
         if (selected.getRheumatoidArthritisData().getEsrCrp() != null) {
@@ -821,7 +822,7 @@ public class PatientController implements Serializable {
                        eC =0.7 * Math.log1p(esrORcrp-1);
                         break;
                 case CRP:
-                       eC =0.36 * Math.log1p(esrORcrp) + 0.96;
+                        eC =0.36 * Math.log1p(esrORcrp) + 0.96;
                          break;
             }
         }
@@ -873,6 +874,37 @@ public class PatientController implements Serializable {
         selected.getRheumatoidArthritisData().setSdaiRemissionSDAICDAI(sdai);
 
         selected.getRheumatoidArthritisData().setCdaiRemissionSDAICDAI(cdai);
+        
+        if (sdai <= 3.3){
+        selected.getRheumatoidArthritisData().setSdaireference(scReference1);
+        }
+        if (sdai > 3.3){
+            if(sdai < 11)
+        selected.getRheumatoidArthritisData().setSdaireference(scReference2);
+        }
+        if (sdai>11){
+            if(sdai < 26)
+        selected.getRheumatoidArthritisData().setSdaireference(scReference3);
+        }
+        if (sdai > 26){
+        selected.getRheumatoidArthritisData().setSdaireference(scReference4);
+        }
+        
+        if (cdai<=2.8 ){
+        selected.getRheumatoidArthritisData().setCdaireference(scReference1);
+        }
+        if (cdai > 2.8){
+            if(cdai < 10)
+        selected.getRheumatoidArthritisData().setCdaireference(scReference2);
+        }
+        if (cdai>10){
+            if(sdai < 22)
+        selected.getRheumatoidArthritisData().setCdaireference(scReference3);
+        }
+        if (cdai > 22){
+        selected.getRheumatoidArthritisData().setCdaireference(scReference4);
+        }
+        
     }
 
     public void criteriaCal() {
@@ -955,7 +987,11 @@ public class PatientController implements Serializable {
             immunologic++;
         }
         System.out.println("immunologic = " + immunologic);
+        
+        
         c_Total = clinical + immunologic;
+        selected.getSystemicLupusErythematosusData().setClinicalCriteriaTotal(clinical);
+        selected.getSystemicLupusErythematosusData().setImmunologicCriteriaTotal(immunologic);
         {
             selected.getSystemicLupusErythematosusData().setCriteriaTotal(c_Total);
         }
@@ -1110,6 +1146,20 @@ public class PatientController implements Serializable {
         String a3 = " High Activity ";
         String a4 = " Very High Activity ";
         double erro = 0.0;
+        String as = "AS Confirmed";
+        String xrayN = "Check Other SpA Features";
+        String spa ="Axial SpA Confirmed";
+        String asas ="Go for HLA-B27 ";
+        String hla = "Go for MRI ";
+        String od = "Other Diagnosis";
+        String PeriperalSpA = "PeriperalSpA Confirmed";
+        String notconfirm= "Not Confirm";
+        int primaryPA = 0;
+        int secondaryPA = 0;
+        int tertiaryPA = 0;
+        
+        
+        
         if (selected == null) {
             return;
         }
@@ -1208,15 +1258,15 @@ public class PatientController implements Serializable {
         if (selected.getSpondyloarthristisData().getUnitofCRP() != null) {
             switch (selected.getSpondyloarthristisData().getUnitofCRP()) {
                 case mgPerL:
-                    temp = crp / 10;
+                    temp = crp;
                     break;
                 case mgPerDl:
-                    temp = crp;
+                    temp = crp*10;
                     break;
             }
         }
 
-        double logcrp = Math.log(temp + 1);
+        double logcrp = Math.log(temp+1);
         System.out.println("logcrp = " + logcrp);
         double crpScore = 0.121 * sp + 0.058 * msd + 0.11 * pga + 0.073 * pa + 0.579 * logcrp;
 
@@ -1243,6 +1293,20 @@ public class PatientController implements Serializable {
         if (crpScoreRound > 3.5) {
             selected.getSpondyloarthristisData().setAsdasCrpScoreReference(a4);
         }
+        
+        
+        if(selected.getSpondyloarthristisData().getXrayPN() != null) {
+            switch (selected.getSpondyloarthristisData().getXrayPN()) {
+                case One:
+                    selected.getSpondyloarthristisData().setCbpConfirm(as);
+                    break;
+                case Two:
+                    selected.getSpondyloarthristisData().setCbpConfirm(xrayN);
+                    break;
+            }
+        
+        }
+        
         
         
         System.out.println("cal asas = ");
@@ -1297,6 +1361,118 @@ public class PatientController implements Serializable {
         }
         
         selected.getSpondyloarthristisData().setAsastotal(asas_total);
+    
+        
+        if(asas_total >= 4){
+        selected.getSpondyloarthristisData().setAsasconfirm(spa);
+        }
+         if(asas_total < 4){
+        selected.getSpondyloarthristisData().setAsasconfirm(asas);
+        }
+         
+         if(selected.getSpondyloarthristisData().getHlaPN()!= null) {
+            switch (selected.getSpondyloarthristisData().getHlaPN()) {
+                case One:
+                    if(asas_total<4){
+                        if(asas_total>1){
+                        selected.getSpondyloarthristisData().setHlbConfirm(spa);
+                        }
+                    }
+                    if(asas_total < 2){
+                        selected.getSpondyloarthristisData().setHlbConfirm(hla);
+                    }
+                    
+                    break;
+                case Two:
+                    selected.getSpondyloarthristisData().setHlbConfirm(od);
+                    break;
+            }
+        }
+        
+         
+          if (selected.getSpondyloarthristisData().isPa() == true ){
+                 primaryPA++;
+            }
+         if (selected.getSpondyloarthristisData().isEnthesitis() == true) {
+                primaryPA++;
+            }
+          if (selected.getSpondyloarthristisData().isDactylitis() == true) {
+                primaryPA++;
+            } 
+         
+         if (selected.getSpondyloarthristisData().isIbp()== true ){
+                 tertiaryPA++;
+            }
+       
+         if (selected.getSpondyloarthristisData().isPfh() == true ){
+                 tertiaryPA++;
+            }
+        
+        if (selected.getSpondyloarthristisData().isAbp() == true ){
+                 secondaryPA++;
+            }
+        
+         if (selected.getSpondyloarthristisData().isGrtn() == true ){
+                 secondaryPA++;
+            }
+         
+          if (selected.getSpondyloarthristisData().isPsoriasis() == true ){
+                 secondaryPA++;
+            }
+          
+           if (selected.getSpondyloarthristisData().isIbd() == true ){
+                 secondaryPA++;
+            }
+           
+            if (selected.getSpondyloarthristisData().isUveitis() == true ){
+                 secondaryPA++;
+            }
+            
+             if (selected.getSpondyloarthristisData().isEapr() == true ){
+                 secondaryPA++;
+            }
+             
+              if (selected.getSpondyloarthristisData().isPi() == true ){
+                 secondaryPA++;
+            }
+          
+              if (selected.getSpondyloarthristisData().isSacroiliitis() == true ){
+                 secondaryPA++;
+            }
+              
+              if (selected.getSpondyloarthristisData().isUorcorADO() == true ){
+                 secondaryPA++;
+            }
+              
+             System.out.println("secondaryPA "+ secondaryPA);
+              System.out.println("primaryPA "+ primaryPA);
+               System.out.println("tertiaryPA "+ tertiaryPA);
+               
+           
+             if (selected == null) {
+            return;
+        }  
+             if(secondaryPA >= 1){
+                   selected.getSpondyloarthristisData().setPeripheralspaconfirm(notconfirm);
+               }
+                 if(tertiaryPA >= 1){
+                   selected.getSpondyloarthristisData().setPeripheralspaconfirm(notconfirm);
+               }
+                 if(primaryPA <= 2){
+                   selected.getSpondyloarthristisData().setPeripheralspaconfirm(notconfirm);
+               }
+                 
+                 if(primaryPA > 2){
+                   selected.getSpondyloarthristisData().setPeripheralspaconfirm(PeriperalSpA);  
+               }
+                if(primaryPA >= 1 && secondaryPA >= 1){
+                   selected.getSpondyloarthristisData().setPeripheralspaconfirm(PeriperalSpA);  
+               }
+               
+                if((primaryPA < 2 && primaryPA > 0)&& tertiaryPA < 3 && secondaryPA >= 1){
+                   selected.getSpondyloarthristisData().setPeripheralspaconfirm(PeriperalSpA);
+               }
+           
     }
-
+    
 }

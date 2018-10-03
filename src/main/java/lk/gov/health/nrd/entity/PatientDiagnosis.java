@@ -29,81 +29,99 @@ public class PatientDiagnosis implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToOne(mappedBy = "diagnosis")
-    Patient patient;
+    private Patient patient;
 
-    boolean ra;
-    boolean oa;
-    boolean jia;
-    boolean gout;
-    boolean undifferentiated_IA;
-    boolean ctd;
-    boolean sle;
-    boolean apls;
-    boolean mctd;
-    boolean overlap;
-    boolean scleroderma;
-    boolean dermato_Polymyositis;
-    boolean sjogrens;
-    boolean Other_CTD;
-    boolean spA;
-    boolean a_s;
-    boolean axial;
-    boolean peripheral;
-    boolean mixed_Axial_and_Peripheral;
-    boolean reactive;
-    boolean psoriatic;
-    boolean ibd_associated;
-    boolean reiter_s;
-    boolean juvenile;
-    boolean vasculitis;
-    boolean tka;
-    boolean gca;
-    boolean pan;
-    boolean kd;
-    boolean aav;
-    boolean mpa;
-    boolean gpa_WG;
-    boolean egpa_CSS;
-    boolean anti_GBM_GPS;
-    boolean cv;
-    boolean iga_HSP;
-    boolean huv;
-    boolean bd;
-    boolean other_Vasculitis;
-    boolean soft_Tissue_Diseases;
-    boolean fibromyalgia;
-    boolean bt;
-    boolean adhesive_Capsulitis;
-    boolean other_SJ_Ds;
-    boolean te;
-    boolean ge1;
-    boolean dqts;
-    boolean ulna_Styloid;
-    boolean pf;
-    boolean achilles_Tendinitis;
-    boolean metatarsalgia;
-    boolean regional_Pain_Syndromes;
-    boolean backache;
-    boolean neck_Pain;
-    boolean other_Regional_Pain_Syndromes;
-    boolean other_std;
+    private boolean ra;
+    private boolean oa;
+    private boolean jia;
+    private boolean gout;
+    private boolean undifferentiated_IA;
+    private boolean ctd;
+    private boolean sle;
+    private boolean apls;
+    private boolean mctd;
+    private boolean overlap;
+    private boolean scleroderma;
+    private boolean dermato_Polymyositis;
+    private boolean sjogrens;
+    private boolean Other_CTD;
+    private boolean spA;
+    private boolean a_s;
+    private boolean axial;
+    private boolean peripheral;
+    private boolean mixed_Axial_and_Peripheral;
+    private boolean reactive;
+    private boolean psoriatic;
+    private boolean ibd_associated;
+    private boolean reiter_s;
+    private boolean juvenile;
+    private boolean vasculitis;
+    private boolean tka;
+    private boolean gca;
+    private boolean pan;
+    private boolean kd;
+    private boolean aav;
+    private boolean mpa;
+    private boolean gpa_WG;
+    private boolean egpa_CSS;
+    private boolean anti_GBM_GPS;
+    private boolean cv;
+    private boolean iga_HSP;
+    private boolean huv;
+    private boolean bd;
+    private boolean other_Vasculitis;
+    private boolean soft_Tissue_Diseases;
+    private boolean fibromyalgia;
+    private boolean bt;
+    private boolean adhesive_Capsulitis;
+    private boolean other_SJ_Ds;
+    private boolean te;
+    private boolean ge1;
+    private boolean dqts;
+    private boolean ulna_Styloid;
+    private boolean pf;
+    private boolean achilles_Tendinitis;
+    private boolean metatarsalgia;
+    private boolean regional_Pain_Syndromes;
+    private boolean backache;
+    private boolean neck_Pain;
+    private boolean other_Regional_Pain_Syndromes;
+    private boolean other_std;
      
      
     @Lob
-    String disgnosisComments;
-    String otherCtd;
-    String otherVasculitis;
-    String otherDiagnosis;
+    private String disgnosisComments;
+    private String otherCtd;
+    private String otherVasculitis;
+    private String otherDiagnosis;
     
     
    
-
-    public Long getId() {
-        return id;
+    
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof PatientDiagnosis)) {
+            return false;
+        }
+        PatientDiagnosis other = (PatientDiagnosis) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "lk.gov.health.nrd.entity.PatientDiagnosis[ id=" + id + " ]";
     }
 
     public Patient getPatient() {
@@ -112,6 +130,14 @@ public class PatientDiagnosis implements Serializable {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public boolean isRa() {
@@ -592,33 +618,6 @@ public class PatientDiagnosis implements Serializable {
 
     public void setOtherDiagnosis(String otherDiagnosis) {
         this.otherDiagnosis = otherDiagnosis;
-    }
-
-    
-    
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PatientDiagnosis)) {
-            return false;
-        }
-        PatientDiagnosis other = (PatientDiagnosis) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "lk.gov.health.nrd.entity.PatientDiagnosis[ id=" + id + " ]";
     }
 
 }

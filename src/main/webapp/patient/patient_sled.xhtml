@@ -45,7 +45,6 @@ and open the template in the editor.
                                 </h:panelGroup>
                             </p:panelGrid>
                              <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
-                                  
                              <p:panelGrid >
                                 <p:row>
                                     <p:column colspan="2">
@@ -62,19 +61,22 @@ and open the template in the editor.
                                     <p:column>
                                      <p:outputLabel value=" 1. Acute cutaneous lupus, including: "></p:outputLabel>
                                        <ul>
-                                           <li><p:outputLabel value="Lupus malar rash (do not count if malar discoid), Bullous lupus, Toxic epidermal necrolysis variant of SLE, Maculopapular lupus rash, Photosensitive lupus rash"></p:outputLabel></li>     
-                                                <ul>
+                                           <li><p:outputLabel value="Lupus malar rash (do not count if malar discoid), Bullous lupus, Toxic epidermal necrolysis variant of SLE, "></p:outputLabel></li>     
+                                           <p:outputLabel value="Maculopapular lupus rash, Photosensitive lupus rash"></p:outputLabel>     
+                                           <ul>
                                                     <li> <p:outputLabel value="in the absence of dermatomyositis"></p:outputLabel> </li>
                                                 </ul>
                                            <li>
-                                               <p:outputLabel value="OR subacute cutaneous lupus (nonindurated psoriaform and/or annular polycyclic lesions that resolve without scarring, although occasionally with postinflammatory dyspigmentation or telangiectasias)"></p:outputLabel>
-                                           </li>
+                                               <p:outputLabel value="OR subacute cutaneous lupus (nonindurated psoriaform and/or annular polycyclic lesions that resolve without scarring,"></p:outputLabel>
+                                             </li>
+                                               <p:outputLabel value=" although occasionally with postinflammatory dyspigmentation or telangiectasias)"></p:outputLabel>
+                                          
                                        </ul>
                                         
                                     </p:column>
                                       <p:column>
                                           <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria1}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox>  
                                       </p:column>
                                 </p:row>
@@ -83,12 +85,13 @@ and open the template in the editor.
                                      <p:column>
                                          <p:outputLabel value=" 2. Chronic cutaneous lupus, including: "></p:outputLabel>
                                             <ul>
-                                                <li> <p:outputLabel value="Classic discoid rash,  Localized (above the neck),  Generalized (above and below the neck), Hypertrophic (verrucous) lupus, Lupus panniculitis (profundus), Mucosal lupus, Lupus erythematosus tumidus, Chillblains lupus, Discoid lupus/lichen planus overlap"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="Classic discoid rash,  Localized (above the neck),  Generalized (above and below the neck),"></p:outputLabel> </li>
+                                                <p:outputLabel value=" Hypertrophic (verrucous) lupus, Lupus panniculitis (profundus), Mucosal lupus, Lupus erythematosus tumidus, Chillblains lupus, Discoid lupus/lichen planus overlap"></p:outputLabel>
                                             </ul>
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria2}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -100,13 +103,14 @@ and open the template in the editor.
                                                 <li> <p:outputLabel value="Palate, Buccal,  Tongue"></p:outputLabel> </li>
                                                 <li> <p:outputLabel value="OR nasal ulcers"></p:outputLabel> </li>
                                                 <ul>
-                                                    <li> <p:outputLabel value="	in the absence of other causes, such as vasculitis, Behçet's disease, infection (herpesvirus), inflammatory bowel disease, reactive arthritis,  and acidic foods"></p:outputLabel> </li>
+                                                    <li> <p:outputLabel value="	in the absence of other causes, such as vasculitis, Behçet's disease, "></p:outputLabel> </li>
+                                                    <p:outputLabel value="infection (herpesvirus), inflammatory bowel disease, reactive arthritis,  and acidic foods"></p:outputLabel>
                                                 </ul>
                                             </ul>
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria3}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -120,7 +124,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria4}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -134,7 +138,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria5}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -144,7 +148,8 @@ and open the template in the editor.
                                          <p:outputLabel value=" 6. Serositis "></p:outputLabel>
                                             <ul>
                                                 <li> <p:outputLabel value="Typical pleurisy for more than 1 day,  OR pleural effusions,  OR pleural rub, "></p:outputLabel> </li>
-                                                <li> <p:outputLabel value="Typical pericardial pain (pain with recumbency improved by sitting forward) for more than 1 day,  OR pericardial effusion,  OR pericardial rub,  OR pericarditis by electrocardiography"></p:outputLabel></li>
+                                                <li> <p:outputLabel value="Typical pericardial pain (pain with recumbency improved by sitting forward) for more than 1 day, "></p:outputLabel></li>
+                                                <p:outputLabel value=" OR pericardial effusion,  OR pericardial rub,  OR pericarditis by electrocardiography"></p:outputLabel>
                                                 <ul>
                                                     <li><p:outputLabel value="in the absence of other causes, such as infection, uremia, and Dressler's pericarditis"></p:outputLabel></li>
                                                 </ul>
@@ -152,7 +157,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria6}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -167,7 +172,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria7}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -190,7 +195,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria8}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -201,7 +206,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria9}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -222,7 +227,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria10}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -235,7 +240,7 @@ and open the template in the editor.
                                      </p:column>
                                      <p:column>
                                          <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteria11}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                      </p:column>
                                  </p:row>
@@ -251,7 +256,7 @@ and open the template in the editor.
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria1}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                     </p:column>
                                 </p:row>
@@ -261,17 +266,17 @@ and open the template in the editor.
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria2}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                     </p:column>
-                                </p:row>"
+                                </p:row>
                                  <p:row>
                                     <p:column>
                                         <p:outputLabel value=" 3. Anti-Sm: presence of antibody to Sm nuclear antigen"></p:outputLabel>
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria3}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                     </p:column>
                                 </p:row>
@@ -287,7 +292,7 @@ and open the template in the editor.
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria4}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                     </p:column>
                                 </p:row>
@@ -301,7 +306,7 @@ and open the template in the editor.
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox rendered="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria5 ne null}" value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria5}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                     </p:column>
                                 </p:row>
@@ -315,16 +320,27 @@ and open the template in the editor.
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteria6}">
-                                            <p:ajax event="change" process="@this" update="criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
                                             </p:selectBooleanCheckbox> 
                                     </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>
-                                        <p:outputLabel value="Total"></p:outputLabel>
+                                        <p:outputLabel value="Clinical Criteria &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.clinicalCriteriaTotal}" id="clinicalCriteriaTotal"></p:inputText>
+                                        <p:spacer width="30" height="10" />
+                                        <p:outputLabel value="+"></p:outputLabel>
+                                        <p:spacer width="30" height="10" />
+                                        <p:outputLabel value="Immunologic Criteria &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.immunologicCriteriaTotal}" id="immunologicCriteriaTotal"></p:inputText>
+                                         
+                                        
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.criteriaTotal}" id="criteriaTotal"></p:inputText>
+                                        <p:outputLabel value="Total &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selected.systemicLupusErythematosusData.criteriaTotal}" id="criteriaTotal">
+                                        <p:ajax event="change" process="@this" update="clinicalCriteriaTotal immunologicCriteriaTotal " listener="#{patientController.criteriaCal()}" />
+                                        </p:inputText>
                                       </p:column>
                                 </p:row>
                                <p:row>
@@ -339,66 +355,26 @@ and open the template in the editor.
                             
                             <p:panelGrid>
                                 <p:row>
-                                    <p:column colspan="3">
+                                    <p:column colspan="2">
                                         <p:outputLabel value="Complications"></p:outputLabel>
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column rowspan="6">
-                                        <p:outputLabel value="Lupus Nephritis"></p:outputLabel>
+                                    <p:column >
+                                         <p:outputLabel value="Lupus Nephritis " ></p:outputLabel>
                                     </p:column>
-                                     <p:column>
-                                        <p:outputLabel value="Class I "></p:outputLabel>
-                                    </p:column>
-                                     <p:column>
-                                         <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassI}"></p:selectBooleanCheckbox>
-                                    </p:column>
+                                    <p:column> 
+                                      <p:selectOneRadio value="#{patientController.selected.systemicLupusErythematosusData.lupusNephritis}" layout="grid" columns="1" >
+                                               <f:selectItems  value="#{enumController.lupusNephritis}" ></f:selectItems>
+                                      </p:selectOneRadio>
+                                    </p:column>  
                                 </p:row>
-                                <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="Class II "></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassII}"></p:selectBooleanCheckbox>
-                                    </p:column>
-                                </p:row>
-                                 <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="Class III "></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassIII}"></p:selectBooleanCheckbox>
-                                    </p:column>
-                                </p:row>
-                                 <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="Class IV"></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassIV}"></p:selectBooleanCheckbox>
-                                    </p:column>
-                                </p:row>
-                                 <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="Class V"></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassV}"></p:selectBooleanCheckbox>
-                                    </p:column>
-                                </p:row>
-                                 <p:row>
-                                    <p:column>
-                                        <p:outputLabel value="Class VI"></p:outputLabel>
-                                    </p:column>
-                                    <p:column>
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationLumLupusNephritisClassVI}"></p:selectBooleanCheckbox>
-                                    </p:column>
-                                </p:row>
+                                
                                  <p:row>
                                     <p:column>
                                         <p:outputLabel value="Respiratory"></p:outputLabel>
                                     </p:column>
-                                      <p:column colspan="2">
+                                      <p:column>
                                           <p:selectBooleanCheckbox value="#{patientController.selected.systemicLupusErythematosusData.complicationRespiratory}"></p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -406,8 +382,8 @@ and open the template in the editor.
                                     <p:column>
                                         <p:outputLabel value="Other"></p:outputLabel>
                                     </p:column>
-                                      <p:column colspan="2">
-                                        <p:inputTextarea value="#{patientController.selected.systemicLupusErythematosusData.complicationOther}" rows="4" cols="28"/>
+                                      <p:column>
+                                          <p:inputTextarea value="#{patientController.selected.systemicLupusErythematosusData.otherComplication}" rows="4" cols="28"/>
                                     </p:column>
                                 </p:row>
                             </p:panelGrid>

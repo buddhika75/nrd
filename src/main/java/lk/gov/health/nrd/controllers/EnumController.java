@@ -26,6 +26,8 @@ import lk.gov.health.nrd.enums.SSZDoseUnitAndFrequency;
 import lk.gov.health.nrd.enums.SteroidsType;
 import lk.gov.health.nrd.enums.PrescriptionUnit;
 import lk.gov.health.nrd.enums.EsrCrp;
+import lk.gov.health.nrd.enums.LupusNephritis;
+import lk.gov.health.nrd.enums.PositiveNegative;
 
 /**
  *
@@ -118,5 +120,11 @@ public class EnumController {
     return EsrCrp.values();
     }
     
+    public LupusNephritis[] getLupusNephritis(){
+    return LupusNephritis.values();
+    }
     
+    public PositiveNegative[] getPositiveNegative(){
+    return PositiveNegative.values();
+    }
 }

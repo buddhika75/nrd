@@ -46,25 +46,46 @@
                              </p:panelGrid>
                             
                             <p:panelGrid>
-                                <p:row>
-                                    <p:column >
-                                         <p:outputLabel value="Choranic back pain : " for="cbp"></p:outputLabel>
+                                <p:row >
+                                    <p:column style="background-color: #99ccff" >
+                                        <p:outputLabel value="Choranic back pain :  Go For X-Ray " >
+                                             
+                                        
+                                        </p:outputLabel>
                                     </p:column>
-                                    <p:column> 
-                                        <p:selectOneRadio id="cbp" value="#{patientController.selected.spondyloarthristisData.cbp}">
-                                        <f:selectItem itemLabel="YES &nbsp;" itemValue="cbpYES" />
-                                        <f:selectItem itemLabel="NO" itemValue="cbpNO" />
-                                        </p:selectOneRadio>
+                                     <p:column style="background-color: #99ccff">
+                                         
+                                         <p:selectOneMenu id="cbp" value="#{patientController.selected.spondyloarthristisData.xrayPN}" >
+                                             <f:selectItems value="#{enumController.positiveNegative}" var="x" itemLabel="#{x.label}" itemValue="#{x}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this cbpConfirm" update="cbpConfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        
+                                        </p:selectOneMenu>
+                                             
+                                    </p:column>
+                                </p:row> 
+                                
+                                <p:row>
+                                    <p:column colspan="2"> 
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.cbpConfirm}" id="cbpConfirm">
+                                            <p:ajax event="change" process="@this" update="cbpConfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 
+                            
+                                <p:row>
+                                    <p:column colspan="2" style="background-color: #99ccff"> 
+                                        <p:outputLabel value="Check Other SpA Features"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
                                 <p:row>
                                     <p:column>
                                         <p:outputLabel value="Inflammatory Back Pain"></p:outputLabel>
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.ibp}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -74,7 +95,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.abp}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -84,7 +105,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.grtn}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -94,7 +115,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.pa}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -104,7 +125,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.enthesitis}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -114,7 +135,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.dactylitis}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -124,7 +145,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.psoriasis}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -134,7 +155,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.ibd}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -144,7 +165,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.uveitis}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -154,17 +175,17 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.eapr}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
                                  <p:row>
                                     <p:column>
-                                        <p:outputLabel value="Preeding infections"></p:outputLabel>
+                                        <p:outputLabel value="Preceding infections"></p:outputLabel>
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.pi}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -174,7 +195,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.pfh}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -184,7 +205,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.sacroiliitis}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -196,7 +217,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.uorcorADO}">
-                                        <p:ajax event="change" process="@this" update="asastotal" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
                                         </p:selectBooleanCheckbox>
                                     </p:column>
                                 </p:row>
@@ -205,46 +226,50 @@
                                         <p:outputLabel value="Total"></p:outputLabel>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.asastotal}" id="asastotal"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.asastotal}" id="asastotal">
+                                        <p:ajax event="change" process="@this" update="asasconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
-  
-                            </p:panelGrid>
-                            
-                            
-                            
-                            <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                                <p:outputLabel value="X-Ray : " for="xray"></p:outputLabel>
-                                    <p:selectOneRadio id="xray" value="#{patientController.selected.spondyloarthristisData.xray}">
-                                    <f:selectItem itemLabel="Positive &nbsp;" itemValue="xrayPositive" />
-                                    <f:selectItem itemLabel="Negative" itemValue="xrayNegative" />
-                                </p:selectOneRadio>
-                                
-                                <p:outputLabel value="HLA B27 : " for="hla_b27"></p:outputLabel>
-                                <p:selectOneRadio id="hla_b27" value="#{patientController.selected.spondyloarthristisData.hla_b27}">
-                                    <f:selectItem itemLabel="Positive &nbsp;" itemValue="hlaPositive" />
-                                    <f:selectItem itemLabel="Negative" itemValue="hlaNegative" />
-                                </p:selectOneRadio>
-                                
-                                <p:outputLabel value="MRI : " for="mri"></p:outputLabel>
-                                <p:selectOneRadio id="mri" value="#{patientController.selected.spondyloarthristisData.mri}">
-                                    <f:selectItem itemLabel="Positive &nbsp;" itemValue="mriPositive" />
-                                    <f:selectItem itemLabel="Negative" itemValue="mriNegative" />
-                                </p:selectOneRadio>
-                                
-                            </h:panelGrid>
-  
-                             <p:panelGrid>
                                 <p:row>
-                                    <p:column colspan="2"><p:outputLabel value="Diagnosis"></p:outputLabel></p:column>
+                                    <p:column colspan="2">
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.asasconfirm}" id="asasconfirm"></p:inputText>
+                                    </p:column>
+                                    
                                 </p:row>
                                 
                                 <p:row>
-                                    <p:column>   <p:outputLabel value="SpA"></p:outputLabel></p:column>
-                                    <p:column>  
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisSpA}"> </p:selectBooleanCheckbox>
+                                    <p:column>
+                                        <p:outputLabel value="HLA - B27 "></p:outputLabel>
+                                    </p:column>
+                                    <p:column >
+                                        <p:selectOneMenu value="#{patientController.selected.spondyloarthristisData.hlaPN}" >
+                                             <f:selectItems value="#{enumController.positiveNegative}" var="x" itemLabel="#{x.label}" itemValue="#{x}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this hlbConfirm" update="hlbConfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        </p:selectOneMenu>     
                                     </p:column>
                                 </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.hlbConfirm}" id="hlbConfirm"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Peripheral SpA : "></p:outputLabel>
+                                    </p:column>
+                                    <p:column >
+                                        <p:inputText value="#{patientController.selected.spondyloarthristisData.peripheralspaconfirm}" id="peripheralspaconfirm">
+                                         </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="2" style="background-color: #99ccff">
+                                        <p:outputLabel value="Diagnosis"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                
                                 <p:row>
                                     <p:column>   <p:outputLabel value="Axial SpA"></p:outputLabel></p:column>
                                     <p:column>   
@@ -258,11 +283,60 @@
                                     </p:column>
                                 </p:row>
                                 <p:row>
-                                    <p:column>   <p:outputLabel value="Other"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="Other diagnosis"></p:outputLabel></p:column>
                                     <p:column>   
-                                        <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.diagnosisOther}"></p:selectBooleanCheckbox>
+                                        <p:inputTextarea value="#{patientController.selected.spondyloarthristisData.otherDiagnosis}" rows="2" cols="20" autoResize="190"/>
+                                    </p:column>
+                                        
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Type of Spondyloarthritis"></p:outputLabel>
                                     </p:column>
                                 </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Ankylosing Spondylitis"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.ankylosingSp}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Psoriatic Arthritis"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.psoriaticA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="IBD Associated SpA"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.ibdassociatedSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Reactive Arthritis"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.reactiveA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Undifferentiated SpA"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selected.spondyloarthristisData.undifferentiatedSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Other"></p:outputLabel></p:column>
+                                        <p:column>   
+                                        <p:inputTextarea value="#{patientController.selected.spondyloarthristisData.otherTypeofSpA}" rows="2" cols="20" autoResize="190"/>
+                                    </p:column>
+                                    </p:row>
+                                
+                                    
+                               
+                                
                             </p:panelGrid>
                             
                             <p:panelGrid>

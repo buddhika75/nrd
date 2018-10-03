@@ -827,7 +827,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.tenderJointCountSDAICDAI}" id="tenderJointCountSDAICDAI">
-                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
                                        </p:inputText>
                                       
                                     </p:column>
@@ -838,7 +838,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.swellenJointCountSDAICDAI}" id="swellenJointCountSDAICDAI">
-                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
                                         </p:inputText>
                                     </p:column>
                                 </p:row>
@@ -848,7 +848,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.patientGlobalAssessmentSDAICDAI}">
-                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
                                         </p:inputText>
                                     </p:column>
                                 </p:row>
@@ -858,7 +858,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.evaluatorGlobalAssessmentSDAICDAI}">
-                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
                                         </p:inputText>
                                     </p:column>
                                 </p:row>
@@ -868,7 +868,7 @@
                                     </p:column>
                                     <p:column>
                                         <p:inputText value="#{patientController.selected.rheumatoidArthritisData.crpSDAICDAI}" id="crpSDAICDAI">
-                                            <p:ajax event="change" process="@this unitofCRP" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            <p:ajax event="change" process="@this unitofCRP" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
                                         </p:inputText>
                                     </p:column>
                                 </p:row>
@@ -882,7 +882,7 @@
 
                                         <p:selectOneMenu id="unitofCRP" value="#{patientController.selected.rheumatoidArthritisData.unitofCRP}" >
                                             <f:selectItems value="#{enumController.CRPunits}" var="d" itemLabel="#{d.label}" itemValue="#{d}" ></f:selectItems>
-                                            <p:ajax event="change" process="@this crpSDAICDAI" update="sdairemissioncal cdairemissioncal" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            <p:ajax event="change" process="@this crpSDAICDAI" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
                                         
                                         </p:selectOneMenu>
 
@@ -891,18 +891,28 @@
                                 
                                  <p:row>
                                     <p:column>
-                                        <p:outputLabel value="SDAI Remission"></p:outputLabel>
+                                        <p:outputLabel value="SDAI &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.sdaireference}" id="sdaireference">
+                                        </p:inputText>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.sdaiRemissionSDAICDAI}" id="sdairemissioncal"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.sdaiRemissionSDAICDAI}" id="sdairemissioncal">
+                                        <p:ajax event="change" process="@this" update="sdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                                 <p:row>
                                     <p:column>
-                                        <p:outputLabel value="CDAI Remission"></p:outputLabel>
+                                        <p:outputLabel value="CDAI &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.cdaireference}" id="cdaireference">
+                                        </p:inputText>
                                     </p:column>
                                     <p:column>
-                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.cdaiRemissionSDAICDAI}" id="cdairemissioncal"></p:inputText>
+                                        <p:inputText value="#{patientController.selected.rheumatoidArthritisData.cdaiRemissionSDAICDAI}" id="cdairemissioncal">
+                                        <p:ajax event="change" process="@this" update="cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        
+                                        </p:inputText>
                                     </p:column>
                                 </p:row>
                               

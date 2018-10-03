@@ -5,12 +5,17 @@
  */
 package lk.gov.health.nrd.entity;
 
+import java.util.Date;
+import java.util.List;
+import javax.faces.model.SelectItem;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Temporal;
 import lk.gov.health.nrd.enums.CRPunits;
+import lk.gov.health.nrd.enums.PositiveNegative;
 
 /**
  *
@@ -21,7 +26,11 @@ import lk.gov.health.nrd.enums.CRPunits;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class SpondyloarthristisData extends Encounter {
 
-private String cbp;
+@Enumerated(EnumType.STRING)
+private PositiveNegative xrayPN;
+private PositiveNegative hlaPN;
+private String cbpConfirm;
+private String hlbConfirm;
 private boolean ibp;
 private boolean abp;
 private boolean grtn;
@@ -37,14 +46,17 @@ private boolean pfh;
 private boolean sacroiliitis;
 private boolean uorcorADO;
 private int asastotal;
-        
-private String xray;    
-private String hla_b27;
-private String mri;
-private boolean diagnosisSpA;
+private String asasconfirm;
+private String peripheralspaconfirm;
 private boolean diagnosisAxialSpA;
 private boolean diagnosisPeripheralSpA;
-private boolean diagnosisOther;
+private String otherDiagnosis;
+private boolean ankylosingSp;
+private boolean PsoriaticA;
+private boolean ibdassociatedSpA;
+private boolean reactiveA;
+private boolean undifferentiatedSpA;
+private String otherTypeofSpA;
 private int basdaiFatigue;
 private int basdaiSpinalPain;
 private int basdaiPeripheralArthritis;
@@ -66,18 +78,59 @@ private String asdasCrpScoreReference;
 @Enumerated(EnumType.STRING)
 private CRPunits unitofCRP;
 
-
-
-
-
-
-    public boolean isDiagnosisSpA() {
-        return diagnosisSpA;
+    public PositiveNegative getXrayPN() {
+        return xrayPN;
     }
 
-    public void setDiagnosisSpA(boolean diagnosisSpA) {
-        this.diagnosisSpA = diagnosisSpA;
+    public void setXrayPN(PositiveNegative xrayPN) {
+        this.xrayPN = xrayPN;
     }
+
+    public PositiveNegative getHlaPN() {
+        return hlaPN;
+    }
+
+    public void setHlaPN(PositiveNegative hlaPN) {
+        this.hlaPN = hlaPN;
+    }
+
+    public String getHlbConfirm() {
+        return hlbConfirm;
+    }
+
+    public void setHlbConfirm(String hlbConfirm) {
+        this.hlbConfirm = hlbConfirm;
+    }
+
+
+    public String getPeripheralspaconfirm() {
+        return peripheralspaconfirm;
+    }
+
+    public void setPeripheralspaconfirm(String peripheralspaconfirm) {
+        this.peripheralspaconfirm = peripheralspaconfirm;
+    }
+
+
+
+    
+
+    public String getCbpConfirm() {
+        return cbpConfirm;
+    }
+
+    public void setCbpConfirm(String cbpConfirm) {
+        this.cbpConfirm = cbpConfirm;
+    }
+
+
+
+
+
+
+
+
+
 
     public boolean isDiagnosisAxialSpA() {
         return diagnosisAxialSpA;
@@ -95,13 +148,7 @@ private CRPunits unitofCRP;
         this.diagnosisPeripheralSpA = diagnosisPeripheralSpA;
     }
 
-    public boolean isDiagnosisOther() {
-        return diagnosisOther;
-    }
-
-    public void setDiagnosisOther(boolean diagnosisOther) {
-        this.diagnosisOther = diagnosisOther;
-    }
+    
 
     public int getBasdaiFatigue() {
         return basdaiFatigue;
@@ -257,29 +304,15 @@ private CRPunits unitofCRP;
         this.asdasCrpScoreReference = asdasCrpScoreReference;
     }
 
-    public String getXray() {
-        return xray;
+    public String getOtherDiagnosis() {
+        return otherDiagnosis;
     }
 
-    public void setXray(String xray) {
-        this.xray = xray;
+    public void setOtherDiagnosis(String otherDiagnosis) {
+        this.otherDiagnosis = otherDiagnosis;
     }
 
-    public String getHla_b27() {
-        return hla_b27;
-    }
-
-    public void setHla_b27(String hla_b27) {
-        this.hla_b27 = hla_b27;
-    }
-
-    public String getMri() {
-        return mri;
-    }
-
-    public void setMri(String mri) {
-        this.mri = mri;
-    }
+    
 
 
     public boolean isIbp() {
@@ -402,13 +435,68 @@ private CRPunits unitofCRP;
         this.asastotal = asastotal;
     }
 
-    public String getCbp() {
-        return cbp;
+   
+
+    public boolean isAnkylosingSp() {
+        return ankylosingSp;
     }
 
-    public void setCbp(String cbp) {
-        this.cbp = cbp;
+    public void setAnkylosingSp(boolean ankylosingSp) {
+        this.ankylosingSp = ankylosingSp;
+    }
+
+    public boolean isPsoriaticA() {
+        return PsoriaticA;
+    }
+
+    public void setPsoriaticA(boolean PsoriaticA) {
+        this.PsoriaticA = PsoriaticA;
+    }
+
+    public boolean isIbdassociatedSpA() {
+        return ibdassociatedSpA;
+    }
+
+    public void setIbdassociatedSpA(boolean ibdassociatedSpA) {
+        this.ibdassociatedSpA = ibdassociatedSpA;
+    }
+
+    public boolean isReactiveA() {
+        return reactiveA;
+    }
+
+    public void setReactiveA(boolean reactiveA) {
+        this.reactiveA = reactiveA;
+    }
+
+    public boolean isUndifferentiatedSpA() {
+        return undifferentiatedSpA;
+    }
+
+    public void setUndifferentiatedSpA(boolean undifferentiatedSpA) {
+        this.undifferentiatedSpA = undifferentiatedSpA;
+    }
+
+    public String getOtherTypeofSpA() {
+        return otherTypeofSpA;
+    }
+
+    public void setOtherTypeofSpA(String otherTypeofSpA) {
+        this.otherTypeofSpA = otherTypeofSpA;
     }
 
     
+    
+   
+    public String getAsasconfirm() {
+        return asasconfirm;
+    }
+
+    public void setAsasconfirm(String asasconfirm) {
+        this.asasconfirm = asasconfirm;
+    }
+
+    
+    
+ 
 }
