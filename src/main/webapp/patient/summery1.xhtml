@@ -26,7 +26,14 @@
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  rowsPerPageTemplate="5,10,15"
                                  >
-
+                        <p:column sortBy="#{item.dateOfRegistration}">
+                            <f:facet name="header">
+                                <h:outputText value="Date"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOfRegistration}">
+                                <f:convertDateTime pattern="dd/MMMM/yyyy" />
+                            </h:outputText>
+                        </p:column>
                         <p:column filterBy="#{item.registeredInstitute.name}" 
                                   sortBy="#{item.registeredInstitute.name}">
                             <f:facet name="header">
@@ -36,28 +43,13 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Unit"/>
-                            </f:facet>
-                            <h:outputText value="#{item.registeredDepartment.name}"/>
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="Clinic Number"/>
                             </f:facet>
                             <h:outputText value="#{item.clinicNumber}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Date Of Registration"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dateOfRegistration}">
-                                <f:convertDateTime pattern="dd/MMMM/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Name"/>
+                                <h:outputText value="Name of Patient"/>
                             </f:facet>
                             <h:outputText value="#{item.nameOfPatient}"/>
                         </p:column>
@@ -69,30 +61,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Date of Birth"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dateOfBirth}">
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="Age"/>
                             </f:facet>
                             <h:outputText value="#{item.age}"/>
-                        </p:column>
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Mobile No"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telephoneNoMobile}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Home No"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telephoneNoHome}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
@@ -102,36 +73,47 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="City"/>
+                                <h:outputText value="Short Summery"/>
                             </f:facet>
-                            <h:outputText value="#{item.city}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Nic"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nic}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Referred By"/>
-                            </f:facet>
-                            <h:outputText value="#{item.referredBy}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Occupation"/>
-                            </f:facet>
-                            <h:outputText value="#{item.occupation}"/>
+                            <h:outputText value="#{item.shortSummary}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Race"/>
+                                <h:outputText value="Date of Visit"/>
                             </f:facet>
-                            <h:outputText value="#{item.race}"/>
+                            <h:outputText value="#{item.dateOfRegistration}"/>
+                        </p:column>
+                        
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Date of Visit"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rheumatoidArthritisData.crpValue}"/>
+                        </p:column>
+                        
+                          <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DRF"/>
+                            </f:facet>
+                              <h:outputText value="#{item.rheumatoidArthritisData.rfValue}"/>
                         </p:column>
 
+                          <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Anti CCP"/>
+                            </f:facet>
+                              <h:outputText value="#{item.rheumatoidArthritisData.antiCPAPositivePoorPrognosticFactors}"/>
+                        </p:column>
+                        
+                          <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="ANA"/>
+                            </f:facet>
+                              <h:outputText value="#{item.rheumatoidArthritisData.abnormalCrporAbnormalEsrAcutePhaseReactants}"/>
+                        </p:column>
+                        
                     </p:dataTable>
 
 

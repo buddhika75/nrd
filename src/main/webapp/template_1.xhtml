@@ -9,27 +9,27 @@
     <h:head>
         <title><ui:insert name="title">Login</ui:insert></title>
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-       
+
         <h:outputScript library="js" name="bootstrap.js"/>
-         <h:outputScript library="js" name="jquery-1.11.1.min.js"/>
-          <h:outputScript library="js" name="jsfcrud.js"/>
-          <h:outputScript library="js" name="spa.js"/>
-      
+        <h:outputScript library="js" name="jquery-1.11.1.min.js"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputScript library="js" name="spa.js"/>
+
 
     </h:head>
 
     <h:body>
         <f:facet name="last">
-         <h:outputStylesheet library="css" name="login.css"/>
-         </f:facet>
-        
-        
+            <h:outputStylesheet library="css" name="login.css"/>
+        </f:facet>
+
+
         <h:panelGroup rendered="#{webUserController.loggedUser eq null}" >
             <div class="container-fluid">
                 <div class="row" >
                     <div class="col-1 heading" id="slEmblem">
                         <h:graphicImage styleClass="imgSize" library="images" name="Emblem_of_Sri_Lanka.png"></h:graphicImage>
-                       
+
                     </div>
                     <div class="heading col-11" >
                         <h2 align="center" >Rheumatology Clinic Data Registry of Sri Lanka</h2>
@@ -64,17 +64,17 @@
                                 <div class="justfyToCenter">
                                     <div class="row rightBoxContent mb-sm-5 mt-2 mb-4 mt-sm-5" id="rightTopBox">
                                         <div class="col-12">
-                                            
+
                                             <h:graphicImage library="images" name="stethoscope.png" width="500" height="500" ></h:graphicImage> 
                                         </div>
-                                   </div>
+                                    </div>
                                     <div class="row rightBoxContent mt-2">
                                         <div class="row ">
                                             <div class="col-12 col-sm-6 offset-sm-3">
                                                 <div class="input-group mb-3 mb-sm-4 inputField" id="inputUserName">
-  <!--                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" ></input>-->
-                                                 
-                                              <p:inputText  styleClass="form-control myformBackground"  placeholder="Username"  value="#{webUserController.userName}"/>
+                                                    <!--                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" ></input>-->
+
+                                                    <p:inputText  styleClass="form-control myformBackground"  placeholder="Username"  value="#{webUserController.userName}"/>
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon1"><h:graphicImage library="images" id="userIcon" name="user.png"></h:graphicImage></span>
                                                     </div>
@@ -85,7 +85,7 @@
                                         <div class="row ">
                                             <div class="col-12 col-sm-6 offset-sm-3">
                                                 <div class="input-group mb-sm-5 mb-3 inputField inputPassword">
-<!--                                                    <input type="text" class="" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1"></input>-->
+                                                    <!--                                                    <input type="text" class="" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1"></input>-->
                                                     <p:password styleClass="form-control myformBackground" placeholder="Password" value="#{webUserController.password}" ></p:password>
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon2"><h:graphicImage library="images" id="passWordIcon" name="key.png"></h:graphicImage></span>
@@ -96,8 +96,8 @@
                                     </div>
                                     <div class="row rightBoxContent">
                                         <div class="col-12 mt-sm-3 inputSubmit">
-<!--                                            <input type="submit" class="btn btn-info v" value=" login "></input>-->
-                                             <h:commandButton  styleClass="btn btn-info v subButton"  value=" login" action="#{webUserController.login()}" ></h:commandButton>
+                                            <!--                                            <input type="submit" class="btn btn-info v" value=" login "></input>-->
+                                            <h:commandButton  styleClass="btn btn-info v subButton"  value=" login" action="#{webUserController.login()}" ></h:commandButton>
                                         </div>
                                     </div>
                                 </div>
@@ -106,10 +106,10 @@
                     </div>
                 </div>
 
-                
-                 <ui:insert   name="footer">
-                     <h:panelGrid  styleClass="commonFooter" columns="4"  >
-                        
+
+                <ui:insert   name="footer">
+                    <h:panelGrid  styleClass="commonFooter" columns="4"  >
+
                         <p:outputLabel styleClass="clinicalCriteriaExample" value="&copy; College of Specialists in Rheumatalogy and Rehabilitation, Sri Lanka" ></p:outputLabel>
                         <h:panelGroup >
                             <p:spacer ></p:spacer>
@@ -121,13 +121,13 @@
                             <p:commandLink styleClass="clinicalCriteriaExample" rendered="#{webUserController.loggedUser ne null}" value="Logout" ajax="false" action="#{webUserController.logOut()}" ></p:commandLink>
                         </h:form>
                         <p:outputLabel styleClass="clinicalCriteriaExample" rendered="#{webUserController.loggedUser eq null}" value="Please login to continue" ></p:outputLabel>
-                      
+
                     </h:panelGrid>
-                 </ui:insert>
-                
+                </ui:insert>
+
             </div>
-            
-            
+
+
 
         </h:panelGroup>
 
@@ -143,10 +143,8 @@
 
                 </p:submenu>
                 <p:submenu label="Reports" >
-                    <p:menuitem value="Analysis" action="/mail/suggestions" ajax="false" />
-                    <p:menuitem value="Patients" action="/patient/List" ajax="false" />
-                    <p:menuitem value="Responses for Single Question" action="/mail/chart_single_response" ajax="false" />
-                    <p:menuitem value="Responses for All Questions" action="/mail/chart_all_responses" ajax="false" />
+                    <p:menuitem value="List of Patients - Summery" action="/patient/List" ajax="false" />
+                    <p:menuitem value="List of Patient - Details" action="/patient/summery1" ajax="false" />
                 </p:submenu>
 
                 <p:submenu label="Users" >
@@ -175,7 +173,7 @@
 
 
 
-       
+
 
 
 

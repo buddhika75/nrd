@@ -899,17 +899,9 @@ public class ImportFromExcelController {
                 System.out.println("total" + temStr);
                 }
                
-               cell= sheet.getCell(75,i);
-               temStr = cell.getContents();
-               if(temStr == null){
-               }else if (temStr.equalsIgnoreCase("Diognosis Confirmed")){
-                   temPatient.getRheumatoidArthritisData().setTotalDiognosis(temStr);
-               }else if (temStr.equalsIgnoreCase("Diognosis Not Confirmed")){
-                   temPatient.getRheumatoidArthritisData().setTotalDiognosis(temStr);
-               }
-               System.out.println("Diognosis" + temStr);
+              
                
-               cell= sheet.getCell(76,i);
+               cell= sheet.getCell(75,i);
                temStr = cell.getContents();
                 Integer temInt3= 0;
                     temInt3 = Integer.parseInt(temStr);
@@ -922,7 +914,7 @@ public class ImportFromExcelController {
                 }
                System.out.println("tenderjoint" + temInt3);
               
-               cell= sheet.getCell(77,i);
+               cell= sheet.getCell(76,i);
                temStr = cell.getContents();
                 Integer temInt4= 0;
                     temInt4 = Integer.parseInt(temStr);
@@ -936,7 +928,7 @@ public class ImportFromExcelController {
                
                System.out.println("Swolenjoint" + temInt4);
                
-               cell= sheet.getCell(78,i);
+               cell= sheet.getCell(77,i);
                temStr = cell.getContents();
                 Integer temInt5= 0;
                     temInt5= Integer.parseInt(temStr);
@@ -947,7 +939,7 @@ public class ImportFromExcelController {
                
                System.out.println("PGH" + temInt5);
                
-               cell= sheet.getCell(79,i);
+               cell= sheet.getCell(78,i);
                temStr = cell.getContents();
                 Integer temInt6= 0;
                     temInt6= Integer.parseInt(temStr);
@@ -958,7 +950,7 @@ public class ImportFromExcelController {
                
                System.out.println("value of esr or crp" + temInt6);
                
-               cell = sheet.getCell(80, i);
+               cell = sheet.getCell(79, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.trim().equalsIgnoreCase("")) {
@@ -969,7 +961,7 @@ public class ImportFromExcelController {
                 } 
                 System.out.println("Type esr or crp " + temStr);
                
-               cell = sheet.getCell(81, i);
+               cell = sheet.getCell(80, i);
                 temStr = cell.getContents();
                 if (temStr.equalsIgnoreCase("mg/l")) {
                     temPatient.getRheumatoidArthritisData().setEsrCrp(EsrCrp.CRP);
@@ -979,35 +971,18 @@ public class ImportFromExcelController {
                 System.out.println("unit  E or C " + temStr);
               
                 
-              /* cell= sheet.getCell(82,i);
-               temStr = cell.getContents();
-               if(temStr == null){
-               }else if (temStr.equalsIgnoreCase("Remission")){
-                   temPatient.getRheumatoidArthritisData().setConfirmDAS(temStr);
-               }else if (temStr.equalsIgnoreCase("Low Activity")){
-                   temPatient.getRheumatoidArthritisData().setConfirmDAS(temStr);
-               }else if (temStr.equalsIgnoreCase("Moderate Activity")){
-                   temPatient.getRheumatoidArthritisData().setConfirmDAS(temStr);
-               }else if (temStr.equalsIgnoreCase("High Activity")){
-                   temPatient.getRheumatoidArthritisData().setConfirmDAS(temStr);
-               }
-               
-               System.out.println("DAS Confirm" + temStr);
-               */
-              
-              
-               cell= sheet.getCell(83,i);
+               cell= sheet.getCell(81,i);
                temStr = cell.getContents();
                 double temd1= 0.0;
                     temd1= Double.parseDouble(temStr);
-                    System.out.println("double "+temd1);
-                if (!temStr.equals("")) {
+                   if(!temStr.equals("")) {
                     temPatient.getRheumatoidArthritisData().setEsrValue(temd1);
                 }
+                
                
                System.out.println("esr" + temd1);
               
-               cell = sheet.getCell(84, i);
+               cell = sheet.getCell(82, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     Date dateOfEsr = null;
@@ -1016,7 +991,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("dateOfEsr" + temStr);
                
-               cell= sheet.getCell(85,i);
+               cell= sheet.getCell(83,i);
                temStr = cell.getContents();
                 double temd2= 0.0;
                     temd2= Double.parseDouble(temStr);
@@ -1027,7 +1002,7 @@ public class ImportFromExcelController {
                
                System.out.println("crp" + temd2);
               
-               cell = sheet.getCell(86, i);
+               cell = sheet.getCell(84, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     Date dateOfCrp = null;
@@ -1036,7 +1011,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("dateOfCrp" + temStr);
               
-               cell= sheet.getCell(87,i);
+               cell= sheet.getCell(85,i);
                temStr = cell.getContents();
                 double temd3= 0.0;
                     temd3= Double.parseDouble(temStr);
@@ -1046,7 +1021,7 @@ public class ImportFromExcelController {
                 }
                System.out.println("RF" + temd3);
               
-               cell = sheet.getCell(88, i);
+               cell = sheet.getCell(86, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     Date dateOfRF = null;
@@ -1055,7 +1030,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("dateOfRF" + temStr);
                
-                cell= sheet.getCell(89,i);
+                cell= sheet.getCell(87,i);
                temStr = cell.getContents();
                 double temd4= 0.0;
                     temd4= Double.parseDouble(temStr);
@@ -1066,7 +1041,7 @@ public class ImportFromExcelController {
                
                System.out.println("ACPA" + temd4);
               
-               cell = sheet.getCell(90, i);
+               cell = sheet.getCell(88, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     Date dateOfAcpa = null;
@@ -1075,7 +1050,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("dateOfAcpa" + temStr);
                
-                 cell = sheet.getCell(91, i);
+                 cell = sheet.getCell(89, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1085,7 +1060,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("PolyarticularPresentationPoorPrognosticFactors" + temStr);
                 
-                cell = sheet.getCell(92, i);
+                cell = sheet.getCell(90, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1095,7 +1070,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("RfPositive " + temStr);
                 
-                cell = sheet.getCell(93, i);
+                cell = sheet.getCell(91, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1105,7 +1080,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("AntiCPAPositive " + temStr);
                 
-                cell = sheet.getCell(94, i);
+                cell = sheet.getCell(92, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1115,7 +1090,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("ErosionsInXray" + temStr);
                 
-                 cell= sheet.getCell(95,i);
+                 cell= sheet.getCell(93,i);
                temStr = cell.getContents();
                 double temd5= 0.0;
                     temd5= Double.parseDouble(temStr);
@@ -1126,7 +1101,7 @@ public class ImportFromExcelController {
                
                System.out.println("Mtx" + temd5);
                 
-                cell= sheet.getCell(96,i);
+                cell= sheet.getCell(94,i);
                temStr = cell.getContents();
                 double temd6= 0.0;
                     temd6= Double.parseDouble(temStr);
@@ -1137,7 +1112,7 @@ public class ImportFromExcelController {
                
                System.out.println("SSZ" + temd6);
             /*SSZ unit 97*/
-            cell = sheet.getCell(97, i);
+            cell = sheet.getCell(95, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("mg/td")) {
                     temPatient.getRheumatoidArthritisData().setUnitofSSZ(SSZDoseUnitAndFrequency.mgPerTd);
@@ -1148,7 +1123,7 @@ public class ImportFromExcelController {
               }
                 System.out.println("ssz unit" + temStr);
             
-               cell= sheet.getCell(98,i);
+               cell= sheet.getCell(96,i);
                temStr = cell.getContents();
                 Integer temInt7= 0;
                     temInt7= Integer.parseInt(temStr);
@@ -1159,7 +1134,7 @@ public class ImportFromExcelController {
                
                System.out.println("LEF" + temInt7);
                
-               cell= sheet.getCell(99,i);
+               cell= sheet.getCell(97,i);
                temStr = cell.getContents();
                 Integer temInt8= 0;
                     temInt8= Integer.parseInt(temStr);
@@ -1170,7 +1145,7 @@ public class ImportFromExcelController {
                
                System.out.println("HCQ" + temInt8);
                
-               cell = sheet.getCell(100, i);
+               cell = sheet.getCell(98, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("mgPerBd")) {
                     temPatient.getRheumatoidArthritisData().setDoseUnitAndFrequencyOfsteroidsInitialDrugTherapy(DoseUnitAndFrequency.mgPerBd);
@@ -1179,7 +1154,7 @@ public class ImportFromExcelController {
                 } 
                 System.out.println("hcq unit" + temStr);
                
-               cell = sheet.getCell(101, i);
+               cell = sheet.getCell(99, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("Steroid_Prednisolone")) {
                     temPatient.getRheumatoidArthritisData().setSteroidsType(SteroidsType.Steroid_Prednisolone);
@@ -1190,7 +1165,7 @@ public class ImportFromExcelController {
                
                
                
-               cell= sheet.getCell(102,i);
+               cell= sheet.getCell(100,i);
                temStr = cell.getContents();
                 Integer temInt9= 0;
                     temInt9= Integer.parseInt(temStr);
@@ -1202,7 +1177,7 @@ public class ImportFromExcelController {
                System.out.println("Steroid value" + temInt9);
                
                
-               cell = sheet.getCell(103, i);
+               cell = sheet.getCell(101, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("mgPerBd")) {
                     temPatient.getRheumatoidArthritisData().setDoseUnitAndFrequencyOfsteroidsInitialDrugTherapy(DoseUnitAndFrequency.mgPerBd);
@@ -1213,7 +1188,7 @@ public class ImportFromExcelController {
                
                
                
-               cell= sheet.getCell(104,i);
+               cell= sheet.getCell(102,i);
                temStr = cell.getContents();
                 Integer temInt10= 0;
                     temInt10= Integer.parseInt(temStr);
@@ -1224,7 +1199,7 @@ public class ImportFromExcelController {
                
                System.out.println("PGA sdai/cdaivalue" + temInt10);
                
-               cell= sheet.getCell(105,i);
+               cell= sheet.getCell(103,i);
                temStr = cell.getContents();
                 Integer temInt11= 0;
                     temInt11= Integer.parseInt(temStr);
@@ -1235,7 +1210,7 @@ public class ImportFromExcelController {
                
                System.out.println("EGA sdai/cdaivalue" + temInt11);
                
-               cell= sheet.getCell(106,i);
+               cell= sheet.getCell(104,i);
                temStr = cell.getContents();
                 double temd7= 0.0;
                     temd7= Double.parseDouble(temStr);
@@ -1247,7 +1222,7 @@ public class ImportFromExcelController {
                System.out.println("CRP value" + temd7);
                
                
-               cell = sheet.getCell(107, i);
+               cell = sheet.getCell(105, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("mgPerDl")) {
                     temPatient.getRheumatoidArthritisData().setUnitofCRP(CRPunits.mgPerDl);
@@ -1256,7 +1231,7 @@ public class ImportFromExcelController {
                 } 
                 System.out.println("crp  unit" + temStr);
                
-               cell = sheet.getCell(108, i);
+               cell = sheet.getCell(106, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1266,7 +1241,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC1" + temStr);
                
-                cell = sheet.getCell(109, i);
+                cell = sheet.getCell(107, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1276,7 +1251,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC2" + temStr);
                 
-                cell = sheet.getCell(110, i);
+                cell = sheet.getCell(108, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1286,7 +1261,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC3" + temStr);
                 
-                cell = sheet.getCell(111, i);
+                cell = sheet.getCell(109, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1296,7 +1271,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC4" + temStr);
                 
-                cell = sheet.getCell(112, i);
+                cell = sheet.getCell(110, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1306,7 +1281,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC5" + temStr);
                 
-                cell = sheet.getCell(113, i);
+                cell = sheet.getCell(111, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1316,7 +1291,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC6" + temStr);
                 
-                cell = sheet.getCell(114, i);
+                cell = sheet.getCell(112, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1326,7 +1301,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC7" + temStr);
                 
-                cell = sheet.getCell(115, i);
+                cell = sheet.getCell(113, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1336,7 +1311,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC8" + temStr);
                 
-                cell = sheet.getCell(116, i);
+                cell = sheet.getCell(114, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1346,7 +1321,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC9 " + temStr);
                 
-                cell = sheet.getCell(117, i);
+                cell = sheet.getCell(115, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1356,7 +1331,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC10 " + temStr);
                 
-                cell = sheet.getCell(118, i);
+                cell = sheet.getCell(116, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1366,7 +1341,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("CC11 " + temStr);
                 
-                cell = sheet.getCell(119, i);
+                cell = sheet.getCell(117, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1376,7 +1351,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("IC1 " + temStr);
                 
-                cell = sheet.getCell(120, i);
+                cell = sheet.getCell(118, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1386,7 +1361,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("IC2 " + temStr);
                 
-                cell = sheet.getCell(121, i);
+                cell = sheet.getCell(119, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1396,7 +1371,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("IC3 " + temStr);
                 
-                cell = sheet.getCell(122, i);
+                cell = sheet.getCell(120, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1406,7 +1381,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("IC4 " + temStr);
                 
-                cell = sheet.getCell(123, i);
+                cell = sheet.getCell(121, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1416,7 +1391,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("IC5 " + temStr);
                 
-                cell = sheet.getCell(124, i);
+                cell = sheet.getCell(122, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1427,7 +1402,7 @@ public class ImportFromExcelController {
                 System.out.println("IC6 " + temStr);
                 
                 
-                cell = sheet.getCell(125, i);
+                cell = sheet.getCell(123, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.trim().equalsIgnoreCase("")) {
@@ -1446,7 +1421,7 @@ public class ImportFromExcelController {
                 System.out.println("LupusNephritis class: " + temStr);
                
                 
-                cell = sheet.getCell(126, i);
+                cell = sheet.getCell(124, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1456,7 +1431,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("Respiratory " + temStr);
                 
-                cell = sheet.getCell(127, i);
+                cell = sheet.getCell(125, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     temPatient.getSystemicLupusErythematosusData().setOtherComplication(temStr);
@@ -1464,7 +1439,7 @@ public class ImportFromExcelController {
                 System.out.println("Comments" + temStr);
 
                 
-                cell = sheet.getCell(128, i);
+                cell = sheet.getCell(126, i);
                 temStr = cell.getContents();
                 Integer temInt12 = Integer.parseInt(temStr);
                 if (!temStr.equals("")) {
@@ -1473,7 +1448,7 @@ public class ImportFromExcelController {
                 System.out.println("Sledai Total " + temStr);
                 
                 
-                cell = sheet.getCell(129, i);
+                cell = sheet.getCell(127, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("Negative")) {
                     temPatient.getSpondyloarthristisData().setXrayPN(PositiveNegative.Two);
@@ -1483,7 +1458,7 @@ public class ImportFromExcelController {
                 System.out.println("x ray Posi or nega" + temStr);
                 
                 
-                cell = sheet.getCell(130, i);
+                cell = sheet.getCell(128, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1494,7 +1469,7 @@ public class ImportFromExcelController {
                 System.out.println("IBP " + temStr);
                 
                 
-                cell = sheet.getCell(131, i);
+                cell = sheet.getCell(129, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1505,7 +1480,7 @@ public class ImportFromExcelController {
                 System.out.println(" ABP" + temStr);
                 
                 
-                cell = sheet.getCell(132, i);
+                cell = sheet.getCell(130, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1515,7 +1490,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println(" GRTN" + temStr);
                 
-                cell = sheet.getCell(133, i);
+                cell = sheet.getCell(131, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1525,7 +1500,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("PA " + temStr);
                 
-                cell = sheet.getCell(134, i);
+                cell = sheet.getCell(132, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1535,7 +1510,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println(" Enthesitis" + temStr);
                 
-                cell = sheet.getCell(135, i);
+                cell = sheet.getCell(133, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1545,7 +1520,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println(" Dactylitis" + temStr);
                 
-                cell = sheet.getCell(136, i);
+                cell = sheet.getCell(134, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1555,7 +1530,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("Psoriasis " + temStr);
                 
-                cell = sheet.getCell(137, i);
+                cell = sheet.getCell(135, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1565,7 +1540,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("IBD " + temStr);
                 
-                cell = sheet.getCell(138, i);
+                cell = sheet.getCell(136, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1575,7 +1550,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("Uveitis " + temStr);
                 
-                cell = sheet.getCell(139, i);
+                cell = sheet.getCell(137, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1585,7 +1560,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println(" EAPR" + temStr);
                 
-                cell = sheet.getCell(140, i);
+                cell = sheet.getCell(138, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1595,7 +1570,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println(" Pi" + temStr);
                 
-                cell = sheet.getCell(141, i);
+                cell = sheet.getCell(139, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1606,7 +1581,7 @@ public class ImportFromExcelController {
                 System.out.println(" PFH" + temStr);
                 
                 
-                cell = sheet.getCell(142, i);
+                cell = sheet.getCell(140, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1617,7 +1592,7 @@ public class ImportFromExcelController {
                 System.out.println("Sacroiliitis " + temStr);
                 
                 
-                cell = sheet.getCell(143, i);
+                cell = sheet.getCell(141, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1628,7 +1603,7 @@ public class ImportFromExcelController {
                 System.out.println("UorcorADO " + temStr);
                 
                 /*144  HLA -B27 Positive negative*/
-                cell = sheet.getCell(144, i);
+                cell = sheet.getCell(142, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("Negative")) {
                     temPatient.getSpondyloarthristisData().setHlaPN(PositiveNegative.Two);
@@ -1638,7 +1613,7 @@ public class ImportFromExcelController {
                 System.out.println("HLA Posi or nega" + temStr);
                 
                 
-                cell = sheet.getCell(145, i);
+                cell = sheet.getCell(143, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1648,7 +1623,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("DiagnosisAxialSpA" + temStr);
                 
-                 cell = sheet.getCell(146, i);
+                 cell = sheet.getCell(144, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1658,7 +1633,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("DiagnosisPeripheralSpA" + temStr);
                 
-                cell = sheet.getCell(147, i);
+                cell = sheet.getCell(145, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     temPatient.getSpondyloarthristisData().setOtherDiagnosis(temStr);
@@ -1666,7 +1641,7 @@ public class ImportFromExcelController {
                 System.out.println("otherdiagnoo" + temStr);
                 
                 
-                cell = sheet.getCell(148, i);
+                cell = sheet.getCell(146, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1676,7 +1651,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("AnkylosingSp" + temStr);
                 
-                cell = sheet.getCell(149, i);
+                cell = sheet.getCell(147, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1686,7 +1661,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("PsoriaticA" + temStr);
                 
-                cell = sheet.getCell(150, i);
+                cell = sheet.getCell(148, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1696,7 +1671,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("ibdassociatedSpA" + temStr);
                 
-                cell = sheet.getCell(151, i);
+                cell = sheet.getCell(149, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1706,7 +1681,7 @@ public class ImportFromExcelController {
                 }
                 System.out.println("reactiveA" + temStr);
                 
-                cell = sheet.getCell(152, i);
+                cell = sheet.getCell(150, i);
                 temStr = cell.getContents();
                 if (temStr == null) {
                 } else if (temStr.equalsIgnoreCase("yes")) {
@@ -1716,14 +1691,14 @@ public class ImportFromExcelController {
                 }
                 System.out.println("undifferentiatedSpA" + temStr);
                 
-                cell = sheet.getCell(153, i);
+                cell = sheet.getCell(151, i);
                 temStr = cell.getContents();
                 if (!temStr.equals("")) {
                     temPatient.getSpondyloarthristisData().setOtherTypeofSpA(temStr);
                 }
                 System.out.println("otherTypeofSpondyloarthritis" + temStr);
                 
-                cell= sheet.getCell(154,i);
+                cell= sheet.getCell(152,i);
                temStr = cell.getContents();
                 Integer temInt13= 0;
                     temInt13= Integer.parseInt(temStr);
@@ -1734,7 +1709,7 @@ public class ImportFromExcelController {
                
                System.out.println("FATIGue" + temInt13);
                
-               cell= sheet.getCell(155,i);
+               cell= sheet.getCell(153,i);
                temStr = cell.getContents();
                 Integer temInt14= 0;
                     temInt14= Integer.parseInt(temStr);
@@ -1747,7 +1722,7 @@ public class ImportFromExcelController {
                System.out.println(" SpinalPain " + temInt14);
                
                
-               cell= sheet.getCell(156,i);
+               cell= sheet.getCell(154,i);
                temStr = cell.getContents();
                 Integer temInt15= 0;
                     temInt15= Integer.parseInt(temStr);
@@ -1759,7 +1734,7 @@ public class ImportFromExcelController {
                
                System.out.println(" PA " + temInt15);
                
-               cell= sheet.getCell(157,i);
+               cell= sheet.getCell(155,i);
                temStr = cell.getContents();
                 Integer temInt16= 0;
                     temInt16= Integer.parseInt(temStr);
@@ -1770,7 +1745,7 @@ public class ImportFromExcelController {
                
                System.out.println(" Enthesitis " + temInt16);
                
-               cell= sheet.getCell(158,i);
+               cell= sheet.getCell(156,i);
                temStr = cell.getContents();
                 Integer temInt17= 0;
                     temInt17= Integer.parseInt(temStr);
@@ -1781,7 +1756,7 @@ public class ImportFromExcelController {
                
                System.out.println(" MSI " + temInt17);
                
-                cell= sheet.getCell(159,i);
+                cell= sheet.getCell(157,i);
                temStr = cell.getContents();
                 double temd8= 0.0;
                     temd8= Double.parseDouble(temStr);
@@ -1795,7 +1770,7 @@ public class ImportFromExcelController {
                
                
                
-               cell= sheet.getCell(160,i);
+               cell= sheet.getCell(158,i);
                temStr = cell.getContents();
                 Integer temInt18= 0;
                     temInt18= Integer.parseInt(temStr);
@@ -1807,7 +1782,7 @@ public class ImportFromExcelController {
                System.out.println(" PGA " + temInt18);
                
                
-               cell= sheet.getCell(161,i);
+               cell= sheet.getCell(159,i);
                temStr = cell.getContents();
                 double temd9= 0.0;
                     temd9= Double.parseDouble(temStr);
@@ -1818,7 +1793,7 @@ public class ImportFromExcelController {
                
                System.out.println("asdas ESR" + temd9);
                
-               cell= sheet.getCell(162,i);
+               cell= sheet.getCell(160,i);
                temStr = cell.getContents();
                 double temd10= 0.0;
                     temd10= Double.parseDouble(temStr);
@@ -1831,7 +1806,7 @@ public class ImportFromExcelController {
                /*CRP unit 163 */
                
                
-               cell = sheet.getCell(163, i);
+               cell = sheet.getCell(161, i);
                 temStr = cell.getContents();
                 if (temStr.trim().equalsIgnoreCase("mgPerDl")) {
                     temPatient.getSpondyloarthristisData().setUnitofCRP(CRPunits.mgPerDl);
@@ -1846,7 +1821,9 @@ public class ImportFromExcelController {
                 patientFacade.create(temPatient);
                 
                 totalOfTargtPopulationcal(temPatient);
-                
+                criteriaCal(temPatient);
+                sledaiTotalcal(temPatient);
+                spondyloarthristisdatBASDAI(temPatient);
                 
                 patientFacade.edit(temPatient);
                 
@@ -1958,7 +1935,7 @@ public class ImportFromExcelController {
         
         
         double crp = temPatient.getRheumatoidArthritisData().getCrpSDAICDAI();
-        double temp = 0;
+        double temp = 0.0;
 
         if (temPatient.getRheumatoidArthritisData().getUnitofCRP() != null) {
             switch (temPatient.getRheumatoidArthritisData().getUnitofCRP()) {
@@ -2009,4 +1986,480 @@ public class ImportFromExcelController {
         }
         
     }
+    
+    
+    public void criteriaCal(Patient temPatient) {
+        System.out.println("cal = ");
+        int c_Total;
+        int clinical = 0;
+        int immunologic = 0;
+        String x = "Diognosis Confirmed";
+        String y = "Diognosis Not Confirmed";
+
+        if (temPatient == null) {
+            return;
+        }
+        System.out.println("200");
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria1() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria2() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria3() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria4() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria5() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria6() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria7() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria8() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria9() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria10() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isClinicalCriteria11() == true) {
+            clinical++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isImmunologicCriteria1() == true) {
+            immunologic++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isImmunologicCriteria2() == true) {
+            immunologic++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isImmunologicCriteria3() == true) {
+            immunologic++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isImmunologicCriteria4() == true) {
+            immunologic++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isImmunologicCriteria5() == true) {
+            immunologic++;
+        }
+
+        if (temPatient.getSystemicLupusErythematosusData().isImmunologicCriteria6() == true) {
+            immunologic++;
+        }
+        System.out.println("immunologic = " + immunologic);
+        
+        
+        c_Total = clinical + immunologic;
+        temPatient.getSystemicLupusErythematosusData().setClinicalCriteriaTotal(clinical);
+        temPatient.getSystemicLupusErythematosusData().setImmunologicCriteriaTotal(immunologic);
+        {
+            temPatient.getSystemicLupusErythematosusData().setCriteriaTotal(c_Total);
+        }
+
+        if (clinical > 0 && immunologic > 0) {
+            if (c_Total > 4) {
+                temPatient.getSystemicLupusErythematosusData().setDiognosisConfirm(x);
+            }
+        } else {
+            temPatient.getSystemicLupusErythematosusData().setDiognosisConfirm(y);
+        }
+
+    }
+
+    public void sledaiTotalcal(Patient temPatient) {
+
+        
+      
+        String a = "No Flare";
+        String b = "Mild or moderate flare";
+        String c = "Server Flare";
+
+        if (temPatient == null) {
+            return;
+        }
+
+        
+         int s_Total= temPatient.getSystemicLupusErythematosusData().getSledaiTotal();
+
+        temPatient.getSystemicLupusErythematosusData().setSledaiTotal(s_Total);
+        if (s_Total <= 3) {
+
+            temPatient.getSystemicLupusErythematosusData().setSledaiFlare(a);
+        }
+
+        if (s_Total > 3) {
+            if (s_Total < 12) {
+
+                temPatient.getSystemicLupusErythematosusData().setSledaiFlare(b);
+            }
+        }
+
+        if (s_Total >= 12) {
+
+            temPatient.getSystemicLupusErythematosusData().setSledaiFlare(c);
+        }
+
+    }
+
+    public void spondyloarthristisdatBASDAI(Patient temPatient) {
+        System.out.println("basdai  ");
+        String x = "Classified";
+        String y = "Not Classified";
+        String a1 = " Inactive ";
+        String a2 = " Moderate Activity ";
+        String a3 = " High Activity ";
+        String a4 = " Very High Activity ";
+        double erro = 0.0;
+        String as = "AS Confirmed";
+        String xrayN = "Check Other SpA Features";
+        String spa ="Axial SpA Confirmed";
+        String asas ="Go for HLA-B27 ";
+        String hla = "Go for MRI ";
+        String od = "Other Diagnosis";
+        String PeriperalSpA = "PeriperalSpA Confirmed";
+        String notconfirm= "Not Confirm";
+        int primaryPA = 0;
+        int secondaryPA = 0;
+        int tertiaryPA = 0;
+        
+        
+        
+        if (temPatient == null) {
+            return;
+        }
+        System.out.println("14");
+        int f = temPatient.getSpondyloarthristisData().getBasdaiFatigue();
+        int sp = temPatient.getSpondyloarthristisData().getBasdaiSpinalPain();
+        int pa = temPatient.getSpondyloarthristisData().getBasdaiPeripheralArthritis();
+        int e = temPatient.getSpondyloarthristisData().getBasdaiEnthesitis();
+        int msi = temPatient.getSpondyloarthristisData().getBasdaiMorningStiffnessIntensity();
+        double msd = temPatient.getSpondyloarthristisData().getBasdaiMorningStiffnessDuration();
+        int pga = temPatient.getSpondyloarthristisData().getAsdasPatientGlobalAssessmennt();
+
+        if (f > 10) {
+            temPatient.getSpondyloarthristisData().setBasdaiFatigue(f = 0);
+            System.out.println("f1 = " + f);
+        }
+
+        if (sp > 10) {
+            temPatient.getSpondyloarthristisData().setBasdaiSpinalPain(sp = 0);
+            System.out.println("sp = " + sp);
+        } else {
+            temPatient.getSpondyloarthristisData().setAsdasSpinalPain(sp);
+        }
+
+        if (pa > 10) {
+            temPatient.getSpondyloarthristisData().setBasdaiPeripheralArthritis(pa = 0);
+            System.out.println("pa = " + pa);
+        } else {
+            temPatient.getSpondyloarthristisData().setAsdasPeripheralArthritis(pa);
+        }
+
+        if (e > 10) {
+            temPatient.getSpondyloarthristisData().setBasdaiEnthesitis(e = 0);
+            System.out.println("e = " + e);
+        }
+
+        if (msi > 10) {
+            temPatient.getSpondyloarthristisData().setBasdaiMorningStiffnessIntensity(msi = 0);
+            System.out.println("msi= " + msi);
+        }
+
+        if (msd > 10.0) {
+            temPatient.getSpondyloarthristisData().setBasdaiMorningStiffnessDuration(msd = 0.0);
+            System.out.println("msd= " + msd);
+        } else {
+            temPatient.getSpondyloarthristisData().setAsdasMorningStiffnessDuration(msd);
+        }
+
+        double basdaiScore = 0.2 * (f + sp + pa + e + 0.5 * (msi + msd));
+        System.out.println(" f3 = " + f);
+        System.out.println("pa2 = " + pa);
+
+        System.out.println("score = " + basdaiScore);
+        temPatient.getSpondyloarthristisData().setBasdaiCalculatedScore(basdaiScore);
+
+        if (basdaiScore > 3.9) {
+            temPatient.getSpondyloarthristisData().setBasdaiClassified(x);
+        } else {
+           temPatient.getSpondyloarthristisData().setBasdaiClassified(y);
+        }
+
+        double esr = temPatient.getSpondyloarthristisData().getAsdasEsr();
+
+        double rootesr = Math.sqrt(esr);
+        System.out.println("rootesr = " + rootesr);
+
+        double esrscore = 0.079 * sp + 0.069 * msd + 0.113 * pga + 0.086 * pa + 0.293 * rootesr;
+
+        double esrscoreround = (double) Math.round(esrscore * 100d) / 100d;
+        System.out.println("esrscore = " + esrscore);
+        System.out.println("esrscoreround = " + esrscoreround);
+        temPatient.getSpondyloarthristisData().setAsdasEsrScore(esrscoreround);
+
+        if (esrscoreround < 1.3) {
+            temPatient.getSpondyloarthristisData().setAsdasEsrScoreReference(a1);
+        }
+        if (1.3 < esrscoreround) {
+            if (esrscoreround < 2.1) {
+                temPatient.getSpondyloarthristisData().setAsdasEsrScoreReference(a2);
+            }
+        }
+        if (2.1 < esrscoreround) {
+            if (esrscoreround < 3.5) {
+                temPatient.getSpondyloarthristisData().setAsdasEsrScoreReference(a3);
+            }
+        }
+
+        if (esrscoreround > 3.5) {
+            temPatient.getSpondyloarthristisData().setAsdasEsrScoreReference(a4);
+        }
+
+        double crp = temPatient.getSpondyloarthristisData().getAsdasCrp();
+
+        double temp = 0;
+
+        if (temPatient.getSpondyloarthristisData().getUnitofCRP() != null) {
+            switch (temPatient.getSpondyloarthristisData().getUnitofCRP()) {
+                case mgPerL:
+                    temp = crp;
+                    break;
+                case mgPerDl:
+                    temp = crp*10;
+                    break;
+            }
+        }
+
+        double logcrp = Math.log(temp+1);
+        System.out.println("logcrp = " + logcrp);
+        double crpScore = 0.121 * sp + 0.058 * msd + 0.11 * pga + 0.073 * pa + 0.579 * logcrp;
+
+        double crpScoreRound = (double) Math.round(crpScore * 100d) / 100d;
+        System.out.println("crpScore = " + crpScore);
+        System.out.println("crpScoreRound = " + crpScoreRound);
+
+        temPatient.getSpondyloarthristisData().setAsdasCrpScore(crpScoreRound);
+
+        if (crpScoreRound < 1.3) {
+            temPatient.getSpondyloarthristisData().setAsdasCrpScoreReference(a1);
+        }
+        if (1.3 < crpScoreRound) {
+            if (crpScoreRound < 2.1) {
+                temPatient.getSpondyloarthristisData().setAsdasCrpScoreReference(a2);
+            }
+        }
+        if (2.1 < crpScoreRound) {
+            if (crpScoreRound < 3.5) {
+                temPatient.getSpondyloarthristisData().setAsdasCrpScoreReference(a3);
+            }
+        }
+
+        if (crpScoreRound > 3.5) {
+            temPatient.getSpondyloarthristisData().setAsdasCrpScoreReference(a4);
+        }
+        
+        
+        if(temPatient.getSpondyloarthristisData().getXrayPN() != null) {
+            switch (temPatient.getSpondyloarthristisData().getXrayPN()) {
+                case One:
+                    temPatient.getSpondyloarthristisData().setCbpConfirm(as);
+                    break;
+                case Two:
+                    temPatient.getSpondyloarthristisData().setCbpConfirm(xrayN);
+                    break;
+            }
+        
+        }
+        
+        
+        
+        System.out.println("cal asas = ");
+        
+        int asas_total = 0;
+        
+         if (temPatient == null) {
+            return;
+        }
+        System.out.println("200");
+        if (temPatient.getSpondyloarthristisData().isIbp() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isAbp() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isGrtn() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isPa() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isEnthesitis() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isDactylitis() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isPsoriasis() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isIbd() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isUveitis() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isEapr() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isPi() == true) {
+            asas_total++;
+        }
+         if (temPatient.getSpondyloarthristisData().isPfh() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isSacroiliitis() == true) {
+            asas_total++;
+        }
+        if (temPatient.getSpondyloarthristisData().isUorcorADO() == true) {
+            asas_total++;
+        }
+        
+        temPatient.getSpondyloarthristisData().setAsastotal(asas_total);
+    
+        
+        if(asas_total >= 4){
+        temPatient.getSpondyloarthristisData().setAsasconfirm(spa);
+        }
+         if(asas_total < 4){
+        temPatient.getSpondyloarthristisData().setAsasconfirm(asas);
+        }
+         
+         if(temPatient.getSpondyloarthristisData().getHlaPN()!= null) {
+            switch (temPatient.getSpondyloarthristisData().getHlaPN()) {
+                case One:
+                    if(asas_total<4){
+                        if(asas_total>1){
+                        temPatient.getSpondyloarthristisData().setHlbConfirm(spa);
+                        }
+                    }
+                    if(asas_total < 2){
+                        temPatient.getSpondyloarthristisData().setHlbConfirm(hla);
+                    }
+                    
+                    break;
+                case Two:
+                    temPatient.getSpondyloarthristisData().setHlbConfirm(od);
+                    break;
+            }
+        }
+        
+         
+          if (temPatient.getSpondyloarthristisData().isPa() == true ){
+                 primaryPA++;
+            }
+         if (temPatient.getSpondyloarthristisData().isEnthesitis() == true) {
+                primaryPA++;
+            }
+          if (temPatient.getSpondyloarthristisData().isDactylitis() == true) {
+                primaryPA++;
+            } 
+         
+         if (temPatient.getSpondyloarthristisData().isIbp()== true ){
+                 tertiaryPA++;
+            }
+       
+         if (temPatient.getSpondyloarthristisData().isPfh() == true ){
+                 tertiaryPA++;
+            }
+        
+        if (temPatient.getSpondyloarthristisData().isAbp() == true ){
+                 secondaryPA++;
+            }
+        
+         if (temPatient.getSpondyloarthristisData().isGrtn() == true ){
+                 secondaryPA++;
+            }
+         
+          if (temPatient.getSpondyloarthristisData().isPsoriasis() == true ){
+                 secondaryPA++;
+            }
+          
+           if (temPatient.getSpondyloarthristisData().isIbd() == true ){
+                 secondaryPA++;
+            }
+           
+            if (temPatient.getSpondyloarthristisData().isUveitis() == true ){
+                 secondaryPA++;
+            }
+            
+             if (temPatient.getSpondyloarthristisData().isEapr() == true ){
+                 secondaryPA++;
+            }
+             
+              if (temPatient.getSpondyloarthristisData().isPi() == true ){
+                 secondaryPA++;
+            }
+          
+              if (temPatient.getSpondyloarthristisData().isSacroiliitis() == true ){
+                 secondaryPA++;
+            }
+              
+              if (temPatient.getSpondyloarthristisData().isUorcorADO() == true ){
+                 secondaryPA++;
+            }
+              
+             System.out.println("secondaryPA "+ secondaryPA);
+              System.out.println("primaryPA "+ primaryPA);
+               System.out.println("tertiaryPA "+ tertiaryPA);
+               
+           
+             if (temPatient == null) {
+            return;
+        }  
+             if(secondaryPA >= 1){
+                   temPatient.getSpondyloarthristisData().setPeripheralspaconfirm(notconfirm);
+               }
+                 if(tertiaryPA >= 1){
+                   temPatient.getSpondyloarthristisData().setPeripheralspaconfirm(notconfirm);
+               }
+                 if(primaryPA <= 2){
+                   temPatient.getSpondyloarthristisData().setPeripheralspaconfirm(notconfirm);
+               }
+                 
+                 if(primaryPA > 2){
+                   temPatient.getSpondyloarthristisData().setPeripheralspaconfirm(PeriperalSpA);  
+               }
+                if(primaryPA >= 1 && secondaryPA >= 1){
+                   temPatient.getSpondyloarthristisData().setPeripheralspaconfirm(PeriperalSpA);  
+               }
+               
+                if((primaryPA < 2 && primaryPA > 0)&& tertiaryPA < 3 && secondaryPA >= 1){
+                   temPatient.getSpondyloarthristisData().setPeripheralspaconfirm(PeriperalSpA);
+               }
+           
+    }
+    
+    
+    
 }
