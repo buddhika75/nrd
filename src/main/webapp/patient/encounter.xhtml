@@ -1,0 +1,2238 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">
+                Patient
+            </ui:define>
+
+            <ui:define name="body">
+
+                <f:view>
+
+
+                    <h:form>
+                        <p:panel  style="margin: auto" >
+                            <f:facet name="header">
+                                <p:outputLabel value="#{webUserController.loggedUser.institute.name} " ></p:outputLabel>
+                            </f:facet>
+
+                            <p:panelGrid columns="1" >
+
+                                <p:panelGrid columns="2" >
+                                    <p:commandButton ajax="false" action="#{patientController.saveSelectedEncounter()}" value="Save" ></p:commandButton>
+                                    <p:commandButton ajax="false" action="#{patientController.backToPatient() }" value="Back" ></p:commandButton>
+
+                                </p:panelGrid>
+
+                                <p:tabView >
+                                    <p:tab title="Summery" >
+                                        <p:panelGrid columns="1" >
+
+                                            <p:panelGrid columns="5" >
+                                                <h:outputLabel value="Date" ></h:outputLabel>
+                                                <h:outputLabel value="Clinic No" ></h:outputLabel>
+                                                <h:outputLabel value="Name of Patient" ></h:outputLabel>
+                                                <h:outputLabel value="Address" ></h:outputLabel>
+                                                <h:outputLabel value="Age" ></h:outputLabel>
+                                                <h:outputLabel value="#{patientController.selectedEncounter.encounterDate}" >
+                                                    <f:convertDateTime pattern="dd MMM yyyy" ></f:convertDateTime>
+                                                </h:outputLabel>
+                                                <h:outputLabel value="#{patientController.selectedEncounter.patient.clinicNumber}" ></h:outputLabel>
+                                                <h:outputLabel value="#{patientController.selectedEncounter.patient.nameOfPatient}" ></h:outputLabel>
+                                                <h:outputLabel value="#{patientController.selectedEncounter.patient.address}" ></h:outputLabel>
+                                                <h:outputLabel value="#{patientController.selectedEncounter.patient.age}" ></h:outputLabel>
+                                            </p:panelGrid>
+
+                                            <p:inputTextarea value="#{patientController.selectedEncounter.details}" rows="3" cols="47" autoResize="190"  ></p:inputTextarea>
+
+                                            <p:panelGrid columns="2" >
+
+                                                <p:panel header="Investigations" >
+
+
+                                                </p:panel>
+
+                                                <p:panel header="Prescription" >
+
+
+                                                </p:panel>
+
+                                            </p:panelGrid>
+
+
+                                           
+                                            <p:panelGrid columns="6" >
+                                                
+                                                <p:outputLabel value="DAS" ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.rheumatoidArthritisData.confirmDAS}" ></p:outputLabel>
+                                            
+                                                <p:outputLabel value="SDAI" ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.rheumatoidArthritisData.sdaireference}" ></p:outputLabel>
+                                            
+                                                <p:outputLabel value="CDAI" ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.rheumatoidArthritisData.cdaireference}" ></p:outputLabel>
+                                            
+                                            </p:panelGrid>
+                                            
+                                            <p:panelGrid columns="4" >
+                                                <p:outputLabel value="SLEDAI" ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiTotal}" ></p:outputLabel>
+                                               
+                                                <p:outputLabel value="BASDAI" ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiCalculatedScore}" ></p:outputLabel>
+                                               
+                                            </p:panelGrid>
+                                            
+                                            <p:panelGrid columns="4" >
+                                                <p:outputLabel value="ASDAS ESR " ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.spondyloarthristisData.asdasEsrScore}" ></p:outputLabel>
+                                                    
+                                                <p:outputLabel value="ASDAS CRP " ></p:outputLabel>
+                                                <p:outputLabel value="#{patientController.selectedEncounter.spondyloarthristisData.asdasCrpScore}" ></p:outputLabel>
+
+                                            </p:panelGrid>
+                                        </p:panelGrid>
+                                    </p:tab>
+
+
+                                    <p:tab title="RA" >
+
+                                        <h:panelGroup rendered="true">
+
+                                            <table style="position: relative;">
+                                                <tr>
+                                                    <td style="position: relative;">
+                                                        <p:graphicImage library="images" name="nrd1.png" style=" width:302px ; height: 486px ;" ></p:graphicImage>
+
+                                                        <p:selectBooleanCheckbox style="position: absolute; left:95px;top:87px;" id="ll1Sj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ll1Sj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:83px;top:147px;" id="ll2Ej" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ll2Ej}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI"  listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:60px;top:202px;"  id="ll3Wj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ll3Wj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:25px;top:219px;"  id="ls4Mcp1" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls4Mcp1}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:33px;top:230px;" id="ls5Mcp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls5Mcp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:45px;top:237px;" id="ls6Mcp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls6Mcp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:58px;top:239px;" id="ls7Mcp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls7Mcp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:73px;top:237px;" id="ls8Mcp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls8Mcp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:12px;top:231px;" id="ls9ThumbIP" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls9ThumbIp}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:24px;top:256px;" id="ls10Pip2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls10Pip2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:42px;top:262px;" id="ls11Pip3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls11Pip3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:60px;top:261px;" id="ls12Pip4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls12Pip4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:76px;top:258px;" id="ls13Pip5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls13Pip5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:115px;top:219px;" id="ll14Hj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ll14Hj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:117px;top:325px;" id="ll15Kj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ll15Kj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:112px;top:425px;" id="ll16Aj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ll16Aj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:112px;top:455px;" id="ls17Mtp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls17Mtp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:95px;top:453px;" id="ls18Mtp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls18Mtp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:80px;top:448px;" id="ls19Mtp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls19Mtp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:67px;top:440px;" id="ls20Mtp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.ls20Mtp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:192px;top:87px;" id="rl21Sj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rl21Sj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:202px;top:147px;" id="rl22Ej" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rl22Ej}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:225px;top:202px;" id="rl23Wj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rl23Wj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:260px;top:219px;" id="rs24Mcp1" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs24Mcp1}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:253px;top:230px;" id="rs25Mcp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs25Mcp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:242px;top:237px;" id="rs26Mcp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs26Mcp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:226px;top:239px;" id="rs27Mcp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs27Mcp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:211px;top:237px;" id="rs28Mcp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs28Mcp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:275px;top:231px;" id="rs29ThumbIP" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs29ThumbIP}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:265px;top:256px;" id="rs30Pip2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs30Pip2}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:246px;top:262px;" id="rs31Pip3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs31Pip3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:228px;top:261px;" id="rs32Pip4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs32Pip4}"  >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:211px;top:258px;" id="rs33Pip5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs33Pip5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:172px;top:219px;" id="rl34Hj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rl34Hj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:169px;top:325px;" id="rl35Kj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rl35Kj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal swollenJointCountDAS swellenJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:172px;top:425px;" id="rl36Aj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rl36Aj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:172px;top:455px;" id="rs37Mtp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs37Mtp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:190px;top:453px;" id="rs38Mtp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs38Mtp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:207px;top:448px;" id="rs39Mtp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs39Mtp4}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:217px;top:440px;" id="rs40Mtp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rs40Mtp5}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:125px;top:35px;" id="laj41Tmj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.laj41Tmj}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:133px;top:77px;" id="laj42Acc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.laj42Acc}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:110px;top:70px;" id="laj43Stc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.laj43Stc}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:160px;top:35px;" id="raj44Tmj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.raj44Tmj}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:155px;top:77px;" id="raj45Acc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.raj45Acc}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:177px;top:70px;" id="raj46Stc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.raj46Stc}">
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+
+                                                    </td>
+
+                                                    <td style="position: relative;">
+                                                        <p:graphicImage library="images" name="nrd1.png" style=" width:302px ; height: 486px ;" ></p:graphicImage>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:95px;top:87px;" id="llTj1Sj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.llTj1Sj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:83px;top:147px;" id="llTj2Ej" value="#{patientController.selectedEncounter.rheumatoidArthritisData.llTj2Ej}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:60px;top:202px;" id="llTj3Wj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.llTj3Wj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:25px;top:219px;" id="lsTj4Mcp1" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj4Mcp1}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:33px;top:230px;" id="lsTj5Mcp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj5Mcp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:45px;top:237px;" id="lsTj6Mcp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj6Mcp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:58px;top:239px;" id="lsTj7Mcp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj7Mcp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:73px;top:237px;" id="lsTj8Mcp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj8Mcp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:12px;top:231px;" id="lsTj9ThumbIp" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj9ThumbIp}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:24px;top:256px;" id="lsTj10Pip2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj10Pip2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:42px;top:262px;" id="lsTj11Pip3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj11Pip3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:60px;top:261px;" id="lsTj12Pip4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj12Pip4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:76px;top:258px;" id="lsTj13Pip5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj13Pip5}"  >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:115px;top:219px;" id="llTj14Hj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.llTj14Hj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:117px;top:325px;" id="llTj15Kj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.llTj15Kj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:112px;top:425px;" id="llTJ16AJ" value="#{patientController.selectedEncounter.rheumatoidArthritisData.llTJ16AJ}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:112px;top:455px;" id="lsTj17Mtp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj17Mtp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:95px;top:453px;" id="lsTj18Mtp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj18Mtp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:80px;top:448px;" id="lsTj19Mtp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj19Mtp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:67px;top:440px;" id="lsTj20Mtp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lsTj20Mtp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:192px;top:87px;" id="rlTj21Sj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rlTj21Sj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:202px;top:147px;" id="rlTj22Ej" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rlTj22Ej}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:225px;top:202px;" id="rlTj23Wj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rlTj23Wj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:260px;top:219px;" id="rsTj24Mcp1" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj24Mcp1}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:253px;top:230px;" id="rsTj25Mcp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj25Mcp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:242px;top:237px;" id="rsTj26Mcp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj26Mcp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:226px;top:239px;" id="rsTj27Mcp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj27Mcp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:211px;top:237px;" id="rsTj28Mcp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj28Mcp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:275px;top:231px;" id="rsTJ29ThumbIp" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj29ThumbIp}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:265px;top:256px;" id="rsTj30Pip2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj30Pip2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:246px;top:262px;" id="rsTj31Pip3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj31Pip3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:228px;top:261px;" id="rsTj32Pip4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj32Pip4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:211px;top:258px;" id="rsTj33Pip5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj33Pip5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:172px;top:219px;" id="rlTj34Hj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rlTj34Hj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:169px;top:325px;" id="rlTj35Kj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rlTj35Kj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal tenderJointCountDAS tenderJointCountSDAICDAI" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:172px;top:425px;" id="rlTj36Aj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rlTj36Aj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:172px;top:455px;" id="rsTj37Mtp2" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj37Mtp2}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:190px;top:453px;" id="rsTj38Mtp3" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj38Mtp3}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:207px;top:448px;" id="rsTj39Mtp4" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj39Mtp4}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:217px;top:440px;" id="rsTj40Mtp5" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rsTj40Mtp5}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:125px;top:35px;" id="lajTj41Tmj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lajTj41Tmj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:133px;top:77px;" id="lajTj42Acc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lajTj42Acc}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:110px;top:70px;" id="lajTj43Stc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.lajTj43Stc}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:160px;top:35px;" id="rajTj44Tmj" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rajTj44Tmj}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:155px;top:77px;" id="rajTj45Acc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rajTj45Acc}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+
+                                                        <p:selectBooleanCheckbox  style="position: absolute; left:177px;top:70px;" id="rajTj46Stc" value="#{patientController.selectedEncounter.rheumatoidArthritisData.rajTj46Stc}" >
+                                                            <p:ajax event="change" process="@this" update="jointInvolvementCal" listener="#{patientController.calculateJointCount()}" />
+                                                        </p:selectBooleanCheckbox>
+                                                    </td>
+
+                                                    <td style="position: relative;">
+                                                        <p:graphicImage library="images" name="das28.PNG" style=" width:200px ; height: 400px ;" >
+                                                        </p:graphicImage>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p:spacer width="100" height="10" />
+                                                        SWOLEN JOINTS
+                                                    </td>
+                                                    <td>
+                                                        <p:spacer width="100" height="10" />
+                                                        TENDER JOINTS
+                                                    </td>
+                                                    <td>
+                                                        <p:spacer width="50" height="10" />
+                                                        DAS 28 (Display only)
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                        
+                                    </h:panelGroup>
+                                        
+                                        
+                                        
+                                        
+                         
+                            <p:panelGrid >
+                                
+                                <p:row>
+                                    <p:column colspan="7"><center>
+                                            <p:outputLabel value="Target population"></p:outputLabel></center>
+                                        <br></br>
+                                        <p:outputLabel value="1. Patients who have at least 1 joint with definite clinical synovitis (swelling)- excluding DIP points, 1st MTP joinnts and 1st CMC joints."></p:outputLabel>
+                                        <br></br><p:outputLabel value="2. Patients with the synovitis not better explained by another disease."></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Joint involvement"></p:outputLabel>
+                                    </p:column>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Serology"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column>
+                                        <p:selectOneRadio value="#{patientController.selectedEncounter.rheumatoidArthritisData.jointInvolvement}" layout="grid" columns="1" disabled="true" >
+                                            <f:selectItems  value="#{enumController.jointInvolvements}" ></f:selectItems>
+                                              <p:ajax event="change" process="@this" update="totalDiognosis totalScoreTargetPopulation" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                        </p:selectOneRadio>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.jointInvolvementCal}" id="jointInvolvementCal">
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column >
+                                        <p:selectOneRadio value="#{patientController.selectedEncounter.rheumatoidArthritisData.serology}" layout="grid" columns="1">
+                                            <f:selectItems  value="#{enumController.serology}"/>
+                                             <p:ajax event="change" process="@this" update="totalDiognosis serologyNo totalScoreTargetPopulation" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                            
+                                        </p:selectOneRadio>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.serologyCal}" id="serologyNo">
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Acute-phase reactants"></p:outputLabel>
+                                    </p:column>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Duration of symptoms "></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column >
+                                        <p:selectOneRadio value="#{patientController.selectedEncounter.rheumatoidArthritisData.acutePhaseReactants}" layout="grid" columns="1" >
+                                            <f:selectItems  value="#{enumController.acutePhaseReactants}" ></f:selectItems>
+                                             <p:ajax event="change" process="@this" update="totalDiognosis acutephaseReactantsCal totalScoreTargetPopulation" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                        </p:selectOneRadio>
+                                    </p:column>
+                                    <p:column> 
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.acutephaseReactantsCal}" id="acutephaseReactantsCal">
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectOneRadio value="#{patientController.selectedEncounter.rheumatoidArthritisData.durationOfSymptoms}" layout="grid" columns="1" >
+                                            <f:selectItems  value="#{enumController.durationOfSymptoms}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this" update="totalDiognosis durationOfSymptomsCal totalScoreTargetPopulation" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                        </p:selectOneRadio>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.durationOfSymptomsCal}" id="durationOfSymptomsCal">
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Total Score"></p:outputLabel>
+                                    </p:column>
+                                    <p:column >
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.totalScoreTargetPopulation}" id="totalScoreTargetPopulation">
+                                        <p:ajax event="change" process="@this" update="totalDiognosis  " listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column colspan="2">
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.totalDiognosis}" id="totalDiognosis">
+                                        </p:inputText>
+                                    </p:column>
+                                    
+                                </p:row>
+                                
+
+
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="DAS 28"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Date"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="  "></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Tender joint count (0-28)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.tenderJointCountDAS}" id="tenderJointCountDAS">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas confirmDAS" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+ 
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Swollen joint count (0-28)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.swollenJointCountDAS}" id="swollenJointCountDAS">
+                                            <p:ajax event="change" process="@this" update="calculatedScoredas confirmDAS" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                         </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                      <p:column colspan="2">
+                                          <p:selectOneRadio value="#{patientController.selectedEncounter.rheumatoidArthritisData.esrCrp}" layout="grid" columns="1" >
+                                              <f:selectItems  value="#{enumController.esrCrp}" ></f:selectItems>
+                                             
+                                              <p:ajax event="change" process="@this" update="resultOfEsrCrp calculatedScoredas confirmDAS" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                            </p:selectOneRadio>
+                                    </p:column>
+                                     <p:column> 
+                                         <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.resultOfEsrCrp}" id="resultOfEsrCrp">
+                                             <p:ajax event="change" process="@this" update="resultOfEsrCrp calculatedScoredas confirmDAS" listener="#{patientController.calculateJointCountAndTargetPopulation()}" ></p:ajax>
+                                        </p:inputText>
+                                        
+                                        <p:selectOneMenu  >
+                                            <f:selectItems value="#{enumController.esrCrp}" var="ec" itemLabel="#{ec.label}" itemValue="#{ec}" ></f:selectItems>
+                                        </p:selectOneMenu> 
+                                    </p:column>
+                                </p:row>
+                                 
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Patient Global Health (0 – 100)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.patientGlobalHealthDAS}">
+                                            <p:ajax event="change" process="@this" update="resultOfEsrCrp calculatedScoredas confirmDAS" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                         </p:inputText>
+                                        
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Calculated Score"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.calculatedScoreDAS}" id="calculatedScoredas">
+                                        <p:ajax event="change" process="@this" update="confirmDAS" listener="#{patientController.calculateJointCountAndTargetPopulation()}" />
+                                        </p:inputText>
+                                        
+                                        
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="3">
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.confirmDAS}" id="confirmDAS">
+                                        </p:inputText>
+                                    
+                                    </p:column>
+                                </p:row>
+                                
+                            </p:panelGrid>
+
+                            
+                            
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=""></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Value"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Date"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ESR"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.esrValue}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:calendar value="#{patientController.selectedEncounter.rheumatoidArthritisData.dateOfEsr}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="CRP"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.crpValue}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:calendar value="#{patientController.selectedEncounter.rheumatoidArthritisData.dateOfCRP}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="RF"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.rfValue}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:calendar value="#{patientController.selectedEncounter.rheumatoidArthritisData.dateOfRF}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="ACPA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.acpaValue}"></p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:calendar value="#{patientController.selectedEncounter.rheumatoidArthritisData.dateOfACPA}" pattern="dd MMMM yyyy">
+                                        </p:calendar>
+                                    </p:column>
+                                </p:row>
+
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Poor Prognostic Factors"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Polyarticular presentation(>10 tender and swollen joints)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.rheumatoidArthritisData.polyarticularPresentationPoorPrognosticFactors}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="RF positive"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.rheumatoidArthritisData.rfPositivePoorPrognosticFactors}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Anti CPA positive"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.rheumatoidArthritisData.antiCPAPositivePoorPrognosticFactors}"></p:selectBooleanCheckbox>
+                                    </p:column>
+
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Erosions in X-ray"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.rheumatoidArthritisData.erosionsInXrayPoorPrognosticFactors}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+
+
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Initial Drug Therapy"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="MTX"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.mtxInitialDrugTherapy}"></p:inputText>
+                                        <p:outputLabel value="mg/wk"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="SSZ"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.sszInitialDrugTherapy}"></p:inputText>
+
+                                        <p:selectOneMenu  >
+                                            <f:selectItems value="#{enumController.SSZDoseUnitAndFrequency}" var="s" itemLabel="#{s.label}" itemValue="#{s}" ></f:selectItems>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="LEF"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.lefInitialDrugTherapy}"></p:inputText>
+                                        <p:outputLabel value="mg/day"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="HCQ"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.hcqInitialDrugTherapy}"></p:inputText>
+
+                                        <p:selectOneMenu  >
+                                            <f:selectItems value="#{enumController.doseUnitAndFrequencies}" var="h" itemLabel="#{h.label}" itemValue="#{h}" ></f:selectItems>
+                                        </p:selectOneMenu>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="STEROIDS"></p:outputLabel>
+                                        <p:selectOneMenu  >
+                                            <f:selectItems value="#{enumController.steroidsType}" var="s" itemLabel="#{s.label}" itemValue="#{s}" ></f:selectItems>
+                                        </p:selectOneMenu>
+
+
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.steroidsInitialDrugTherapy}"></p:inputText>
+
+                                        <p:selectOneMenu  >
+                                            <f:selectItems value="#{enumController.doseUnitAndFrequencies}" var="d" itemLabel="#{d.label}" itemValue="#{d}" ></f:selectItems>
+                                        </p:selectOneMenu>
+
+                                    </p:column>
+                                </p:row>
+
+                            </p:panelGrid>
+
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="SDAI/CDAI"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                               
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Tender joint count"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.tenderJointCountSDAICDAI}" id="tenderJointCountSDAICDAI">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                       </p:inputText>
+                                      
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Swellen joint count"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.swellenJointCountSDAICDAI}" id="swellenJointCountSDAICDAI">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Patient global assessment"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.patientGlobalAssessmentSDAICDAI}">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Evaluator global assessment"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.evaluatorGlobalAssessmentSDAICDAI}">
+                                            <p:ajax event="change" process="@this" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="CRP"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.crpSDAICDAI}" id="crpSDAICDAI">
+                                            <p:ajax event="change" process="@this unitofCRP" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                              
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="CRP units"></p:outputLabel>
+                                    </p:column>
+
+                                    <p:column>
+
+                                        <p:selectOneMenu id="unitofCRP" value="#{patientController.selectedEncounter.rheumatoidArthritisData.unitofCRP}" >
+                                            <f:selectItems value="#{enumController.CRPunits}" var="d" itemLabel="#{d.label}" itemValue="#{d}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this crpSDAICDAI" update="sdairemissioncal cdairemissioncal sdaireference cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        
+                                        </p:selectOneMenu>
+
+                                    </p:column>
+                                </p:row>
+                                
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="SDAI &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.sdaireference}" id="sdaireference">
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.sdaiRemissionSDAICDAI}" id="sdairemissioncal">
+                                        <p:ajax event="change" process="@this" update="sdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="CDAI &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.cdaireference}" id="cdaireference">
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.rheumatoidArthritisData.cdaiRemissionSDAICDAI}" id="cdairemissioncal">
+                                        <p:ajax event="change" process="@this" update="cdaireference" listener="#{patientController.calculateJointCountAndTargetPopulation()}"/>
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                              
+                            </p:panelGrid>
+                                <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                                    
+                                    
+            </p:tab> 
+                                
+            <p:tab title="SLE">
+                                        
+                                        <p:panelGrid >
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Clinical and immunologic criteria used in the SLICC classification system"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="CLINICAL CRITERIA"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                 
+                                <p:row>
+                                    <p:column>
+                                     <p:outputLabel value=" 1. Acute cutaneous lupus, including: "></p:outputLabel>
+                                       <ul>
+                                           <li><p:outputLabel value="Lupus malar rash (do not count if malar discoid), Bullous lupus, Toxic epidermal necrolysis variant of SLE, "></p:outputLabel></li>     
+                                           <p:outputLabel value="Maculopapular lupus rash, Photosensitive lupus rash"></p:outputLabel>     
+                                           <ul>
+                                                    <li> <p:outputLabel value="in the absence of dermatomyositis"></p:outputLabel> </li>
+                                                </ul>
+                                           <li>
+                                               <p:outputLabel value="OR subacute cutaneous lupus (nonindurated psoriaform and/or annular polycyclic lesions that resolve without scarring,"></p:outputLabel>
+                                             </li>
+                                               <p:outputLabel value=" although occasionally with postinflammatory dyspigmentation or telangiectasias)"></p:outputLabel>
+                                          
+                                       </ul>
+                                        
+                                    </p:column>
+                                      <p:column>
+                                          <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria1}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox>  
+                                      </p:column>
+                                </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 2. Chronic cutaneous lupus, including: "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Classic discoid rash,  Localized (above the neck),  Generalized (above and below the neck),"></p:outputLabel> </li>
+                                                <p:outputLabel value=" Hypertrophic (verrucous) lupus, Lupus panniculitis (profundus), Mucosal lupus, Lupus erythematosus tumidus, Chillblains lupus, Discoid lupus/lichen planus overlap"></p:outputLabel>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria2}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 3. Oral ulcers "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Palate, Buccal,  Tongue"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="OR nasal ulcers"></p:outputLabel> </li>
+                                                <ul>
+                                                    <li> <p:outputLabel value="	in the absence of other causes, such as vasculitis, Behçet's disease, "></p:outputLabel> </li>
+                                                    <p:outputLabel value="infection (herpesvirus), inflammatory bowel disease, reactive arthritis,  and acidic foods"></p:outputLabel>
+                                                </ul>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria3}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 4. Nonscarring alopecia (diffuse thinning or hair fragility with visible broken hairs)  "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="in the absence of other causes such as alopecia areata, drugs, iron deficiency, and androgenic alopecia"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria4}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 5. Synovitis involving 2 or more joints, characterized by swelling or effusion "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="OR tenderness in 2 or more joints and at least 30 minutes of morning stiffness"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria5}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 6. Serositis "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Typical pleurisy for more than 1 day,  OR pleural effusions,  OR pleural rub, "></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="Typical pericardial pain (pain with recumbency improved by sitting forward) for more than 1 day, "></p:outputLabel></li>
+                                                <p:outputLabel value=" OR pericardial effusion,  OR pericardial rub,  OR pericarditis by electrocardiography"></p:outputLabel>
+                                                <ul>
+                                                    <li><p:outputLabel value="in the absence of other causes, such as infection, uremia, and Dressler's pericarditis"></p:outputLabel></li>
+                                                </ul>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria6}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 7. Renal"></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Urine protein–to-creatinine ratio (or 24-hour urine protein) representing 500 mg protein/24 hours"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="OR red blood cell casts"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria7}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 8. Neurologic "></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="Seizures, Psychosis, Mononeuritis multiplex,"></p:outputLabel> </li>
+                                                    <ul>
+                                                    <li> <p:outputLabel value="in the absence of other known causes such as primary vasculitis"></p:outputLabel> </li>
+                                                    </ul>
+                                                <li> <p:outputLabel value="Myelitis, Peripheral or cranial neuropathy"></p:outputLabel> </li>
+                                                    <ul>
+                                                    <li> <p:outputLabel value="in the absence of other known causes such as primary vasculitis, infection, and diabetes mellitus"></p:outputLabel> </li>
+                                                    </ul>
+                                                <li> <p:outputLabel value="Acute confusional state"></p:outputLabel> </li>
+                                                <li> <p:outputLabel value="in the absence of other causes, including toxic/metabolic, uremia, drugs"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria8}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 9. Hemolytic anemia"></p:outputLabel>    
+                                     </p:column>
+                                     <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria9}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                 
+                                 
+                                 <p:row>
+                                     <p:column>
+                                         
+                                         <p:outputLabel value="10. Leukopenia ( &lt;4,000/mm3 at least once)"></p:outputLabel>
+                                            <ul>
+                                                <li> <p:outputLabel value="in the absence of other known causes such as Felty's syndrome, drugs, and portal hypertension"></p:outputLabel> </li>
+                                                    <ul>
+                                                        <li> <p:outputLabel value="OR"></p:outputLabel> </li>
+                                                        <li> <p:outputLabel value="Lymphopenia ( &lt; 1,000/mm3 at least once)"></p:outputLabel> </li>
+                                                    </ul>
+                                             <li> <p:outputLabel value="in the absence of other known causes such as corticosteroids, drugs, and infection"></p:outputLabel> </li>
+                                            </ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria10}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                                  <p:row>
+                                     <p:column>
+                                         <p:outputLabel value=" 11. Thrombocytopenia (&lt;100,000/mm3) at least once "></p:outputLabel> 
+                                                 <ul><li>
+                                                         <p:outputLabel value="in the absence of other known causes such as drugs, portal hypertension, and thrombotic thrombocytopenic purpura "></p:outputLabel>
+                                             </li></ul>
+                                     </p:column>
+                                     <p:column>
+                                         <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteria11}">
+                                            <p:ajax event="change" process="@this" update="clinicalCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                     </p:column>
+                                 </p:row>
+                             
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="IMMUNOLOGIC CRITERIA"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 1. ANA level above laboratory reference range"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria1}">
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                         <p:outputLabel value=" 2. Anti-dsDNA antibody level above laboratory reference range (or >2-fold the reference range if tested by ELISA) "></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria2}">
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 3. Anti-Sm: presence of antibody to Sm nuclear antigen"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria3}">
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 4. Antiphospholipid antibodypositivity as determined by any of the following: "></p:outputLabel>
+                                        <ul>
+                                            <li><p:outputLabel value="Positive test result for lupus anticoagulant"></p:outputLabel></li>
+                                            <li><p:outputLabel value="False-positive test result for rapid plasma reagin"></p:outputLabel></li>
+                                            <li><p:outputLabel value="Medium- or high-titer anticardiolipin antibody level (IgA, IgG, or IgM)"></p:outputLabel></li>
+                                            <li><p:outputLabel value="Positive test result for anti–β2-glycoprotein I (IgA, IgG, or IgM)"></p:outputLabel></li>
+                                        </ul>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria4}">
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 5. Low complement "></p:outputLabel>
+                                        <ul>
+                                            <li><p:outputLabel value="Low C3, Low C4, Low CH50"></p:outputLabel></li>
+                                            
+                                        </ul>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox rendered="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria5 ne null}" value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria5}">
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value=" 6. Direct Coombs'test"></p:outputLabel>
+                                        <ul>
+                                            <li><p:outputLabel value="in the absence of hemolytic anemia"></p:outputLabel></li>
+                                            
+                                        </ul>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteria6}">
+                                            <p:ajax event="change" process="@this" update="immunologicCriteriaTotal criteriaTotal diognosisConfirm" listener="#{patientController.criteriaCal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Clinical Criteria &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selectedEncounter.systemicLupusErythematosusData.clinicalCriteriaTotal}" id="clinicalCriteriaTotal"></p:inputText>
+                                        <p:spacer width="30" height="10" />
+                                        <p:outputLabel value="+"></p:outputLabel>
+                                        <p:spacer width="30" height="10" />
+                                        <p:outputLabel value="Immunologic Criteria &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selectedEncounter.systemicLupusErythematosusData.immunologicCriteriaTotal}" id="immunologicCriteriaTotal"></p:inputText>
+                                         
+                                        
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Total &nbsp;"></p:outputLabel>
+                                        <p:inputText value="#{patientController.selectedEncounter.systemicLupusErythematosusData.criteriaTotal}" id="criteriaTotal">
+                                        <p:ajax event="change" process="@this" update="clinicalCriteriaTotal immunologicCriteriaTotal " listener="#{patientController.criteriaCal()}" />
+                                        </p:inputText>
+                                      </p:column>
+                                </p:row>
+                               <p:row>
+                                   <p:column colspan="2">
+                                        
+                                       <p:inputText value="#{patientController.selectedEncounter.systemicLupusErythematosusData.diognosisConfirm}" id="diognosisConfirm"></p:inputText>
+                                     
+                                    </p:column>
+                                    
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Complications"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column >
+                                         <p:outputLabel value="Lupus Nephritis " ></p:outputLabel>
+                                    </p:column>
+                                    <p:column> 
+                                      <p:selectOneRadio value="#{patientController.selectedEncounter.systemicLupusErythematosusData.lupusNephritis}" layout="grid" columns="1" >
+                                               <f:selectItems  value="#{enumController.lupusNephritis}" ></f:selectItems>
+                                      </p:selectOneRadio>
+                                    </p:column>  
+                                </p:row>
+                                
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Respiratory"></p:outputLabel>
+                                    </p:column>
+                                      <p:column>
+                                          <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.complicationRespiratory}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Other"></p:outputLabel>
+                                    </p:column>
+                                      <p:column>
+                                          <p:inputTextarea value="#{patientController.selectedEncounter.systemicLupusErythematosusData.otherComplication}" rows="4" cols="28"/>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Checklist of parameters for preconception counseling and risk stratification in women with SLE and/or APS"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="SLE activity/flares"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.checklistSLEactivityORflares}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Lupus nephritis (history or active at conception)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.checklistLupusNephritis}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Serological activity(serum C3/C4, anti-dsDNA titres)"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.checklistSerologicalActivity}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Previous adverse pregnancy outcomes"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.checklistPreviousAdversePregnancyOutcomes}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="History of vascular thrombosis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.checklistHistoryOfVascularThrombosis}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Auto-antibody profile ( LA, aPL, Ro, La )"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.checklistAutoAntibodyProfile}"></p:selectBooleanCheckbox>
+                                    
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:outputLabel value="SLEDAI – 2K (apply for the past 30 Days)"></p:outputLabel>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Seizure"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiSeizure8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Psychosis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiPsychosis8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Organic brain syndrome"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiOrganicBrainSyndrome8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Visual disturbances"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiVisualDisturbances8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Cranial nerve disorder"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiCranialNerveDisorder8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Lupus headache"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiLupusHeadache8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox> 
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="CVA"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiCva8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Vasculitis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="8"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiVasculitis8}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Arthritis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiArthritis4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Myositis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiMyositis4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Urinary casts"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiUrinaryCasts4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Hematuria"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiHematuria4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Proteinuria"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiProteinuria4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Pyuria"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="4"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiPyuria4}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column colspan="6">
+                                       
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="New rash"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiNewRash2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Alopecia"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiAlopecia2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Mucosal ulcers"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiMucosalUlcers2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Pleurisy"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiPleurisy2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Pericarditis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiPericarditis2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Low complement"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiLowComplement2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column colspan="4">
+                                        <p:outputLabel value="Increased DNA binding"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="2"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiIncreasedDNABinding2}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Fever"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="1"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiFever1}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="Thrombocytopenia"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="1"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiThrombocytopenia1}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                    <p:column colspan="4">
+                                        <p:outputLabel value="Leukopenia"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:outputLabel value="1"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiLeukopenia1}">
+                                            <p:ajax event="change" process="@this" update="SLEDAITotal sledaiFlare" listener="#{patientController.sledaiTotalcal()}" />
+                                            </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Total"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiTotal}" id="SLEDAITotal"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            <p:outputLabel value="(Cut off score for active disease is 3 or 4)  "></p:outputLabel>
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.systemicLupusErythematosusData.sledaiFlare}" id="sledaiFlare"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                            
+            </p:tab>
+            
+            <p:tab title="SP">
+                        
+                <p:panelGrid >
+                                 <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
+                              <p:graphicImage library="images" name="ASAS_SpA.png" style=" width:700px ; height: 600px ;" ></p:graphicImage>
+
+                             
+                             </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row >
+                                    <p:column style="background-color: #99ccff" >
+                                        <p:outputLabel value="Choranic back pain :  Go For X-Ray " >
+                                             
+                                        
+                                        </p:outputLabel>
+                                    </p:column>
+                                     <p:column style="background-color: #99ccff">
+                                         
+                                         <p:selectOneMenu id="cbp" value="#{patientController.selectedEncounter.spondyloarthristisData.xrayPN}" >
+                                             <f:selectItems value="#{enumController.positiveNegative}" var="x" itemLabel="#{x.label}" itemValue="#{x}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this cbpConfirm" update="cbpConfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        
+                                        </p:selectOneMenu>
+                                             
+                                    </p:column>
+                                </p:row> 
+                                
+                                <p:row>
+                                    <p:column colspan="2"> 
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.cbpConfirm}" id="cbpConfirm">
+                                            <p:ajax event="change" process="@this" update="cbpConfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                            
+                                <p:row>
+                                    <p:column colspan="2" style="background-color: #99ccff"> 
+                                        <p:outputLabel value="Check Other SpA Features"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Inflammatory Back Pain"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.ibp}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Alternating Buttock Pain"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.abp}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Good response to NSAIDs"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.grtn}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Peripheral Arthritis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.pa}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Enthesitis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.enthesitis}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Dactylitis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.dactylitis}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Psoriasis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.psoriasis}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Inflammatory bowel disease"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.ibd}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Uveitis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.uveitis}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Elevated acute phase reactants"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.eapr}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Preceding infections"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.pi}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Positive family history"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.pfh}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Sacroiliitis"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.sacroiliitis}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Urethrits or cervical or acute diarrhea ocurring "></p:outputLabel><br/>
+                                        <p:outputLabel value=" within one month before onset of arthritis"></p:outputLabel>
+                                       
+                                    </p:column>
+                                    <p:column>
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.uorcorADO}">
+                                        <p:ajax event="change" process="@this" update="asastotal asasconfirm peripheralspaconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                 <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Total"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asastotal}" id="asastotal">
+                                        <p:ajax event="change" process="@this" update="asasconfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asasconfirm}" id="asasconfirm"></p:inputText>
+                                    </p:column>
+                                    
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="HLA - B27 "></p:outputLabel>
+                                    </p:column>
+                                    <p:column >
+                                        <p:selectOneMenu value="#{patientController.selectedEncounter.spondyloarthristisData.hlaPN}" >
+                                             <f:selectItems value="#{enumController.positiveNegative}" var="x" itemLabel="#{x.label}" itemValue="#{x}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this hlbConfirm" update="hlbConfirm" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        </p:selectOneMenu>     
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.hlbConfirm}" id="hlbConfirm"></p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:outputLabel value="Peripheral SpA : "></p:outputLabel>
+                                    </p:column>
+                                    <p:column >
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.peripheralspaconfirm}" id="peripheralspaconfirm">
+                                         </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="2" style="background-color: #99ccff">
+                                        <p:outputLabel value="Diagnosis"></p:outputLabel></p:column>
+                                </p:row>
+                                
+                                
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Axial SpA"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.diagnosisAxialSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Peripheral SpA"></p:outputLabel></p:column>
+                                    <p:column>  
+                                        <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.diagnosisPeripheralSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Other diagnosis"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputTextarea value="#{patientController.selectedEncounter.spondyloarthristisData.otherDiagnosis}" rows="2" cols="20" autoResize="190"/>
+                                    </p:column>
+                                        
+                                </p:row>
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="Type of Spondyloarthritis"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Ankylosing Spondylitis"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.ankylosingSp}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Psoriatic Arthritis"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.psoriaticA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="IBD Associated SpA"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.ibdassociatedSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Reactive Arthritis"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.reactiveA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Undifferentiated SpA"></p:outputLabel></p:column>
+                                        <p:column>   
+                                            <p:selectBooleanCheckbox value="#{patientController.selectedEncounter.spondyloarthristisData.undifferentiatedSpA}"></p:selectBooleanCheckbox>
+                                    </p:column>
+                                    </p:row>
+                                    <p:row>
+                                        <p:column><p:outputLabel value="Other"></p:outputLabel></p:column>
+                                        <p:column>   
+                                        <p:inputTextarea value="#{patientController.selectedEncounter.spondyloarthristisData.otherTypeofSpA}" rows="2" cols="20" autoResize="190"/>
+                                    </p:column>
+                                    </p:row>
+                                
+                                    
+                               
+                                
+                            </p:panelGrid>
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column colspan="3">
+                                        <p:outputLabel value="BASDAI"></p:outputLabel>
+                                    </p:column>
+                                </p:row>
+                            
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Fatigue"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiFatigue}">
+                                            <p:ajax event="change" process="@this" update="basdaiCalculatedScore basdaiClassified" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Spinal pain"></p:outputLabel></p:column>
+                                   <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>  
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiSpinalPain}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore basdaiClassified asdasSpinalPain" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Peripheral arthritis"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiPeripheralArthritis}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore basdaiClassified asdasPeripheralArthritis" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Enthesitis"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>  
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiEnthesitis}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore basdaiClassified" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Morning stiffness intensity"></p:outputLabel></p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiMorningStiffnessIntensity}">
+                                        <p:ajax event="change" process="@this" update="basdaiCalculatedScore basdaiClassified" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Morning stiffness duration"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.0 hr - 0   points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.5 hr - 2.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.0 hr - 5.0 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.5 hr - 7.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="2.0 hr - 10  points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                    </p:column>
+                                    <p:column>   <p:outputLabel value="0-10"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiMorningStiffnessDuration}">
+                                         <p:ajax event="change" process="@this" update="basdaiCalculatedScore basdaiClassified asdasMorningStiffnessDuration" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>   <p:outputLabel value="Calculated Score"></p:outputLabel></p:column>
+                                    <p:column>   
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiCalculatedScore}" id="basdaiCalculatedScore">
+                                        <p:ajax event="change" process="@this" update="basdaiClassified" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.basdaiClassified}" id="basdaiClassified">
+                                        
+                                        </p:inputText>
+                                    </p:column>
+                                 </p:row>
+                               
+                            </p:panelGrid>
+                            
+                            
+                            
+                            <p:panelGrid>
+                                <p:row>
+                                    <p:column> 
+                                <p:outputLabel value="ASDAS"></p:outputLabel>    
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Spinal pain 0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    
+                                <p:column>   
+                                    <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasSpinalPain}" id="asdasSpinalPain">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore asdasCrpScore asdasCrpScoreReference asdasEsrScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Peripheral arthritis 0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column><p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasPeripheralArthritis}" id="asdasPeripheralArthritis">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore asdasCrpScore asdasCrpScoreReference asdasEsrScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Morning stiffness duration"></p:outputLabel><br></br> 
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.0 hr - 0   points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="0.5 hr - 2.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.0 hr - 5.0 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="1.5 hr - 7.5 points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                                 <p:outputLabel value="2.0 hr - 10  points"></p:outputLabel><br></br>
+                                                    <p:spacer width="30" height="10" />
+                                    </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column> <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasMorningStiffnessDuration}" id="asdasMorningStiffnessDuration">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore asdasCrpScore asdasCrpScoreReference asdasEsrScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column> <p:outputLabel value="Patient global assessment"></p:outputLabel> </p:column>
+                                    <p:column> <p:outputLabel value="0-10"></p:outputLabel> </p:column>
+                                    <p:column><p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasPatientGlobalAssessmennt}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore asdasCrpScore asdasCrpScoreReference asdasEsrScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="ESR"></p:outputLabel></p:column>
+                                    <p:column><p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasEsr}">
+                                            <p:ajax event="change" process="@this" update="asdasEsrScore asdasEsrScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                               
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Calculated Score"></p:outputLabel>
+                                                    <p:spacer width="30" height="10" />
+                                                    <p:outputLabel value="ASDAS ESR"></p:outputLabel>
+                                    </p:column>
+                                    <p:column><p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasEsrScore}" id="asdasEsrScore">
+                                              <p:ajax event="change" process="@this" update="asdasEsrScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column colspan="3">
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasEsrScoreReference}" id="asdasEsrScoreReference">
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                                
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="CRP"></p:outputLabel></p:column>
+                                    <p:column><p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasCrp}" id="asdasCrp">
+                                            <p:ajax event="change" process="@this" update="asdasCrpScore asdasCrpScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}" />
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                         <!--
+                                
+                                <p:row>
+                                    <p:column colspan="2">
+                                        <p:outputLabel value="CRP units"></p:outputLabel>
+                                    </p:column>
+
+                                    <p:column>
+
+                                        <p:selectOneMenu id="unitofCRP" value="#{patientController.selectedEncounter.spondyloarthristisData.unitofCRP}" >
+                                            <f:selectItems value="#{enumController.CRPunits}" var="c" itemLabel="#{c.label}" itemValue="#{c}" ></f:selectItems>
+                                            <p:ajax event="change" process="@this asdasCrp" update="asdasCrpScore asdasCrpScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>
+                                        
+                                        </p:selectOneMenu>
+
+                                    </p:column>
+                                </p:row>
+                
+                                -->
+                                <p:row>
+                                    <p:column colspan="2"><p:outputLabel value="Calculated Score"></p:outputLabel>
+                                                    <p:spacer width="30" height="10" />
+                                                    <p:outputLabel value="ASDAS CRP"></p:outputLabel>
+                                    </p:column>
+                                    <p:column>
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasCrpScore}" id="asdasCrpScore">
+                                            <p:ajax event="change" process="@this" update="asdasCrpScoreReference" listener="#{patientController.spondyloarthristisdatBASDAI()}"/>     
+                                        </p:inputText>
+                                </p:column>
+                                </p:row>
+                                
+                                 <p:row>
+                                     <p:column colspan="3">
+                                        <p:inputText value="#{patientController.selectedEncounter.spondyloarthristisData.asdasCrpScoreReference}" id="asdasCrpScoreReference">
+                                        </p:inputText>
+                                    </p:column>
+                                </p:row>
+                                
+                            </p:panelGrid>
+            
+            </p:tab>
+                                </p:tabView>
+                            </p:panelGrid>
+                                </p:panel>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+  
+    </body>
+</html>
+

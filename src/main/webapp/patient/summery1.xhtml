@@ -75,14 +75,16 @@
                             <f:facet name="header">
                                 <h:outputText value="Short Summery"/>
                             </f:facet>
-                            <h:outputText value="#{item.shortSummary}"/>
+                            <h:outputText value="#{item.summery}"/>
                         </p:column>
 
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Date of Visit"/>
                             </f:facet>
-                            <h:outputText value="#{item.dateOfRegistration}"/>
+                            <h:outputText value="#{item.dateOfRegistration}">
+                            
+                            </h:outputText>
                         </p:column>
                         
                         
@@ -114,7 +116,22 @@
                               <h:outputText value="#{item.rheumatoidArthritisData.abnormalCrporAbnormalEsrAcutePhaseReactants}"/>
                         </p:column>
                         
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="DsDNA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.investigation.dsDnaDateOfVisit1}"/>
+                        </p:column>
+                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="cANCA"/>
+                            </f:facet>
+                            <h:outputText value="#{item.investigation.caNcaDateOfVisit1}"/>
+                        </p:column>
                     </p:dataTable>
+                    
+                    
 
 
 

@@ -6,16 +6,20 @@
 package lk.gov.health.nrd.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import lk.gov.health.nrd.enums.Sex;
@@ -27,6 +31,9 @@ import lk.gov.health.nrd.enums.Sex;
  */
 @Entity
 public class Patient implements Serializable {
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Encounter> encounters;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -75,14 +82,16 @@ public class Patient implements Serializable {
     SpondyloarthristisData SpondyloarthristisData;
     @OneToOne(cascade = CascadeType.ALL)
     Investigation Investigation;
-    @OneToOne(cascade = CascadeType.ALL)
-    ShortSummary ShortSummary;
+
     @OneToOne(cascade = CascadeType.ALL)
     Prescription Prescription;
     @OneToOne(cascade = CascadeType.ALL)
     Visit Visit;
     @OneToOne(cascade = CascadeType.ALL)
     Followup Followup;
+    @Lob
+    private String summery;
+    
     
 
     public Department getRegisteredDepartment() {
@@ -322,16 +331,7 @@ public class Patient implements Serializable {
         this.Followup = Followup;
     }
     
-    public ShortSummary getShortSummary() {
-        if(ShortSummary == null){
-        ShortSummary =new ShortSummary();
-        }
-        return ShortSummary;
-    }
-
-    public void setShortSummary(ShortSummary ShortSummary) {
-        this.ShortSummary = ShortSummary;
-    }
+   
 
     public Prescription getPrescription() {
         if(Prescription == null){
@@ -345,7 +345,7 @@ public class Patient implements Serializable {
     }
 
     
-    
+
     
     public Visit getVisit() {
         if(Visit == null){
@@ -358,9 +358,6 @@ public class Patient implements Serializable {
         this.Visit = Visit;
     }
 
-    
-    
-    
     
     
     @Override
@@ -383,6 +380,25 @@ public class Patient implements Serializable {
     @Override
     public String toString() {
         return "lk.gov.health.nrd.entity.Patient[ id=" + id + " ]";
+    }
+
+    public String getSummery() {
+        return summery;
+    }
+
+    public void setSummery(String summery) {
+        this.summery = summery;
+    }
+
+    public List<Encounter> getEncounters() {
+        if(encounters==null){
+            encounters = new ArrayList<Encounter>();
+        }
+        return encounters;
+    }
+
+    public void setEncounters(List<Encounter> encounters) {
+        this.encounters = encounters;
     }
 
    

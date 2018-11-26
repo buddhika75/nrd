@@ -22,10 +22,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
+import lk.gov.health.nrd.entity.Encounter;
 import lk.gov.health.nrd.entity.PatientDiagnosis;
 import lk.gov.health.nrd.entity.RheumatoidArthritisData;
 import lk.gov.health.nrd.entity.SystemicLupusErythematosusData;
 import lk.gov.health.nrd.entity.SpondyloarthristisData;
+import lk.gov.health.nrd.facades.EncounterFacade;
 
 /**
  *
@@ -40,8 +42,11 @@ public class PatientController implements Serializable {
 
     @EJB
     private lk.gov.health.nrd.facades.PatientFacade ejbFacade;
+    @EJB
+    private EncounterFacade encounterFacade;
     private List<Patient> items = null;
     private Patient selected;
+    private Encounter selectedEncounter;
     String searchText;
 
     PatientDiagnosis patientDiagnosis;
@@ -49,6 +54,40 @@ public class PatientController implements Serializable {
     List<Patient> searchedPatients;
     private float n$;
 
+    
+    public String newClinicVisit(){
+        if(selected==null){
+            JsfUtil.addErrorMessage("Select a Patient");
+            return "";
+        }
+        selectedEncounter = new Encounter();
+        selectedEncounter.setPatient(selected);
+        selectedEncounter.setEncounterDate(new Date());
+        selectedEncounter.setEncounterDateTime(new Date());
+        selectedEncounter.setRheumatoidArthritisData(new RheumatoidArthritisData());
+        selectedEncounter.setSpondyloarthristisData(new SpondyloarthristisData());
+        selectedEncounter.setSystemicLupusErythematosusData(new SystemicLupusErythematosusData());
+        return "/patient/encounter";
+    }
+    
+    public void saveSelectedEncounter(){
+        if(selectedEncounter==null){
+            JsfUtil.addErrorMessage("Select an Encounter");
+            return ;
+        }
+        if(selectedEncounter.getId()==null){
+            encounterFacade.create(selectedEncounter);
+            JsfUtil.addSuccessMessage("Saved");
+        }else{
+            encounterFacade.edit(selectedEncounter);
+            JsfUtil.addSuccessMessage("Updated");
+        }
+    }
+    
+    public String backToPatient(){
+        return "/patient/patient";
+    }
+    
     public String toAddRaDate() {
         if (selected == null) {
             JsfUtil.addErrorMessage("Select a Patient");
@@ -238,6 +277,18 @@ public class PatientController implements Serializable {
 
     public List<Patient> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+
+    public Encounter getSelectedEncounter() {
+        return selectedEncounter;
+    }
+
+    public void setSelectedEncounter(Encounter selectedEncounter) {
+        this.selectedEncounter = selectedEncounter;
+    }
+
+    public EncounterFacade getEncounterFacade() {
+        return encounterFacade;
     }
 
     @FacesConverter(forClass = Patient.class)
@@ -1474,5 +1525,8 @@ public class PatientController implements Serializable {
                }
            
     }
+    
+    
+    
     
 }

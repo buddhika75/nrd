@@ -11,4 +11,6 @@ package lk.gov.health.nrd.enums;
  */
 public enum ItemCategory {
     Position,
+    Investigation,
+    Medicine,
 }

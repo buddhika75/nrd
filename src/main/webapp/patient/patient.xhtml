@@ -96,8 +96,25 @@
                                                 <p:inputText rendered="#{patientController.selected.race eq 'Other'}" value="#{patientController.selected.raceOther}" title="OtherRaces" />
                                             </h:panelGroup>
                                         </h:panelGroup>
+
+
+
                                     </p:panelGrid>
-                                    
+
+                                    <p:panel header="Visits" >
+                                        <p:dataTable value="#{patientController.selected.encounters}" var="e" >
+                                            <p:column headerText="Date" >
+                                                <p:outputLabel value="#{e.encounterDate}" >
+                                                    <f:convertDateTime pattern="dd MMM yyyy" ></f:convertDateTime>
+                                                </p:outputLabel>
+                                            </p:column>
+                                            <p:column headerText="View" >
+                                                <p:commandLink value="View" ajax="false" action="/patient/encounter" >
+                                                    <f:setPropertyActionListener value="#{e}" target="#{patientController.selectedEncounter}" ></f:setPropertyActionListener>
+                                                </p:commandLink>
+                                            </p:column>
+                                        </p:dataTable>
+                                    </p:panel>
                                 </h:panelGroup>
                                 <p:panelGrid columns="1" style="float: right;">
                                     <p:commandButton ajax="false" action="#{patientController.savePatient()}" value="Save" ></p:commandButton>
@@ -106,12 +123,17 @@
                                     <p:commandButton value="Short Summary" action="/patient/patient_shortsummary" ajax="false"></p:commandButton>
                                     <p:commandButton value="Prescription" action="/patient/patient_prescription" ajax="false"></p:commandButton>
                                     <p:commandButton value="Investigation" action="/patient/patient_investigation" ajax="false"></p:commandButton>
+                                    <p:commandButton value="New Clinic Visit" action="#{patientController.newClinicVisit()}" ajax="false"></p:commandButton>
+
                                 </p:panelGrid>
-                                
+
+
+
+
                             </p:panelGrid>
 
 
-                            
+
                         </p:panel>
                     </h:form>
                 </f:view>
